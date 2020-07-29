@@ -36,7 +36,7 @@
   <a
     href="https://travis-ci.org/github/YashTotale/terminal-all-in-one">
     <img
-      src="https://img.shields.io/travis/YashTotale/terminal-all-in-one?logo=visual-studio-code&style=for-the-badge"
+      src="https://img.shields.io/travis/YashTotale/terminal-all-in-one?logo=travis-ci&logoColor=FFFFFF&style=for-the-badge"
       alt="Build">
   </a>
   &nbsp;
@@ -44,7 +44,7 @@
   <a
     href="https://snyk.io/test/github/YashTotale/terminal-all-in-one">
     <img
-      src="https://img.shields.io/snyk/vulnerabilities/github/YashTotale/terminal-all-in-one?logo=visual-studio-code&style=for-the-badge"
+      src="https://img.shields.io/snyk/vulnerabilities/github/YashTotale/terminal-all-in-one?logo=snyk&style=for-the-badge"
       alt="Vulnerabilities">
   </a>
   &nbsp;
