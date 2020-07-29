@@ -231,5 +231,4 @@ _Check out [first contributions](https://github.com/firstcontributions/first-con
       alt="License">
 </a>
 &nbsp;
-
 </p>
