@@ -23,16 +23,16 @@ function showOnStartMessage(context) {
   }
 }
 
-async function chooseTerminalTheme() {
-  const currentStyles = await getConfig(COLORS_CONFIG);
-  await vscode.window.showQuickPick(themeNames, {
-    placeHolder: "Choose a Terminal Theme",
-    canPickMany: false,
-    ignoreFocusOut: true,
-    onDidSelectItem: async (themeName) => {
-      updateTerminalTheme(themeName);
-    },
-  });
+function getConfig() {
+  return vscode.workspace.getConfiguration();
+}
+
+async function updateConfig(key, value) {
+  try {
+    await getConfig().update(key, value);
+  } catch ({ message }) {
+    return vscode.window.showErrorMessage(message);
+  }
 }
 
 async function updateTerminalTheme(themeName) {
@@ -59,16 +59,16 @@ async function updateTerminalTheme(themeName) {
   }
 }
 
-function getConfig(key) {
-  return vscode.workspace.getConfiguration().get(key);
-}
-
-async function updateConfig(key, value) {
-  try {
-    await vscode.workspace.getConfiguration().update(key, value);
-  } catch ({ message }) {
-    return vscode.window.showErrorMessage(message);
-  }
+async function chooseTerminalTheme() {
+  const currentStyles = await getConfig().get(COLORS_CONFIG);
+  await vscode.window.showQuickPick(themeNames, {
+    placeHolder: "Choose a Terminal Theme",
+    canPickMany: false,
+    ignoreFocusOut: true,
+    onDidSelectItem: async (themeName) => {
+      updateTerminalTheme(themeName);
+    },
+  });
 }
 
 function registerCommand({ name, handler }) {
@@ -98,8 +98,9 @@ function activate(context) {
   createCommands(context);
 }
 
-exports.activate = activate;
-
 function deactivate() {}
 
-exports.deactivate = deactivate;
+module.exports = {
+  activate,
+  deactivate,
+};

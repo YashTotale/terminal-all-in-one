@@ -10,7 +10,7 @@
   <a
     href="https://marketplace.visualstudio.com/items?itemName=yasht.terminal-all-in-one">
     <img
-      src="https://img.shields.io/visual-studio-marketplace/v/yasht.terminal-all-in-one?color=43A047&logo=visual-studio-code&style=for-the-badge"
+      src="https://img.shields.io/visual-studio-marketplace/v/yasht.terminal-all-in-one?logo=visual-studio-code&style=for-the-badge"
       alt="Version">
   </a>
 </h1>
@@ -20,7 +20,7 @@
   <a
     href="https://marketplace.visualstudio.com/items?itemName=yasht.terminal-all-in-one&ssr=false#review-details">
     <img
-      src="https://img.shields.io/visual-studio-marketplace/r/yasht.terminal-all-in-one?color=43A047&logo=visual-studio-code&style=for-the-badge"
+      src="https://img.shields.io/visual-studio-marketplace/r/yasht.terminal-all-in-one?logo=visual-studio-code&style=for-the-badge"
       alt="Rating">
   </a>
   &nbsp;
@@ -28,15 +28,15 @@
   <a
     href="https://david-dm.org/YashTotale/terminal-all-in-one">
     <img
-      src="https://img.shields.io/david/YashTotale/terminal-all-in-one?color=43A047&logo=visual-studio-code&style=for-the-badge"
+      src="https://img.shields.io/david/YashTotale/terminal-all-in-one?logo=visual-studio-code&style=for-the-badge"
       alt="Dependencies">
   </a>
   &nbsp;
   <!-- Build -->
   <a
-    href="https://travis-ci.org/github/YashTotale/terminal-all-in-one/builds">
+    href="https://travis-ci.org/github/YashTotale/terminal-all-in-one">
     <img
-      src="https://img.shields.io/travis/YashTotale/terminal-all-in-one?color=43A047&logo=visual-studio-code&style=for-the-badge"
+      src="https://img.shields.io/travis/YashTotale/terminal-all-in-one?logo=visual-studio-code&style=for-the-badge"
       alt="Build">
   </a>
   &nbsp;
@@ -44,7 +44,7 @@
   <a
     href="https://snyk.io/test/github/YashTotale/terminal-all-in-one">
     <img
-      src="https://img.shields.io/snyk/vulnerabilities/github/YashTotale/terminal-all-in-one?color=43A047&logo=visual-studio-code&style=for-the-badge"
+      src="https://img.shields.io/snyk/vulnerabilities/github/YashTotale/terminal-all-in-one?logo=visual-studio-code&style=for-the-badge"
       alt="Vulnerabilities">
   </a>
   &nbsp;
@@ -211,7 +211,7 @@ _Check out [first contributions](https://github.com/firstcontributions/first-con
   <a
     href="https://github.com/YashTotale/terminal-all-in-one/commits/master">
     <img
-      src="https://img.shields.io/github/last-commit/YashTotale/terminal-all-in-one?color=43A047&style=for-the-badge"
+      src="https://img.shields.io/github/last-commit/YashTotale/terminal-all-in-one?style=for-the-badge"
       alt="Last Commit">
   </a>
   &nbsp;
@@ -219,8 +219,17 @@ _Check out [first contributions](https://github.com/firstcontributions/first-con
   <a
     href="https://github.com/YashTotale/terminal-all-in-one/blob/master/LICENSE.md">
     <img
-      src="https://img.shields.io/github/license/YashTotale/terminal-all-in-one?color=43A047&style=for-the-badge"
+      src="https://img.shields.io/github/license/YashTotale/terminal-all-in-one?style=for-the-badge"
       alt="License">
   </a>
   &nbsp;
+<!-- Dev Dependencies -->
+<a
+    href="https://david-dm.org/YashTotale/terminal-all-in-one?type=dev">
+<img
+      src="https://img.shields.io/david/dev/YashTotale/terminal-all-in-one?style=for-the-badge"
+      alt="License">
+</a>
+&nbsp;
+
 </p>
