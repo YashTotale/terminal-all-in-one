@@ -59,6 +59,8 @@
 - [Demos](#demos)
 - [Contribute](#contribute)
 
+---
+
 ## Installation
 
 1. Open [Terminal All In One - Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=yasht.terminal-all-in-one)
@@ -75,6 +77,8 @@ OR
 
 1. Open a command-line prompt
 2. Run `code --install-extension yasht.terminal-all-in-one`
+
+---
 
 ## Usage
 
@@ -105,6 +109,8 @@ OR
 | `ctrl+i r`   | Rename the Current Terminal Instance | `workbench.action.terminal.rename`             |
 | `ctrl+i .`   | Focus the Next Terminal Instance     | `workbench.action.terminal.focusNext`          |
 | `ctrl+i ,`   | Focus the Previous Terminal Instance | `workbench.action.terminal.focusPrevious`      |
+
+---
 
 ## Demos
 
@@ -195,6 +201,8 @@ OR
 
 </details>
 
+---
+
 ## Contribute
 
 **Would you like to contribute?**
@@ -207,12 +215,54 @@ _Check out [first contributions](https://github.com/firstcontributions/first-con
 ---
 
 <p align="center">
+<!-- Downloads -->
+  <a
+    href="https://marketplace.visualstudio.com/items?itemName=yasht.terminal-all-in-one">
+    <img
+      src="https://img.shields.io/visual-studio-marketplace/d/yasht.terminal-all-in-one?logo=visual-studio-code&style=for-the-badge"
+      alt="Downloads">
+  </a>
+  &nbsp;
+<!-- Installs -->
+  <a
+    href="https://marketplace.visualstudio.com/items?itemName=yasht.terminal-all-in-one">
+    <img
+      src="https://img.shields.io/visual-studio-marketplace/i/yasht.terminal-all-in-one?logo=visual-studio-code&style=for-the-badge"
+      alt="Installs">
+  </a>
+  &nbsp;
+</p>
+
+---
+
+<p align="center">
 <!-- Last Commit -->
   <a
     href="https://github.com/YashTotale/terminal-all-in-one/commits/master">
     <img
-      src="https://img.shields.io/github/last-commit/YashTotale/terminal-all-in-one?style=for-the-badge"
+      src="https://img.shields.io/github/last-commit/YashTotale/terminal-all-in-one?style=for-the-badge&logo=github"
       alt="Last Commit">
+  </a>
+  &nbsp;
+<!-- Dev Dependencies -->
+<a
+    href="https://david-dm.org/YashTotale/terminal-all-in-one?type=dev">
+<img
+      src="https://img.shields.io/david/dev/YashTotale/terminal-all-in-one?style=for-the-badge"
+      alt="Dev Dependencies">
+</a>
+&nbsp;
+</p>
+
+---
+
+<p align="center">
+<!-- Top Language -->
+  <a
+    href="https://github.com/YashTotale/terminal-all-in-one/search?l=JavaScript&type=Code">
+    <img
+      src="https://img.shields.io/github/languages/top/YashTotale/terminal-all-in-one?logo=javascript&style=for-the-badge"
+      alt="Top Language">
   </a>
   &nbsp;
 <!-- License -->
@@ -223,12 +273,19 @@ _Check out [first contributions](https://github.com/firstcontributions/first-con
       alt="License">
   </a>
   &nbsp;
-<!-- Dev Dependencies -->
-<a
-    href="https://david-dm.org/YashTotale/terminal-all-in-one?type=dev">
-<img
-      src="https://img.shields.io/david/dev/YashTotale/terminal-all-in-one?style=for-the-badge"
-      alt="License">
-</a>
-&nbsp;
 </p>
+
+---
+
+<p align="center">
+<!-- Keywords -->
+  <a
+    href="https://github.com/YashTotale/terminal-all-in-one/blob/master/package.json#L16">
+    <img
+      src="https://img.shields.io/github/package-json/keywords/YashTotale/terminal-all-in-one?style=for-the-badge"
+      alt="Keywords">
+  </a>
+  &nbsp;
+</p>
+
+---
