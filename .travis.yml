@@ -19,4 +19,4 @@ script:
   - npm test --silent
 
 after_success:
-  - bash <(curl -s https://codecov.io/bash)
+  - bash <(curl -s https://codecov.io/bash) -v
