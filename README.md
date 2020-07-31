@@ -326,6 +326,19 @@ _Check out [first contributions](https://github.com/firstcontributions/first-con
       alt="Last Commit">
   </a>
   &nbsp;
+<!-- Commit Activity -->
+  <a
+    href="https://github.com/YashTotale/terminal-all-in-one/pulse/monthly">
+    <img
+      src="https://img.shields.io/github/commit-activity/m/YashTotale/terminal-all-in-one?style=for-the-badge&labelColor=000000"
+      alt="Last Commit">
+  </a>
+  &nbsp;
+</p>
+
+---
+
+<p align="center">
 <!-- Top Language -->
   <a
     href="https://github.com/YashTotale/terminal-all-in-one/search?l=JavaScript&type=Code">
