@@ -25,15 +25,16 @@ function run() {
         mocha.run((failures) => {
           if (failures > 0) {
             e(new Error(`${failures} tests failed.`));
+            return undefined;
           } else {
             c();
-            return;
+            return undefined;
           }
         });
       } catch (err) {
         console.error(err);
         e(err);
-        return;
+        return undefined;
       }
     });
   });
