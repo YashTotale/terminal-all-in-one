@@ -16,20 +16,20 @@
 </h1>
 
 <p align="center">
-  <!-- Rating -->
-  <a
-    href="https://marketplace.visualstudio.com/items?itemName=yasht.terminal-all-in-one&ssr=false#review-details">
-    <img
-      src="https://img.shields.io/visual-studio-marketplace/r/yasht.terminal-all-in-one?logo=visual-studio-code&style=for-the-badge&labelColor=000000"
-      alt="Rating">
-  </a>
-  &nbsp;
   <!-- Build -->
   <a
     href="https://travis-ci.org/github/YashTotale/terminal-all-in-one">
     <img
       src="https://img.shields.io/travis/YashTotale/terminal-all-in-one?logo=travis-ci&logoColor=FFFFFF&style=for-the-badge&labelColor=000000"
       alt="Build">
+  </a>
+  &nbsp;
+  <!-- Code Quality -->
+  <a
+    href="https://scrutinizer-ci.com/g/YashTotale/terminal-all-in-one/?branch=master">
+    <img
+      src="https://img.shields.io/scrutinizer/quality/g/YashTotale/terminal-all-in-one?style=for-the-badge&labelColor=000000&logo=scrutinizer-ci"
+      alt="Code Quality">
   </a>
   &nbsp;
   <!-- Vulnerabilities -->
@@ -276,20 +276,28 @@ _Check out [first contributions](https://github.com/firstcontributions/first-con
 ---
 
 <p align="center">
-<!-- Downloads -->
-  <a
-    href="https://marketplace.visualstudio.com/items?itemName=yasht.terminal-all-in-one">
-    <img
-      src="https://img.shields.io/visual-studio-marketplace/d/yasht.terminal-all-in-one?logo=visual-studio-code&style=for-the-badge&labelColor=000000"
-      alt="Downloads">
-  </a>
-  &nbsp;
 <!-- Installs -->
   <a
     href="https://marketplace.visualstudio.com/items?itemName=yasht.terminal-all-in-one">
     <img
       src="https://img.shields.io/visual-studio-marketplace/i/yasht.terminal-all-in-one?logo=visual-studio-code&style=for-the-badge&labelColor=000000"
       alt="Installs">
+  </a>
+  &nbsp;
+<!-- Rating -->
+  <a
+    href="https://marketplace.visualstudio.com/items?itemName=yasht.terminal-all-in-one&ssr=false#review-details">
+    <img
+      src="https://img.shields.io/visual-studio-marketplace/r/yasht.terminal-all-in-one?logo=visual-studio-code&style=for-the-badge&labelColor=000000"
+      alt="Rating">
+  </a>
+  &nbsp;
+  <!-- Downloads -->
+  <a
+    href="https://marketplace.visualstudio.com/items?itemName=yasht.terminal-all-in-one">
+    <img
+      src="https://img.shields.io/visual-studio-marketplace/d/yasht.terminal-all-in-one?logo=visual-studio-code&style=for-the-badge&labelColor=000000"
+      alt="Downloads">
   </a>
   &nbsp;
 </p>
@@ -331,7 +339,7 @@ _Check out [first contributions](https://github.com/firstcontributions/first-con
     href="https://github.com/YashTotale/terminal-all-in-one/pulse/monthly">
     <img
       src="https://img.shields.io/github/commit-activity/m/YashTotale/terminal-all-in-one?style=for-the-badge&labelColor=000000"
-      alt="Last Commit">
+      alt="Commit Activity">
   </a>
   &nbsp;
 </p>
