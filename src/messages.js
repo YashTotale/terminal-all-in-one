@@ -72,4 +72,6 @@ function showMessage(id, params) {
   return messages[id](params);
 }
 
-exports.showMessage = showMessage;
+module.exports = {
+  showMessage,
+};

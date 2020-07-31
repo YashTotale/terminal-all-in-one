@@ -2,7 +2,7 @@
   "name": "terminal-all-in-one",
   "displayName": "Terminal All In One",
   "description": "Enhance your integrated terminal with themes, keybindings, and custom commands.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "homepage": "https://marketplace.visualstudio.com/items?itemName=yasht.terminal-all-in-one",
   "license": "MIT",
   "publisher": "yasht",
@@ -145,9 +145,9 @@
       "title": "Terminal All In One",
       "properties": {
         "terminalAllInOne.terminalTheme": {
-          "description": "Choose a Terminal Theme",
+          "markdownDescription": "A Terminal Theme from [this list](https://glitchbone.github.io/vscode-base16-term/#/)",
           "type": "string",
-          "default": "",
+          "default": "None",
           "enum": [
             "3024",
             "Apathy",
@@ -249,7 +249,8 @@
             "Unikitty Light",
             "Woodland",
             "Xcode Dusk",
-            "Zenburn"
+            "Zenburn",
+            "None"
           ]
         }
       }

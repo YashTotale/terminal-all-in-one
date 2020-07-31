@@ -12,6 +12,15 @@ const themes = require("../themes.json");
 const themeNames = themes.map((theme) => theme.name);
 const themeSchemes = themes.map((theme) => theme.colors);
 
+function getNonTerminalStyles(allStyles) {
+  return Object.keys(allStyles).reduce((nonTerminalStyles, currentStyle) => {
+    if (!currentStyle.includes("terminal")) {
+      nonTerminalStyles[currentStyle] = allStyles[currentStyle];
+    }
+    return nonTerminalStyles;
+  }, {});
+}
+
 function onTerminalThemeConfigChange(event) {
   if (event.affectsConfiguration(TERMINAL_THEME_CONFIG)) {
     return updateTerminalTheme(getConfig().get(TERMINAL_THEME_CONFIG));
@@ -31,12 +40,15 @@ async function updateTerminalTheme(themeName) {
   });
   if (!themeExists) {
     //If the theme doesn't exist, show an error message
-    showMessage("themeDoesNotExist");
-  } else {
-    //If the theme does exist, set the new colors
-    const themeScheme = { ...defaultStyles, ...themeSchemes[themeIndex] };
-    updateConfig(COLORS_CONFIG, themeScheme);
+    return showMessage("themeDoesNotExist");
   }
+  if (themeName !== "None") {
+    //If the theme does exist and is not None, set the new colors
+    const themeScheme = { ...defaultStyles, ...themeSchemes[themeIndex] };
+    return updateConfig(COLORS_CONFIG, themeScheme);
+  }
+  //Remove all the terminal styles
+  return updateConfig(COLORS_CONFIG, getNonTerminalStyles(defaultStyles));
 }
 
 async function chooseTerminalTheme(context) {

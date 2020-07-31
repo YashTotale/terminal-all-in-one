@@ -3,7 +3,7 @@
     <img src="./src/images/terminal-icon.jpg" alt="logo" width="200">
   <br>
   <br>
-  Terminal All In One
+  <b>Terminal All In One</b>
   <br>
   <br>
   <!-- Version -->
@@ -56,6 +56,7 @@
 - [Usage](#usage)
   - [Mac](#mac)
   - [Windows and Linux](#windows-and-linux)
+- [Configuration](#configuration)
 - [Demos](#demos)
 - [Contribute](#contribute)
 
@@ -68,7 +69,7 @@
 
 OR
 
-1. Open [Visual Studio Code](vscode:extension/yasht.terminal-all-in-one)
+1. Open [Visual Studio Code](https://code.visualstudio.com/)
 2. Open the Extensions View -> (`Shift+Cmd+P` or `F1` and type "Extensions: Install Extensions") or (`Shift+Cmd+X`)
 3. Type "Terminal All In One"
 4. Click "Install"
@@ -82,7 +83,7 @@ OR
 
 ## Usage
 
-**For each keybinding, press `cmd+i` (for Macs) or `ctrl+i` (for Windows & Linux), and the corresponding key for the terminal action.**
+**For each keybinding, press `cmd+i` (for Macs) or `ctrl+i` (for Windows & Linux), and the corresponding key for the terminal command.**
 
 ### Mac
 
@@ -96,6 +97,7 @@ OR
 | `cmd+i r`   | Rename the Current Terminal Instance | `workbench.action.terminal.rename`             |
 | `cmd+i .`   | Focus the Next Terminal Instance     | `workbench.action.terminal.focusNext`          |
 | `cmd+i ,`   | Focus the Previous Terminal Instance | `workbench.action.terminal.focusPrevious`      |
+| `cmd+i t`   | Choose a Terminal Theme              | `terminalAllInOne.chooseTerminalTheme`         |
 
 ### Windows and Linux
 
@@ -109,6 +111,24 @@ OR
 | `ctrl+i r`   | Rename the Current Terminal Instance | `workbench.action.terminal.rename`             |
 | `ctrl+i .`   | Focus the Next Terminal Instance     | `workbench.action.terminal.focusNext`          |
 | `ctrl+i ,`   | Focus the Previous Terminal Instance | `workbench.action.terminal.focusPrevious`      |
+| `ctrl+i t`   | Choose a Terminal Theme              | `terminalAllInOne.chooseTerminalTheme`         |
+
+---
+
+## Configuration
+
+- **`terminalAllInOne.terminalTheme`**
+  - Choose a Terminal Theme from a [list of themes](https://glitchbone.github.io/vscode-base16-term/#/).
+  - Use the command `terminalAllInOne.chooseTerminalTheme` or the keybinding `cmd/ctrl+i t` to control this setting.
+  - The default value is "None".
+
+Sample Configuration
+
+```json
+{
+  "terminalAllInOne.terminalTheme": "Gruvbox Dark Medium"
+}
+```
 
 ---
 
@@ -198,6 +218,17 @@ OR
 <summary>Focus the Previous Terminal Instance</summary>
 
 ![Focus the Previous Terminal Instance](src/demos/FocusPreviousTerminal.gif)
+
+</details>
+
+<br>
+
+<!-- Choose a Terminal Theme -->
+
+<details>
+<summary>Choose a Terminal Theme</summary>
+
+![Choose a Terminal Theme](src/demos/ChooseATerminalTheme.gif)
 
 </details>
 

@@ -2523,5 +2523,9 @@
       "terminal.ansiWhite": "#DCDCCC",
       "terminal.ansiYellow": "#E0CF9F"
     }
+  },
+  {
+    "name": "None",
+    "colors": {}
   }
 ]
