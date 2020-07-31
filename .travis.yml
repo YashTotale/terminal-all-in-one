@@ -5,10 +5,6 @@ dist: xenial
 services:
   - xvfb
 
-env:
-  global:
-    - COVERALLS_PARALLEL=true
-
 os:
   - osx
   - linux
@@ -21,6 +17,3 @@ install:
 
 script:
   - npm test --silent
-
-notifications:
-  webhooks: https://coveralls.io/webhook
