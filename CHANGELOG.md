@@ -6,24 +6,26 @@ The format of this Change Log is based on [Keep a Changelog](http://keepachangel
 **Table Of Contents**
 
 - [[Unreleased]](#unreleased)
+- [[1.0.2] - (2020-07-30)](#102---2020-07-30)
+  - [Changed](#changed)
 - [[1.0.1] - (2020-07-30)](#101---2020-07-30)
   - [Added](#added)
-  - [Changed](#changed)
+  - [Changed](#changed-1)
 - [[1.0.0] - (2020-07-29)](#100---2020-07-29)
   - [Added](#added-1)
 - [[0.2.5] - (2020-07-28)](#025---2020-07-28)
-  - [Changed](#changed-1)
-- [[0.2.4] - (2020-07-26)](#024---2020-07-26)
   - [Changed](#changed-2)
-- [[0.2.3] - (2020-07-25)](#023---2020-07-25)
+- [[0.2.4] - (2020-07-26)](#024---2020-07-26)
   - [Changed](#changed-3)
+- [[0.2.3] - (2020-07-25)](#023---2020-07-25)
+  - [Changed](#changed-4)
 - [[0.2.0] - (2020-07-25)](#020---2020-07-25)
   - [Added](#added-2)
-  - [Changed](#changed-4)
+  - [Changed](#changed-5)
   - [Removed](#removed)
 - [[0.1.3] - (2020-07-23)](#013---2020-07-23)
   - [Added](#added-3)
-  - [Changed](#changed-5)
+  - [Changed](#changed-6)
 - [[0.1.0] - (2020-07-22)](#010---2020-07-22)
   - [Added](#added-4)
 
@@ -38,7 +40,7 @@ The format of this Change Log is based on [Keep a Changelog](http://keepachangel
 
 ### [1.0.2] - (2020-07-30)
 
-### Changed
+#### Changed
 
 - Changed all relative URLS to demos and images to absolute urls to the raw github demos and images
 
