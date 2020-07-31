@@ -22,5 +22,5 @@ suite("Extension Test Suite", () => {
     // }
   });
 
-  return;
+  return undefined;
 });

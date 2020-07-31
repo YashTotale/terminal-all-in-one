@@ -10,8 +10,9 @@ function getConfig() {
  */
 async function updateConfig(key, value, shouldApplyGlobally = true) {
   try {
-    await getConfig().update(key, value, shouldApplyGlobally);
-  } catch ({ message }) {
+    return await getConfig().update(key, value, shouldApplyGlobally);
+  } catch (error) {
+    const { message } = error;
     return vscode.window.showErrorMessage(message);
   }
 }
