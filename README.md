@@ -47,14 +47,14 @@ _Featured Content is Italicized_
 
 - [Installation](#installation)
 - [Commands](#commands)
-  - _[Choose a Terminal Theme](#terminalallinone.chooseterminaltheme)_
-  - [Toggle the Maximized Terminal](#terminalallinone.togglemaxterm)
+  - _[Choose Theme](#terminal-all-in-one-choose-theme)_
+  - [Toggle Maximized Terminal](#terminal-all-in-one-toggle-maximized-terminal)
 - [Keybindings](#keybindings)
   - [Mac](#mac)
   - [Windows and Linux](#windows-and-linux)
 - [Configuration](#configuration)
-  - _[Terminal Theme](#terminalallinone.terminaltheme)_
-  - [Messages](#terminalallinone.messages)
+  - _[Terminal Theme](#terminal-theme)_
+  - [Messages](#messages)
 - [Demos](#demos)
 - [Contribute](#contribute)
 
@@ -81,16 +81,19 @@ OR
 
 ## Commands
 
-- ### `terminalAllInOne.chooseTerminalTheme`
+### Terminal All In One: Choose Theme
 
-  - Opens a Theme Quick Pick with over **100** Themes to choose from
-  - Live Preview in the Terminal when focusing a theme
-  - Keybinding: `cmd/ctrl+i t`
+- `terminalAllInOne.chooseTerminalTheme`
 
-- ### `terminalAllInOne.toggleMaxTerm`
+- Opens a Theme Quick Pick with over **100** Themes to choose from
+- Live Preview in the Terminal when focusing a theme
+- Keybinding: `cmd/ctrl+i t`
 
-  - Toggles the Maximized Terminal
-  - Keybinding: `cmd/ctrl+i m`
+### Terminal All In One: Toggle Maximized Terminal
+
+- `terminalAllInOne.toggleMaxTerm`
+
+- Keybinding: `cmd/ctrl+i m`
 
 ---
 
@@ -130,32 +133,32 @@ OR
 
 ## Configuration
 
-- ### `terminalAllInOne.terminalTheme`
+### Terminal Theme
 
-  - Choose a Terminal Theme from a [list of themes](https://glitchbone.github.io/vscode-base16-term/#/).
-  - Use the command `terminalAllInOne.chooseTerminalTheme` or the keybinding `cmd/ctrl+i t` to control this setting.
-  - The default value is "None".
-  - Default Configuration
+- `terminalAllInOne.terminalTheme`
+- Choose a Terminal Theme from a [list of themes](https://glitchbone.github.io/vscode-base16-term/#/).
+- Use the command [`terminalAllInOne.chooseTerminalTheme`](#terminal-all-in-one-choose-theme) or the keybinding `cmd/ctrl+i t` to control this setting.
+- Default Configuration :
 
-    ```json
-    {
-      "terminalAllInOne.terminalTheme": "None"
-    }
-    ```
+  ```json
+  {
+    "terminalAllInOne.terminalTheme": "None"
+  }
+  ```
 
-- ### `terminalAllInOne.messages`
+### Messages
 
-  - Controls which messages should be shown when certain actions occur
-  - Default is `true` for all messages
-  - Default Configuration
+- `terminalAllInOne.messages`
+- Controls which messages should be shown when certain actions occur
+- Default Configuration :
 
-    ```json
-    {
-      "terminalAllInOne.messages.shouldShowSelectedThemeMessage": true,
+  ```json
+  {
+    "terminalAllInOne.messages.shouldShowSelectedThemeMessage": true,
 
-      "terminalAllInOne.messages.shouldShowThemeQuickPickMessage": true
-    }
-    ```
+    "terminalAllInOne.messages.shouldShowThemeQuickPickMessage": true
+  }
+  ```
 
 ---
 

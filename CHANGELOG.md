@@ -7,7 +7,7 @@ The format of this Change Log is based on [Keep a Changelog](http://keepachangel
 
 - [_Terminal All In One_ Change Log](#terminal-all-in-one-change-log)
   - [[Unreleased]](#unreleased)
-  - [[1.0.6] - (2020-07-31)](#106---2020-07-31)
+  - [[1.0.7] - (2020-07-31)](#107---2020-07-31)
     - [Changed](#changed)
   - [[1.0.4] - (2020-07-31)](#104---2020-07-31)
     - [Added](#added)
@@ -47,10 +47,11 @@ The format of this Change Log is based on [Keep a Changelog](http://keepachangel
 
 ---
 
-### [1.0.6] - (2020-07-31)
+### [1.0.7] - (2020-07-31)
 
 #### Changed
 
+- Changed format of Commands and Configurations in README
 - Fixed Links in TOC in README
 
 ---
