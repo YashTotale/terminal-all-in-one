@@ -27,11 +27,13 @@ function run() {
             e(new Error(`${failures} tests failed.`));
           } else {
             c();
+            return;
           }
         });
       } catch (err) {
         console.error(err);
         e(err);
+        return;
       }
     });
   });
