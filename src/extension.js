@@ -10,8 +10,8 @@ const {
   onTerminalThemeConfigChange,
 } = require("./commands/terminalTheme");
 
-const EXTENSION_NAME = "yasht.terminal-all-in-one";
-const READABLE_EXTENSION_NAME = "Terminal All In One";
+// const EXTENSION_NAME = "yasht.terminal-all-in-one";
+// const READABLE_EXTENSION_NAME = "Terminal All In One";
 
 function registerCommand({ name, handler }) {
   return vscode.commands.registerCommand(name, handler);

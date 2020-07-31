@@ -1,5 +1,4 @@
 const vscode = require("vscode");
-const { get } = require("http");
 
 const EXTENSION_NAME = "yasht.terminal-all-in-one";
 const READABLE_EXTENSION_NAME = "Terminal All In One";
