@@ -47,14 +47,14 @@ _Featured Content is Italicized_
 
 - [Installation](#installation)
 - [Commands](#commands)
-  - _[Choose a Terminal Theme](#terminalallinonechooseterminaltheme)_
-  - [Toggle the Maximized Terminal](#terminalallinonetogglemaxterm)
+  - _[Choose a Terminal Theme](#terminalallinone.chooseterminaltheme)_
+  - [Toggle the Maximized Terminal](#terminalallinone.togglemaxterm)
 - [Keybindings](#keybindings)
   - [Mac](#mac)
   - [Windows and Linux](#windows-and-linux)
 - [Configuration](#configuration)
-  - _[Terminal Theme](#terminalallinoneterminaltheme)_
-  - [Messages](#terminalallinonemessages)
+  - _[Terminal Theme](#terminalallinone.terminaltheme)_
+  - [Messages](#terminalallinone.messages)
 - [Demos](#demos)
 - [Contribute](#contribute)
 
