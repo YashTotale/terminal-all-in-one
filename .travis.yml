@@ -21,3 +21,6 @@ install:
 
 script:
   - npm test --silent
+
+notifications:
+  webhooks: https://coveralls.io/webhook

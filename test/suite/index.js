@@ -26,11 +26,11 @@ function run() {
           if (failures > 0) {
             e(new Error(`${failures} tests failed.`));
             return undefined;
-          } else {
-            c();
-            return undefined;
           }
+          c();
+          return undefined;
         });
+        return undefined;
       } catch (err) {
         console.error(err);
         e(err);
