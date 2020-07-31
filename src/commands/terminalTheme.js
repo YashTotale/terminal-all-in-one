@@ -51,12 +51,12 @@ async function updateTerminalTheme(themeName) {
   return updateConfig(COLORS_CONFIG, getNonTerminalStyles(defaultStyles));
 }
 
-async function chooseTerminalTheme(context) {
+async function chooseTerminalTheme() {
   //The current workbench styles
   const defaultStyles = getConfig().get(COLORS_CONFIG);
-  showMessage("themeQuickPickOpened", context);
+  showMessage("themeQuickPickOpened");
   //Wait for the user to select a theme or exit the quick pick
-  let selectedTheme = await vscode.window.showQuickPick(themeNames, {
+  const selectedTheme = await vscode.window.showQuickPick(themeNames, {
     placeHolder: "Choose a Terminal Theme",
     canPickMany: false,
     ignoreFocusOut: true,
@@ -69,7 +69,7 @@ async function chooseTerminalTheme(context) {
     return updateConfig(COLORS_CONFIG, defaultStyles);
   }
   //If a theme was selected, show a message and update the TERMINAL_THEME_CONFIG
-  showMessage("themeSelected", { selectedTheme, context });
+  showMessage("themeSelected", selectedTheme);
   return updateConfig(TERMINAL_THEME_CONFIG, selectedTheme);
 }
 

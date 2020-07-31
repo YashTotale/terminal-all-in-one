@@ -2,7 +2,7 @@
   "name": "terminal-all-in-one",
   "displayName": "Terminal All In One",
   "description": "Enhance your integrated terminal with themes, keybindings, and custom commands.",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "homepage": "https://marketplace.visualstudio.com/items?itemName=yasht.terminal-all-in-one",
   "license": "MIT",
   "publisher": "yasht",
@@ -252,6 +252,16 @@
             "Zenburn",
             "None"
           ]
+        },
+        "terminalAllInOne.messages.shouldShowThemeQuickPickMessage": {
+          "type": "boolean",
+          "default": "true",
+          "description": "Should show a message when the Theme Quick Pick is opened"
+        },
+        "terminalAllInOne.messages.shouldShowSelectedThemeMessage": {
+          "type": "boolean",
+          "default": "true",
+          "description": "Should show a message when a Terminal Theme is applied"
         }
       }
     }

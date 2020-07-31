@@ -53,10 +53,12 @@
 **Table Of Contents**
 
 - [Installation](#installation)
-- [Usage](#usage)
+- [Keybindings](#keybindings)
   - [Mac](#mac)
   - [Windows and Linux](#windows-and-linux)
 - [Configuration](#configuration)
+  - [Terminal Theme](#terminalallinoneterminaltheme)
+  - [Messages](#terminalallinonemessages)
 - [Demos](#demos)
 - [Contribute](#contribute)
 
@@ -81,7 +83,7 @@ OR
 
 ---
 
-## Usage
+## Keybindings
 
 **For each keybinding, press `cmd+i` (for Macs) or `ctrl+i` (for Windows & Linux), and the corresponding key for the terminal command.**
 
@@ -117,18 +119,32 @@ OR
 
 ## Configuration
 
-- **`terminalAllInOne.terminalTheme`**
+- ### `terminalAllInOne.terminalTheme`
+
   - Choose a Terminal Theme from a [list of themes](https://glitchbone.github.io/vscode-base16-term/#/).
   - Use the command `terminalAllInOne.chooseTerminalTheme` or the keybinding `cmd/ctrl+i t` to control this setting.
   - The default value is "None".
+  - Default Configuration
 
-Sample Configuration
+    ```json
+    {
+      "terminalAllInOne.terminalTheme": "None"
+    }
+    ```
 
-```json
-{
-  "terminalAllInOne.terminalTheme": "Gruvbox Dark Medium"
-}
-```
+- ### `terminalAllInOne.messages`
+
+  - Controls which messages should be shown when certain actions occur
+  - Default is `true` for all messages
+  - Default Configuration
+
+    ```json
+    {
+      "terminalAllInOne.messages.shouldShowSelectedThemeMessage": true,
+
+      "terminalAllInOne.messages.shouldShowThemeQuickPickMessage": true
+    }
+    ```
 
 ---
 

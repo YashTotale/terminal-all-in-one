@@ -1,7 +1,24 @@
 const vscode = require("vscode");
+const { get } = require("http");
 
 const EXTENSION_NAME = "yasht.terminal-all-in-one";
 const READABLE_EXTENSION_NAME = "Terminal All In One";
+
+const TERMINAL_MESSAGES_CONFIG = "terminalAllInOne.messages";
+
+function onTerminalMessagesConfigChange(event) {}
+
+function getConfig() {
+  return vscode.workspace.getConfiguration(TERMINAL_MESSAGES_CONFIG);
+}
+
+async function updateConfig(key, value) {
+  try {
+    await getConfig().update(key, value, true);
+  } catch ({ message }) {
+    vscode.window.showErrorMessage(message);
+  }
+}
 
 const messages = {
   // Message on start
@@ -20,50 +37,44 @@ const messages = {
     }
   },
   //Message when the theme quick pick is opened
-  themeQuickPickOpened: async (context) => {
+  themeQuickPickOpened: async () => {
     const SELECTION = "Don't Show Again";
-    const STATE_PROPERTY = "shouldNotShowQuickPickMessage";
-    if (!context.globalState.get(STATE_PROPERTY)) {
+    const CONFIG_PROPERTY = "shouldShowThemeQuickPickMessage";
+    if (getConfig().get(CONFIG_PROPERTY)) {
       const selection = await vscode.window.showInformationMessage(
         "Open the terminal to see a live preview",
         SELECTION
       );
       if (selection === SELECTION) {
-        context.globalState.update(STATE_PROPERTY, true);
+        await updateConfig(CONFIG_PROPERTY, false);
       }
     }
   },
   //Message when a theme that does not exist is chosen
-  themeDoesNotExist: () => {
-    vscode.window
-      .showErrorMessage(
-        "That theme doesn't seem to exist. Please open a new issue in the github repository if this theme does exist.",
-        "Issues Page"
-      )
-      .then((selection) => {
-        if (selection === "Issues Page") {
-          vscode.env.openExternal(
-            // @ts-ignore
-            "https://github.com/YashTotale/terminal-all-in-one/issues"
-          );
-        }
-      });
+  themeDoesNotExist: async () => {
+    const selection = await vscode.window.showErrorMessage(
+      "That theme doesn't seem to exist. Please open a new issue in the github repository if this theme does exist.",
+      "Issues Page"
+    );
+    if (selection === "Issues Page") {
+      vscode.env.openExternal(
+        // @ts-ignore
+        "https://github.com/YashTotale/terminal-all-in-one/issues"
+      );
+    }
   },
   //Message when a theme is selected
-  themeSelected: ({ selectedTheme, context }) => {
-    const STATE_PROPERTY = "shouldNotShowSelectedThemeMessage";
+  themeSelected: async (selectedTheme) => {
     const SELECTION = "Don't Show Again";
-    if (!context.globalState.get(STATE_PROPERTY)) {
-      vscode.window
-        .showInformationMessage(
-          `"${selectedTheme}" has been applied`,
-          SELECTION
-        )
-        .then((selection) => {
-          if (selection === SELECTION) {
-            context.globalState.update(STATE_PROPERTY, true);
-          }
-        });
+    const CONFIG_PROPERTY = "shouldShowSelectedThemeMessage";
+    if (getConfig().get(CONFIG_PROPERTY)) {
+      const selection = await vscode.window.showInformationMessage(
+        `"${selectedTheme}" has been applied`,
+        SELECTION
+      );
+      if (selection === SELECTION) {
+        await updateConfig(CONFIG_PROPERTY, false);
+      }
     }
   },
 };
@@ -74,4 +85,5 @@ function showMessage(id, params) {
 
 module.exports = {
   showMessage,
+  onTerminalMessagesConfigChange,
 };
