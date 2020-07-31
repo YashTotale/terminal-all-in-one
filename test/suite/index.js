@@ -2,17 +2,34 @@ const path = require("path");
 const Mocha = require("mocha");
 const glob = require("glob");
 
-function run() {
-  // Create the mocha test
-  const mocha = new Mocha({
+function createMochaInstance() {
+  return new Mocha({
     ui: "tdd",
     color: true,
   });
+}
+
+function createGlob(testsRoot, func) {
+  glob("**/**.test,js", { cwd: testsRoot }, (err, files) => func(err, files));
+}
+
+function runMocha(mocha, c, e) {
+  mocha.run((failures) => {
+    if (failures > 0) {
+      return e(new Error(`${failures} tests failed.`));
+    }
+    return c();
+  });
+}
+
+function run() {
+  // Create the mocha test
+  const mocha = createMochaInstance();
 
   const testsRoot = path.resolve(__dirname, "..");
 
   return new Promise((c, e) => {
-    glob("**/**.test.js", { cwd: testsRoot }, (err, files) => {
+    createGlob(testsRoot, (err, files) => {
       if (err) {
         return e(err);
       }
@@ -22,19 +39,10 @@ function run() {
 
       try {
         // Run the mocha test
-        mocha.run((failures) => {
-          if (failures > 0) {
-            e(new Error(`${failures} tests failed.`));
-            return undefined;
-          }
-          c();
-          return undefined;
-        });
-        return undefined;
+        return runMocha(mocha, c, e);
       } catch (err) {
         console.error(err);
-        e(err);
-        return undefined;
+        return e(err);
       }
     });
   });
