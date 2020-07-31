@@ -21,4 +21,6 @@ suite("Extension Test Suite", () => {
 
     // }
   });
+
+  return;
 });
