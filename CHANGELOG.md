@@ -36,6 +36,14 @@ The format of this Change Log is based on [Keep a Changelog](http://keepachangel
 
 ---
 
+### [1.0.2] - (2020-07-30)
+
+### Changed
+
+- Changed all relative URLS to demos and images to absolute urls to the raw github demos and images
+
+---
+
 ### [1.0.1] - (2020-07-30)
 
 #### Added

@@ -1,6 +1,6 @@
 <h1 align="center">
   <br>
-    <img src="./src/images/terminal-icon.jpg" alt="logo" width="200">
+    <img src="https://raw.githubusercontent.com/YashTotale/terminal-all-in-one/master/src/images/terminal-icon.jpg" alt="logo" width="200">
   <br>
   <br>
   <b>Terminal All In One</b>
@@ -140,7 +140,7 @@ Sample Configuration
 
 <summary>Toggle the Terminal</summary>
 
-![Toggle the Terminal](src/demos/ToggleTerminal.gif)
+![Toggle the Terminal](https://raw.githubusercontent.com/YashTotale/terminal-all-in-one/master/src/demos/ToggleTerminal.gif)
 
 </details>
 
@@ -151,7 +151,7 @@ Sample Configuration
 <details>
 <summary>Toggle the Maximized Terminal</summary>
 
-![Toggle the Maximized Terminal](src/demos/ToggleMaximizedTerminal.gif)
+![Toggle the Maximized Terminal](https://raw.githubusercontent.com/YashTotale/terminal-all-in-one/master/src/demos/ToggleMaximizedTerminal.gif)
 
 </details>
 
@@ -162,7 +162,7 @@ Sample Configuration
 <details>
 <summary>Select a Default Shell</summary>
 
-![Select a Default Shell](src/demos/SelectDefaultShell.gif)
+![Select a Default Shell](https://raw.githubusercontent.com/YashTotale/terminal-all-in-one/master/src/demos/SelectDefaultShell.gif)
 
 </details>
 
@@ -173,7 +173,7 @@ Sample Configuration
 <details>
 <summary>Create a New Terminal Instance</summary>
 
-![Create A New Terminal Instance](src/demos/CreateNewTerminal.gif)
+![Create A New Terminal Instance](https://raw.githubusercontent.com/YashTotale/terminal-all-in-one/master/src/demos/CreateNewTerminal.gif)
 
 </details>
 
@@ -184,7 +184,7 @@ Sample Configuration
 <details>
 <summary>Remove the Current Terminal Instance</summary>
 
-![Remove the Current Terminal Instance](src/demos/RemoveCurrentTerminal.gif)
+![Remove the Current Terminal Instance](https://raw.githubusercontent.com/YashTotale/terminal-all-in-one/master/src/demos/RemoveCurrentTerminal.gif)
 
 </details>
 
@@ -195,7 +195,7 @@ Sample Configuration
 <details>
 <summary>Rename the Current Terminal Instance</summary>
 
-![Rename the Current Terminal Instance](src/demos/RenameCurrentTerminal.gif)
+![Rename the Current Terminal Instance](https://raw.githubusercontent.com/YashTotale/terminal-all-in-one/master/src/demos/RenameCurrentTerminal.gif)
 
 </details>
 
@@ -206,7 +206,7 @@ Sample Configuration
 <details>
 <summary>Focus the Next Terminal Instance</summary>
 
-![Focus the Next Terminal Instance](src/demos/FocusNextTerminal.gif)
+![Focus the Next Terminal Instance](https://raw.githubusercontent.com/YashTotale/terminal-all-in-one/master/src/demos/FocusNextTerminal.gif)
 
 </details>
 
@@ -217,7 +217,7 @@ Sample Configuration
 <details>
 <summary>Focus the Previous Terminal Instance</summary>
 
-![Focus the Previous Terminal Instance](src/demos/FocusPreviousTerminal.gif)
+![Focus the Previous Terminal Instance](https://raw.githubusercontent.com/YashTotale/terminal-all-in-one/master/src/demos/FocusPreviousTerminal.gif)
 
 </details>
 
@@ -228,7 +228,7 @@ Sample Configuration
 <details>
 <summary>Choose a Terminal Theme</summary>
 
-![Choose a Terminal Theme](src/demos/ChooseATerminalTheme.gif)
+![Choose a Terminal Theme](https://raw.githubusercontent.com/YashTotale/terminal-all-in-one/master/src/demos/ChooseATerminalTheme.gif)
 
 </details>
 

@@ -2,7 +2,7 @@
   "name": "terminal-all-in-one",
   "displayName": "Terminal All In One",
   "description": "Enhance your integrated terminal with themes, keybindings, and custom commands.",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "homepage": "https://marketplace.visualstudio.com/items?itemName=yasht.terminal-all-in-one",
   "license": "MIT",
   "publisher": "yasht",
@@ -20,7 +20,7 @@
     "keymap",
     "theme"
   ],
-  "icon": "src/images/terminal-icon.jpg",
+  "icon": "https://raw.githubusercontent.com/YashTotale/terminal-all-in-one/master/src/images/terminal-icon.jpg",
   "author": {
     "name": "Yash T"
   },
