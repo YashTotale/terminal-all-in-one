@@ -47,13 +47,13 @@ _Featured Content is Italicized_
 
 - [Installation](#installation)
 - [Commands](#commands)
-  - _[Choose a Terminal Theme](#terminalAllInOne.chooseTerminalTheme)_
-  - [Toggle the Maximized Terminal](#terminalAllInOne.toggleMaxTerm)
+  - _[Choose a Terminal Theme](#terminalallinonechooseterminaltheme)_
+  - [Toggle the Maximized Terminal](#terminalallinonetogglemaxterm)
 - [Keybindings](#keybindings)
   - [Mac](#mac)
   - [Windows and Linux](#windows-and-linux)
 - [Configuration](#configuration)
-  - _[Terminal Theme](#terminalAllInOne.terminalTheme)_
+  - _[Terminal Theme](#terminalallinoneterminaltheme)_
   - [Messages](#terminalallinonemessages)
 - [Demos](#demos)
 - [Contribute](#contribute)
