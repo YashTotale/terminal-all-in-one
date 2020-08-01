@@ -51,94 +51,49 @@
     ],
     "keybindings": [
       {
-        "key": "cmd+`",
-        "command": "workbench.action.terminal.toggleTerminal",
-        "when": "isMac"
-      },
-      {
-        "key": "cmd+i s",
-        "command": "workbench.action.terminal.selectDefaultShell",
-        "when": "isMac"
-      },
-      {
-        "key": "cmd+i c",
-        "command": "workbench.action.terminal.new",
-        "when": "isMac"
-      },
-      {
-        "key": "cmd+i d",
-        "command": "workbench.action.terminal.kill",
-        "when": "isMac"
-      },
-      {
-        "key": "cmd+i r",
-        "command": "workbench.action.terminal.rename",
-        "when": "isMac"
-      },
-      {
-        "key": "cmd+i .",
-        "command": "workbench.action.terminal.focusNext",
-        "when": "isMac"
-      },
-      {
-        "key": "cmd+i ,",
-        "command": "workbench.action.terminal.focusPrevious",
-        "when": "isMac"
-      },
-      {
-        "key": "cmd+i m",
-        "command": "terminalAllInOne.toggleMaxTerm",
-        "when": "isMac"
-      },
-      {
-        "key": "cmd+i t",
-        "command": "terminalAllInOne.chooseTerminalTheme",
-        "when": "isMac"
-      },
-      {
         "key": "ctrl+`",
-        "command": "workbench.action.terminal.toggleTerminal",
-        "when": "isWindows || isLinux"
+        "mac": "cmd+`",
+        "command": "workbench.action.terminal.toggleTerminal"
       },
       {
         "key": "ctrl+i s",
-        "command": "workbench.action.terminal.selectDefaultShell",
-        "when": "isWindows || isLinux"
+        "mac": "cmd+i s",
+        "command": "workbench.action.terminal.selectDefaultShell"
       },
       {
         "key": "ctrl+i c",
-        "command": "workbench.action.terminal.new",
-        "when": "isWindows || isLinux"
+        "mac": "cmd+i c",
+        "command": "workbench.action.terminal.new"
       },
       {
         "key": "ctrl+i d",
-        "command": "workbench.action.terminal.kill",
-        "when": "isWindows || isLinux"
+        "mac": "cmd+i d",
+        "command": "workbench.action.terminal.kill"
       },
       {
         "key": "ctrl+i r",
-        "command": "workbench.action.terminal.rename",
-        "when": "isWindows || isLinux"
+        "mac": "cmd+i r",
+        "command": "workbench.action.terminal.rename"
       },
       {
         "key": "ctrl+i .",
-        "command": "workbench.action.terminal.focusNext",
-        "when": "isWindows || isLinux"
+        "mac": "cmd+i .",
+        "command": "workbench.action.terminal.focusNext"
       },
       {
         "key": "ctrl+i ,",
-        "command": "workbench.action.terminal.focusPrevious",
-        "when": "isWindows || isLinux"
+        "mac": "cmd+i ,",
+        "command": "workbench.action.terminal.focusPrevious"
       },
       {
         "key": "ctrl+i m",
-        "command": "terminalAllInOne.toggleMaxTerm",
-        "when": "isWindows || isLinux"
+        "mac": "cmd+i m",
+        "command": "terminalAllInOne.toggleMaxTerm"
       },
       {
         "key": "ctrl+i t",
-        "command": "terminalAllInOne.chooseTerminalTheme",
-        "when": "isWindows || isLinux"
+        "mac": "cmd+i t",
+        "command": "terminalAllInOne.chooseTerminalTheme"
       }
     ],
     "configuration": {

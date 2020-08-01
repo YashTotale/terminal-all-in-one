@@ -5,8 +5,6 @@ const READABLE_EXTENSION_NAME = "Terminal All In One";
 
 const TERMINAL_MESSAGES_CONFIG = "terminalAllInOne.messages";
 
-function onTerminalMessagesConfigChange(event) {}
-
 function getConfig() {
   return vscode.workspace.getConfiguration(TERMINAL_MESSAGES_CONFIG);
 }
@@ -84,5 +82,4 @@ function showMessage(id, params) {
 
 module.exports = {
   showMessage,
-  onTerminalMessagesConfigChange,
 };

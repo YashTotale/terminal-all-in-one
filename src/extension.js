@@ -3,7 +3,7 @@
 // exports.deactivate = exports.activate = void 0;
 
 const vscode = require("vscode");
-const { showMessage, onTerminalMessagesConfigChange } = require("./messages");
+const { showMessage } = require("./messages");
 
 const {
   chooseTerminalTheme,
@@ -38,7 +38,6 @@ function createCommands(context) {
 function onTerminalConfigChange() {
   vscode.workspace.onDidChangeConfiguration((event) => {
     onTerminalThemeConfigChange(event);
-    onTerminalMessagesConfigChange(event);
   });
 }
 
