@@ -5,13 +5,14 @@
 const vscode = require("vscode");
 const { showMessage } = require("./messages");
 
+const EXTENSION_NAME = "terminalAllInOne";
+const READABLE_EXTENSION_NAME = "Terminal All In One";
+const EXTENSION_NAME_W_PUBLISHER = "yasht.terminal-all-in-one";
+
 const {
   chooseTerminalTheme,
   onTerminalThemeConfigChange,
 } = require("./commands/terminalTheme");
-
-// const EXTENSION_NAME = "yasht.terminal-all-in-one";
-// const READABLE_EXTENSION_NAME = "Terminal All In One";
 
 function registerCommand({ name, handler }) {
   return vscode.commands.registerCommand(name, handler);
@@ -52,4 +53,7 @@ function deactivate() {}
 module.exports = {
   activate,
   deactivate,
+  EXTENSION_NAME,
+  READABLE_EXTENSION_NAME,
+  EXTENSION_NAME_W_PUBLISHER,
 };

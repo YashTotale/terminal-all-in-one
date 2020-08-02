@@ -11,7 +11,9 @@ function getConfig() {
 
 async function updateConfig(key, value) {
   try {
-    await getConfig().update(key, value, true);
+    await vscode.workspace
+      .getConfiguration("terminalAllInOne")
+      .update("messages", { ...getConfig(), [key]: value }, true);
   } catch ({ message }) {
     vscode.window.showErrorMessage(message);
   }
@@ -28,7 +30,6 @@ const messages = {
       );
       context.globalState.update(STATE_PROPERTY, true);
       if (selection === "README") {
-        // @ts-ignore
         vscode.env.openExternal(`vscode:extension/${EXTENSION_NAME}`);
       }
     }
@@ -55,7 +56,6 @@ const messages = {
     );
     if (selection === "Issues Page") {
       vscode.env.openExternal(
-        // @ts-ignore
         "https://github.com/YashTotale/terminal-all-in-one/issues"
       );
     }

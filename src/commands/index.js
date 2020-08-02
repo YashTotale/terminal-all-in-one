@@ -4,10 +4,6 @@ function getConfig() {
   return vscode.workspace.getConfiguration();
 }
 
-/**
- * @param {string} key
- * @param {any} value
- */
 async function updateConfig(key, value, shouldApplyGlobally = true) {
   try {
     return await getConfig().update(key, value, shouldApplyGlobally);

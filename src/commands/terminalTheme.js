@@ -7,7 +7,6 @@ const { getConfig, updateConfig } = require("./index");
 const COLORS_CONFIG = "workbench.colorCustomizations";
 const TERMINAL_THEME_CONFIG = "terminalAllInOne.terminalTheme";
 
-// @ts-ignore
 const themes = require("../themes.json");
 const themeNames = themes.map((theme) => theme.name);
 const themeSchemes = themes.map((theme) => theme.colors);
@@ -59,7 +58,6 @@ async function chooseTerminalTheme() {
   const selectedTheme = await vscode.window.showQuickPick(themeNames, {
     placeHolder: "Choose a Terminal Theme",
     canPickMany: false,
-    ignoreFocusOut: true,
     onDidSelectItem: debounce(async (themeName) => {
       updateTerminalTheme(themeName);
     }, 300),

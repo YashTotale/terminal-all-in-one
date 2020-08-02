@@ -154,9 +154,10 @@ OR
 
   ```json
   {
-    "terminalAllInOne.messages.shouldShowSelectedThemeMessage": true,
-
-    "terminalAllInOne.messages.shouldShowThemeQuickPickMessage": true
+    "terminalAllInOne.messages": {
+      "shouldShowSelectedThemeMessage": true,
+      "shouldShowThemeQuickPickMessage": true
+    }
   }
   ```
 
@@ -306,13 +307,15 @@ _Check out [first contributions](https://github.com/firstcontributions/first-con
 
 <!-- <p align="center"> -->
   <!-- Dependencies -->
-  <!-- <a
+
+<!-- <a
     href="https://david-dm.org/YashTotale/terminal-all-in-one">
-    <img
+<img
       src="https://img.shields.io/david/YashTotale/terminal-all-in-one?style=for-the-badge&labelColor=000000&label=Dependencies"
       alt="Dependencies">
-  </a>
-  &nbsp; -->
+</a>
+&nbsp; -->
+
 <!-- Dev Dependencies -->
 <!-- <a
     href="https://david-dm.org/YashTotale/terminal-all-in-one?type=dev">
