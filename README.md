@@ -28,7 +28,7 @@
   <a
     href="https://scrutinizer-ci.com/g/YashTotale/terminal-all-in-one/?branch=master">
     <img
-      src="https://img.shields.io/scrutinizer/quality/g/YashTotale/terminal-all-in-one?style=for-the-badge&labelColor=000000&logo=scrutinizer-ci&label=Code Quality"
+      src="https://img.shields.io/scrutinizer/quality/g/YashTotale/terminal-all-in-one?style=for-the-badge&labelColor=000000&logo=scrutinizer-ci&label=Code%20Quality"
       alt="Code Quality">
   </a>
   &nbsp;
@@ -333,7 +333,7 @@ _Check out [first contributions](https://github.com/firstcontributions/first-con
   <a
     href="https://github.com/YashTotale/terminal-all-in-one/commits/master">
     <img
-      src="https://img.shields.io/github/last-commit/YashTotale/terminal-all-in-one?style=for-the-badge&logo=github&labelColor=000000&label=Last Commit"
+      src="https://img.shields.io/github/last-commit/YashTotale/terminal-all-in-one?style=for-the-badge&logo=github&labelColor=000000&label=Last%20Commit"
       alt="Last Commit">
   </a>
   &nbsp;
@@ -341,7 +341,7 @@ _Check out [first contributions](https://github.com/firstcontributions/first-con
   <a
     href="https://github.com/YashTotale/terminal-all-in-one/pulse/monthly">
     <img
-      src="https://img.shields.io/github/commit-activity/m/YashTotale/terminal-all-in-one?style=for-the-badge&logo=github&labelColor=000000&label=Commit Activity&foo=bar"
+      src="https://img.shields.io/github/commit-activity/m/YashTotale/terminal-all-in-one?style=for-the-badge&logo=github&labelColor=000000&label=Commit%20Activity&foo=bar"
       alt="Commit Activity">
   </a>
   &nbsp;
