@@ -304,26 +304,26 @@ _Check out [first contributions](https://github.com/firstcontributions/first-con
 
 ---
 
-<p align="center">
+<!-- <p align="center"> -->
   <!-- Dependencies -->
-  <a
+  <!-- <a
     href="https://david-dm.org/YashTotale/terminal-all-in-one">
     <img
       src="https://img.shields.io/david/YashTotale/terminal-all-in-one?style=for-the-badge&labelColor=000000&label=Dependencies"
       alt="Dependencies">
   </a>
-  &nbsp;
+  &nbsp; -->
 <!-- Dev Dependencies -->
-<a
+<!-- <a
     href="https://david-dm.org/YashTotale/terminal-all-in-one?type=dev">
 <img
       src="https://img.shields.io/david/dev/YashTotale/terminal-all-in-one?style=for-the-badge&labelColor=000000&label=Dev Dependencies"
       alt="Dev Dependencies">
 </a>
 &nbsp;
-</p>
+</p> -->
 
----
+<!-- --- -->
 
 <p align="center">
 <!-- Last Commit -->
@@ -338,7 +338,7 @@ _Check out [first contributions](https://github.com/firstcontributions/first-con
   <a
     href="https://github.com/YashTotale/terminal-all-in-one/pulse/monthly">
     <img
-      src="https://img.shields.io/github/commit-activity/m/YashTotale/terminal-all-in-one?style=for-the-badge&logo=github&labelColor=000000&label=Commit Activity"
+      src="https://img.shields.io/github/commit-activity/m/YashTotale/terminal-all-in-one?style=for-the-badge&logo=github&labelColor=000000&label=Commit Activity&foo=bar"
       alt="Commit Activity">
   </a>
   &nbsp;
@@ -385,7 +385,7 @@ _Check out [first contributions](https://github.com/firstcontributions/first-con
   <a
     href="https://marketplace.visualstudio.com/items?itemName=yasht.terminal-all-in-one">
     <img
-      src="https://img.shields.io/static/v1?label=Released%20On&message=Jul%2029%202020&style=for-the-badge&color=FF4500&labelColor=000000&label=Released On"
+      src="https://img.shields.io/static/v1?label=Released%20On&message=Jul%2029%202020&style=for-the-badge&color=FF4500&labelColor=000000"
       alt="Released On">
   </a>
   &nbsp;
