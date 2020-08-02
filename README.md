@@ -10,7 +10,7 @@
   <a
     href="https://marketplace.visualstudio.com/items?itemName=yasht.terminal-all-in-one">
     <img
-      src="https://img.shields.io/visual-studio-marketplace/v/yasht.terminal-all-in-one?logo=visual-studio-code&style=for-the-badge&labelColor=000000"
+      src="https://img.shields.io/visual-studio-marketplace/v/yasht.terminal-all-in-one?logo=visual-studio-code&style=for-the-badge&labelColor=000000&label=Version"
       alt="Version">
   </a>
 </h1>
@@ -20,7 +20,7 @@
   <a
     href="https://travis-ci.org/github/YashTotale/terminal-all-in-one">
     <img
-      src="https://img.shields.io/travis/YashTotale/terminal-all-in-one?logo=travis-ci&logoColor=FFFFFF&style=for-the-badge&labelColor=000000"
+      src="https://img.shields.io/travis/YashTotale/terminal-all-in-one?logo=travis-ci&logoColor=FFFFFF&style=for-the-badge&labelColor=000000&label=Build"
       alt="Build">
   </a>
   &nbsp;
@@ -28,7 +28,7 @@
   <a
     href="https://scrutinizer-ci.com/g/YashTotale/terminal-all-in-one/?branch=master">
     <img
-      src="https://img.shields.io/scrutinizer/quality/g/YashTotale/terminal-all-in-one?style=for-the-badge&labelColor=000000&logo=scrutinizer-ci"
+      src="https://img.shields.io/scrutinizer/quality/g/YashTotale/terminal-all-in-one?style=for-the-badge&labelColor=000000&logo=scrutinizer-ci&label=Code Quality"
       alt="Code Quality">
   </a>
   &nbsp;
@@ -36,7 +36,7 @@
   <a
     href="https://snyk.io/test/github/YashTotale/terminal-all-in-one">
     <img
-      src="https://img.shields.io/snyk/vulnerabilities/github/YashTotale/terminal-all-in-one?logo=snyk&style=for-the-badge&labelColor=000000"
+      src="https://img.shields.io/snyk/vulnerabilities/github/YashTotale/terminal-all-in-one?logo=snyk&style=for-the-badge&labelColor=000000&label=vulnerabilities"
       alt="Vulnerabilities">
   </a>
   &nbsp;
@@ -280,7 +280,7 @@ _Check out [first contributions](https://github.com/firstcontributions/first-con
   <a
     href="https://marketplace.visualstudio.com/items?itemName=yasht.terminal-all-in-one">
     <img
-      src="https://img.shields.io/visual-studio-marketplace/i/yasht.terminal-all-in-one?logo=visual-studio-code&style=for-the-badge&labelColor=000000"
+      src="https://img.shields.io/visual-studio-marketplace/i/yasht.terminal-all-in-one?logo=visual-studio-code&style=for-the-badge&labelColor=000000&label=Installs"
       alt="Installs">
   </a>
   &nbsp;
@@ -288,7 +288,7 @@ _Check out [first contributions](https://github.com/firstcontributions/first-con
   <a
     href="https://marketplace.visualstudio.com/items?itemName=yasht.terminal-all-in-one&ssr=false#review-details">
     <img
-      src="https://img.shields.io/visual-studio-marketplace/r/yasht.terminal-all-in-one?logo=visual-studio-code&style=for-the-badge&labelColor=000000"
+      src="https://img.shields.io/visual-studio-marketplace/r/yasht.terminal-all-in-one?logo=visual-studio-code&style=for-the-badge&labelColor=000000&label=Rating"
       alt="Rating">
   </a>
   &nbsp;
@@ -296,7 +296,7 @@ _Check out [first contributions](https://github.com/firstcontributions/first-con
   <a
     href="https://marketplace.visualstudio.com/items?itemName=yasht.terminal-all-in-one">
     <img
-      src="https://img.shields.io/visual-studio-marketplace/d/yasht.terminal-all-in-one?logo=visual-studio-code&style=for-the-badge&labelColor=000000"
+      src="https://img.shields.io/visual-studio-marketplace/d/yasht.terminal-all-in-one?logo=visual-studio-code&style=for-the-badge&labelColor=000000&label=Downloads"
       alt="Downloads">
   </a>
   &nbsp;
@@ -309,7 +309,7 @@ _Check out [first contributions](https://github.com/firstcontributions/first-con
   <a
     href="https://david-dm.org/YashTotale/terminal-all-in-one">
     <img
-      src="https://img.shields.io/david/YashTotale/terminal-all-in-one?style=for-the-badge&labelColor=000000"
+      src="https://img.shields.io/david/YashTotale/terminal-all-in-one?style=for-the-badge&labelColor=000000&label=Dependencies"
       alt="Dependencies">
   </a>
   &nbsp;
@@ -317,7 +317,7 @@ _Check out [first contributions](https://github.com/firstcontributions/first-con
 <a
     href="https://david-dm.org/YashTotale/terminal-all-in-one?type=dev">
 <img
-      src="https://img.shields.io/david/dev/YashTotale/terminal-all-in-one?style=for-the-badge&labelColor=000000"
+      src="https://img.shields.io/david/dev/YashTotale/terminal-all-in-one?style=for-the-badge&labelColor=000000&label=Dev Dependencies"
       alt="Dev Dependencies">
 </a>
 &nbsp;
@@ -330,7 +330,7 @@ _Check out [first contributions](https://github.com/firstcontributions/first-con
   <a
     href="https://github.com/YashTotale/terminal-all-in-one/commits/master">
     <img
-      src="https://img.shields.io/github/last-commit/YashTotale/terminal-all-in-one?style=for-the-badge&logo=github&labelColor=000000"
+      src="https://img.shields.io/github/last-commit/YashTotale/terminal-all-in-one?style=for-the-badge&logo=github&labelColor=000000&label=Last Commit"
       alt="Last Commit">
   </a>
   &nbsp;
@@ -338,7 +338,7 @@ _Check out [first contributions](https://github.com/firstcontributions/first-con
   <a
     href="https://github.com/YashTotale/terminal-all-in-one/pulse/monthly">
     <img
-      src="https://img.shields.io/github/commit-activity/m/YashTotale/terminal-all-in-one?style=for-the-badge&labelColor=000000"
+      src="https://img.shields.io/github/commit-activity/m/YashTotale/terminal-all-in-one?style=for-the-badge&logo=github&labelColor=000000&label=Commit Activity"
       alt="Commit Activity">
   </a>
   &nbsp;
@@ -359,7 +359,7 @@ _Check out [first contributions](https://github.com/firstcontributions/first-con
   <a
     href="https://github.com/YashTotale/terminal-all-in-one/blob/master/LICENSE.md">
     <img
-      src="https://img.shields.io/github/license/YashTotale/terminal-all-in-one?style=for-the-badge&labelColor=000000"
+      src="https://img.shields.io/github/license/YashTotale/terminal-all-in-one?style=for-the-badge&labelColor=000000&label=License"
       alt="License">
   </a>
   &nbsp;
@@ -372,7 +372,7 @@ _Check out [first contributions](https://github.com/firstcontributions/first-con
   <a
     href="https://github.com/YashTotale/terminal-all-in-one/blob/master/package.json#L16">
     <img
-      src="https://img.shields.io/github/package-json/keywords/YashTotale/terminal-all-in-one?style=for-the-badge&labelColor=000000"
+      src="https://img.shields.io/github/package-json/keywords/YashTotale/terminal-all-in-one?style=for-the-badge&labelColor=000000&label=Keywords"
       alt="Keywords">
   </a>
   &nbsp;
@@ -385,8 +385,8 @@ _Check out [first contributions](https://github.com/firstcontributions/first-con
   <a
     href="https://marketplace.visualstudio.com/items?itemName=yasht.terminal-all-in-one">
     <img
-      src="https://img.shields.io/static/v1?label=Released%20On&message=Jul%2029%202020&style=for-the-badge&color=FF4500&labelColor=000000"
-      alt="Keywords">
+      src="https://img.shields.io/static/v1?label=Released%20On&message=Jul%2029%202020&style=for-the-badge&color=FF4500&labelColor=000000&label=Released On"
+      alt="Released On">
   </a>
   &nbsp;
 </p>
