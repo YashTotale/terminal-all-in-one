@@ -373,7 +373,7 @@ _Check out [first contributions](https://github.com/firstcontributions/first-con
 <p align="center">
 <!-- Keywords -->
   <a
-    href="https://github.com/YashTotale/terminal-all-in-one/blob/master/package.json#L3-7">
+    href="https://github.com/YashTotale/terminal-all-in-one/blob/master/package.json#L3-L7">
     <img
       src="https://img.shields.io/github/package-json/keywords/YashTotale/terminal-all-in-one?style=for-the-badge&labelColor=000000&label=Keywords"
       alt="Keywords">
