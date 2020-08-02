@@ -1,4 +1,11 @@
 {
+  "keywords": [
+    "terminal",
+    "keybindings",
+    "shell",
+    "keymap",
+    "theme"
+  ],
   "name": "terminal-all-in-one",
   "displayName": "Terminal All In One",
   "description": "Enhance your integrated terminal with themes, keybindings, and custom commands.",
@@ -13,13 +20,6 @@
   "bugs": {
     "url": "https://github.com/YashTotale/terminal-all-in-one/issues"
   },
-  "keywords": [
-    "terminal",
-    "keybindings",
-    "shell",
-    "keymap",
-    "theme"
-  ],
   "icon": "src/images/terminal-icon.jpg",
   "author": {
     "name": "Yash T"
