@@ -17,13 +17,6 @@
     "color": "#BCBCBC",
     "theme": "light"
   },
-  "badges": [
-    {
-      "href": "https://travis-ci.org/github/YashTotale/terminal-all-in-one",
-      "url": "https://img.shields.io/travis/YashTotale/terminal-all-in-one?logo=travis-ci&logoColor=FFFFFF&style=for-the-badge&labelColor=000000&label=Build",
-      "description": "Build Status"
-    }
-  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/YashTotale/terminal-all-in-one"
