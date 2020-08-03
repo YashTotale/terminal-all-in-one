@@ -10,5 +10,7 @@ const { activate, deactivate } = require("../../src/extension.js");
 suite("Extension Test Suite", () => {
   vscode.window.showInformationMessage("Start all tests.");
 
-  return undefined;
+  assert.ok(activate, "Activate Function exists");
+
+  assert.ok(deactivate, "Deactivate Function exists");
 });

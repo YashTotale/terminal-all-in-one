@@ -13,6 +13,17 @@
   "homepage": "https://marketplace.visualstudio.com/items?itemName=yasht.terminal-all-in-one",
   "license": "MIT",
   "publisher": "yasht",
+  "galleryBanner": {
+    "color": "#BCBCBC",
+    "theme": "light"
+  },
+  "badges": [
+    {
+      "href": "https://travis-ci.org/github/YashTotale/terminal-all-in-one",
+      "url": "https://img.shields.io/travis/YashTotale/terminal-all-in-one?logo=travis-ci&logoColor=FFFFFF&style=for-the-badge&labelColor=000000&label=Build",
+      "description": "Build Status"
+    }
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/YashTotale/terminal-all-in-one"
@@ -233,6 +244,7 @@
     "vscode-test": "^1.4.0"
   },
   "dependencies": {
-    "lodash.debounce": "^4.0.8"
+    "lodash.debounce": "^4.0.8",
+    "vscode-uri": "^2.1.2"
   }
 }
