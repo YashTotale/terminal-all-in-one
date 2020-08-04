@@ -1,19 +1,10 @@
-const vscode = require("vscode");
+const fs = require("fs");
 
-function getConfig() {
-  return vscode.workspace.getConfiguration();
-}
+const files = fs.readdirSync(__dirname);
 
-async function updateConfig(key, value, shouldApplyGlobally = true) {
-  try {
-    return await getConfig().update(key, value, shouldApplyGlobally);
-  } catch (error) {
-    const { message } = error;
-    return vscode.window.showErrorMessage(message);
+module.exports = files.reduce((imports, currentFile) => {
+  if (currentFile !== "index.js") {
+    imports.push(require(`./${currentFile}`));
   }
-}
-
-module.exports = {
-  getConfig,
-  updateConfig,
-};
+  return imports;
+}, []);

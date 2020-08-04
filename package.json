@@ -14,7 +14,7 @@
   "license": "MIT",
   "publisher": "yasht",
   "galleryBanner": {
-    "color": "#BCBCBC",
+    "color": "#ededed",
     "theme": "light"
   },
   "repository": {
@@ -219,6 +219,11 @@
             "shouldShowThemeQuickPickMessage": true,
             "shouldShowSelectedThemeMessage": true
           }
+        },
+        "terminalAllInOne.disableAllMessages": {
+          "type": "boolean",
+          "description": "Controls whether all messages (info, warning, and error) from this extension are disabled",
+          "default": false
         }
       }
     }

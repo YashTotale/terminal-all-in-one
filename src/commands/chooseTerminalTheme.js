@@ -2,14 +2,14 @@ const vscode = require("vscode");
 const debounce = require("lodash.debounce");
 
 const { showMessage } = require("../messages");
-const { getConfig, updateConfig } = require("./index");
-
-const COLORS_CONFIG = "workbench.colorCustomizations";
-const TERMINAL_THEME_CONFIG = "terminalAllInOne.terminalTheme";
+const { getConfig, updateConfig } = require("../helpers/config");
 
 const themes = require("../themes.json");
 const themeNames = themes.map((theme) => theme.name);
 const themeSchemes = themes.map((theme) => theme.colors);
+
+const COLORS_CONFIG = "workbench.colorCustomizations";
+const TERMINAL_THEME_CONFIG = `terminalAllInOne.terminalTheme`;
 
 function getNonTerminalStyles(allStyles) {
   return Object.keys(allStyles).reduce((nonTerminalStyles, currentStyle) => {
@@ -20,14 +20,8 @@ function getNonTerminalStyles(allStyles) {
   }, {});
 }
 
-function onTerminalThemeConfigChange(event) {
-  if (event.affectsConfiguration(TERMINAL_THEME_CONFIG)) {
-    return updateTerminalTheme(getConfig().get(TERMINAL_THEME_CONFIG));
-  }
-}
-
 async function updateTerminalTheme(themeName) {
-  const defaultStyles = getConfig().get(COLORS_CONFIG);
+  const defaultStyles = getConfig({ section: COLORS_CONFIG });
   //Check if theme exists and set the index of it
   let themeIndex = 0;
   const themeExists = themeNames.some((name, i) => {
@@ -44,15 +38,18 @@ async function updateTerminalTheme(themeName) {
   if (themeName !== "None") {
     //If the theme does exist and is not None, set the new colors
     const themeScheme = { ...defaultStyles, ...themeSchemes[themeIndex] };
-    return updateConfig(COLORS_CONFIG, themeScheme);
+    return updateConfig({ section: COLORS_CONFIG, value: themeScheme });
   }
   //Remove all the terminal styles
-  return updateConfig(COLORS_CONFIG, getNonTerminalStyles(defaultStyles));
+  return updateConfig({
+    section: COLORS_CONFIG,
+    value: getNonTerminalStyles(defaultStyles),
+  });
 }
 
 async function chooseTerminalTheme() {
   //The current workbench styles
-  const defaultStyles = getConfig().get(COLORS_CONFIG);
+  const defaultStyles = getConfig({ section: COLORS_CONFIG });
   showMessage("themeQuickPickOpened");
   //Wait for the user to select a theme or exit the quick pick
   const selectedTheme = await vscode.window.showQuickPick(themeNames, {
@@ -64,14 +61,21 @@ async function chooseTerminalTheme() {
   });
   if (!selectedTheme) {
     //If no theme was selected, revert to the old config
-    return updateConfig(COLORS_CONFIG, defaultStyles);
+    return updateConfig({ section: COLORS_CONFIG, value: defaultStyles });
   }
   //If a theme was selected, show a message and update the TERMINAL_THEME_CONFIG
   showMessage("themeSelected", selectedTheme);
-  return updateConfig(TERMINAL_THEME_CONFIG, selectedTheme);
+  return updateConfig({ section: TERMINAL_THEME_CONFIG, value: selectedTheme });
+}
+
+function onTerminalThemeConfigChange(event) {
+  if (event.affectsConfiguration(TERMINAL_THEME_CONFIG)) {
+    return updateTerminalTheme(getConfig({ section: TERMINAL_THEME_CONFIG }));
+  }
 }
 
 module.exports = {
-  chooseTerminalTheme,
-  onTerminalThemeConfigChange,
+  name: "chooseTerminalTheme",
+  handler: chooseTerminalTheme,
+  config: onTerminalThemeConfigChange,
 };
