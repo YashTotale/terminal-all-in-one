@@ -9,43 +9,30 @@ const EXTENSION_NAME = "terminalAllInOne";
 const READABLE_EXTENSION_NAME = "Terminal All In One";
 const EXTENSION_NAME_W_PUBLISHER = "yasht.terminal-all-in-one";
 
-const {
-  chooseTerminalTheme,
-  onTerminalThemeConfigChange,
-} = require("./commands/terminalTheme");
+const commands = require("./commands");
 
-function registerCommand({ name, handler }) {
-  return vscode.commands.registerCommand(name, handler);
+function createCommandName(name) {
+  return `terminalAllInOne.${name}`;
+}
+
+function registerCommand({ commandName, handler, context }) {
+  return context.subscriptions.push(
+    vscode.commands.registerCommand(commandName, handler)
+  );
 }
 
 function createCommands(context) {
-  const commands = [
-    {
-      name: "terminalAllInOne.toggleMaxTerm",
-      handler: () => {
-        vscode.commands.executeCommand("workbench.action.terminal.focus");
-        vscode.commands.executeCommand("workbench.action.toggleMaximizedPanel");
-      },
-    },
-    {
-      name: "terminalAllInOne.chooseTerminalTheme",
-      handler: () => chooseTerminalTheme(),
-    },
-  ];
-
-  context.subscriptions.push(commands.map(registerCommand));
-}
-
-function onTerminalConfigChange() {
-  vscode.workspace.onDidChangeConfiguration((event) => {
-    onTerminalThemeConfigChange(event);
+  commands.forEach((command) => {
+    const { name, handler, config } = command;
+    const commandName = createCommandName(name);
+    registerCommand({ commandName, handler, context });
+    vscode.workspace.onDidChangeConfiguration(config);
   });
 }
 
 function activate(context) {
   showMessage("onstart", context);
   createCommands(context);
-  onTerminalConfigChange();
 }
 
 function deactivate() {}
