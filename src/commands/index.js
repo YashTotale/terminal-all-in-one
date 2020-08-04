@@ -1,4 +1,3 @@
-const vscode = require("vscode");
 const fs = require("fs");
 
 const files = fs.readdirSync(__dirname);
