@@ -5,7 +5,7 @@ const configuration = function (section) {
 };
 
 const getConfig = function ({ config, section }) {
-  return config ? config.get(section) : configuration().get(section);
+  return configuration(config).get(section);
 };
 
 const updateConfig = function ({ config, section, value }) {

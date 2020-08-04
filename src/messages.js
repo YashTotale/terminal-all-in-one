@@ -1,22 +1,23 @@
 const vscode = require("vscode");
+const { getConfig, updateConfig } = require("./helpers/config");
 
 const EXTENSION_NAME = "yasht.terminal-all-in-one";
 const READABLE_EXTENSION_NAME = "Terminal All In One";
 
 const TERMINAL_MESSAGES_CONFIG = "terminalAllInOne.messages";
 
-function getConfig() {
-  return vscode.workspace.getConfiguration(TERMINAL_MESSAGES_CONFIG);
+function getMessagesConfig(key) {
+  return getConfig({ config: TERMINAL_MESSAGES_CONFIG, section: key });
 }
 
-async function updateConfig(key, value) {
-  try {
-    await vscode.workspace
-      .getConfiguration("terminalAllInOne")
-      .update("messages", { ...getConfig(), [key]: value }, true);
-  } catch ({ message }) {
-    vscode.window.showErrorMessage(message);
-  }
+async function updateMessagesConfig(key, value) {
+  updateConfig({
+    section: TERMINAL_MESSAGES_CONFIG,
+    value: {
+      ...getConfig({ section: TERMINAL_MESSAGES_CONFIG }),
+      [key]: value,
+    },
+  });
 }
 
 const messages = {
@@ -38,13 +39,13 @@ const messages = {
   themeQuickPickOpened: async () => {
     const SELECTION = "Don't Show Again";
     const CONFIG_PROPERTY = "shouldShowThemeQuickPickMessage";
-    if (getConfig().get(CONFIG_PROPERTY)) {
+    if (getMessagesConfig(CONFIG_PROPERTY)) {
       const selection = await vscode.window.showInformationMessage(
         "Open the terminal to see a live preview",
         SELECTION
       );
       if (selection === SELECTION) {
-        await updateConfig(CONFIG_PROPERTY, false);
+        await updateMessagesConfig(CONFIG_PROPERTY, false);
       }
     }
   },
@@ -64,13 +65,13 @@ const messages = {
   themeSelected: async (selectedTheme) => {
     const SELECTION = "Don't Show Again";
     const CONFIG_PROPERTY = "shouldShowSelectedThemeMessage";
-    if (getConfig().get(CONFIG_PROPERTY)) {
+    if (getMessagesConfig(CONFIG_PROPERTY)) {
       const selection = await vscode.window.showInformationMessage(
         `"${selectedTheme}" has been applied`,
         SELECTION
       );
       if (selection === SELECTION) {
-        await updateConfig(CONFIG_PROPERTY, false);
+        await updateMessagesConfig(CONFIG_PROPERTY, false);
       }
     }
   },
