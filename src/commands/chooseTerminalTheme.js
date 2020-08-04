@@ -1,11 +1,12 @@
 const vscode = require("vscode");
 const debounce = require("lodash.debounce");
 
+const { EXTENSION_NAME } = require("../extension");
 const { showMessage } = require("../messages");
 const { getConfig, updateConfig } = require("../helpers/config");
 
 const COLORS_CONFIG = "workbench.colorCustomizations";
-const TERMINAL_THEME_CONFIG = "terminalAllInOne.terminalTheme";
+const TERMINAL_THEME_CONFIG = `${EXTENSION_NAME}.terminalTheme`;
 
 const themes = require("../themes.json");
 const themeNames = themes.map((theme) => theme.name);
