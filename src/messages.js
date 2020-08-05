@@ -75,12 +75,16 @@ const messages = {
       }
     }
   },
+  error: (message) => {
+    vscode.window.showErrorMessage(message);
+  },
 };
 
-function showMessage(id, params) {
-  return messages[id](params);
-}
-
-module.exports = {
-  showMessage,
+exports.showMessage = function (id, params) {
+  const shouldShow = !getConfig({
+    section: "terminalAllInOne.disableAllMessages",
+  });
+  if (shouldShow) {
+    return messages[id](params);
+  }
 };

@@ -1,4 +1,5 @@
 const vscode = require("vscode");
+const messages = require("../messages");
 
 const configuration = function (section) {
   return vscode.workspace.getConfiguration(section);
@@ -14,7 +15,7 @@ const updateConfig = function ({ config, section, value }) {
       ? config.update(section, value, true)
       : configuration().update(section, value, true);
   } catch ({ message }) {
-    return vscode.window.showErrorMessage(message);
+    messages.showMessage("error", message);
   }
 };
 
