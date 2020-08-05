@@ -34,6 +34,7 @@ _Featured Content is Italicized_
 - [Configuration](#configuration)
   - _[Terminal Theme](#terminal-theme)_
   - [Messages](#messages)
+  - [Disable All Messages](#disable-all-messages)
 - [Demos](#demos)
 - [Contribute](#contribute)
 
@@ -115,7 +116,7 @@ OR
 ### Terminal Theme
 
 - `terminalAllInOne.terminalTheme`
-- Choose a Terminal Theme from a [list of themes](https://glitchbone.github.io/vscode-base16-term/#/).
+- A Terminal Theme from [this list](https://glitchbone.github.io/vscode-base16-term/#/)
 - Use the command [`terminalAllInOne.chooseTerminalTheme`](#terminal-all-in-one-choose-theme) or the keybinding `cmd/ctrl+i t` to control this setting.
 - Default Configuration :
 
@@ -128,7 +129,7 @@ OR
 ### Messages
 
 - `terminalAllInOne.messages`
-- Controls which messages should be shown when certain actions occur
+- Controls which messages should be shown if [`terminalAllInOne.disableAllMessages`](#disable-all-messages) is set to false
 - Default Configuration :
 
   ```json
@@ -137,6 +138,18 @@ OR
       "shouldShowSelectedThemeMessage": true,
       "shouldShowThemeQuickPickMessage": true
     }
+  }
+  ```
+
+### Disable All Messages
+
+- `terminalAllInOne.disableAllMessages`
+- Controls whether all messages (info, warning, and error) from this extension are disabled
+- Default Configuration :
+
+  ```json
+  {
+    "terminalAllInOne.disableAllMessages": false
   }
   ```
 

@@ -1,10 +1,11 @@
 const vscode = require("vscode");
 const { getConfig, updateConfig } = require("./helpers/config");
 
-const EXTENSION_NAME = "yasht.terminal-all-in-one";
+const EXTENSION_NAME = "terminalAllInOne";
+const EXTENSION_NAME_W_PUBLISHER = "yasht.terminal-all-in-one";
 const READABLE_EXTENSION_NAME = "Terminal All In One";
 
-const TERMINAL_MESSAGES_CONFIG = "terminalAllInOne.messages";
+const TERMINAL_MESSAGES_CONFIG = `${EXTENSION_NAME}.messages`;
 
 function getMessagesConfig(key) {
   return getConfig({ config: TERMINAL_MESSAGES_CONFIG, section: key });
@@ -31,7 +32,9 @@ const messages = {
       );
       context.globalState.update(STATE_PROPERTY, true);
       if (selection === "README") {
-        vscode.env.openExternal(`vscode:extension/${EXTENSION_NAME}`);
+        vscode.env.openExternal(
+          `vscode:extension/${EXTENSION_NAME_W_PUBLISHER}`
+        );
       }
     }
   },
@@ -75,12 +78,16 @@ const messages = {
       }
     }
   },
+  error: (message) => {
+    vscode.window.showErrorMessage(message);
+  },
 };
 
-function showMessage(id, params) {
-  return messages[id](params);
-}
-
-module.exports = {
-  showMessage,
+exports.showMessage = function (id, params) {
+  const shouldShow = !getConfig({
+    section: `${EXTENSION_NAME}.disableAllMessages`,
+  });
+  if (shouldShow) {
+    return messages[id](params);
+  }
 };
