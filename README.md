@@ -33,6 +33,7 @@ _Featured Content is Italicized_
   - [Windows and Linux](#windows-and-linux)
 - [Configuration](#configuration)
   - _[Terminal Theme](#terminal-theme)_
+  - [Disable All Keybindings](#disable-all-keybindings)
   - [Messages](#messages)
   - [Disable All Messages](#disable-all-messages)
 - [Demos](#demos)
@@ -123,6 +124,18 @@ OR
   ```json
   {
     "terminalAllInOne.terminalTheme": "None"
+  }
+  ```
+
+### Disable All Keybindings
+
+- `terminalAllInOne.disableAllKeybindings`
+- Controls whether all keybindings are disabled
+- Default Configuration :
+
+  ```json
+  {
+    "terminalAllInOne.disableAllKeybindings": false
   }
   ```
 
