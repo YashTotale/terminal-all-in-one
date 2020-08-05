@@ -295,7 +295,7 @@ _Check out [first contributions](https://github.com/firstcontributions/first-con
 
 <p align="center">
     <a href="https://snyk.io/test/github/YashTotale/terminal-all-in-one"><img src="https://img.shields.io/snyk/vulnerabilities/github/YashTotale/terminal-all-in-one?logo=snyk&style=for-the-badge&labelColor=000000&label=Vulnerabilities" alt="Vulnerabilities"></a>&nbsp;
-    <a href="https://lgtm.com/projects/g/YashTotale/terminal-all-in-one/alerts/?mode=list"><img src="https://img.shields.io/lgtm/alerts/github/YashTotale/terminal-all-in-one?style=for-the-badge&labelColor=000000&logo=lgtm" alt="Vulnerabilities"></a>&nbsp;
+    <a href="https://lgtm.com/projects/g/YashTotale/terminal-all-in-one/alerts/?mode=list"><img src="https://img.shields.io/lgtm/alerts/github/YashTotale/terminal-all-in-one?style=for-the-badge&labelColor=000000&logo=lgtm" alt="Alerts"></a>&nbsp;
 </p>
 
 ---
@@ -310,30 +310,31 @@ _Check out [first contributions](https://github.com/firstcontributions/first-con
 
 <!-- Commit Badges -->
 <p align="center">
-    <a href="https://github.com/YashTotale/terminal-all-in-one/commits/master"><img src="https://img.shields.io/github/last-commit/YashTotale/terminal-all-in-one?style=for-the-badge&logo=github&labelColor=000000&label=Last%20Commit" alt="Last Commit"></a>&nbsp;
-    <a href="https://github.com/YashTotale/terminal-all-in-one/pulse/weekly"><img src="https://img.shields.io/github/commit-activity/w/YashTotale/terminal-all-in-one?style=for-the-badge&logo=github&labelColor=000000&label=Commit%20Activity" alt="Commit Activity"></a>&nbsp;
+    <a href="https://github.com/YashTotale/terminal-all-in-one/commits/master"><img src="https://img.shields.io/github/last-commit/YashTotale/terminal-all-in-one?style=for-the-badge&logo=github&labelColor=000000&label=Last%20Commit&color=007EC6" alt="Last Commit"></a>&nbsp;
+    <a href="https://github.com/YashTotale/terminal-all-in-one/pulse/monthly"><img src="https://img.shields.io/github/commit-activity/m/YashTotale/terminal-all-in-one?style=for-the-badge&logo=github&labelColor=000000&label=Commit%20Activity&color=007EC6" alt="Commit Activity"></a>&nbsp;
 </p>
 
 ---
 
 <!-- Misc Badges -->
 <p align="center">
-    <a href="https://github.com/YashTotale/terminal-all-in-one/search?l=JavaScript&type=Code"><img src="https://img.shields.io/github/languages/top/YashTotale/terminal-all-in-one?logo=javascript&style=for-the-badge&labelColor=000000" alt="Top Language"></a>&nbsp;
-    <a href="https://github.com/YashTotale/terminal-all-in-one/blob/master/LICENSE.md"><img src="https://img.shields.io/github/license/YashTotale/terminal-all-in-one?style=for-the-badge&labelColor=000000&label=License" alt="License"></a>&nbsp;
+    <a href="https://github.com/YashTotale/terminal-all-in-one/search?l=JavaScript&type=Code"><img src="https://img.shields.io/github/languages/top/YashTotale/terminal-all-in-one?logo=javascript&style=for-the-badge&labelColor=000000&color=FF4500" alt="Top Language"></a>&nbsp;
+    <a href="https://github.com/YashTotale/terminal-all-in-one/blob/master/LICENSE.md"><img src="https://img.shields.io/github/license/YashTotale/terminal-all-in-one?style=for-the-badge&labelColor=000000&label=License&color=FF4500" alt="License"></a>&nbsp;
 </p>
 
 ---
 
 <!-- Keywords Badges -->
 <p align="center">
-    <a href="https://github.com/YashTotale/terminal-all-in-one/blob/master/package.json#L3-L7"><img src="https://img.shields.io/github/package-json/keywords/YashTotale/terminal-all-in-one?style=for-the-badge&labelColor=000000&label=Keywords" alt="Keywords"></a>&nbsp;
+    <a href="https://github.com/YashTotale/terminal-all-in-one/blob/master/package.json#L3-L7"><img src="https://img.shields.io/github/package-json/keywords/YashTotale/terminal-all-in-one?style=for-the-badge&labelColor=000000&label=Keywords&color=6ba6ff" alt="Keywords"></a>&nbsp;
 </p>
 
 ---
 
 <!-- Released/Updated Badges -->
 <p align="center">
-    <a href="https://marketplace.visualstudio.com/items?itemName=yasht.terminal-all-in-one"><img src="https://img.shields.io/static/v1?label=Released%20On&message=Jul%2029%202020&style=for-the-badge&color=FF4500&labelColor=000000" alt="Released On"></a>&nbsp;
+    <a href="https://marketplace.visualstudio.com/items?itemName=yasht.terminal-all-in-one"><img src="https://img.shields.io/visual-studio-marketplace/release-date/yasht.terminal-all-in-one?style=for-the-badge&labelColor=000000&label=Release%20Date" alt="Release Date"></a>&nbsp;
+    <a href="https://marketplace.visualstudio.com/items?itemName=yasht.terminal-all-in-one"><img src="https://img.shields.io/visual-studio-marketplace/last-updated/yasht.terminal-all-in-one?style=for-the-badge&labelColor=000000&label=Last%20Updated" alt="Last Updated"></a>&nbsp;
 </p>
 
 ---
