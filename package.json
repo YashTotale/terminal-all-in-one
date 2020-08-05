@@ -9,7 +9,7 @@
   "name": "terminal-all-in-one",
   "displayName": "Terminal All In One",
   "description": "Enhance your integrated terminal with themes, keybindings, and custom commands.",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "homepage": "https://marketplace.visualstudio.com/items?itemName=yasht.terminal-all-in-one",
   "license": "MIT",
   "publisher": "yasht",
@@ -57,55 +57,64 @@
       {
         "key": "ctrl+`",
         "mac": "cmd+`",
-        "command": "workbench.action.terminal.toggleTerminal"
+        "command": "workbench.action.terminal.toggleTerminal",
+        "when": "!config.terminalAllInOne.disableAllKeybindings"
       },
       {
         "key": "ctrl+i s",
         "mac": "cmd+i s",
-        "command": "workbench.action.terminal.selectDefaultShell"
+        "command": "workbench.action.terminal.selectDefaultShell",
+        "when": "!config.terminalAllInOne.disableAllKeybindings"
       },
       {
         "key": "ctrl+i c",
         "mac": "cmd+i c",
-        "command": "workbench.action.terminal.new"
+        "command": "workbench.action.terminal.new",
+        "when": "!config.terminalAllInOne.disableAllKeybindings"
       },
       {
         "key": "ctrl+i d",
         "mac": "cmd+i d",
-        "command": "workbench.action.terminal.kill"
+        "command": "workbench.action.terminal.kill",
+        "when": "!config.terminalAllInOne.disableAllKeybindings"
       },
       {
         "key": "ctrl+i r",
         "mac": "cmd+i r",
-        "command": "workbench.action.terminal.rename"
+        "command": "workbench.action.terminal.rename",
+        "when": "!config.terminalAllInOne.disableAllKeybindings"
       },
       {
         "key": "ctrl+i .",
         "mac": "cmd+i .",
-        "command": "workbench.action.terminal.focusNext"
+        "command": "workbench.action.terminal.focusNext",
+        "when": "!config.terminalAllInOne.disableAllKeybindings"
       },
       {
         "key": "ctrl+i ,",
         "mac": "cmd+i ,",
-        "command": "workbench.action.terminal.focusPrevious"
+        "command": "workbench.action.terminal.focusPrevious",
+        "when": "!config.terminalAllInOne.disableAllKeybindings"
       },
       {
         "key": "ctrl+i m",
         "mac": "cmd+i m",
-        "command": "terminalAllInOne.toggleMaxTerm"
+        "command": "terminalAllInOne.toggleMaxTerm",
+        "when": "!config.terminalAllInOne.disableAllKeybindings"
       },
       {
         "key": "ctrl+i t",
         "mac": "cmd+i t",
-        "command": "terminalAllInOne.chooseTerminalTheme"
+        "command": "terminalAllInOne.chooseTerminalTheme",
+        "when": "!config.terminalAllInOne.disableAllKeybindings"
       }
     ],
     "configuration": {
       "title": "Terminal All In One",
       "properties": {
         "terminalAllInOne.terminalTheme": {
-          "markdownDescription": "A Terminal Theme from [this list](https://glitchbone.github.io/vscode-base16-term/#/)",
           "type": "string",
+          "markdownDescription": "A Terminal Theme from [this list](https://glitchbone.github.io/vscode-base16-term/#/)",
           "default": "None",
           "enum": [
             "3024",
@@ -211,6 +220,11 @@
             "Zenburn",
             "None"
           ]
+        },
+        "terminalAllInOne.disableAllKeybindings": {
+          "type": "boolean",
+          "description": "Controls whether all keybindings are disabled",
+          "default": false
         },
         "terminalAllInOne.messages": {
           "type": "object",
