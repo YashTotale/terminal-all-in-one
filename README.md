@@ -38,6 +38,7 @@ _Featured Content is Italicized_
   - [Disable All Messages](#disable-all-messages)
 - [Demos](#demos)
 - [Contribute](#contribute)
+- _[More Info](#more-info)_
 
 ---
 
@@ -173,7 +174,6 @@ OR
 <!-- Toggle the Terminal -->
 
 <details>
-
 <summary>Toggle the Terminal</summary>
 
 ![Toggle the Terminal](https://raw.githubusercontent.com/YashTotale/terminal-all-in-one/master/src/demos/ToggleTerminal.gif)
@@ -281,6 +281,8 @@ _Check out [first contributions](https://github.com/firstcontributions/first-con
 
 ---
 
+## More Info
+
 <!-- VS Code Badges -->
 <p align="center">
     <a href="https://marketplace.visualstudio.com/items?itemName=yasht.terminal-all-in-one"><img src="https://img.shields.io/visual-studio-marketplace/i/yasht.terminal-all-in-one?logo=visual-studio-code&style=for-the-badge&labelColor=000000&label=Installs" alt="Installs"></a>&nbsp;
@@ -309,7 +311,7 @@ _Check out [first contributions](https://github.com/firstcontributions/first-con
 <!-- Commit Badges -->
 <p align="center">
     <a href="https://github.com/YashTotale/terminal-all-in-one/commits/master"><img src="https://img.shields.io/github/last-commit/YashTotale/terminal-all-in-one?style=for-the-badge&logo=github&labelColor=000000&label=Last%20Commit" alt="Last Commit"></a>&nbsp;
-    <a href="https://github.com/YashTotale/terminal-all-in-one/pulse/monthly"><img src="https://img.shields.io/github/commit-activity/m/YashTotale/terminal-all-in-one?style=for-the-badge&logo=github&labelColor=000000&label=Commit%20Activity" alt="Commit Activity"></a>&nbsp;
+    <a href="https://github.com/YashTotale/terminal-all-in-one/pulse/weekly"><img src="https://img.shields.io/github/commit-activity/w/YashTotale/terminal-all-in-one?style=for-the-badge&logo=github&labelColor=000000&label=Commit%20Activity" alt="Commit Activity"></a>&nbsp;
 </p>
 
 ---
