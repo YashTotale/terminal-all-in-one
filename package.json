@@ -214,7 +214,7 @@
         },
         "terminalAllInOne.messages": {
           "type": "object",
-          "description": "Controls which messages should be shown",
+          "markdownDescription": "Controls which messages should be shown if `#terminalAllInOne.disableAllMessages#` is set to false",
           "default": {
             "shouldShowThemeQuickPickMessage": true,
             "shouldShowSelectedThemeMessage": true
