@@ -7,34 +7,51 @@ The format of this Change Log is based on [Keep a Changelog](http://keepachangel
 
 - [_Terminal All In One_ Change Log](#terminal-all-in-one-change-log)
   - [[Unreleased]](#unreleased)
-  - [[1.3.0] - (2020-08-05)](#130---2020-08-05)
+  - [[1.4.0] - (2020-08-05)](#140---2020-08-05)
     - [Added](#added)
-  - [[1.2.0] - (2020-08-04)](#120---2020-08-04)
+  - [[1.3.0] - (2020-08-05)](#130---2020-08-05)
     - [Added](#added-1)
-  - [[1.1.1] - (2020-08-03)](#111---2020-08-03)
+  - [[1.2.0] - (2020-08-04)](#120---2020-08-04)
     - [Added](#added-2)
+  - [[1.1.1] - (2020-08-03)](#111---2020-08-03)
+    - [Added](#added-3)
     - [Fixed](#fixed)
   - [[1.1.0] - (2020-08-02)](#110---2020-08-02)
     - [Changed](#changed)
   - [[1.0.9] - (2020-08-01)](#109---2020-08-01)
     - [Fixed](#fixed-1)
   - [[1.0.8] - (2020-07-31)](#108---2020-07-31)
-    - [Added](#added-3)
+    - [Added](#added-4)
   - [[1.0.7] - (2020-07-31)](#107---2020-07-31)
     - [Changed](#changed-1)
     - [Fixed](#fixed-2)
   - [[1.0.4] - (2020-07-31)](#104---2020-07-31)
-    - [Added](#added-4)
+    - [Added](#added-5)
     - [Changed](#changed-2)
   - [[1.0.3] - (2020-07-30)](#103---2020-07-30)
-    - [Added](#added-5)
+    - [Added](#added-6)
   - [[1.0.2] - (2020-07-30)](#102---2020-07-30)
     - [Changed](#changed-3)
   - [[1.0.1] - (2020-07-30)](#101---2020-07-30)
-    - [Added](#added-6)
-  - [[1.0.0] - (2020-07-29)](#100---2020-07-29)
     - [Added](#added-7)
+  - [[1.0.0] - (2020-07-29)](#100---2020-07-29)
+    - [Added](#added-8)
 - [Content below was part of the previous extension (Terminal Keybindings)](#content-below-was-part-of-the-previous-extension-terminal-keybindings)
+  - [[0.2.5] - (2020-07-28)](#025---2020-07-28)
+    - [Changed](#changed-4)
+  - [[0.2.4] - (2020-07-26)](#024---2020-07-26)
+    - [Changed](#changed-5)
+  - [[0.2.3] - (2020-07-25)](#023---2020-07-25)
+    - [Fixed](#fixed-3)
+  - [[0.2.0] - (2020-07-25)](#020---2020-07-25)
+    - [Added](#added-9)
+    - [Fixed](#fixed-4)
+    - [Removed](#removed)
+  - [[0.1.3] - (2020-07-23)](#013---2020-07-23)
+    - [Added](#added-10)
+    - [Changed](#changed-6)
+  - [[0.1.0] - (2020-07-22)](#010---2020-07-22)
+    - [Added](#added-11)
   - [[0.2.5] - (2020-07-28)](#025---2020-07-28)
     - [Changed](#changed-4)
   - [[0.2.4] - (2020-07-26)](#024---2020-07-26)
@@ -71,6 +88,15 @@ The format of this Change Log is based on [Keep a Changelog](http://keepachangel
 ### [Unreleased]
 
 - Terminal Tabs in the status bar
+
+---
+
+### [1.4.0] - (2020-08-05)
+
+#### Added
+
+- _New Command_: Increase Font Size
+- _New Command_: Decrease Font Size
 
 ---
 

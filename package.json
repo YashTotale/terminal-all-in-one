@@ -9,7 +9,7 @@
   "name": "terminal-all-in-one",
   "displayName": "Terminal All In One",
   "description": "Enhance your integrated terminal with themes, keybindings, and custom commands.",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "homepage": "https://marketplace.visualstudio.com/items?itemName=yasht.terminal-all-in-one",
   "license": "MIT",
   "publisher": "yasht",
@@ -40,6 +40,8 @@
   "activationEvents": [
     "onCommand:terminalAllInOne.toggleMaxTerm",
     "onCommand:terminalAllInOne.chooseTerminalTheme",
+    "onCommand:terminalAllInOne.decreaseFontSize",
+    "onCommand:terminalAllInOne.increaseFontSize",
     "onStartupFinished"
   ],
   "contributes": {
@@ -51,6 +53,14 @@
       {
         "command": "terminalAllInOne.chooseTerminalTheme",
         "title": "Terminal All In One: Choose Theme"
+      },
+      {
+        "command": "terminalAllInOne.decreaseFontSize",
+        "title": "Terminal All In One: Decrease Font Size"
+      },
+      {
+        "command": "terminalAllInOne.increaseFontSize",
+        "title": "Terminal All In One: Increase Font Size"
       }
     ],
     "keybindings": [
@@ -106,6 +116,18 @@
         "key": "ctrl+i t",
         "mac": "cmd+i t",
         "command": "terminalAllInOne.chooseTerminalTheme",
+        "when": "!config.terminalAllInOne.disableAllKeybindings"
+      },
+      {
+        "key": "ctrl+i -",
+        "mac": "cmd+i -",
+        "command": "terminalAllInOne.decreaseFontSize",
+        "when": "!config.terminalAllInOne.disableAllKeybindings"
+      },
+      {
+        "key": "ctrl+i =",
+        "mac": "cmd+i =",
+        "command": "terminalAllInOne.increaseFontSize",
         "when": "!config.terminalAllInOne.disableAllKeybindings"
       }
     ],
