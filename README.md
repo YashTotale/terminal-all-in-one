@@ -1,6 +1,6 @@
 <h1 align="center">
   <br>
-    <img src="https://raw.githubusercontent.com/YashTotale/terminal-all-in-one/master/static/images/terminal-icon.jpg" alt="Terminal All In One" width="200">
+    <a href="https://raw.githubusercontent.com/YashTotale/terminal-all-in-one/master/static/images/terminal-icon.jpg"><img src="https://raw.githubusercontent.com/YashTotale/terminal-all-in-one/master/static/images/terminal-icon.jpg" alt="Terminal All In One" width="200"></a>
   <br>
   <br>
   <b>Terminal All In One</b>
@@ -196,7 +196,7 @@ OR
 <details>
 <summary>Toggle the Terminal</summary>
 
-![Toggle the Terminal](https://raw.githubusercontent.com/YashTotale/terminal-all-in-one/master/static/demos/ToggleTerminal.gif)
+[![Toggle the Terminal](https://raw.githubusercontent.com/YashTotale/terminal-all-in-one/master/static/demos/ToggleTerminal.gif)](https://raw.githubusercontent.com/YashTotale/terminal-all-in-one/master/static/demos/ToggleTerminal.gif)
 
 </details>
 
@@ -207,7 +207,7 @@ OR
 <details>
 <summary>Toggle the Maximized Terminal</summary>
 
-![Toggle the Maximized Terminal](https://raw.githubusercontent.com/YashTotale/terminal-all-in-one/master/static/demos/ToggleMaximizedTerminal.gif)
+[![Toggle the Maximized Terminal](https://raw.githubusercontent.com/YashTotale/terminal-all-in-one/master/static/demos/ToggleMaximizedTerminal.gif)](https://raw.githubusercontent.com/YashTotale/terminal-all-in-one/master/static/demos/ToggleMaximizedTerminal.gif)
 
 </details>
 
@@ -218,7 +218,7 @@ OR
 <details>
 <summary>Select a Default Shell</summary>
 
-![Select a Default Shell](https://raw.githubusercontent.com/YashTotale/terminal-all-in-one/master/static/demos/SelectDefaultShell.gif)
+[![Select a Default Shell](https://raw.githubusercontent.com/YashTotale/terminal-all-in-one/master/static/demos/SelectDefaultShell.gif)](https://raw.githubusercontent.com/YashTotale/terminal-all-in-one/master/static/demos/SelectDefaultShell.gif)
 
 </details>
 
@@ -229,7 +229,7 @@ OR
 <details>
 <summary>Create a New Terminal Instance</summary>
 
-![Create A New Terminal Instance](https://raw.githubusercontent.com/YashTotale/terminal-all-in-one/master/static/demos/CreateNewTerminal.gif)
+[![Create A New Terminal Instance](https://raw.githubusercontent.com/YashTotale/terminal-all-in-one/master/static/demos/CreateNewTerminal.gif)](https://raw.githubusercontent.com/YashTotale/terminal-all-in-one/master/static/demos/CreateNewTerminal.gif)
 
 </details>
 
@@ -240,7 +240,7 @@ OR
 <details>
 <summary>Remove the Current Terminal Instance</summary>
 
-![Remove the Current Terminal Instance](https://raw.githubusercontent.com/YashTotale/terminal-all-in-one/master/static/demos/RemoveCurrentTerminal.gif)
+[![Remove the Current Terminal Instance](https://raw.githubusercontent.com/YashTotale/terminal-all-in-one/master/static/demos/RemoveCurrentTerminal.gif)](https://raw.githubusercontent.com/YashTotale/terminal-all-in-one/master/static/demos/RemoveCurrentTerminal.gif)
 
 </details>
 
@@ -251,7 +251,7 @@ OR
 <details>
 <summary>Rename the Current Terminal Instance</summary>
 
-![Rename the Current Terminal Instance](https://raw.githubusercontent.com/YashTotale/terminal-all-in-one/master/static/demos/RenameCurrentTerminal.gif)
+[![Rename the Current Terminal Instance](https://raw.githubusercontent.com/YashTotale/terminal-all-in-one/master/static/demos/RenameCurrentTerminal.gif)](https://raw.githubusercontent.com/YashTotale/terminal-all-in-one/master/static/demos/RenameCurrentTerminal.gif)
 
 </details>
 
@@ -262,7 +262,7 @@ OR
 <details>
 <summary>Focus the Next Terminal Instance</summary>
 
-![Focus the Next Terminal Instance](https://raw.githubusercontent.com/YashTotale/terminal-all-in-one/master/static/demos/FocusNextTerminal.gif)
+[![Focus the Next Terminal Instance](https://raw.githubusercontent.com/YashTotale/terminal-all-in-one/master/static/demos/FocusNextTerminal.gif)](https://raw.githubusercontent.com/YashTotale/terminal-all-in-one/master/static/demos/FocusNextTerminal.gif)
 
 </details>
 
@@ -273,7 +273,7 @@ OR
 <details>
 <summary>Focus the Previous Terminal Instance</summary>
 
-![Focus the Previous Terminal Instance](https://raw.githubusercontent.com/YashTotale/terminal-all-in-one/master/static/demos/FocusPreviousTerminal.gif)
+[![Focus the Previous Terminal Instance](https://raw.githubusercontent.com/YashTotale/terminal-all-in-one/master/static/demos/FocusPreviousTerminal.gif)](https://raw.githubusercontent.com/YashTotale/terminal-all-in-one/master/static/demos/FocusPreviousTerminal.gif)
 
 </details>
 
@@ -284,7 +284,7 @@ OR
 <details>
 <summary>Choose a Terminal Theme</summary>
 
-![Choose a Terminal Theme](https://raw.githubusercontent.com/YashTotale/terminal-all-in-one/master/static/demos/ChooseATerminalTheme.gif)
+[![Choose a Terminal Theme](https://raw.githubusercontent.com/YashTotale/terminal-all-in-one/master/static/demos/ChooseTerminalTheme.gif)](https://raw.githubusercontent.com/YashTotale/terminal-all-in-one/master/static/demos/ChooseTerminalTheme.gif)
 
 </details>
 
