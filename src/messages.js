@@ -87,7 +87,7 @@ const messages = {
   },
   fontSizeSelected: async (selectedSize) => {
     infoWithDisableOption(
-      "shouldShowFontSizeSelectedMessage",
+      "shouldShowSelectedFontSizeMessage",
       `Font Size "${selectedSize}" has been applied`
     );
   },
