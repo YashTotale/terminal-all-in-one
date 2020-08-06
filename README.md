@@ -28,6 +28,8 @@ _Featured Content is Italicized_
 - [Commands](#commands)
   - _[Choose Theme](#terminal-all-in-one-choose-theme)_
   - [Toggle Maximized Terminal](#terminal-all-in-one-toggle-maximized-terminal)
+  - [Decrease Font Size](#terminal-all-in-one-decrease-font-size)
+  - [Increase Font Size](#terminal-all-in-one-increase-font-size)
 - [Keybindings](#keybindings)
   - [Mac](#mac)
   - [Windows and Linux](#windows-and-linux)
@@ -77,6 +79,20 @@ OR
 
 - Keybinding: `cmd/ctrl+i m`
 
+### Terminal All In One: Decrease Font Size
+
+- `terminalAllInOne.decreaseFontSize`
+
+- Decrease the Terminal Font Size by 1-pt
+- Keybinding: `cmd/ctrl+i -`
+
+### Terminal All In One: Increase Font Size
+
+- `terminalAllInOne.increaseFontSize`
+
+- Increase the Terminal Font Size by 1-pt
+- Keybinding: `cmd/ctrl+i =`
+
 ---
 
 ## Keybindings
@@ -96,6 +112,8 @@ OR
 | `cmd+i .`   | Focus the Next Terminal Instance     | `workbench.action.terminal.focusNext`                                              |
 | `cmd+i ,`   | Focus the Previous Terminal Instance | `workbench.action.terminal.focusPrevious`                                          |
 | `cmd+i t`   | Choose a Terminal Theme              | [`terminalAllInOne.chooseTerminalTheme`](#terminal-all-in-one-choose-theme)        |
+| `cmd+i -`   | Decrease Terminal Font Size          | [`terminalAllInOne.decreaseFontSize`](#terminal-all-in-one-decrease-font-size)     |
+| `cmd+i =`   | Increase Terminal Font Size          | [`terminalAllInOne.increaseFontSize`](#terminal-all-in-one-increase-font-size)     |
 
 ### Windows and Linux
 
@@ -110,6 +128,8 @@ OR
 | `ctrl+i .`   | Focus the Next Terminal Instance     | `workbench.action.terminal.focusNext`                                              |
 | `ctrl+i ,`   | Focus the Previous Terminal Instance | `workbench.action.terminal.focusPrevious`                                          |
 | `ctrl+i t`   | Choose a Terminal Theme              | [`terminalAllInOne.chooseTerminalTheme`](#terminal-all-in-one-choose-theme)        |
+| `ctrl+i -`   | Decrease Terminal Font Size          | [`terminalAllInOne.decreaseFontSize`](#terminal-all-in-one-decrease-font-size)     |
+| `ctrl+i =`   | Increase Terminal Font Size          | [`terminalAllInOne.increaseFontSize`](#terminal-all-in-one-increase-font-size)     |
 
 ---
 
