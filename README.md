@@ -28,6 +28,7 @@ _Featured Content is Italicized_
 - [Commands](#commands)
   - _[Choose Theme](#terminal-all-in-one-choose-theme)_
   - [Toggle Maximized Terminal](#terminal-all-in-one-toggle-maximized-terminal)
+  - [Change Font Size](#terminal-all-in-one-change-font-size)
   - [Decrease Font Size](#terminal-all-in-one-decrease-font-size)
   - [Increase Font Size](#terminal-all-in-one-increase-font-size)
 - [Keybindings](#keybindings)
@@ -70,7 +71,7 @@ OR
 - `terminalAllInOne.chooseTerminalTheme`
 
 - Opens a Theme Quick Pick with over **100** Themes to choose from
-- Live Preview in the Terminal when focusing a theme
+- Live Preview in the Terminal
 - Keybinding: `cmd/ctrl+i t`
 
 ### Terminal All In One: Toggle Maximized Terminal
@@ -78,6 +79,14 @@ OR
 - `terminalAllInOne.toggleMaxTerm`
 
 - Keybinding: `cmd/ctrl+i m`
+
+### Terminal All In One: Change Font Size
+
+- `terminalAllInOne.changeFontSize`
+
+- Opens a Font Size Quick Pick
+- Live Preview in the Terminal
+- Keybinding: `cmd/ctrl+i f`
 
 ### Terminal All In One: Decrease Font Size
 
@@ -112,6 +121,7 @@ OR
 | `cmd+i .`   | Focus the Next Terminal Instance     | `workbench.action.terminal.focusNext`                                              |
 | `cmd+i ,`   | Focus the Previous Terminal Instance | `workbench.action.terminal.focusPrevious`                                          |
 | `cmd+i t`   | Choose a Terminal Theme              | [`terminalAllInOne.chooseTerminalTheme`](#terminal-all-in-one-choose-theme)        |
+| `cmd+i f`   | Change Terminal Font Size            | [`terminalAllInOne.changeFontSize`](#terminal-all-in-one-change-font-size)         |
 | `cmd+i -`   | Decrease Terminal Font Size          | [`terminalAllInOne.decreaseFontSize`](#terminal-all-in-one-decrease-font-size)     |
 | `cmd+i =`   | Increase Terminal Font Size          | [`terminalAllInOne.increaseFontSize`](#terminal-all-in-one-increase-font-size)     |
 
@@ -128,6 +138,7 @@ OR
 | `ctrl+i .`   | Focus the Next Terminal Instance     | `workbench.action.terminal.focusNext`                                              |
 | `ctrl+i ,`   | Focus the Previous Terminal Instance | `workbench.action.terminal.focusPrevious`                                          |
 | `ctrl+i t`   | Choose a Terminal Theme              | [`terminalAllInOne.chooseTerminalTheme`](#terminal-all-in-one-choose-theme)        |
+| `ctrl+i f`   | Change Terminal Font Size            | [`terminalAllInOne.changeFontSize`](#terminal-all-in-one-change-font-size)         |
 | `ctrl+i -`   | Decrease Terminal Font Size          | [`terminalAllInOne.decreaseFontSize`](#terminal-all-in-one-decrease-font-size)     |
 | `ctrl+i =`   | Increase Terminal Font Size          | [`terminalAllInOne.increaseFontSize`](#terminal-all-in-one-increase-font-size)     |
 
@@ -169,8 +180,10 @@ OR
   ```json
   {
     "terminalAllInOne.messages": {
+      "shouldShowThemeQuickPickMessage": true,
       "shouldShowSelectedThemeMessage": true,
-      "shouldShowThemeQuickPickMessage": true
+      "shouldShowFontSizeQuickPickMessage": true,
+      "shouldShowSelectedFontSizeMessage": true
     }
   }
   ```

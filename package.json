@@ -9,7 +9,7 @@
   "name": "terminal-all-in-one",
   "displayName": "Terminal All In One",
   "description": "Enhance your integrated terminal with themes, keybindings, and custom commands.",
-  "version": "1.4.1",
+  "version": "1.5.0",
   "homepage": "https://marketplace.visualstudio.com/items?itemName=yasht.terminal-all-in-one",
   "license": "MIT",
   "publisher": "yasht",
@@ -40,6 +40,7 @@
   "activationEvents": [
     "onCommand:terminalAllInOne.toggleMaxTerm",
     "onCommand:terminalAllInOne.chooseTerminalTheme",
+    "onCommand:terminalAllInOne.changeFontSize",
     "onCommand:terminalAllInOne.decreaseFontSize",
     "onCommand:terminalAllInOne.increaseFontSize",
     "onStartupFinished"
@@ -53,6 +54,10 @@
       {
         "command": "terminalAllInOne.chooseTerminalTheme",
         "title": "Terminal All In One: Choose Theme"
+      },
+      {
+        "command": "terminalAllInOne.changeFontSize",
+        "title": "Terminal All In One: Change Font Size"
       },
       {
         "command": "terminalAllInOne.decreaseFontSize",
@@ -116,6 +121,12 @@
         "key": "ctrl+i t",
         "mac": "cmd+i t",
         "command": "terminalAllInOne.chooseTerminalTheme",
+        "when": "!config.terminalAllInOne.disableAllKeybindings"
+      },
+      {
+        "key": "ctrl+i f",
+        "mac": "cmd+i f",
+        "command": "terminalAllInOne.changeFontSize",
         "when": "!config.terminalAllInOne.disableAllKeybindings"
       },
       {
@@ -253,7 +264,9 @@
           "markdownDescription": "Controls which messages should be shown if `#terminalAllInOne.disableAllMessages#` is set to false",
           "default": {
             "shouldShowThemeQuickPickMessage": true,
-            "shouldShowSelectedThemeMessage": true
+            "shouldShowSelectedThemeMessage": true,
+            "shouldShowFontSizeQuickPickMessage": true,
+            "shouldShowSelectedFontSizeMessage": true
           }
         },
         "terminalAllInOne.disableAllMessages": {
