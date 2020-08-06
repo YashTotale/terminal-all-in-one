@@ -7,6 +7,8 @@ const READABLE_EXTENSION_NAME = "Terminal All In One";
 
 const TERMINAL_MESSAGES_CONFIG = `${EXTENSION_NAME}.messages`;
 
+const DONT_SHOW = "Don't Show Again";
+
 function getMessagesConfig(key) {
   return getConfig({ config: TERMINAL_MESSAGES_CONFIG, section: key });
 }
@@ -40,14 +42,13 @@ const messages = {
   },
   //Message when the theme quick pick is opened
   themeQuickPickOpened: async () => {
-    const SELECTION = "Don't Show Again";
     const CONFIG_PROPERTY = "shouldShowThemeQuickPickMessage";
     if (getMessagesConfig(CONFIG_PROPERTY)) {
       const selection = await vscode.window.showInformationMessage(
         "Open the terminal to see a live preview",
-        SELECTION
+        DONT_SHOW
       );
-      if (selection === SELECTION) {
+      if (selection === DONT_SHOW) {
         await updateMessagesConfig(CONFIG_PROPERTY, false);
       }
     }
@@ -66,14 +67,13 @@ const messages = {
   },
   //Message when a theme is selected
   themeSelected: async (selectedTheme) => {
-    const SELECTION = "Don't Show Again";
     const CONFIG_PROPERTY = "shouldShowSelectedThemeMessage";
     if (getMessagesConfig(CONFIG_PROPERTY)) {
       const selection = await vscode.window.showInformationMessage(
         `"${selectedTheme}" has been applied`,
-        SELECTION
+        DONT_SHOW
       );
-      if (selection === SELECTION) {
+      if (selection === DONT_SHOW) {
         await updateMessagesConfig(CONFIG_PROPERTY, false);
       }
     }
