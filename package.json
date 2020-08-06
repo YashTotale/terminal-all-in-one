@@ -24,7 +24,7 @@
   "bugs": {
     "url": "https://github.com/YashTotale/terminal-all-in-one/issues"
   },
-  "icon": "src/images/terminal-icon.jpg",
+  "icon": "static/images/terminal-icon.jpg",
   "author": {
     "name": "Yash T"
   },
