@@ -9,7 +9,7 @@
   "name": "terminal-all-in-one",
   "displayName": "Terminal All In One",
   "description": "Enhance your integrated terminal with themes, keybindings, and custom commands.",
-  "version": "1.5.0",
+  "version": "1.6.0",
   "homepage": "https://marketplace.visualstudio.com/items?itemName=yasht.terminal-all-in-one",
   "license": "MIT",
   "publisher": "yasht",
@@ -43,6 +43,7 @@
     "onCommand:terminalAllInOne.changeFontSize",
     "onCommand:terminalAllInOne.decreaseFontSize",
     "onCommand:terminalAllInOne.increaseFontSize",
+    "onCommand:terminalAllInOne.clearTerminal",
     "onStartupFinished"
   ],
   "contributes": {
@@ -66,6 +67,10 @@
       {
         "command": "terminalAllInOne.increaseFontSize",
         "title": "Terminal All In One: Increase Font Size"
+      },
+      {
+        "command": "terminalAllInOne.clearTerminal",
+        "title": "Terminal All In One: Clear Terminal"
       }
     ],
     "keybindings": [
@@ -139,6 +144,12 @@
         "key": "ctrl+i =",
         "mac": "cmd+i =",
         "command": "terminalAllInOne.increaseFontSize",
+        "when": "!config.terminalAllInOne.disableAllKeybindings"
+      },
+      {
+        "key": "ctrl+i backspace",
+        "mac": "cmd+i backspace",
+        "command": "terminalAllInOne.clearTerminal",
         "when": "!config.terminalAllInOne.disableAllKeybindings"
       }
     ],

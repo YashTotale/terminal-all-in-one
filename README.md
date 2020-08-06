@@ -31,6 +31,7 @@ _Featured Content is Italicized_
   - [Change Font Size](#terminal-all-in-one-change-font-size)
   - [Decrease Font Size](#terminal-all-in-one-decrease-font-size)
   - [Increase Font Size](#terminal-all-in-one-increase-font-size)
+  - [Clear Terminal](#terminal-all-in-one-clear-terminal)
 - [Keybindings](#keybindings)
   - [Mac](#mac)
   - [Windows and Linux](#windows-and-linux)
@@ -102,6 +103,12 @@ OR
 - Increase the Terminal Font Size by 1-pt
 - Keybinding: `cmd/ctrl+i =`
 
+### Terminal All In One: Clear Terminal
+
+- `terminalAllInOne.clearTerminal`
+
+- Keybinding: `cmd/ctrl+i backspace`
+
 ---
 
 ## Keybindings
@@ -110,37 +117,39 @@ OR
 
 ### Mac
 
-| Shortcut    | Description                          | Command                                                                            |
-| ----------- | ------------------------------------ | ---------------------------------------------------------------------------------- |
-| `` cmd+` `` | Toggle the Terminal                  | `workbench.action.terminal.toggleTerminal`                                         |
-| `cmd+i m`   | Toggle the Maximized Terminal        | [`terminalAllInOne.toggleMaxTerm`](#terminal-all-in-one-toggle-maximized-terminal) |
-| `cmd+i s`   | Select a Default Shell               | `workbench.action.terminal.selectDefaultShell`                                     |
-| `cmd+i c`   | Create a New Terminal Instance       | `workbench.action.terminal.new`                                                    |
-| `cmd+i d`   | Delete the Current Terminal Instance | `workbench.action.terminal.kill`                                                   |
-| `cmd+i r`   | Rename the Current Terminal Instance | `workbench.action.terminal.rename`                                                 |
-| `cmd+i .`   | Focus the Next Terminal Instance     | `workbench.action.terminal.focusNext`                                              |
-| `cmd+i ,`   | Focus the Previous Terminal Instance | `workbench.action.terminal.focusPrevious`                                          |
-| `cmd+i t`   | Choose a Terminal Theme              | [`terminalAllInOne.chooseTerminalTheme`](#terminal-all-in-one-choose-theme)        |
-| `cmd+i f`   | Change Terminal Font Size            | [`terminalAllInOne.changeFontSize`](#terminal-all-in-one-change-font-size)         |
-| `cmd+i -`   | Decrease Terminal Font Size          | [`terminalAllInOne.decreaseFontSize`](#terminal-all-in-one-decrease-font-size)     |
-| `cmd+i =`   | Increase Terminal Font Size          | [`terminalAllInOne.increaseFontSize`](#terminal-all-in-one-increase-font-size)     |
+| Shortcut          | Description                          | Command                                                                            |
+| ----------------- | ------------------------------------ | ---------------------------------------------------------------------------------- |
+| `` cmd+` ``       | Toggle the Terminal                  | `workbench.action.terminal.toggleTerminal`                                         |
+| `cmd+i m`         | Toggle the Maximized Terminal        | [`terminalAllInOne.toggleMaxTerm`](#terminal-all-in-one-toggle-maximized-terminal) |
+| `cmd+i s`         | Select a Default Shell               | `workbench.action.terminal.selectDefaultShell`                                     |
+| `cmd+i c`         | Create a New Terminal Instance       | `workbench.action.terminal.new`                                                    |
+| `cmd+i d`         | Delete the Current Terminal Instance | `workbench.action.terminal.kill`                                                   |
+| `cmd+i r`         | Rename the Current Terminal Instance | `workbench.action.terminal.rename`                                                 |
+| `cmd+i .`         | Focus the Next Terminal Instance     | `workbench.action.terminal.focusNext`                                              |
+| `cmd+i ,`         | Focus the Previous Terminal Instance | `workbench.action.terminal.focusPrevious`                                          |
+| `cmd+i t`         | Choose a Terminal Theme              | [`terminalAllInOne.chooseTerminalTheme`](#terminal-all-in-one-choose-theme)        |
+| `cmd+i f`         | Change Terminal Font Size            | [`terminalAllInOne.changeFontSize`](#terminal-all-in-one-change-font-size)         |
+| `cmd+i -`         | Decrease Terminal Font Size          | [`terminalAllInOne.decreaseFontSize`](#terminal-all-in-one-decrease-font-size)     |
+| `cmd+i =`         | Increase Terminal Font Size          | [`terminalAllInOne.increaseFontSize`](#terminal-all-in-one-increase-font-size)     |
+| `cmd+i backspace` | Clear the Terminal                   | [`terminalAllInOne.clearTerminal`](#terminal-all-in-one-clear-terminal)            |
 
 ### Windows and Linux
 
-| Shortcut     | Description                          | Command                                                                            |
-| ------------ | ------------------------------------ | ---------------------------------------------------------------------------------- |
-| `` ctrl+` `` | Toggle the Terminal                  | `workbench.action.terminal.toggleTerminal`                                         |
-| `ctrl+i m`   | Toggle the Maximized Terminal        | [`terminalAllInOne.toggleMaxTerm`](#terminal-all-in-one-toggle-maximized-terminal) |
-| `ctrl+i s`   | Select a Default Shell               | `workbench.action.terminal.selectDefaultShell`                                     |
-| `ctrl+i c`   | Create a New Terminal Instance       | `workbench.action.terminal.new`                                                    |
-| `ctrl+i d`   | Delete the Current Terminal Instance | `workbench.action.terminal.kill`                                                   |
-| `ctrl+i r`   | Rename the Current Terminal Instance | `workbench.action.terminal.rename`                                                 |
-| `ctrl+i .`   | Focus the Next Terminal Instance     | `workbench.action.terminal.focusNext`                                              |
-| `ctrl+i ,`   | Focus the Previous Terminal Instance | `workbench.action.terminal.focusPrevious`                                          |
-| `ctrl+i t`   | Choose a Terminal Theme              | [`terminalAllInOne.chooseTerminalTheme`](#terminal-all-in-one-choose-theme)        |
-| `ctrl+i f`   | Change Terminal Font Size            | [`terminalAllInOne.changeFontSize`](#terminal-all-in-one-change-font-size)         |
-| `ctrl+i -`   | Decrease Terminal Font Size          | [`terminalAllInOne.decreaseFontSize`](#terminal-all-in-one-decrease-font-size)     |
-| `ctrl+i =`   | Increase Terminal Font Size          | [`terminalAllInOne.increaseFontSize`](#terminal-all-in-one-increase-font-size)     |
+| Shortcut           | Description                          | Command                                                                            |
+| ------------------ | ------------------------------------ | ---------------------------------------------------------------------------------- |
+| `` ctrl+` ``       | Toggle the Terminal                  | `workbench.action.terminal.toggleTerminal`                                         |
+| `ctrl+i m`         | Toggle the Maximized Terminal        | [`terminalAllInOne.toggleMaxTerm`](#terminal-all-in-one-toggle-maximized-terminal) |
+| `ctrl+i s`         | Select a Default Shell               | `workbench.action.terminal.selectDefaultShell`                                     |
+| `ctrl+i c`         | Create a New Terminal Instance       | `workbench.action.terminal.new`                                                    |
+| `ctrl+i d`         | Delete the Current Terminal Instance | `workbench.action.terminal.kill`                                                   |
+| `ctrl+i r`         | Rename the Current Terminal Instance | `workbench.action.terminal.rename`                                                 |
+| `ctrl+i .`         | Focus the Next Terminal Instance     | `workbench.action.terminal.focusNext`                                              |
+| `ctrl+i ,`         | Focus the Previous Terminal Instance | `workbench.action.terminal.focusPrevious`                                          |
+| `ctrl+i t`         | Choose a Terminal Theme              | [`terminalAllInOne.chooseTerminalTheme`](#terminal-all-in-one-choose-theme)        |
+| `ctrl+i f`         | Change Terminal Font Size            | [`terminalAllInOne.changeFontSize`](#terminal-all-in-one-change-font-size)         |
+| `ctrl+i -`         | Decrease Terminal Font Size          | [`terminalAllInOne.decreaseFontSize`](#terminal-all-in-one-decrease-font-size)     |
+| `ctrl+i =`         | Increase Terminal Font Size          | [`terminalAllInOne.increaseFontSize`](#terminal-all-in-one-increase-font-size)     |
+| `ctrl+i backspace` | Clear the Terminal                   | [`terminalAllInOne.clearTerminal`](#terminal-all-in-one-clear-terminal)            |
 
 ---
 

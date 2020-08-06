@@ -16,12 +16,7 @@ const updateFontSizeConfig = async function (newSize) {
 };
 
 const clearTerminal = function () {
-  return vscode.commands.executeCommand(
-    "workbench.action.terminal.sendSequence",
-    {
-      text: "\u000Dclear\u000D",
-    }
-  );
+  return vscode.commands.executeCommand("terminalAllInOne.clearTerminal");
 };
 
 const decreaseFontSize = function () {
