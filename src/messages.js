@@ -13,6 +13,18 @@ function getMessagesConfig(key) {
   return getConfig({ config: TERMINAL_MESSAGES_CONFIG, section: key });
 }
 
+async function infoWithDisableOption(configProperty, info) {
+  if (getMessagesConfig(configProperty)) {
+    const selection = await vscode.window.showInformationMessage(
+      info,
+      DONT_SHOW
+    );
+    if (selection === DONT_SHOW) {
+      await updateMessagesConfig(configProperty, false);
+    }
+  }
+}
+
 async function updateMessagesConfig(key, value) {
   updateConfig({
     section: TERMINAL_MESSAGES_CONFIG,
@@ -42,16 +54,10 @@ const messages = {
   },
   //Message when the theme quick pick is opened
   themeQuickPickOpened: async () => {
-    const CONFIG_PROPERTY = "shouldShowThemeQuickPickMessage";
-    if (getMessagesConfig(CONFIG_PROPERTY)) {
-      const selection = await vscode.window.showInformationMessage(
-        "Open the terminal to see a live preview",
-        DONT_SHOW
-      );
-      if (selection === DONT_SHOW) {
-        await updateMessagesConfig(CONFIG_PROPERTY, false);
-      }
-    }
+    await infoWithDisableOption(
+      "shouldShowThemeQuickPickMessage",
+      "Open the terminal to see a live preview"
+    );
   },
   //Message when a theme that does not exist is chosen
   themeDoesNotExist: async () => {
@@ -67,16 +73,23 @@ const messages = {
   },
   //Message when a theme is selected
   themeSelected: async (selectedTheme) => {
-    const CONFIG_PROPERTY = "shouldShowSelectedThemeMessage";
-    if (getMessagesConfig(CONFIG_PROPERTY)) {
-      const selection = await vscode.window.showInformationMessage(
-        `"${selectedTheme}" has been applied`,
-        DONT_SHOW
-      );
-      if (selection === DONT_SHOW) {
-        await updateMessagesConfig(CONFIG_PROPERTY, false);
-      }
-    }
+    infoWithDisableOption(
+      "shouldShowSelectedThemeMessage",
+      `"${selectedTheme}" has been applied`
+    );
+  },
+  //Message when the font size quick pick is opened
+  fontSizeQuickPickOpened: async () => {
+    infoWithDisableOption(
+      "shouldShowFontSizeQuickPickMessage",
+      "Open the terminal for a live preview. If a terminal was already open and you cannot see your previous commands, scroll up in the terminal."
+    );
+  },
+  fontSizeSelected: async (selectedSize) => {
+    infoWithDisableOption(
+      "shouldShowFontSizeSelectedMessage",
+      `Font Size "${selectedSize}" has been applied`
+    );
   },
   error: (message) => {
     vscode.window.showErrorMessage(message);
