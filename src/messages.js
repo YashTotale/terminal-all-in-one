@@ -48,7 +48,7 @@ const messages = {
       if (selection === "README") {
         vscode.commands.executeCommand(
           "extension.open",
-          "yasht.terminal-all-in-one"
+          EXTENSION_NAME_W_PUBLISHER
         );
       }
     }
