@@ -138,21 +138,25 @@ OR
 ### Scripts
 
 - `terminalAllInOne.scripts`
-- Scripts are string representations of [Command Line commands](https://www.codecademy.com/articles/command-line-commands)
+- Scripts are string representations of [Command Line commands](https://www.codecademy.com/articles/command-line-commands). Scripts can be strings (1 command) or arrays (multiple commands)
 - Use the command [`terminalAllInOne.runScript`](#terminal-all-in-one-run-script) or the keybinding `cmd/ctrl+i enter` to open the Script Quick Pick
-- Alternatively, use the keybindings `cmd/ctrl+i 0-9` to run a specific script whose index corresponds to the number pressed _(Note: Only the first 10 scripts will have corresponding keybindings)_
+- Alternatively, use the keybindings `cmd/ctrl+i 0-9` to run a specific script whose index corresponds to the number pressed _(Note: Only your first 10 scripts will have corresponding keybindings)_
 - Sample Configuration:
 
   ```json
   {
     "terminalAllInOne.scripts": [
       {
-        "name": "Sample",
-        "script": "echo hello"
+        "name": "Greet",
+        "script": ["echo hello", "echo How was your day?"]
       },
       {
         "name": "Desktop",
         "script": "cd ~/Desktop"
+      },
+      {
+        "name": "Install Dependencies",
+        "script": ["npm i react", "npm i --save-dev mocha"]
       }
     ]
   }
