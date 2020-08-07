@@ -6,7 +6,8 @@ const getScriptsConfig = function () {
   return getConfig({ section: "terminalAllInOne.scripts" });
 };
 
-const execute = function ({ script }) {
+const execute = async function ({ script }) {
+  await vscode.commands.executeCommand("workbench.action.terminal.focus");
   return vscode.commands.executeCommand(
     "workbench.action.terminal.sendSequence",
     {
@@ -17,8 +18,11 @@ const execute = function ({ script }) {
 
 const runScript = async function (index) {
   const scripts = getScriptsConfig();
-  if (index) {
-    return execute(scripts[index]);
+  if (typeof index === "number") {
+    if (index < scripts.length) {
+      return execute(scripts[index]);
+    }
+    return showMessage("noScriptsAtIndex");
   }
   if (!scripts.length) {
     return showMessage("noScripts");
@@ -33,7 +37,6 @@ const runScript = async function (index) {
     canPickMany: false,
   });
   if (selectedScript) {
-    await vscode.commands.executeCommand("workbench.action.terminal.focus");
     return execute(scripts[selectedScript.index]);
   }
 };

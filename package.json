@@ -162,6 +162,76 @@
         "mac": "cmd+i enter",
         "command": "terminalAllInOne.runScript",
         "when": "!config.terminalAllInOne.disableAllKeybindings"
+      },
+      {
+        "key": "ctrl+i 0",
+        "mac": "cmd+i 0",
+        "command": "terminalAllInOne.runScript",
+        "when": "!config.terminalAllInOne.disableAllKeybindings",
+        "args": 0
+      },
+      {
+        "key": "ctrl+i 1",
+        "mac": "cmd+i 1",
+        "command": "terminalAllInOne.runScript",
+        "when": "!config.terminalAllInOne.disableAllKeybindings",
+        "args": 1
+      },
+      {
+        "key": "ctrl+i 2",
+        "mac": "cmd+i 2",
+        "command": "terminalAllInOne.runScript",
+        "when": "!config.terminalAllInOne.disableAllKeybindings",
+        "args": 2
+      },
+      {
+        "key": "ctrl+i 3",
+        "mac": "cmd+i 3",
+        "command": "terminalAllInOne.runScript",
+        "when": "!config.terminalAllInOne.disableAllKeybindings",
+        "args": 3
+      },
+      {
+        "key": "ctrl+i 4",
+        "mac": "cmd+i 4",
+        "command": "terminalAllInOne.runScript",
+        "when": "!config.terminalAllInOne.disableAllKeybindings",
+        "args": 4
+      },
+      {
+        "key": "ctrl+i 5",
+        "mac": "cmd+i 5",
+        "command": "terminalAllInOne.runScript",
+        "when": "!config.terminalAllInOne.disableAllKeybindings",
+        "args": 5
+      },
+      {
+        "key": "ctrl+i 6",
+        "mac": "cmd+i 6",
+        "command": "terminalAllInOne.runScript",
+        "when": "!config.terminalAllInOne.disableAllKeybindings",
+        "args": 6
+      },
+      {
+        "key": "ctrl+i 7",
+        "mac": "cmd+i 7",
+        "command": "terminalAllInOne.runScript",
+        "when": "!config.terminalAllInOne.disableAllKeybindings",
+        "args": 7
+      },
+      {
+        "key": "ctrl+i 8",
+        "mac": "cmd+i 8",
+        "command": "terminalAllInOne.runScript",
+        "when": "!config.terminalAllInOne.disableAllKeybindings",
+        "args": 8
+      },
+      {
+        "key": "ctrl+i 9",
+        "mac": "cmd+i 9",
+        "command": "terminalAllInOne.runScript",
+        "when": "!config.terminalAllInOne.disableAllKeybindings",
+        "args": 9
       }
     ],
     "configuration": {

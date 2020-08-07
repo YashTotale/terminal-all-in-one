@@ -94,7 +94,16 @@ const messages = {
   },
   noScripts: async () => {
     const selection = await vscode.window.showInformationMessage(
-      "No Scripts have been defined",
+      "No scripts have been defined",
+      "Go to Settings"
+    );
+    if (selection === "Go to Settings") {
+      await vscode.commands.executeCommand("workbench.action.openSettingsJson");
+    }
+  },
+  noScriptsAtIndex: async () => {
+    const selection = await vscode.window.showInformationMessage(
+      "No script has been defined for that index",
       "Go to Settings"
     );
     if (selection === "Go to Settings") {
