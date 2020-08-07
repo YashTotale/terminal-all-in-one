@@ -8,8 +8,8 @@
   ],
   "name": "terminal-all-in-one",
   "displayName": "Terminal All In One",
-  "description": "Enhance your integrated terminal with themes, keybindings, and custom commands.",
-  "version": "1.6.1",
+  "description": "Enhance your integrated terminal with themes, scripts, keybindings, and commands.",
+  "version": "1.7.0",
   "homepage": "https://marketplace.visualstudio.com/items?itemName=yasht.terminal-all-in-one",
   "license": "MIT",
   "publisher": "yasht",
@@ -44,33 +44,38 @@
     "onCommand:terminalAllInOne.decreaseFontSize",
     "onCommand:terminalAllInOne.increaseFontSize",
     "onCommand:terminalAllInOne.clearTerminal",
+    "onCommand:terminalAllInOne.runScript",
     "onStartupFinished"
   ],
   "contributes": {
     "commands": [
       {
         "command": "terminalAllInOne.toggleMaxTerm",
-        "title": "Terminal All In One: Toggle Maximized Terminal"
+        "title": "%ext.command.toggleMaxTerm.title%"
       },
       {
         "command": "terminalAllInOne.chooseTerminalTheme",
-        "title": "Terminal All In One: Choose Theme"
+        "title": "%ext.command.chooseTerminalTheme.title%"
       },
       {
         "command": "terminalAllInOne.changeFontSize",
-        "title": "Terminal All In One: Change Font Size"
+        "title": "%ext.command.changeFontSize.title%"
       },
       {
         "command": "terminalAllInOne.decreaseFontSize",
-        "title": "Terminal All In One: Decrease Font Size"
+        "title": "%ext.command.decreaseFontSize.title%"
       },
       {
         "command": "terminalAllInOne.increaseFontSize",
-        "title": "Terminal All In One: Increase Font Size"
+        "title": "%ext.command.increaseFontSize.title%"
       },
       {
         "command": "terminalAllInOne.clearTerminal",
-        "title": "Terminal All In One: Clear Terminal"
+        "title": "%ext.command.clearTerminal.title%"
+      },
+      {
+        "command": "terminalAllInOne.runScript",
+        "title": "%ext.command.runScript.title%"
       }
     ],
     "keybindings": [
@@ -151,14 +156,90 @@
         "mac": "cmd+i backspace",
         "command": "terminalAllInOne.clearTerminal",
         "when": "!config.terminalAllInOne.disableAllKeybindings"
+      },
+      {
+        "key": "ctrl+i enter",
+        "mac": "cmd+i enter",
+        "command": "terminalAllInOne.runScript",
+        "when": "!config.terminalAllInOne.disableAllKeybindings"
+      },
+      {
+        "key": "ctrl+i 0",
+        "mac": "cmd+i 0",
+        "command": "terminalAllInOne.runScript",
+        "when": "!config.terminalAllInOne.disableAllKeybindings",
+        "args": 0
+      },
+      {
+        "key": "ctrl+i 1",
+        "mac": "cmd+i 1",
+        "command": "terminalAllInOne.runScript",
+        "when": "!config.terminalAllInOne.disableAllKeybindings",
+        "args": 1
+      },
+      {
+        "key": "ctrl+i 2",
+        "mac": "cmd+i 2",
+        "command": "terminalAllInOne.runScript",
+        "when": "!config.terminalAllInOne.disableAllKeybindings",
+        "args": 2
+      },
+      {
+        "key": "ctrl+i 3",
+        "mac": "cmd+i 3",
+        "command": "terminalAllInOne.runScript",
+        "when": "!config.terminalAllInOne.disableAllKeybindings",
+        "args": 3
+      },
+      {
+        "key": "ctrl+i 4",
+        "mac": "cmd+i 4",
+        "command": "terminalAllInOne.runScript",
+        "when": "!config.terminalAllInOne.disableAllKeybindings",
+        "args": 4
+      },
+      {
+        "key": "ctrl+i 5",
+        "mac": "cmd+i 5",
+        "command": "terminalAllInOne.runScript",
+        "when": "!config.terminalAllInOne.disableAllKeybindings",
+        "args": 5
+      },
+      {
+        "key": "ctrl+i 6",
+        "mac": "cmd+i 6",
+        "command": "terminalAllInOne.runScript",
+        "when": "!config.terminalAllInOne.disableAllKeybindings",
+        "args": 6
+      },
+      {
+        "key": "ctrl+i 7",
+        "mac": "cmd+i 7",
+        "command": "terminalAllInOne.runScript",
+        "when": "!config.terminalAllInOne.disableAllKeybindings",
+        "args": 7
+      },
+      {
+        "key": "ctrl+i 8",
+        "mac": "cmd+i 8",
+        "command": "terminalAllInOne.runScript",
+        "when": "!config.terminalAllInOne.disableAllKeybindings",
+        "args": 8
+      },
+      {
+        "key": "ctrl+i 9",
+        "mac": "cmd+i 9",
+        "command": "terminalAllInOne.runScript",
+        "when": "!config.terminalAllInOne.disableAllKeybindings",
+        "args": 9
       }
     ],
     "configuration": {
-      "title": "Terminal All In One",
+      "title": "%ext.config.title%",
       "properties": {
         "terminalAllInOne.terminalTheme": {
           "type": "string",
-          "markdownDescription": "A Terminal Theme from [this list](https://glitchbone.github.io/vscode-base16-term/#/)",
+          "markdownDescription": "%ext.config.terminalTheme.description%",
           "default": "None",
           "enum": [
             "3024",
@@ -267,23 +348,58 @@
         },
         "terminalAllInOne.disableAllKeybindings": {
           "type": "boolean",
-          "description": "Controls whether all keybindings are disabled",
+          "description": "%ext.config.disableAllKeybindings.description%",
           "default": false
         },
         "terminalAllInOne.messages": {
           "type": "object",
-          "markdownDescription": "Controls which messages should be shown if `#terminalAllInOne.disableAllMessages#` is set to false",
+          "markdownDescription": "%ext.config.messages.description%",
           "default": {
             "shouldShowThemeQuickPickMessage": true,
             "shouldShowSelectedThemeMessage": true,
             "shouldShowFontSizeQuickPickMessage": true,
             "shouldShowSelectedFontSizeMessage": true
+          },
+          "properties": {
+            "shouldShowThemeQuickPickMessage": {
+              "type": "boolean"
+            },
+            "shouldShowSelectedThemeMessage": {
+              "type": "boolean"
+            },
+            "shouldShowFontSizeQuickPickMessage": {
+              "type": "boolean"
+            },
+            "shouldShowSelectedFontSizeMessage": {
+              "type": "boolean"
+            }
           }
         },
         "terminalAllInOne.disableAllMessages": {
           "type": "boolean",
-          "description": "Controls whether all messages (info, warning, and error) from this extension are disabled",
+          "description": "%ext.config.disableAllMessages.description%",
           "default": false
+        },
+        "terminalAllInOne.scripts": {
+          "type": "array",
+          "description": "%ext.config.scripts.description%",
+          "default": [],
+          "items": {
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "%ext.config.scripts.name.description%"
+              },
+              "script": {
+                "type": "string",
+                "description": "%ext.config.scripts.script.description%"
+              }
+            },
+            "required": [
+              "name",
+              "script"
+            ]
+          }
         }
       }
     }
@@ -303,6 +419,7 @@
   },
   "dependencies": {
     "lodash.debounce": "^4.0.8",
+    "vscode-nls": "^4.1.2",
     "vscode-uri": "^2.1.2"
   }
 }

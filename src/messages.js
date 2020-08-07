@@ -46,8 +46,9 @@ const messages = {
       );
       context.globalState.update(STATE_PROPERTY, true);
       if (selection === "README") {
-        vscode.env.openExternal(
-          `vscode:extension/${EXTENSION_NAME_W_PUBLISHER}`
+        vscode.commands.executeCommand(
+          "extension.open",
+          EXTENSION_NAME_W_PUBLISHER
         );
       }
     }
@@ -90,6 +91,40 @@ const messages = {
       "shouldShowSelectedFontSizeMessage",
       `Font Size "${selectedSize}" has been applied`
     );
+  },
+  noScripts: async () => {
+    const selection = await vscode.window.showWarningMessage(
+      "No scripts have been defined",
+      "Settings",
+      "Scripts Explained"
+    );
+    if (selection === "Settings") {
+      return vscode.commands.executeCommand(
+        "workbench.action.openSettingsJson"
+      );
+    }
+    if (selection === "Scripts Explained") {
+      return vscode.env.openExternal(
+        "https://marketplace.visualstudio.com/items?itemName=yasht.terminal-all-in-one#scripts"
+      );
+    }
+  },
+  noScriptsAtIndex: async () => {
+    const selection = await vscode.window.showWarningMessage(
+      "No script has been defined for that index",
+      "Settings",
+      "Scripts Explained"
+    );
+    if (selection === "Settings") {
+      return vscode.commands.executeCommand(
+        "workbench.action.openSettingsJson"
+      );
+    }
+    if (selection === "Scripts Explained") {
+      return vscode.env.openExternal(
+        "https://marketplace.visualstudio.com/items?itemName=yasht.terminal-all-in-one#scripts"
+      );
+    }
   },
   error: (message) => {
     vscode.window.showErrorMessage(message);
