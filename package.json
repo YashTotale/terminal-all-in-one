@@ -51,31 +51,31 @@
     "commands": [
       {
         "command": "terminalAllInOne.toggleMaxTerm",
-        "title": "%ext.command.toggleMaxTerm.title%"
+        "title": "Terminal All In One: Toggle Maximized Terminal"
       },
       {
         "command": "terminalAllInOne.chooseTerminalTheme",
-        "title": "%ext.command.chooseTerminalTheme.title%"
+        "title": "Terminal All In One: Choose Theme"
       },
       {
         "command": "terminalAllInOne.changeFontSize",
-        "title": "%ext.command.changeFontSize.title%"
+        "title": "Terminal All In One: Change Font Size"
       },
       {
         "command": "terminalAllInOne.decreaseFontSize",
-        "title": "%ext.command.decreaseFontSize.title%"
+        "title": "Terminal All In One: Decrease Font Size"
       },
       {
         "command": "terminalAllInOne.increaseFontSize",
-        "title": "%ext.command.increaseFontSize.title%"
+        "title": "Terminal All In One: Increase Font Size"
       },
       {
         "command": "terminalAllInOne.clearTerminal",
-        "title": "%ext.command.clearTerminal.title%"
+        "title": "Terminal All In One: Clear Terminal"
       },
       {
         "command": "terminalAllInOne.runScript",
-        "title": "%ext.command.runScript.title%"
+        "title": "Terminal All In One: Run Script"
       }
     ],
     "keybindings": [
@@ -235,11 +235,11 @@
       }
     ],
     "configuration": {
-      "title": "%ext.config.title%",
+      "title": "Terminal All In One",
       "properties": {
         "terminalAllInOne.terminalTheme": {
           "type": "string",
-          "markdownDescription": "%ext.config.terminalTheme.description%",
+          "markdownDescription": "A Terminal Theme from [this list](https://glitchbone.github.io/vscode-base16-term/#/)",
           "default": "None",
           "enum": [
             "3024",
@@ -348,12 +348,12 @@
         },
         "terminalAllInOne.disableAllKeybindings": {
           "type": "boolean",
-          "description": "%ext.config.disableAllKeybindings.description%",
+          "description": "Controls whether all keybindings are disabled",
           "default": false
         },
         "terminalAllInOne.messages": {
           "type": "object",
-          "markdownDescription": "%ext.config.messages.description%",
+          "markdownDescription": "Controls which messages should be shown if `#terminalAllInOne.disableAllMessages#` is set to false",
           "default": {
             "shouldShowThemeQuickPickMessage": true,
             "shouldShowSelectedThemeMessage": true,
@@ -377,28 +377,28 @@
         },
         "terminalAllInOne.disableAllMessages": {
           "type": "boolean",
-          "description": "%ext.config.disableAllMessages.description%",
+          "description": "Controls whether all messages (info, warning, and error) from this extension are disabled",
           "default": false
         },
         "terminalAllInOne.scripts": {
           "type": "array",
-          "description": "%ext.config.scripts.description%",
+          "description": "An array of scripts",
           "default": [],
           "items": {
             "properties": {
               "name": {
                 "type": "string",
-                "description": "%ext.config.scripts.name.description%"
+                "description": "The name of the script (used in the quick pick)"
               },
               "script": {
                 "oneOf": [
                   {
                     "type": "string",
-                    "description": "%ext.config.scripts.script.description%"
+                    "description": "The command (string) to run in the terminal when this script is triggered"
                   },
                   {
                     "type": "array",
-                    "description": "%ext.config.scripts.script.description%"
+                    "description": "The commands (array) to run in the terminal when this script is triggered"
                   }
                 ]
               }

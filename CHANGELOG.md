@@ -56,6 +56,10 @@ The format of this Change Log is based on [Keep a Changelog](http://keepachangel
 
 - Scripts can be arrays with commands that are run in order
 
+#### Fixed
+
+- %ext...% messages showing instead of command/config descriptions
+
 ---
 
 ### [1.7.0] - (2020-08-06)
