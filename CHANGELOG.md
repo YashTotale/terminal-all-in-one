@@ -9,16 +9,17 @@ The format of this Change Log is based on [Keep a Changelog](http://keepachangel
   - [[Unreleased]](#unreleased)
   - [[1.8.0] - (2020-08-07)](#180---2020-08-07)
     - [Added](#added)
+    - [Fixed](#fixed)
   - [[1.7.0] - (2020-08-06)](#170---2020-08-06)
     - [Added](#added-1)
   - [[1.6.1] - (2020-08-06)](#161---2020-08-06)
-    - [Fixed](#fixed)
+    - [Fixed](#fixed-1)
   - [[1.6.0] - (2020-08-06)](#160---2020-08-06)
     - [Added](#added-2)
   - [[1.5.0] - (2020-08-06)](#150---2020-08-06)
     - [Added](#added-3)
   - [[1.4.1] - (2020-08-05)](#141---2020-08-05)
-    - [Fixed](#fixed-1)
+    - [Fixed](#fixed-2)
   - [[1.4.0] - (2020-08-05)](#140---2020-08-05)
     - [Added](#added-4)
   - [[1.3.0] - (2020-08-05)](#130---2020-08-05)
@@ -26,13 +27,13 @@ The format of this Change Log is based on [Keep a Changelog](http://keepachangel
   - [[1.2.0] - (2020-08-04)](#120---2020-08-04)
     - [Added](#added-6)
   - [[1.1.1] - (2020-08-03)](#111---2020-08-03)
-    - [Fixed](#fixed-2)
+    - [Fixed](#fixed-3)
   - [[1.1.0] - (2020-08-02)](#110---2020-08-02)
     - [Changed](#changed)
   - [[1.0.9] - (2020-08-01)](#109---2020-08-01)
-    - [Fixed](#fixed-3)
-  - [[1.0.7] - (2020-07-31)](#107---2020-07-31)
     - [Fixed](#fixed-4)
+  - [[1.0.7] - (2020-07-31)](#107---2020-07-31)
+    - [Fixed](#fixed-5)
   - [[1.0.3] - (2020-07-30)](#103---2020-07-30)
     - [Added](#added-7)
   - [[1.0.2] - (2020-07-30)](#102---2020-07-30)
@@ -58,7 +59,7 @@ The format of this Change Log is based on [Keep a Changelog](http://keepachangel
 
 #### Fixed
 
-- %ext...% messages showing instead of command/config descriptions
+- `%ext...%` messages showing instead of command/config descriptions
 
 ---
 
