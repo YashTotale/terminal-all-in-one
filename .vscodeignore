@@ -8,4 +8,3 @@ vsc-extension-quickstart.md
 **/*.map
 **/.eslintrc.json
 **/.markdownlint.json
-node_modules
