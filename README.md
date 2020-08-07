@@ -82,7 +82,7 @@ OR
 - `terminalAllInOne.runScript`
 
 - Opens a Script Quick Pick<sup>[1](#quick-pick)</sup> with [your defined scripts](#scripts) **OR** runs a specific script
-- Keybindings: `cmd/ctrl+i enter` for the Script Quick Pick<sup>[1](#myfootnote1)</sup> **OR** `cmd/ctrl+i 0-9` for a specific script
+- Keybindings: `cmd/ctrl+i enter` for the Script Quick Pick<sup>[1](#quick-pick)</sup> **OR** `cmd/ctrl+i 0-9` for a specific script
 
 ### Terminal All In One: Toggle Maximized Terminal
 
@@ -139,7 +139,7 @@ OR
 
 - `terminalAllInOne.scripts`
 - Scripts are string representations of [Command Line commands](https://www.codecademy.com/articles/command-line-commands). Scripts can be strings (1 command) or arrays (multiple commands)
-- Use the command [`terminalAllInOne.runScript`](#terminal-all-in-one-run-script) or the keybinding `cmd/ctrl+i enter` to open the Script Quick Pick<sup>[1](#myfootnote1)</sup>
+- Use the command [`terminalAllInOne.runScript`](#terminal-all-in-one-run-script) or the keybinding `cmd/ctrl+i enter` to open the Script Quick Pick<sup>[1](#quick-pick)</sup>
 - Alternatively, use the keybindings `cmd/ctrl+i 0-9` to run a specific script whose index corresponds to the number pressed _(Note: Only your first 10 scripts will have corresponding keybindings)_
 - Sample Configuration:
 
