@@ -21,25 +21,27 @@
     <a href="https://lgtm.com/projects/g/YashTotale/terminal-all-in-one/context:javascript"><img src="https://img.shields.io/lgtm/grade/javascript/github/YashTotale/terminal-all-in-one?style=for-the-badge&labelColor=000000&logo=lgtm&label=Code%20Quality" alt="Code Quality"></a>&nbsp;
 </p>
 
-**Table Of Contents**  
-_Featured Content is Italicized_
+_Table Of Contents_  
+**Featured Content is Bolded**
 
 - [Installation](#installation)
 - [Commands](#commands)
-  - _[Choose Theme](#terminal-all-in-one-choose-theme)_
+  - **[Choose Theme](#terminal-all-in-one-choose-theme)**
+  - **[Run Script](#terminal-all-in-one-run-script)**
   - [Toggle Maximized Terminal](#terminal-all-in-one-toggle-maximized-terminal)
   - [Change Font Size](#terminal-all-in-one-change-font-size)
   - [Decrease Font Size](#terminal-all-in-one-decrease-font-size)
   - [Increase Font Size](#terminal-all-in-one-increase-font-size)
   - [Clear Terminal](#terminal-all-in-one-clear-terminal)
-- [Keybindings](#keybindings)
-  - [Mac](#mac)
-  - [Windows and Linux](#windows-and-linux)
 - [Configuration](#configuration)
-  - _[Terminal Theme](#terminal-theme)_
+  - **[Terminal Theme](#terminal-theme)**
+  - **[Scripts](#scripts)**
   - [Disable All Keybindings](#disable-all-keybindings)
   - [Messages](#messages)
   - [Disable All Messages](#disable-all-messages)
+- [Keybindings](#keybindings)
+  - [Mac](#mac)
+  - [Windows and Linux](#windows-and-linux)
 - [Demos](#demos)
 - [Contribute](#contribute)
 - _[More Info](#more-info)_
@@ -74,6 +76,13 @@ OR
 - Opens a Theme Quick Pick with over **100** Themes to choose from
 - Live Preview in the Terminal
 - Keybinding: `cmd/ctrl+i t`
+
+### Terminal All In One: Run Script
+
+- `terminalAllInOne.runScript`
+
+- Opens a Script Quick Pick with [your defined scripts](#scripts) **OR** runs a specific script
+- Keybindings: `cmd/ctrl+i enter` for Script Quick Pick **OR** `cmd/ctrl+i 0-9` for a specific script
 
 ### Terminal All In One: Toggle Maximized Terminal
 
@@ -111,48 +120,6 @@ OR
 
 ---
 
-## Keybindings
-
-**For each keybinding, press `cmd+i` (for Macs) or `ctrl+i` (for Windows & Linux), and the corresponding key for the terminal command.**
-
-### Mac
-
-| Shortcut          | Description                          | Command                                                                            |
-| ----------------- | ------------------------------------ | ---------------------------------------------------------------------------------- |
-| `` cmd+` ``       | Toggle the Terminal                  | `workbench.action.terminal.toggleTerminal`                                         |
-| `cmd+i m`         | Toggle the Maximized Terminal        | [`terminalAllInOne.toggleMaxTerm`](#terminal-all-in-one-toggle-maximized-terminal) |
-| `cmd+i s`         | Select a Default Shell               | `workbench.action.terminal.selectDefaultShell`                                     |
-| `cmd+i c`         | Create a New Terminal Instance       | `workbench.action.terminal.new`                                                    |
-| `cmd+i d`         | Delete the Current Terminal Instance | `workbench.action.terminal.kill`                                                   |
-| `cmd+i r`         | Rename the Current Terminal Instance | `workbench.action.terminal.rename`                                                 |
-| `cmd+i .`         | Focus the Next Terminal Instance     | `workbench.action.terminal.focusNext`                                              |
-| `cmd+i ,`         | Focus the Previous Terminal Instance | `workbench.action.terminal.focusPrevious`                                          |
-| `cmd+i t`         | Choose a Terminal Theme              | [`terminalAllInOne.chooseTerminalTheme`](#terminal-all-in-one-choose-theme)        |
-| `cmd+i f`         | Change Terminal Font Size            | [`terminalAllInOne.changeFontSize`](#terminal-all-in-one-change-font-size)         |
-| `cmd+i -`         | Decrease Terminal Font Size          | [`terminalAllInOne.decreaseFontSize`](#terminal-all-in-one-decrease-font-size)     |
-| `cmd+i =`         | Increase Terminal Font Size          | [`terminalAllInOne.increaseFontSize`](#terminal-all-in-one-increase-font-size)     |
-| `cmd+i backspace` | Clear the Terminal                   | [`terminalAllInOne.clearTerminal`](#terminal-all-in-one-clear-terminal)            |
-
-### Windows and Linux
-
-| Shortcut           | Description                          | Command                                                                            |
-| ------------------ | ------------------------------------ | ---------------------------------------------------------------------------------- |
-| `` ctrl+` ``       | Toggle the Terminal                  | `workbench.action.terminal.toggleTerminal`                                         |
-| `ctrl+i m`         | Toggle the Maximized Terminal        | [`terminalAllInOne.toggleMaxTerm`](#terminal-all-in-one-toggle-maximized-terminal) |
-| `ctrl+i s`         | Select a Default Shell               | `workbench.action.terminal.selectDefaultShell`                                     |
-| `ctrl+i c`         | Create a New Terminal Instance       | `workbench.action.terminal.new`                                                    |
-| `ctrl+i d`         | Delete the Current Terminal Instance | `workbench.action.terminal.kill`                                                   |
-| `ctrl+i r`         | Rename the Current Terminal Instance | `workbench.action.terminal.rename`                                                 |
-| `ctrl+i .`         | Focus the Next Terminal Instance     | `workbench.action.terminal.focusNext`                                              |
-| `ctrl+i ,`         | Focus the Previous Terminal Instance | `workbench.action.terminal.focusPrevious`                                          |
-| `ctrl+i t`         | Choose a Terminal Theme              | [`terminalAllInOne.chooseTerminalTheme`](#terminal-all-in-one-choose-theme)        |
-| `ctrl+i f`         | Change Terminal Font Size            | [`terminalAllInOne.changeFontSize`](#terminal-all-in-one-change-font-size)         |
-| `ctrl+i -`         | Decrease Terminal Font Size          | [`terminalAllInOne.decreaseFontSize`](#terminal-all-in-one-decrease-font-size)     |
-| `ctrl+i =`         | Increase Terminal Font Size          | [`terminalAllInOne.increaseFontSize`](#terminal-all-in-one-increase-font-size)     |
-| `ctrl+i backspace` | Clear the Terminal                   | [`terminalAllInOne.clearTerminal`](#terminal-all-in-one-clear-terminal)            |
-
----
-
 ## Configuration
 
 ### Terminal Theme
@@ -165,6 +132,29 @@ OR
   ```json
   {
     "terminalAllInOne.terminalTheme": "None"
+  }
+  ```
+
+### Scripts
+
+- `terminalAllInOne.scripts`
+- Scripts are string representations of [Command Line commands](https://www.codecademy.com/articles/command-line-commands)
+- Use the command [`terminalAllInOne.runScript`](#terminal-all-in-one-run-script) or the keybinding `cmd/ctrl+i enter` to open the Script Quick Pick
+- Alternatively, use the keybindings `cmd/ctrl+i 0-9` to run a specific script whose index corresponds to the number pressed _(Note: Only the first 10 scripts will have corresponding keybindings)_
+- Sample Configuration:
+
+  ```json
+  {
+    "terminalAllInOne.scripts": [
+      {
+        "name": "Sample",
+        "script": "echo hello"
+      },
+      {
+        "name": "Desktop",
+        "script": "cd ~/Desktop"
+      }
+    ]
   }
   ```
 
@@ -208,6 +198,52 @@ OR
     "terminalAllInOne.disableAllMessages": false
   }
   ```
+
+---
+
+## Keybindings
+
+**For each keybinding, press `cmd+i` (for Macs) or `ctrl+i` (for Windows & Linux), and the corresponding key for the terminal command.**
+
+### Mac
+
+| Shortcut          | Description                          | Command                                                                            |
+| ----------------- | ------------------------------------ | ---------------------------------------------------------------------------------- |
+| `` cmd+` ``       | Toggle the Terminal                  | `workbench.action.terminal.toggleTerminal`                                         |
+| `cmd+i m`         | Toggle the Maximized Terminal        | [`terminalAllInOne.toggleMaxTerm`](#terminal-all-in-one-toggle-maximized-terminal) |
+| `cmd+i s`         | Select a Default Shell               | `workbench.action.terminal.selectDefaultShell`                                     |
+| `cmd+i c`         | Create a New Terminal Instance       | `workbench.action.terminal.new`                                                    |
+| `cmd+i d`         | Delete the Current Terminal Instance | `workbench.action.terminal.kill`                                                   |
+| `cmd+i r`         | Rename the Current Terminal Instance | `workbench.action.terminal.rename`                                                 |
+| `cmd+i .`         | Focus the Next Terminal Instance     | `workbench.action.terminal.focusNext`                                              |
+| `cmd+i ,`         | Focus the Previous Terminal Instance | `workbench.action.terminal.focusPrevious`                                          |
+| `cmd+i t`         | Choose a Terminal Theme              | [`terminalAllInOne.chooseTerminalTheme`](#terminal-all-in-one-choose-theme)        |
+| `cmd+i enter`     | Choose a Script                      | [`terminalAllInOne.runScript`](#terminal-all-in-one-run-script)                    |
+| `cmd+i 0-9`       | Run a specific Script                | [`terminalAllInOne.runScript`](#terminal-all-in-one-run-script)                    |
+| `cmd+i f`         | Change Terminal Font Size            | [`terminalAllInOne.changeFontSize`](#terminal-all-in-one-change-font-size)         |
+| `cmd+i -`         | Decrease Terminal Font Size          | [`terminalAllInOne.decreaseFontSize`](#terminal-all-in-one-decrease-font-size)     |
+| `cmd+i =`         | Increase Terminal Font Size          | [`terminalAllInOne.increaseFontSize`](#terminal-all-in-one-increase-font-size)     |
+| `cmd+i backspace` | Clear the Terminal                   | [`terminalAllInOne.clearTerminal`](#terminal-all-in-one-clear-terminal)            |
+
+### Windows and Linux
+
+| Shortcut           | Description                          | Command                                                                            |
+| ------------------ | ------------------------------------ | ---------------------------------------------------------------------------------- |
+| `` ctrl+` ``       | Toggle the Terminal                  | `workbench.action.terminal.toggleTerminal`                                         |
+| `ctrl+i m`         | Toggle the Maximized Terminal        | [`terminalAllInOne.toggleMaxTerm`](#terminal-all-in-one-toggle-maximized-terminal) |
+| `ctrl+i s`         | Select a Default Shell               | `workbench.action.terminal.selectDefaultShell`                                     |
+| `ctrl+i c`         | Create a New Terminal Instance       | `workbench.action.terminal.new`                                                    |
+| `ctrl+i d`         | Delete the Current Terminal Instance | `workbench.action.terminal.kill`                                                   |
+| `ctrl+i r`         | Rename the Current Terminal Instance | `workbench.action.terminal.rename`                                                 |
+| `ctrl+i .`         | Focus the Next Terminal Instance     | `workbench.action.terminal.focusNext`                                              |
+| `ctrl+i ,`         | Focus the Previous Terminal Instance | `workbench.action.terminal.focusPrevious`                                          |
+| `ctrl+i t`         | Choose a Terminal Theme              | [`terminalAllInOne.chooseTerminalTheme`](#terminal-all-in-one-choose-theme)        |
+| `ctrl+i enter`     | Choose a Script                      | [`terminalAllInOne.runScript`](#terminal-all-in-one-run-script)                    |
+| `ctrl+i 0-9`       | Run a specific Script                | [`terminalAllInOne.runScript`](#terminal-all-in-one-run-script)                    |
+| `ctrl+i f`         | Change Terminal Font Size            | [`terminalAllInOne.changeFontSize`](#terminal-all-in-one-change-font-size)         |
+| `ctrl+i -`         | Decrease Terminal Font Size          | [`terminalAllInOne.decreaseFontSize`](#terminal-all-in-one-decrease-font-size)     |
+| `ctrl+i =`         | Increase Terminal Font Size          | [`terminalAllInOne.increaseFontSize`](#terminal-all-in-one-increase-font-size)     |
+| `ctrl+i backspace` | Clear the Terminal                   | [`terminalAllInOne.clearTerminal`](#terminal-all-in-one-clear-terminal)            |
 
 ---
 

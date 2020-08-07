@@ -93,21 +93,37 @@ const messages = {
     );
   },
   noScripts: async () => {
-    const selection = await vscode.window.showInformationMessage(
+    const selection = await vscode.window.showWarningMessage(
       "No scripts have been defined",
-      "Go to Settings"
+      "Settings",
+      "Scripts Explained"
     );
-    if (selection === "Go to Settings") {
-      await vscode.commands.executeCommand("workbench.action.openSettingsJson");
+    if (selection === "Settings") {
+      return vscode.commands.executeCommand(
+        "workbench.action.openSettingsJson"
+      );
+    }
+    if (selection === "Scripts Explained") {
+      return vscode.env.openExternal(
+        "https://marketplace.visualstudio.com/items?itemName=yasht.terminal-all-in-one#scripts"
+      );
     }
   },
   noScriptsAtIndex: async () => {
-    const selection = await vscode.window.showInformationMessage(
+    const selection = await vscode.window.showWarningMessage(
       "No script has been defined for that index",
-      "Go to Settings"
+      "Settings",
+      "Scripts Explained"
     );
-    if (selection === "Go to Settings") {
-      await vscode.commands.executeCommand("workbench.action.openSettingsJson");
+    if (selection === "Settings") {
+      return vscode.commands.executeCommand(
+        "workbench.action.openSettingsJson"
+      );
+    }
+    if (selection === "Scripts Explained") {
+      return vscode.env.openExternal(
+        "https://marketplace.visualstudio.com/items?itemName=yasht.terminal-all-in-one#scripts"
+      );
     }
   },
   error: (message) => {
