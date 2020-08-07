@@ -44,33 +44,38 @@
     "onCommand:terminalAllInOne.decreaseFontSize",
     "onCommand:terminalAllInOne.increaseFontSize",
     "onCommand:terminalAllInOne.clearTerminal",
+    "onCommand:terminalAllInOne.runScript",
     "onStartupFinished"
   ],
   "contributes": {
     "commands": [
       {
         "command": "terminalAllInOne.toggleMaxTerm",
-        "title": "Terminal All In One: Toggle Maximized Terminal"
+        "title": "%ext.command.toggleMaxTerm.title%"
       },
       {
         "command": "terminalAllInOne.chooseTerminalTheme",
-        "title": "Terminal All In One: Choose Theme"
+        "title": "%ext.command.chooseTerminalTheme.title%"
       },
       {
         "command": "terminalAllInOne.changeFontSize",
-        "title": "Terminal All In One: Change Font Size"
+        "title": "%ext.command.changeFontSize.title%"
       },
       {
         "command": "terminalAllInOne.decreaseFontSize",
-        "title": "Terminal All In One: Decrease Font Size"
+        "title": "%ext.command.decreaseFontSize.title%"
       },
       {
         "command": "terminalAllInOne.increaseFontSize",
-        "title": "Terminal All In One: Increase Font Size"
+        "title": "%ext.command.increaseFontSize.title%"
       },
       {
         "command": "terminalAllInOne.clearTerminal",
-        "title": "Terminal All In One: Clear Terminal"
+        "title": "%ext.command.clearTerminal.title%"
+      },
+      {
+        "command": "terminalAllInOne.runScript",
+        "title": "%ext.command.runScript.title%"
       }
     ],
     "keybindings": [
@@ -151,14 +156,20 @@
         "mac": "cmd+i backspace",
         "command": "terminalAllInOne.clearTerminal",
         "when": "!config.terminalAllInOne.disableAllKeybindings"
+      },
+      {
+        "key": "ctrl+i enter",
+        "mac": "cmd+i enter",
+        "command": "terminalAllInOne.runScript",
+        "when": "!config.terminalAllInOne.disableAllKeybindings"
       }
     ],
     "configuration": {
-      "title": "Terminal All In One",
+      "title": "%ext.config.title%",
       "properties": {
         "terminalAllInOne.terminalTheme": {
           "type": "string",
-          "markdownDescription": "A Terminal Theme from [this list](https://glitchbone.github.io/vscode-base16-term/#/)",
+          "markdownDescription": "%ext.config.terminalTheme.description%",
           "default": "None",
           "enum": [
             "3024",
@@ -267,23 +278,58 @@
         },
         "terminalAllInOne.disableAllKeybindings": {
           "type": "boolean",
-          "description": "Controls whether all keybindings are disabled",
+          "description": "%ext.config.disableAllKeybindings.description%",
           "default": false
         },
         "terminalAllInOne.messages": {
           "type": "object",
-          "markdownDescription": "Controls which messages should be shown if `#terminalAllInOne.disableAllMessages#` is set to false",
+          "markdownDescription": "%ext.config.messages.description%",
           "default": {
             "shouldShowThemeQuickPickMessage": true,
             "shouldShowSelectedThemeMessage": true,
             "shouldShowFontSizeQuickPickMessage": true,
             "shouldShowSelectedFontSizeMessage": true
+          },
+          "properties": {
+            "shouldShowThemeQuickPickMessage": {
+              "type": "boolean"
+            },
+            "shouldShowSelectedThemeMessage": {
+              "type": "boolean"
+            },
+            "shouldShowFontSizeQuickPickMessage": {
+              "type": "boolean"
+            },
+            "shouldShowSelectedFontSizeMessage": {
+              "type": "boolean"
+            }
           }
         },
         "terminalAllInOne.disableAllMessages": {
           "type": "boolean",
-          "description": "Controls whether all messages (info, warning, and error) from this extension are disabled",
+          "description": "%ext.config.disableAllMessages.description%",
           "default": false
+        },
+        "terminalAllInOne.scripts": {
+          "type": "array",
+          "description": "%ext.config.scripts.description%",
+          "default": [],
+          "items": {
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "%ext.config.scripts.name.description%"
+              },
+              "script": {
+                "type": "string",
+                "description": "%ext.config.scripts.script.description%"
+              }
+            },
+            "required": [
+              "name",
+              "script"
+            ]
+          }
         }
       }
     }
@@ -303,6 +349,7 @@
   },
   "dependencies": {
     "lodash.debounce": "^4.0.8",
+    "vscode-nls": "^4.1.2",
     "vscode-uri": "^2.1.2"
   }
 }
