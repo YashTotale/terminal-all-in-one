@@ -46,8 +46,9 @@ const messages = {
       );
       context.globalState.update(STATE_PROPERTY, true);
       if (selection === "README") {
-        vscode.env.openExternal(
-          `vscode:extension/${EXTENSION_NAME_W_PUBLISHER}`
+        vscode.commands.executeCommand(
+          "extension.open",
+          "yasht.terminal-all-in-one"
         );
       }
     }
@@ -90,6 +91,15 @@ const messages = {
       "shouldShowSelectedFontSizeMessage",
       `Font Size "${selectedSize}" has been applied`
     );
+  },
+  noScripts: async () => {
+    const selection = await vscode.window.showInformationMessage(
+      "No Scripts have been defined",
+      "Go to Settings"
+    );
+    if (selection === "Go to Settings") {
+      await vscode.commands.executeCommand("workbench.action.openSettingsJson");
+    }
   },
   error: (message) => {
     vscode.window.showErrorMessage(message);
