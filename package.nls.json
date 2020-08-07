@@ -13,5 +13,5 @@
   "ext.config.disableAllMessages.description": "Controls whether all messages (info, warning, and error) from this extension are disabled",
   "ext.config.scripts.description": "An array of scripts",
   "ext.config.scripts.name.description": "The name of the script (used in the quick pick)",
-  "ext.config.scripts.script.description": "The command to run in the terminal when this script is triggered"
+  "ext.config.scripts.script.description": "The command(s) to run in the terminal when this script is triggered (can be an array or a string)"
 }

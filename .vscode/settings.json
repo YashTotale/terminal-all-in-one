@@ -1,0 +1,8 @@
+{
+  "terminalAllInOne.scripts": [
+    {
+      "name": "Publish",
+      "script": "vsce publish"
+    }
+  ]
+}

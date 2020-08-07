@@ -391,8 +391,16 @@
                 "description": "%ext.config.scripts.name.description%"
               },
               "script": {
-                "type": "string",
-                "description": "%ext.config.scripts.script.description%"
+                "oneOf": [
+                  {
+                    "type": "string",
+                    "description": "%ext.config.scripts.script.description%"
+                  },
+                  {
+                    "type": "array",
+                    "description": "%ext.config.scripts.script.description%"
+                  }
+                ]
               }
             },
             "required": [
@@ -419,7 +427,6 @@
   },
   "dependencies": {
     "lodash.debounce": "^4.0.8",
-    "vscode-nls": "^4.1.2",
-    "vscode-uri": "^2.1.2"
+    "vscode-nls": "^4.1.2"
   }
 }
