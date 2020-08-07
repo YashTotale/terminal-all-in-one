@@ -73,7 +73,7 @@ OR
 
 - `terminalAllInOne.chooseTerminalTheme`
 
-- Opens a Theme Quick Pick with over **100** Themes to choose from
+- Opens a Theme Quick Pick<sup>[1](#quick-pick)</sup> with over **100** Themes to choose from
 - Live Preview in the Terminal
 - Keybinding: `cmd/ctrl+i t`
 
@@ -81,8 +81,8 @@ OR
 
 - `terminalAllInOne.runScript`
 
-- Opens a Script Quick Pick with [your defined scripts](#scripts) **OR** runs a specific script
-- Keybindings: `cmd/ctrl+i enter` for Script Quick Pick **OR** `cmd/ctrl+i 0-9` for a specific script
+- Opens a Script Quick Pick<sup>[1](#quick-pick)</sup> with [your defined scripts](#scripts) **OR** runs a specific script
+- Keybindings: `cmd/ctrl+i enter` for the Script Quick Pick<sup>[1](#myfootnote1)</sup> **OR** `cmd/ctrl+i 0-9` for a specific script
 
 ### Terminal All In One: Toggle Maximized Terminal
 
@@ -94,7 +94,7 @@ OR
 
 - `terminalAllInOne.changeFontSize`
 
-- Opens a Font Size Quick Pick
+- Opens a Font Size Quick Pick<sup>[1](#quick-pick)</sup>
 - Live Preview in the Terminal
 - Keybinding: `cmd/ctrl+i f`
 
@@ -139,7 +139,7 @@ OR
 
 - `terminalAllInOne.scripts`
 - Scripts are string representations of [Command Line commands](https://www.codecademy.com/articles/command-line-commands). Scripts can be strings (1 command) or arrays (multiple commands)
-- Use the command [`terminalAllInOne.runScript`](#terminal-all-in-one-run-script) or the keybinding `cmd/ctrl+i enter` to open the Script Quick Pick
+- Use the command [`terminalAllInOne.runScript`](#terminal-all-in-one-run-script) or the keybinding `cmd/ctrl+i enter` to open the Script Quick Pick<sup>[1](#myfootnote1)</sup>
 - Alternatively, use the keybindings `cmd/ctrl+i 0-9` to run a specific script whose index corresponds to the number pressed _(Note: Only your first 10 scripts will have corresponding keybindings)_
 - Sample Configuration:
 
@@ -420,3 +420,5 @@ _Check out [first contributions](https://github.com/firstcontributions/first-con
 </p>
 
 ---
+
+<p id="quick-pick" name="quick-pick">[1] : <a href="https://code.visualstudio.com/api/extension-capabilities/common-capabilities#quick-pick">Quick Pick</a></p>
