@@ -1,9 +1,20 @@
 const vscode = require("vscode");
-const { getConfig } = require("../helpers/config");
+const { getConfig, updateConfig } = require("../helpers/config");
 const { showMessage } = require("../messages");
 
 const getScriptsConfig = function () {
   return getConfig({ section: "terminalAllInOne.scripts" });
+};
+
+const shouldDisableDescription = function () {
+  return getConfig({ section: "terminalAllInOne.script.disableDescription" });
+};
+
+const disableDescription = function () {
+  return updateConfig({
+    section: "terminalAllInOne.script.disableDescription",
+    value: true,
+  });
 };
 
 const runInTerminal = async function (command) {
@@ -15,9 +26,9 @@ const runInTerminal = async function (command) {
   );
 };
 
-const createRunningCommand = function ({ name, script }) {
+const createDescription = function ({ name, script }) {
   function echoCmd(cmd, num) {
-    return `echo -e "\\t ${num}. ${cmd}"`;
+    return `echo -e "\\t ${num}. ${cmd}"; `;
   }
   const controlC = "\u0003";
   const emptyLine = 'echo "";';
@@ -29,12 +40,9 @@ const createRunningCommand = function ({ name, script }) {
   } else {
     script.forEach((s, i) => {
       cmds += echoCmd(s, i + 1);
-      if (i !== script.length - 1) {
-        cmds += " ; ";
-      }
     });
   }
-  return `${controlC} ${emptyLine} ${running} ${emptyLine} ${cmds} ${enter}`;
+  return `${controlC} ${emptyLine} ${running} ${emptyLine} ${cmds}${emptyLine} ${enter}`;
 };
 
 const createCommands = function (script) {
@@ -51,7 +59,10 @@ const createCommands = function (script) {
 const execute = async function ({ name, script }) {
   const cmds = createCommands(script);
   await vscode.commands.executeCommand("workbench.action.terminal.focus");
-  await runInTerminal(createRunningCommand({ name, script }));
+  if (!shouldDisableDescription()) {
+    await runInTerminal(createDescription({ name, script }));
+    showMessage("disableScriptDescription", disableDescription);
+  }
   await runInTerminal(`${cmds} \u000D`);
 };
 
@@ -61,7 +72,7 @@ const runScript = async function (index) {
     if (index < scripts.length) {
       return execute(scripts[index]);
     }
-    return showMessage("noScriptsAtIndex");
+    return showMessage("noScripts", index);
   }
   if (!scripts.length) {
     return showMessage("noScripts");

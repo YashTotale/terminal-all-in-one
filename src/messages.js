@@ -92,9 +92,13 @@ const messages = {
       `Font Size "${selectedSize}" has been applied`
     );
   },
-  noScripts: async () => {
+  noScripts: async (index) => {
+    const message =
+      typeof index === "number"
+        ? "No script has been defined for that index"
+        : "No scripts have been defined";
     const selection = await vscode.window.showWarningMessage(
-      "No scripts have been defined",
+      message,
       "Settings",
       "Scripts Explained"
     );
@@ -109,21 +113,21 @@ const messages = {
       );
     }
   },
-  noScriptsAtIndex: async () => {
-    const selection = await vscode.window.showWarningMessage(
-      "No script has been defined for that index",
-      "Settings",
-      "Scripts Explained"
-    );
-    if (selection === "Settings") {
-      return vscode.commands.executeCommand(
-        "workbench.action.openSettingsJson"
+  disableScriptDescription: async (disable) => {
+    const CONFIG_PROPERTY = "shouldShowDisableScriptDescriptionMessage";
+    const DISABLE = "Disable";
+    if (getMessagesConfig(CONFIG_PROPERTY)) {
+      const selection = await vscode.window.showInformationMessage(
+        "You can disable the script description",
+        DONT_SHOW,
+        DISABLE
       );
-    }
-    if (selection === "Scripts Explained") {
-      return vscode.env.openExternal(
-        "https://marketplace.visualstudio.com/items?itemName=yasht.terminal-all-in-one#scripts"
-      );
+      if (selection === DONT_SHOW) {
+        await updateMessagesConfig(CONFIG_PROPERTY, false);
+      }
+      if (selection === DISABLE) {
+        return disable();
+      }
     }
   },
   error: (message) => {

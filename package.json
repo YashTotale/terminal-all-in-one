@@ -4,7 +4,8 @@
     "keybindings",
     "shell",
     "keymap",
-    "theme"
+    "theme",
+    "script"
   ],
   "name": "terminal-all-in-one",
   "displayName": "Terminal All In One",
@@ -358,7 +359,8 @@
             "shouldShowThemeQuickPickMessage": true,
             "shouldShowSelectedThemeMessage": true,
             "shouldShowFontSizeQuickPickMessage": true,
-            "shouldShowSelectedFontSizeMessage": true
+            "shouldShowSelectedFontSizeMessage": true,
+            "shouldShowDisableScriptDescriptionMessage": true
           },
           "properties": {
             "shouldShowThemeQuickPickMessage": {
@@ -371,6 +373,9 @@
               "type": "boolean"
             },
             "shouldShowSelectedFontSizeMessage": {
+              "type": "boolean"
+            },
+            "shouldShowDisableScriptDescriptionMessage": {
               "type": "boolean"
             }
           }
@@ -408,6 +413,11 @@
               "script"
             ]
           }
+        },
+        "terminalAllInOne.script.disableDescription": {
+          "type": "boolean",
+          "description": "Controls whether the script description command is run when running a script",
+          "default": false
         }
       }
     }

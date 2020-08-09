@@ -408,7 +408,7 @@ _Check out [first contributions](https://github.com/firstcontributions/first-con
 
 <!-- Keywords Badges -->
 <p align="center">
-    <a href="https://github.com/YashTotale/terminal-all-in-one/blob/master/package.json#L3-L7"><img src="https://img.shields.io/github/package-json/keywords/YashTotale/terminal-all-in-one?style=for-the-badge&labelColor=000000&label=Keywords&color=6ba6ff" alt="Keywords"></a>&nbsp;
+    <a href="https://github.com/YashTotale/terminal-all-in-one/blob/master/package.json#L3-L8"><img src="https://img.shields.io/github/package-json/keywords/YashTotale/terminal-all-in-one?style=for-the-badge&labelColor=000000&label=Keywords&color=6ba6ff" alt="Keywords"></a>&nbsp;
 </p>
 
 ---
