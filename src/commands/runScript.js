@@ -1,4 +1,4 @@
-import vscode from "vscode";
+import { commands, window } from "vscode";
 import { getConfig, updateConfig } from "../helpers/config";
 import showMessage from "../messages";
 
@@ -18,12 +18,9 @@ const disableDescription = function () {
 };
 
 const runInTerminal = async function (command) {
-  return vscode.commands.executeCommand(
-    "workbench.action.terminal.sendSequence",
-    {
-      text: command,
-    }
-  );
+  return commands.executeCommand("workbench.action.terminal.sendSequence", {
+    text: command,
+  });
 };
 
 const createDescription = function ({ name, script }) {
@@ -60,7 +57,7 @@ const createCommands = function (script) {
 
 const execute = async function ({ name, script }) {
   const cmds = createCommands(script);
-  await vscode.commands.executeCommand("workbench.action.terminal.focus");
+  await commands.executeCommand("workbench.action.terminal.focus");
   if (!shouldDisableDescription()) {
     await runInTerminal(createDescription({ name, script }));
     showMessage("disableScriptDescription", disableDescription);
@@ -84,7 +81,7 @@ const runScriptHandler = async function (index) {
     description: Array.isArray(script) ? script.join(" -> ") : script,
     index: i,
   }));
-  const selectedScript = await vscode.window.showQuickPick(options, {
+  const selectedScript = await window.showQuickPick(options, {
     placeHolder: "Run a Script",
     canPickMany: false,
   });

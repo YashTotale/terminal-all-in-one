@@ -1,4 +1,4 @@
-import vscode from "vscode";
+import { window, commands, env } from "vscode";
 import { getConfig, updateConfig } from "./helpers/config";
 
 const EXTENSION_NAME = "terminalAllInOne";
@@ -15,10 +15,7 @@ function getMessagesConfig(key) {
 
 async function infoWithDisableOption(configProperty, info) {
   if (getMessagesConfig(configProperty)) {
-    const selection = await vscode.window.showInformationMessage(
-      info,
-      DONT_SHOW
-    );
+    const selection = await window.showInformationMessage(info, DONT_SHOW);
     if (selection === DONT_SHOW) {
       await updateMessagesConfig(configProperty, false);
     }
@@ -40,16 +37,13 @@ const messages = {
   onstart: async (context) => {
     const STATE_PROPERTY = "shouldNotShowOnStartMessage";
     if (!context.globalState.get(STATE_PROPERTY)) {
-      const selection = await vscode.window.showInformationMessage(
+      const selection = await window.showInformationMessage(
         `Thanks for installing ${READABLE_EXTENSION_NAME}. Check out our README for more information on the extension.`,
         "README"
       );
       context.globalState.update(STATE_PROPERTY, true);
       if (selection === "README") {
-        vscode.commands.executeCommand(
-          "extension.open",
-          EXTENSION_NAME_W_PUBLISHER
-        );
+        commands.executeCommand("extension.open", EXTENSION_NAME_W_PUBLISHER);
       }
     }
   },
@@ -62,12 +56,12 @@ const messages = {
   },
   //Message when a theme that does not exist is chosen
   themeDoesNotExist: async () => {
-    const selection = await vscode.window.showErrorMessage(
+    const selection = await window.showErrorMessage(
       "That theme doesn't seem to exist. Please open a new issue in the github repository if this theme does exist.",
       "Issues Page"
     );
     if (selection === "Issues Page") {
-      vscode.env.openExternal(
+      env.openExternal(
         "https://github.com/YashTotale/terminal-all-in-one/issues"
       );
     }
@@ -97,18 +91,16 @@ const messages = {
       typeof index === "number"
         ? "No script has been defined for that index"
         : "No scripts have been defined";
-    const selection = await vscode.window.showWarningMessage(
+    const selection = await window.showWarningMessage(
       message,
       "Settings",
       "Scripts Explained"
     );
     if (selection === "Settings") {
-      return vscode.commands.executeCommand(
-        "workbench.action.openSettingsJson"
-      );
+      return commands.executeCommand("workbench.action.openSettingsJson");
     }
     if (selection === "Scripts Explained") {
-      return vscode.env.openExternal(
+      return env.openExternal(
         "https://marketplace.visualstudio.com/items?itemName=yasht.terminal-all-in-one#scripts"
       );
     }
@@ -117,7 +109,7 @@ const messages = {
     const CONFIG_PROPERTY = "shouldShowDisableScriptDescriptionMessage";
     const DISABLE = "Disable";
     if (getMessagesConfig(CONFIG_PROPERTY)) {
-      const selection = await vscode.window.showInformationMessage(
+      const selection = await window.showInformationMessage(
         "You can disable the script description",
         DONT_SHOW,
         DISABLE
@@ -131,7 +123,7 @@ const messages = {
     }
   },
   error: (message) => {
-    vscode.window.showErrorMessage(message);
+    window.showErrorMessage(message);
   },
 };
 

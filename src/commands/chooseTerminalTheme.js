@@ -1,4 +1,4 @@
-import vscode from "vscode";
+import { window } from "vscode";
 import debounce from "lodash.debounce";
 
 import showMessage from "../messages";
@@ -67,7 +67,7 @@ async function chooseTerminalThemeHandler() {
   }));
   showMessage("themeQuickPickOpened");
   //Wait for the user to select a theme or exit the quick pick
-  const selectedTheme = await vscode.window.showQuickPick(themeNames, {
+  const selectedTheme = await window.showQuickPick(themeNames, {
     placeHolder: "Choose a Terminal Theme",
     canPickMany: false,
     onDidSelectItem: debounce(async (theme) => {

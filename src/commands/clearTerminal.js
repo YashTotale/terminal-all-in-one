@@ -1,12 +1,9 @@
-import vscode from "vscode";
+import { commands } from "vscode";
 
 const clearTerminalHandler = function () {
-  return vscode.commands.executeCommand(
-    "workbench.action.terminal.sendSequence",
-    {
-      text: "\u0003 clear \u000D",
-    }
-  );
+  return commands.executeCommand("workbench.action.terminal.sendSequence", {
+    text: "\u0003 clear \u000D",
+  });
 };
 
 export const clearTerminal = {

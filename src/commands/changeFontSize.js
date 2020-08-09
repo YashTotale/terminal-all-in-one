@@ -1,4 +1,4 @@
-import vscode from "vscode";
+import { commands, window } from "vscode";
 import debounce from "lodash.debounce";
 
 import showMessage from "../messages";
@@ -16,7 +16,7 @@ const updateFontSizeConfig = async function (newSize) {
 };
 
 const clearTerminal = function () {
-  return vscode.commands.executeCommand("terminalAllInOne.clearTerminal");
+  return commands.executeCommand("terminalAllInOne.clearTerminal");
 };
 
 const decreaseFontSizeHandler = function () {
@@ -48,7 +48,7 @@ const changeFontSizeHandler = async function () {
   const currentSize = getFontSizeConfig();
   const fontSizes = createFontSizes(currentSize);
   showMessage("fontSizeQuickPickOpened");
-  const selectedSize = await vscode.window.showQuickPick(fontSizes, {
+  const selectedSize = await window.showQuickPick(fontSizes, {
     placeHolder: "Change the Font Size",
     canPickMany: false,
     onDidSelectItem: debounce(async function (fontSize) {
@@ -61,15 +61,6 @@ const changeFontSizeHandler = async function () {
   }
   showMessage("fontSizeSelected", selectedSize.label);
 };
-
-// export default [
-//
-//   ,
-//   {
-//     name: "changeFontSize",
-//     handler: changeFontSize,
-//   },
-// ];
 
 export const changeFontSize = {
   name: "changeFontSize",

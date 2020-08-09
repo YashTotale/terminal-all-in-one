@@ -21,7 +21,8 @@
         "--extensionDevelopmentPath=${workspaceFolder}",
         "--extensionTestsPath=${workspaceFolder}/test/suite/index"
       ],
-      "outFiles": ["${workspaceFolder}/test/**/*.js"]
+      "outFiles": ["${workspaceFolder}/test/**/*.js"],
+      "preLaunchTask": "npm: webpack"
     }
   ]
 }
