@@ -38,7 +38,6 @@ _Table Of Contents_
   - **[Scripts](#scripts)**
   - [Disable All Keybindings](#disable-all-keybindings)
   - [Messages](#messages)
-  - [Disable All Messages](#disable-all-messages)
 - [Keybindings](#keybindings)
   - [Mac](#mac)
   - [Windows and Linux](#windows-and-linux)
@@ -158,7 +157,8 @@ OR
         "name": "Install Dependencies",
         "script": ["npm i react", "npm i --save-dev mocha"]
       }
-    ]
+    ],
+    "terminalAllInOne.script.disableDescription": false
   }
   ```
 
@@ -176,8 +176,9 @@ OR
 
 ### Messages
 
-- `terminalAllInOne.messages`
-- Controls which messages should be shown if [`terminalAllInOne.disableAllMessages`](#disable-all-messages) is set to false
+- `terminalAllInOne.messages` & `terminalAllInOne.disableAllMessages`
+- `terminalAllInOne.messages` : Controls which messages should be shown if `terminalAllInOne.disableAllMessages` is set to false
+- `terminalAllInOne.disableAllMessages`: Controls whether all messages (info, warning, and error) from this extension are disabled
 - Default Configuration :
 
   ```json
@@ -186,19 +187,9 @@ OR
       "shouldShowThemeQuickPickMessage": true,
       "shouldShowSelectedThemeMessage": true,
       "shouldShowFontSizeQuickPickMessage": true,
-      "shouldShowSelectedFontSizeMessage": true
-    }
-  }
-  ```
-
-### Disable All Messages
-
-- `terminalAllInOne.disableAllMessages`
-- Controls whether all messages (info, warning, and error) from this extension are disabled
-- Default Configuration :
-
-  ```json
-  {
+      "shouldShowSelectedFontSizeMessage": true,
+      "shouldShowDisableScriptDescriptionMessage": true
+    },
     "terminalAllInOne.disableAllMessages": false
   }
   ```
@@ -420,5 +411,7 @@ _Check out [first contributions](https://github.com/firstcontributions/first-con
 </p>
 
 ---
+
+<!-- Footnotes -->
 
 <p id="quick-pick" name="quick-pick">[1] : <a href="https://code.visualstudio.com/api/extension-capabilities/common-capabilities#quick-pick">Quick Pick</a></p>
