@@ -11,11 +11,11 @@ vsc-extension-quickstart.md
 **/jsconfig.json
 **/.eslintrc.json
 **/.markdownlint.json
+**/.travis.yml
 webpack.config.js
 
 # Test
 test/**
-**/.travis.yml
 
 # Extension
 src/
