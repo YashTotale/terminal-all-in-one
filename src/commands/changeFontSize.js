@@ -1,8 +1,8 @@
-const vscode = require("vscode");
-const debounce = require("lodash.debounce");
+import { commands, window } from "vscode";
+import debounce from "lodash.debounce";
 
-const { showMessage } = require("../messages");
-const { getConfig, updateConfig } = require("../helpers/config");
+import showMessage from "../messages";
+import { getConfig, updateConfig } from "../helpers/config";
 
 const FONT_SIZE_CONFIG = "terminal.integrated.fontSize";
 
@@ -16,15 +16,15 @@ const updateFontSizeConfig = async function (newSize) {
 };
 
 const clearTerminal = function () {
-  return vscode.commands.executeCommand("terminalAllInOne.clearTerminal");
+  return commands.executeCommand("terminalAllInOne.clearTerminal");
 };
 
-const decreaseFontSize = function () {
+const decreaseFontSizeHandler = function () {
   const currentSize = getFontSizeConfig();
   updateFontSizeConfig(currentSize - 1);
 };
 
-const increaseFontSize = function () {
+const increaseFontSizeHandler = function () {
   const currentSize = getFontSizeConfig();
   updateFontSizeConfig(currentSize + 1);
 };
@@ -44,11 +44,11 @@ const getTrueSize = function (fontSizeObject) {
   return parseInt(fontSizeObject.label.slice(0, -3));
 };
 
-const changeFontSize = async function () {
+const changeFontSizeHandler = async function () {
   const currentSize = getFontSizeConfig();
   const fontSizes = createFontSizes(currentSize);
   showMessage("fontSizeQuickPickOpened");
-  const selectedSize = await vscode.window.showQuickPick(fontSizes, {
+  const selectedSize = await window.showQuickPick(fontSizes, {
     placeHolder: "Change the Font Size",
     canPickMany: false,
     onDidSelectItem: debounce(async function (fontSize) {
@@ -62,17 +62,17 @@ const changeFontSize = async function () {
   showMessage("fontSizeSelected", selectedSize.label);
 };
 
-module.exports = [
-  {
-    name: "increaseFontSize",
-    handler: increaseFontSize,
-  },
-  {
-    name: "decreaseFontSize",
-    handler: decreaseFontSize,
-  },
-  {
-    name: "changeFontSize",
-    handler: changeFontSize,
-  },
-];
+export const changeFontSize = {
+  name: "changeFontSize",
+  handler: changeFontSizeHandler,
+};
+
+export const decreaseFontSize = {
+  name: "decreaseFontSize",
+  handler: decreaseFontSizeHandler,
+};
+
+export const increaseFontSize = {
+  name: "increaseFontSize",
+  handler: increaseFontSizeHandler,
+};

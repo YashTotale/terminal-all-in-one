@@ -7,6 +7,8 @@ The format of this Change Log is based on [Keep a Changelog](http://keepachangel
 
 - [_Terminal All In One_ Change Log](#terminal-all-in-one-change-log)
   - [[Unreleased]](#unreleased)
+  - [[v1.10.0] - (2020-08-09)](#v1100---2020-08-09)
+    - [Changed](#changed)
   - [[1.9.0] - (2020-08-08)](#190---2020-08-08)
     - [Added](#added)
   - [[1.8.0] - (2020-08-07)](#180---2020-08-07)
@@ -31,7 +33,7 @@ The format of this Change Log is based on [Keep a Changelog](http://keepachangel
   - [[1.1.1] - (2020-08-03)](#111---2020-08-03)
     - [Fixed](#fixed-3)
   - [[1.1.0] - (2020-08-02)](#110---2020-08-02)
-    - [Changed](#changed)
+    - [Changed](#changed-1)
   - [[1.0.9] - (2020-08-01)](#109---2020-08-01)
     - [Fixed](#fixed-4)
   - [[1.0.7] - (2020-07-31)](#107---2020-07-31)
@@ -39,7 +41,7 @@ The format of this Change Log is based on [Keep a Changelog](http://keepachangel
   - [[1.0.3] - (2020-07-30)](#103---2020-07-30)
     - [Added](#added-8)
   - [[1.0.2] - (2020-07-30)](#102---2020-07-30)
-    - [Changed](#changed-1)
+    - [Changed](#changed-2)
   - [[1.0.1] - (2020-07-30)](#101---2020-07-30)
     - [Added](#added-9)
   - [[1.0.0] - (2020-07-29)](#100---2020-07-29)
@@ -50,6 +52,14 @@ The format of this Change Log is based on [Keep a Changelog](http://keepachangel
 ### [Unreleased]
 
 - Terminal Tabs in the status bar
+
+---
+
+### [v1.10.0] - (2020-08-09)
+
+#### Changed
+
+- Extension bundled with Webpack making it faster to install and load
 
 ---
 

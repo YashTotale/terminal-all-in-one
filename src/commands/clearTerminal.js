@@ -1,15 +1,12 @@
-const vscode = require("vscode");
+import { commands } from "vscode";
 
-const clearTerminal = function () {
-  return vscode.commands.executeCommand(
-    "workbench.action.terminal.sendSequence",
-    {
-      text: "\u0003 clear \u000D",
-    }
-  );
+const clearTerminalHandler = function () {
+  return commands.executeCommand("workbench.action.terminal.sendSequence", {
+    text: "\u0003 clear \u000D",
+  });
 };
 
-module.exports = {
+export const clearTerminal = {
   name: "clearTerminal",
-  handler: clearTerminal,
+  handler: clearTerminalHandler,
 };

@@ -10,7 +10,7 @@
   "name": "terminal-all-in-one",
   "displayName": "Terminal All In One",
   "description": "Enhance your integrated terminal with themes, scripts, keybindings, and commands.",
-  "version": "1.9.0",
+  "version": "1.10.0",
   "homepage": "https://marketplace.visualstudio.com/items?itemName=yasht.terminal-all-in-one",
   "license": "MIT",
   "publisher": "yasht",
@@ -29,7 +29,7 @@
   "author": {
     "name": "Yash T"
   },
-  "main": "./src/extension.js",
+  "main": "./dist/extension",
   "engines": {
     "vscode": "^1.47.0"
   },
@@ -423,17 +423,21 @@
     }
   },
   "scripts": {
-    "test": "node ./test/runTest.js"
+    "test": "node ./test/runTest.js",
+    "webpack": "webpack --mode development",
+    "webpack-dev": "webpack --mode development --watch"
   },
   "devDependencies": {
-    "@types/vscode": "^1.47.0",
     "@types/glob": "^7.1.1",
     "@types/mocha": "^8.0.0",
     "@types/node": "^14.0.27",
+    "@types/vscode": "^1.47.0",
     "glob": "^7.1.6",
     "mocha": "^8.0.1",
     "typescript": "^3.9.7",
-    "vscode-test": "^1.4.0"
+    "vscode-test": "^1.4.0",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12"
   },
   "dependencies": {
     "lodash.debounce": "^4.0.8",

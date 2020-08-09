@@ -1,8 +1,8 @@
-const vscode = require("vscode");
-const debounce = require("lodash.debounce");
+import { window } from "vscode";
+import debounce from "lodash.debounce";
 
-const { showMessage } = require("../messages");
-const { getConfig, updateConfig } = require("../helpers/config");
+import showMessage from "../messages";
+import { getConfig, updateConfig } from "../helpers/config";
 
 const COLORS_CONFIG = "workbench.colorCustomizations";
 const TERMINAL_THEME_CONFIG = "terminalAllInOne.terminalTheme";
@@ -59,7 +59,7 @@ async function updateTerminalTheme(themeName, themeNames) {
   return updateColorsConfig(themeScheme);
 }
 
-async function chooseTerminalTheme() {
+async function chooseTerminalThemeHandler() {
   const currentColors = getColorsConfig();
   const themeNames = themes.map(({ name }) => ({
     label: name,
@@ -67,7 +67,7 @@ async function chooseTerminalTheme() {
   }));
   showMessage("themeQuickPickOpened");
   //Wait for the user to select a theme or exit the quick pick
-  const selectedTheme = await vscode.window.showQuickPick(themeNames, {
+  const selectedTheme = await window.showQuickPick(themeNames, {
     placeHolder: "Choose a Terminal Theme",
     canPickMany: false,
     onDidSelectItem: debounce(async (theme) => {
@@ -89,8 +89,8 @@ function onTerminalThemeConfigChange(event) {
   }
 }
 
-module.exports = {
+export const chooseTerminalTheme = {
   name: "chooseTerminalTheme",
-  handler: chooseTerminalTheme,
+  handler: chooseTerminalThemeHandler,
   config: onTerminalThemeConfigChange,
 };
