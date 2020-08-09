@@ -15,5 +15,8 @@ node_js:
 install:
   - npm install
 
+before_script:
+  - npm run webpack
+
 script:
   - npm test

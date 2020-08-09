@@ -1,4 +1,4 @@
-import { commands, workspace, window } from "vscode";
+import { commands, workspace } from "vscode";
 import showMessage from "./messages";
 
 import cmds from "./commands";
