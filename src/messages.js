@@ -1,5 +1,5 @@
-const vscode = require("vscode");
-const { getConfig, updateConfig } = require("./helpers/config");
+import vscode from "vscode";
+import { getConfig, updateConfig } from "./helpers/config";
 
 const EXTENSION_NAME = "terminalAllInOne";
 const EXTENSION_NAME_W_PUBLISHER = "yasht.terminal-all-in-one";
@@ -135,7 +135,7 @@ const messages = {
   },
 };
 
-exports.showMessage = function (id, params) {
+const showMessage = function (id, params) {
   const shouldShow = !getConfig({
     section: `${EXTENSION_NAME}.disableAllMessages`,
   });
@@ -143,3 +143,5 @@ exports.showMessage = function (id, params) {
     return messages[id](params);
   }
 };
+
+export default showMessage;

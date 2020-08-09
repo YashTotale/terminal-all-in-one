@@ -1,6 +1,6 @@
-const vscode = require("vscode");
+import vscode from "vscode";
 
-const clearTerminal = function () {
+const clearTerminalHandler = function () {
   return vscode.commands.executeCommand(
     "workbench.action.terminal.sendSequence",
     {
@@ -9,7 +9,7 @@ const clearTerminal = function () {
   );
 };
 
-module.exports = {
+export const clearTerminal = {
   name: "clearTerminal",
-  handler: clearTerminal,
+  handler: clearTerminalHandler,
 };

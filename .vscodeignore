@@ -19,6 +19,7 @@ test/**
 
 # Extension
 src/
+node_modules
 
 # Misc
 **/*.map

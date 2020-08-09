@@ -1,7 +1,7 @@
-const vscode = require("vscode");
-const { showMessage } = require("./messages");
+import vscode from "vscode";
+import showMessage from "./messages";
 
-const commands = require("./commands");
+import commands from "./commands";
 
 function createCommandName(name) {
   return `terminalAllInOne.${name}`;
@@ -22,17 +22,13 @@ function createCommands(context) {
   });
 }
 
-function activate(context) {
+export function activate(context) {
+  const o = vscode.window.createOutputChannel("ee");
+  commands.forEach((cmd) => {
+    o.appendLine(JSON.stringify(cmd));
+  });
   showMessage("onstart", context);
   createCommands(context);
 }
 
-function deactivate() {}
-
-module.exports = {
-  activate,
-  deactivate,
-  EXTENSION_NAME: "terminalAllInOne",
-  READABLE_EXTENSION_NAME: "Terminal All In One",
-  EXTENSION_NAME_W_PUBLISHER: "yasht.terminal-all-in-one",
-};
+export function deactivate() {}

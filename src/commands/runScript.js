@@ -1,6 +1,6 @@
-const vscode = require("vscode");
-const { getConfig, updateConfig } = require("../helpers/config");
-const { showMessage } = require("../messages");
+import vscode from "vscode";
+import { getConfig, updateConfig } from "../helpers/config";
+import showMessage from "../messages";
 
 const getScriptsConfig = function () {
   return getConfig({ section: "terminalAllInOne.scripts" });
@@ -32,6 +32,8 @@ const createDescription = function ({ name, script }) {
   }
   const controlC = "\u0003";
   const emptyLine = 'echo "";';
+  const ignoreAbove =
+    "echo '^ Ignore the above command (it tells the terminal to display the script info) ^';";
   const running = `echo -e "Running script: \\033[1m${name}\\033[0m";`;
   const enter = "\u000D";
   let cmds = "";
@@ -42,7 +44,7 @@ const createDescription = function ({ name, script }) {
       cmds += echoCmd(s, i + 1);
     });
   }
-  return `${controlC} ${emptyLine} ${running} ${emptyLine} ${cmds}${emptyLine} ${enter}`;
+  return `${controlC} ${emptyLine} ${ignoreAbove} ${emptyLine} ${running} ${emptyLine} ${cmds}${emptyLine} ${enter}`;
 };
 
 const createCommands = function (script) {
@@ -66,7 +68,7 @@ const execute = async function ({ name, script }) {
   await runInTerminal(`${cmds} \u000D`);
 };
 
-const runScript = async function (index) {
+const runScriptHandler = async function (index) {
   const scripts = getScriptsConfig();
   if (typeof index === "number") {
     if (index < scripts.length) {
@@ -91,7 +93,7 @@ const runScript = async function (index) {
   }
 };
 
-module.exports = {
+export const runScript = {
   name: "runScript",
-  handler: runScript,
+  handler: runScriptHandler,
 };

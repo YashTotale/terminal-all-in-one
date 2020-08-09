@@ -1,6 +1,3 @@
-const fs = require("fs");
-const vscode = require("vscode");
-
 // const files = fs.readdirSync(__dirname);
 // vscode.window.showInformationMessage(JSON.stringify(files));
 
@@ -16,10 +13,22 @@ const vscode = require("vscode");
 //   return imports;
 // }, []);
 
-module.exports = [
-  require("./changeFontSize"),
-  require("./chooseTerminalTheme"),
-  require("./clearTerminal"),
-  require("./runScript"),
-  require("./toggleMaxTerm"),
+import {
+  changeFontSize,
+  increaseFontSize,
+  decreaseFontSize,
+} from "./changeFontSize";
+import { chooseTerminalTheme } from "./chooseTerminalTheme";
+import { clearTerminal } from "./clearTerminal";
+import { runScript } from "./runScript";
+import { toggleMaxTerm } from "./toggleMaxTerm";
+
+export default [
+  chooseTerminalTheme,
+  clearTerminal,
+  runScript,
+  toggleMaxTerm,
+  changeFontSize,
+  increaseFontSize,
+  decreaseFontSize,
 ];

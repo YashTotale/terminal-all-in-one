@@ -1,11 +1,11 @@
-const vscode = require("vscode");
+import vscode from "vscode";
 
-const toggleMaxTerm = function () {
+const toggleMaxTermHandler = function () {
   vscode.commands.executeCommand("workbench.action.terminal.focus");
   vscode.commands.executeCommand("workbench.action.toggleMaximizedPanel");
 };
 
-module.exports = {
+export const toggleMaxTerm = {
   name: "toggleMaxTerm",
-  handler: toggleMaxTerm,
+  handler: toggleMaxTermHandler,
 };
