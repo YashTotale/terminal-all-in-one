@@ -1,8 +1,8 @@
 {
   "terminalAllInOne.scripts": [
     {
-      "name": "Publish",
-      "script": "vsce publish"
+      "name": "Test",
+      "script": ["ls ${workspaceFolder}"]
     }
   ]
 }

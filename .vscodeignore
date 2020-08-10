@@ -14,11 +14,9 @@ vsc-extension-quickstart.md
 **/.travis.yml
 webpack.config.js
 
-# Test
-test/**
-
 # Extension
 src/
+out/
 node_modules
 
 # Misc

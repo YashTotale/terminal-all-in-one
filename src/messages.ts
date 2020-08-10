@@ -1,4 +1,4 @@
-import { window, commands, env } from "vscode";
+import { window, commands, env, ExtensionContext, Uri } from "vscode";
 import { getConfig, updateConfig } from "./helpers/config";
 
 const EXTENSION_NAME = "terminalAllInOne";
@@ -9,11 +9,11 @@ const TERMINAL_MESSAGES_CONFIG = `${EXTENSION_NAME}.messages`;
 
 const DONT_SHOW = "Don't Show Again";
 
-function getMessagesConfig(key) {
+function getMessagesConfig(key: string) {
   return getConfig({ config: TERMINAL_MESSAGES_CONFIG, section: key });
 }
 
-async function infoWithDisableOption(configProperty, info) {
+async function infoWithDisableOption(configProperty: string, info: string) {
   if (getMessagesConfig(configProperty)) {
     const selection = await window.showInformationMessage(info, DONT_SHOW);
     if (selection === DONT_SHOW) {
@@ -22,7 +22,7 @@ async function infoWithDisableOption(configProperty, info) {
   }
 }
 
-async function updateMessagesConfig(key, value) {
+async function updateMessagesConfig(key: string, value: any) {
   updateConfig({
     section: TERMINAL_MESSAGES_CONFIG,
     value: {
@@ -32,9 +32,21 @@ async function updateMessagesConfig(key, value) {
   });
 }
 
-const messages = {
+interface messages {
+  onstart: Function;
+  themeQuickPickOpened: Function;
+  themeDoesNotExist: Function;
+  themeSelected: Function;
+  fontSizeQuickPickOpened: Function;
+  fontSizeSelected: Function;
+  noScripts: Function;
+  disableScriptDescription: Function;
+  error: Function;
+}
+
+const messages: messages = {
   // Message on start
-  onstart: async (context) => {
+  onstart: async (context: ExtensionContext) => {
     const STATE_PROPERTY = "shouldNotShowOnStartMessage";
     if (!context.globalState.get(STATE_PROPERTY)) {
       const selection = await window.showInformationMessage(
@@ -62,12 +74,12 @@ const messages = {
     );
     if (selection === "Issues Page") {
       env.openExternal(
-        "https://github.com/YashTotale/terminal-all-in-one/issues"
+        Uri.parse("https://github.com/YashTotale/terminal-all-in-one/issues")
       );
     }
   },
   //Message when a theme is selected
-  themeSelected: async (selectedTheme) => {
+  themeSelected: async (selectedTheme: string) => {
     infoWithDisableOption(
       "shouldShowSelectedThemeMessage",
       `"${selectedTheme}" has been applied`
@@ -80,13 +92,13 @@ const messages = {
       "Open the terminal for a live preview. If a terminal was already open and you cannot see your previous commands, scroll up in the terminal."
     );
   },
-  fontSizeSelected: async (selectedSize) => {
+  fontSizeSelected: async (selectedSize: string) => {
     infoWithDisableOption(
       "shouldShowSelectedFontSizeMessage",
       `Font Size "${selectedSize}" has been applied`
     );
   },
-  noScripts: async (index) => {
+  noScripts: async (index: number) => {
     const message =
       typeof index === "number"
         ? "No script has been defined for that index"
@@ -101,11 +113,13 @@ const messages = {
     }
     if (selection === "Scripts Explained") {
       return env.openExternal(
-        "https://marketplace.visualstudio.com/items?itemName=yasht.terminal-all-in-one#scripts"
+        Uri.parse(
+          "https://marketplace.visualstudio.com/items?itemName=yasht.terminal-all-in-one#scripts"
+        )
       );
     }
   },
-  disableScriptDescription: async (disable) => {
+  disableScriptDescription: async (disable: Function) => {
     const CONFIG_PROPERTY = "shouldShowDisableScriptDescriptionMessage";
     const DISABLE = "Disable";
     if (getMessagesConfig(CONFIG_PROPERTY)) {
@@ -122,17 +136,18 @@ const messages = {
       }
     }
   },
-  error: (message) => {
+  error: async (message: string) => {
     window.showErrorMessage(message);
   },
 };
 
-const showMessage = function (id, params) {
+const showMessage = function (id: keyof typeof messages, params?: any): void {
   const shouldShow = !getConfig({
     section: `${EXTENSION_NAME}.disableAllMessages`,
   });
   if (shouldShow) {
-    return messages[id](params);
+    const messageToShow = messages[id];
+    messageToShow(params);
   }
 };
 

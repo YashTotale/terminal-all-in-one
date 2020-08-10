@@ -1,6 +1,6 @@
 import { commands } from "vscode";
 
-const clearTerminalHandler = function () {
+const clearTerminalHandler = () => {
   return commands.executeCommand("workbench.action.terminal.sendSequence", {
     text: "\u0003 clear \u000D",
   });

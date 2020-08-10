@@ -2,31 +2,31 @@ import { commands, window } from "vscode";
 import { getConfig, updateConfig } from "../helpers/config";
 import showMessage from "../messages";
 
-const getScriptsConfig = function () {
+const getScriptsConfig = () => {
   return getConfig({ section: "terminalAllInOne.scripts" });
 };
 
-const shouldDisableDescription = function () {
+const shouldDisableDescription = () => {
   return getConfig({ section: "terminalAllInOne.script.disableDescription" });
 };
 
-const disableDescription = function () {
+const disableDescription = () => {
   return updateConfig({
     section: "terminalAllInOne.script.disableDescription",
     value: true,
   });
 };
 
-const runInTerminal = async function (command) {
+const runInTerminal = async (command: string) => {
   return commands.executeCommand("workbench.action.terminal.sendSequence", {
     text: command,
   });
 };
 
-const createDescription = function ({ name, script }) {
-  function echoCmd(cmd, num) {
+const createDescription = ({ name, script }: scriptObject) => {
+  const echoCmd = (cmd: string, num: number) => {
     return `echo -e "\\t ${num}. ${cmd}"; `;
-  }
+  };
   const controlC = "\u0003";
   const emptyLine = 'echo "";';
   const ignoreAbove =
@@ -44,7 +44,12 @@ const createDescription = function ({ name, script }) {
   return `${controlC} ${emptyLine} ${ignoreAbove} ${emptyLine} ${running} ${emptyLine} ${cmds}${emptyLine} ${enter}`;
 };
 
-const createCommands = function (script) {
+interface scriptObject {
+  name: string;
+  script: string | Array<string>;
+}
+
+const createCommands = (script: string | Array<string>) => {
   if (typeof script === "string") {
     return script;
   }
@@ -55,7 +60,7 @@ const createCommands = function (script) {
   return jointScript;
 };
 
-const execute = async function ({ name, script }) {
+const execute = async ({ name, script }: scriptObject) => {
   const cmds = createCommands(script);
   await commands.executeCommand("workbench.action.terminal.focus");
   if (!shouldDisableDescription()) {
@@ -65,7 +70,7 @@ const execute = async function ({ name, script }) {
   await runInTerminal(`${cmds} \u000D`);
 };
 
-const runScriptHandler = async function (index) {
+const runScriptHandler = async (index: number | undefined) => {
   const scripts = getScriptsConfig();
   if (typeof index === "number") {
     if (index < scripts.length) {
@@ -76,7 +81,7 @@ const runScriptHandler = async function (index) {
   if (!scripts.length) {
     return showMessage("noScripts");
   }
-  const options = scripts.map(({ name, script }, i) => ({
+  const options = scripts.map(({ name, script }: scriptObject, i: number) => ({
     label: name,
     description: Array.isArray(script) ? script.join(" -> ") : script,
     index: i,
@@ -86,6 +91,7 @@ const runScriptHandler = async function (index) {
     canPickMany: false,
   });
   if (selectedScript) {
+    //@ts-expect-error
     return execute(scripts[selectedScript.index]);
   }
 };

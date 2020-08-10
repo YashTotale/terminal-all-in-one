@@ -4,7 +4,7 @@ const path = require("path");
 
 const config = {
   target: "node",
-  entry: "./src/extension.js",
+  entry: "./src/extension.ts",
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "extension.js",
@@ -16,20 +16,20 @@ const config = {
     vscode: "commonjs vscode",
   },
   resolve: {
-    extensions: [".js"],
+    extensions: [".js", ".ts"],
   },
-  // module: {
-  //   rules: [
-  //     {
-  //       test: /\.js$/,
-  //       exclude: /node_modules/,
-  //       use: [
-  //         {
-  //           loader: "babel-loader",
-  //         },
-  //       ],
-  //     },
-  //   ],
-  // },
+  module: {
+    rules: [
+      {
+        test: /\.ts$/,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: "ts-loader",
+          },
+        ],
+      },
+    ],
+  },
 };
 module.exports = config;
