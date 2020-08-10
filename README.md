@@ -140,6 +140,24 @@ OR
 - Scripts are string representations of [Command Line commands](https://www.codecademy.com/articles/command-line-commands). Scripts can be strings (1 command) or arrays (multiple commands)
 - Use the command [`terminalAllInOne.runScript`](#terminal-all-in-one-run-script) or the keybinding `cmd/ctrl+i enter` to open the Script Quick Pick<sup>[1](#quick-pick)</sup>
 - Alternatively, use the keybindings `cmd/ctrl+i 0-9` to run a specific script whose index corresponds to the number pressed _(Note: Only your first 10 scripts will have corresponding keybindings)_
+- Variables:
+
+  - `${workspaceFolder}` - the path of the folder opened in VS Code
+
+  - `${workspaceFolderBasename}` - the name of the folder opened in VS Code without any slashes (/)
+  - `${file}` - the current opened file
+  - `${relativeFile}` - the current opened file relative to workspaceFolder
+  - `${relativeFileDirname}` - the current opened file's dirname relative to workspaceFolder
+  - `${fileBasename}` - the current opened file's basename
+  - `${fileBasenameNoExtension}` - the current opened file's basename with no file extension
+  - `${fileDirname}` - the current opened file's dirname
+  - `${fileExtname}` - the current opened file's extension
+  - `${cwd}` - the task runner's current working directory on startup
+  - `${lineNumber}` - the current selected line number in the active file
+  - `${selectedText}` - the current selected text in the active file
+  - `${execPath}` - the path to the running VS Code executable
+  - `${defaultBuildTask}` - the name of the default build task
+
 - Sample Configuration:
 
   ```json
@@ -150,8 +168,8 @@ OR
         "script": ["echo hello", "echo How was your day?"]
       },
       {
-        "name": "Desktop",
-        "script": "cd ~/Desktop"
+        "name": "Contents of current workspace folder",
+        "script": "ls ${workspaceFolder}"
       },
       {
         "name": "Install Dependencies",

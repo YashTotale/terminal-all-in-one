@@ -424,6 +424,7 @@
   },
   "scripts": {
     "test": "node ./test/runTest.js",
+    "vscode:prepublish": "webpack --mode production",
     "webpack": "webpack --mode development",
     "webpack-dev": "webpack --mode development --watch"
   },
@@ -441,6 +442,8 @@
   },
   "dependencies": {
     "lodash.debounce": "^4.0.8",
-    "vscode-nls": "^4.1.2"
+    "ts-loader": "^8.0.2",
+    "vscode-nls": "^4.1.2",
+    "vscode-uri": "^2.1.2"
   }
 }
