@@ -1,5 +1,4 @@
 import { window, QuickPickItem, ConfigurationChangeEvent } from "vscode";
-// @ts-expect-error
 import debounce from "lodash.debounce";
 
 import showMessage from "../messages";

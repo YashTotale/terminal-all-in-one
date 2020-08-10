@@ -157,6 +157,7 @@ OR
   - `${selectedText}` - the current selected text in the active file
   - `${execPath}` - the path to the running VS Code executable
   - `${defaultBuildTask}` - the name of the default build task
+  - You can reference VS Code settings ("configurations") through `${config:Name}` syntax (for example, `${config:editor.fontSize}`).
 
 - Sample Configuration:
 
