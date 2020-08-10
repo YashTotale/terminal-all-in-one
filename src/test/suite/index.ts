@@ -1,19 +1,23 @@
-const path = require("path");
-const Mocha = require("mocha");
-const glob = require("glob");
+import path from "path";
+import MochaTests from "mocha";
+import glob from "glob";
 
 function createMocha() {
-  return new Mocha({
+  return new MochaTests({
     ui: "tdd",
     color: true,
   });
 }
 
-function addFiles(files, mocha, testsRoot) {
+function addFiles(files: string[], mocha: MochaTests, testsRoot: string) {
   files.forEach((f) => mocha.addFile(path.resolve(testsRoot, f)));
 }
 
-function runMocha(mocha, c, e) {
+function runMocha(
+  mocha: MochaTests,
+  c: (value?: unknown) => void,
+  e: (reason?: any) => void
+) {
   mocha.run((failures) => {
     if (failures > 0) {
       e(new Error(`${failures} tests failed.`));
@@ -24,7 +28,13 @@ function runMocha(mocha, c, e) {
   });
 }
 
-function globFunc(err, files, testsRoot, c, e) {
+function globFunc(
+  err: Error | null,
+  files: string[],
+  testsRoot: string,
+  c: (value?: unknown) => void,
+  e: (reason?: any) => void
+) {
   // Create the mocha test
   const mocha = createMocha();
 
@@ -48,8 +58,11 @@ function run() {
   const testsRoot = path.resolve(__dirname, "..");
 
   return new Promise((c, e) => {
-    glob("**/**.test.js", { cwd: testsRoot }, (err, files) =>
-      globFunc(err, files, testsRoot, c, e)
+    glob(
+      "**/**.test.js",
+      { cwd: testsRoot },
+      (err: Error | null, files: string[]) =>
+        globFunc(err, files, testsRoot, c, e)
     );
   });
 }

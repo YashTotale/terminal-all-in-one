@@ -1,10 +1,6 @@
-const assert = require("assert");
-
-// You can import and use all API from the 'vscode' module
-// as well as import your extension to test it
-const vscode = require("vscode");
-const themes = require("../../out/themes.json");
-// const myExtension = require('../extension');
+import assert from "assert";
+import vscode from "vscode";
+import themes from "../../themes.json";
 
 suite("Themes Test Suite", () => {
   vscode.window.showInformationMessage("Start all tests.");
