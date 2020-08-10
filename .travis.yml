@@ -16,7 +16,7 @@ install:
   - npm install
 
 before_script:
-  - npm run webpack
+  - npm run test-compile
 
 script:
   - npm test
