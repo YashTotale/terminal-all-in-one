@@ -410,7 +410,7 @@ _Check out [first contributions](https://github.com/firstcontributions/first-con
 
 <!-- Misc Badges -->
 <p align="center">
-    <a href="https://github.com/YashTotale/terminal-all-in-one/search?l=JavaScript&type=Code"><img src="https://img.shields.io/github/languages/top/YashTotale/terminal-all-in-one?logo=javascript&style=for-the-badge&labelColor=000000&color=FF4500" alt="Top Language"></a>&nbsp;
+    <a href="https://github.com/YashTotale/terminal-all-in-one/search?l=TypeScript&type=Code"><img src="https://img.shields.io/github/languages/top/YashTotale/terminal-all-in-one?logo=typescript&logoColor=007ACC&style=for-the-badge&labelColor=000000&color=FF4500" alt="Top Language"></a>&nbsp;
     <a href="https://github.com/YashTotale/terminal-all-in-one/blob/master/LICENSE.md"><img src="https://img.shields.io/github/license/YashTotale/terminal-all-in-one?style=for-the-badge&labelColor=000000&label=License&color=FF4500" alt="License"></a>&nbsp;
 </p>
 

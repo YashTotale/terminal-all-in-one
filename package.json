@@ -10,7 +10,7 @@
   "name": "terminal-all-in-one",
   "displayName": "Terminal All In One",
   "description": "Enhance your integrated terminal with themes, scripts, keybindings, and commands.",
-  "version": "1.10.0",
+  "version": "1.10.1",
   "homepage": "https://marketplace.visualstudio.com/items?itemName=yasht.terminal-all-in-one",
   "license": "MIT",
   "publisher": "yasht",
