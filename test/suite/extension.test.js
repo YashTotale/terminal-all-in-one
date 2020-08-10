@@ -4,7 +4,7 @@ const assert = require("assert");
 // as well as import your extension to test it
 const vscode = require("vscode");
 //
-const { activate, deactivate } = require("../../dist/extension");
+const { activate, deactivate } = require("../../out/extension");
 // const myExtension = require('../extension');
 
 suite("Extension Test Suite", () => {
