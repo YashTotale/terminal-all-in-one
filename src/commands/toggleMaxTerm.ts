@@ -1,8 +1,8 @@
-import { commands } from "vscode";
+import { commands, ExtensionContext } from "vscode";
 import BaseCommand from "./baseCommand";
 
 export default class ToggleMaxTerm extends BaseCommand {
-  constructor() {
+  constructor(context: ExtensionContext) {
     super("toggleMaxTerm", ToggleMaxTerm.handler);
   }
 

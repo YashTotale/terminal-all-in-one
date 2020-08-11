@@ -26,7 +26,7 @@ interface command {
 }
 
 function createCommands(context: ExtensionContext) {
-  cmds.forEach((command: command) => {
+  cmds(context).forEach((command: command) => {
     const { name, handler, config } = command;
     const commandName = createCommandName(name);
     registerCommand({ commandName, handler, context });

@@ -1,5 +1,5 @@
 import debounce from "lodash.debounce";
-import { QuickPickItem } from "vscode";
+import { QuickPickItem, ExtensionContext } from "vscode";
 
 import FontSize from "./index";
 
@@ -9,7 +9,7 @@ interface fontSizeObject {
 }
 
 export default class ChangeFontSize extends FontSize {
-  constructor() {
+  constructor(context: ExtensionContext) {
     super("changeFontSize", ChangeFontSize.handler);
   }
 

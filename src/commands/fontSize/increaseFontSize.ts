@@ -1,7 +1,8 @@
 import FontSize from "./index";
+import { ExtensionContext } from "vscode";
 
 export default class IncreaseFontSize extends FontSize {
-  constructor() {
+  constructor(context: ExtensionContext) {
     super("increaseFontSize", IncreaseFontSize.handler);
   }
 

@@ -1,4 +1,4 @@
-import { commands } from "vscode";
+import { commands, ExtensionContext } from "vscode";
 import BaseCommand from "./baseCommand";
 
 interface scriptObject {
@@ -7,7 +7,7 @@ interface scriptObject {
 }
 
 export default class RunScript extends BaseCommand {
-  constructor() {
+  constructor(context: ExtensionContext) {
     super("runScript", RunScript.handler);
   }
 
@@ -73,7 +73,7 @@ export default class RunScript extends BaseCommand {
     const controlC = "\u0003";
     const emptyLine = 'echo "";';
     const ignoreAbove =
-      "echo '^ Ignore the above command (it tells the terminal to display the script info) ^';";
+      "echo '^ Ignore the above command (it tells the terminal to display the script description) ^';";
     const running = `echo -e "Running script: \\033[1m${name}\\033[0m";`;
     const enter = "\u000D";
     let cmds = "";

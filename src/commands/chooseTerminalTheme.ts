@@ -1,4 +1,4 @@
-import { QuickPickItem } from "vscode";
+import { QuickPickItem, ExtensionContext } from "vscode";
 import debounce from "lodash.debounce";
 
 import BaseCommand from "./baseCommand";
@@ -35,7 +35,7 @@ const themes = require("../themes.json");
 const themeSchemes = themes.map((theme: theme) => theme.colors);
 
 export default class ChooseTerminalTheme extends BaseCommand {
-  constructor() {
+  constructor(context: ExtensionContext) {
     super("chooseTerminalTheme", ChooseTerminalTheme.handler);
   }
 
