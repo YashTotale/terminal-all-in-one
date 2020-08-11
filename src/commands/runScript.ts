@@ -1,6 +1,4 @@
-import { commands, window } from "vscode";
-import { getConfig, updateConfig } from "../helpers/config";
-import showMessage from "../messages";
+import { commands } from "vscode";
 import BaseCommand from "./baseCommand";
 
 interface scriptObject {
