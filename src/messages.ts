@@ -1,9 +1,10 @@
 import { window, commands, env, ExtensionContext, Uri } from "vscode";
 import { getConfig, updateConfig } from "./helpers/config";
-
-const EXTENSION_NAME = "terminalAllInOne";
-const EXTENSION_NAME_W_PUBLISHER = "yasht.terminal-all-in-one";
-const READABLE_EXTENSION_NAME = "Terminal All In One";
+import {
+  EXTENSION_NAME,
+  EXTENSION_NAME_W_PUBLISHER,
+  READABLE_EXTENSION_NAME,
+} from "./helpers/constants";
 
 const TERMINAL_MESSAGES_CONFIG = `${EXTENSION_NAME}.messages`;
 

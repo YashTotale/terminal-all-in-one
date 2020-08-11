@@ -1,10 +1,10 @@
 import { commands, workspace, ExtensionContext } from "vscode";
 import showMessage from "./messages";
-
 import cmds from "./commands";
+import { EXTENSION_NAME } from "./helpers/constants";
 
 function createCommandName(name: string) {
-  return `terminalAllInOne.${name}`;
+  return `${EXTENSION_NAME}.${name}`;
 }
 
 interface registerCommand {

@@ -43,7 +43,7 @@ _Table Of Contents_
   - [Windows and Linux](#windows-and-linux)
 - [Demos](#demos)
 - [Contribute](#contribute)
-- _[More Info](#more-info)_
+- **[More Info](#more-info)**
 
 ---
 
