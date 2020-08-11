@@ -1,4 +1,4 @@
-import { chooseTerminalTheme } from "./chooseTerminalTheme";
+import ChooseTerminalTheme from "./chooseTerminalTheme";
 import ClearTerminal from "./clearTerminal";
 import RunScript from "./runScript";
 import ToggleMaxTerm from "./toggleMaxTerm";
@@ -7,7 +7,7 @@ import IncreaseFontSize from "./fontSize/increaseFontSize";
 import DecreaseFontSize from "./fontSize/decreaseFontSize";
 
 export default [
-  chooseTerminalTheme,
+  new ChooseTerminalTheme(),
   new ClearTerminal(),
   new RunScript(),
   new ToggleMaxTerm(),

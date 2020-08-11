@@ -20,6 +20,7 @@ export default class ChangeFontSize extends FontSize {
     return ChangeFontSize.showQuickPick(
       fontSizes,
       {
+        placeHolder: "Choose a Font Size",
         onDidSelectItem: debounce(async (fontSize: QuickPickItem) => {
           const trueSize = ChangeFontSize.getTrueSize(fontSize.label);
           return ChangeFontSize.updateFontSizeConfig(trueSize);
