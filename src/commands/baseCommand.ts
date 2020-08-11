@@ -1,4 +1,4 @@
-import { QuickPickItem, window, QuickPickOptions } from "vscode";
+import { QuickPickItem, window, QuickPickOptions, commands } from "vscode";
 
 import {
   EXTENSION_NAME,
@@ -40,11 +40,19 @@ export default class BaseCommand {
     return updateConfig({ config: "terminalAllInOne", section: key, value });
   }
 
+  static getConfig(property: string) {
+    return getConfig({ section: property });
+  }
+
+  static updateConfig({ key, value }: { key: string; value: any }) {
+    return updateConfig({ section: key, value });
+  }
+
   static async showQuickPick(
     items: QuickPickItem[],
     options: QuickPickOptions,
-    onSelect: (selectedItem: QuickPickItem) => {},
-    cleanUp?: () => {}
+    onSelect: (selectedItem: QuickPickItem) => any,
+    onNoSelect?: () => any
   ) {
     const selectedItem = await window.showQuickPick(items, {
       matchOnDescription: true,
@@ -56,10 +64,13 @@ export default class BaseCommand {
     });
 
     if (!selectedItem) {
-      cleanUp?.();
-      return;
+      onNoSelect?.();
+    } else {
+      onSelect(selectedItem);
     }
+  }
 
-    onSelect(selectedItem);
+  static clearTerminal() {
+    return commands.executeCommand("terminalAllInOne.clearTerminal");
   }
 }

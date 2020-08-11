@@ -1,19 +1,17 @@
-import {
-  changeFontSize,
-  increaseFontSize,
-  decreaseFontSize,
-} from "./changeFontSize";
 import { chooseTerminalTheme } from "./chooseTerminalTheme";
 import ClearTerminal from "./clearTerminal";
 import RunScript from "./runScript";
 import ToggleMaxTerm from "./toggleMaxTerm";
+import ChangeFontSize from "./fontSize/changeFontSize";
+import IncreaseFontSize from "./fontSize/increaseFontSize";
+import DecreaseFontSize from "./fontSize/decreaseFontSize";
 
 export default [
   chooseTerminalTheme,
   new ClearTerminal(),
   new RunScript(),
   new ToggleMaxTerm(),
-  changeFontSize,
-  increaseFontSize,
-  decreaseFontSize,
+  new ChangeFontSize(),
+  new IncreaseFontSize(),
+  new DecreaseFontSize(),
 ];
