@@ -5,14 +5,14 @@ import {
 } from "./changeFontSize";
 import { chooseTerminalTheme } from "./chooseTerminalTheme";
 import { clearTerminal } from "./clearTerminal";
-import { runScript } from "./runScript";
-import { toggleMaxTerm } from "./toggleMaxTerm";
+import RunScript from "./runScript";
+import ToggleMaxTerm from "./toggleMaxTerm";
 
 export default [
   chooseTerminalTheme,
   clearTerminal,
-  runScript,
-  toggleMaxTerm,
+  new RunScript(),
+  new ToggleMaxTerm(),
   changeFontSize,
   increaseFontSize,
   decreaseFontSize,

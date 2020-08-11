@@ -45,7 +45,7 @@ interface messages {
   error: Function;
 }
 
-const messages: messages = {
+export const messages: messages = {
   // Message on start
   onstart: async (context: ExtensionContext) => {
     const STATE_PROPERTY = "shouldNotShowOnStartMessage";
