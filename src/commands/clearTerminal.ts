@@ -1,12 +1,14 @@
 import { commands } from "vscode";
+import BaseCommand from "./baseCommand";
 
-const clearTerminalHandler = () => {
-  return commands.executeCommand("workbench.action.terminal.sendSequence", {
-    text: "\u0003 clear \u000D",
-  });
-};
+export default class ClearTerminal extends BaseCommand {
+  constructor() {
+    super("clearTerminal", ClearTerminal.handler);
+  }
 
-export const clearTerminal = {
-  name: "clearTerminal",
-  handler: clearTerminalHandler,
-};
+  static handler() {
+    return commands.executeCommand("workbench.action.terminal.sendSequence", {
+      text: "\u0003 clear \u000D",
+    });
+  }
+}
