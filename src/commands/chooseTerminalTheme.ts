@@ -54,6 +54,7 @@ export default class ChooseTerminalTheme extends BaseCommand {
       label: name,
       description: currentTheme === name ? "current" : null,
     }));
+    ChooseTerminalTheme.showMessage("themeQuickPickOpened");
     ChooseTerminalTheme.showQuickPick(
       themeNames,
       {

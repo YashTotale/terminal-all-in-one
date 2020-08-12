@@ -31,11 +31,11 @@ _Table Of Contents_
   - [Display](#display)
   - [Font Size](#font-size)
 - [Configuration](#configuration)
-  - **[Terminal Theme](#terminal-theme)**
-  - **[Scripts](#scripts)**
-  - [Disable All Keybindings](#disable-all-keybindings)
+  - **[Themes](#themes-1)**
+  - **[Scripts](#scripts-1)**
+  - [Keybindings](#keybindings)
   - [Messages](#messages)
-- [Keybindings](#keybindings)
+- [Keybindings](#keybindings-1)
 - [Demos](#demos)
 - [Contribute](#contribute)
 - **[More Info](#more-info)**
@@ -119,11 +119,13 @@ OR
 
 ## Configuration
 
-### Terminal Theme
+### Themes
 
 - `terminalAllInOne.terminalTheme`
-- A Terminal Theme from [this list](https://glitchbone.github.io/vscode-base16-term/#/)
-- Use the command [`terminalAllInOne.chooseTerminalTheme`](#terminal-all-in-one-choose-theme) or the keybinding `cmd/ctrl+i t` to control this setting.
+
+  - A Terminal Theme from [this list](https://glitchbone.github.io/vscode-base16-term/#/)
+  - Use the command [`terminalAllInOne.chooseTerminalTheme`](#choose-theme) or the keybinding `cmd/ctrl+i t` to control this setting.
+
 - Default Configuration :
 
   ```json
@@ -135,27 +137,32 @@ OR
 ### Scripts
 
 - `terminalAllInOne.scripts`
-- Scripts are string representations of [Command Line commands](https://www.codecademy.com/articles/command-line-commands). Scripts can be strings (1 command) or arrays (multiple commands)
-- Use the command [`terminalAllInOne.runScript`](#terminal-all-in-one-run-script) or the keybinding `cmd/ctrl+i enter` to open the Script Quick Pick<sup>[1](#quick-pick)</sup>
-- Alternatively, use the keybindings `cmd/ctrl+i 0-9` to run a specific script whose index corresponds to the number pressed _(Note: Only your first 10 scripts will have corresponding keybindings)_
-- Variables:
 
-  - `${workspaceFolder}` - the path of the folder opened in VS Code
+  - Scripts are string representations of [Command Line commands](https://www.codecademy.com/articles/command-line-commands). Scripts can be strings (1 command) or arrays (multiple commands)
+  - Use the command [`terminalAllInOne.runScript`](#run-script) or the keybinding `cmd/ctrl+i enter` to open the Script Quick Pick<sup>[1](#quick-pick)</sup>
+  - Alternatively, use the keybindings `cmd/ctrl+i 0-9` to run a specific script whose index corresponds to the number pressed _(Note: Only your first 10 scripts will have corresponding keybindings)_
+  - Variables:
 
-  - `${workspaceFolderBasename}` - the name of the folder opened in VS Code without any slashes (/)
-  - `${file}` - the current opened file
-  - `${relativeFile}` - the current opened file relative to workspaceFolder
-  - `${relativeFileDirname}` - the current opened file's dirname relative to workspaceFolder
-  - `${fileBasename}` - the current opened file's basename
-  - `${fileBasenameNoExtension}` - the current opened file's basename with no file extension
-  - `${fileDirname}` - the current opened file's dirname
-  - `${fileExtname}` - the current opened file's extension
-  - `${cwd}` - the task runner's current working directory on startup
-  - `${lineNumber}` - the current selected line number in the active file
-  - `${selectedText}` - the current selected text in the active file
-  - `${execPath}` - the path to the running VS Code executable
-  - `${defaultBuildTask}` - the name of the default build task
-  - You can reference VS Code settings ("configurations") through `${config:Name}` syntax (for example, `${config:editor.fontSize}`).
+    - `${workspaceFolder}` - the path of the folder opened in VS Code
+
+    - `${workspaceFolderBasename}` - the name of the folder opened in VS Code without any slashes (/)
+    - `${file}` - the current opened file
+    - `${relativeFile}` - the current opened file relative to workspaceFolder
+    - `${relativeFileDirname}` - the current opened file's dirname relative to workspaceFolder
+    - `${fileBasename}` - the current opened file's basename
+    - `${fileBasenameNoExtension}` - the current opened file's basename with no file extension
+    - `${fileDirname}` - the current opened file's dirname
+    - `${fileExtname}` - the current opened file's extension
+    - `${cwd}` - the task runner's current working directory on startup
+    - `${lineNumber}` - the current selected line number in the active file
+    - `${selectedText}` - the current selected text in the active file
+    - `${execPath}` - the path to the running VS Code executable
+    - `${defaultBuildTask}` - the name of the default build task
+    - You can reference VS Code settings ("configurations") through `${config:Name}` syntax (for example, `${config:editor.fontSize}`).
+
+- `terminalAllInOne.script.disableDescription`
+
+  - Disable the Script Description that is run before the Script Commands
 
 - Sample Configuration:
 
@@ -179,10 +186,10 @@ OR
   }
   ```
 
-### Disable All Keybindings
+### Keybindings
 
 - `terminalAllInOne.disableAllKeybindings`
-- Controls whether all keybindings are disabled
+  - Controls whether all keybindings are disabled
 - Default Configuration :
 
   ```json
@@ -193,9 +200,10 @@ OR
 
 ### Messages
 
-- `terminalAllInOne.messages` & `terminalAllInOne.disableAllMessages`
-- `terminalAllInOne.messages` : Controls which messages should be shown if `terminalAllInOne.disableAllMessages` is set to false
-- `terminalAllInOne.disableAllMessages`: Controls whether all messages (info, warning, and error) from this extension are disabled
+- `terminalAllInOne.messages`
+  - Controls which messages should be shown if `terminalAllInOne.disableAllMessages` is set to false
+- `terminalAllInOne.disableAllMessages`
+  - Controls whether all messages (info, warning, and error) from this extension are disabled
 - Default Configuration :
 
   ```json
@@ -215,11 +223,11 @@ OR
 
 ## Keybindings
 
-**For each keybinding, press `cmd+i` (for Macs) or `ctrl+i` (for Windows & Linux), and the corresponding key for the terminal command.**
+**For each keybinding (except toggling the terminal) , press `cmd+i` (for Macs) or `ctrl+i` (for Windows & Linux), and the corresponding key for the terminal command.**
 
 | Chord          | Shortcut        | Description                          | Command                                                      |
 | -------------- | --------------- | ------------------------------------ | ------------------------------------------------------------ |
-| _`cmd/ctrl+`_  | **`` ` ``**     | Toggle the Terminal                  | `workbench.action.terminal.toggleTerminal`                   |
+| _`cmd/ctrl`_   | **`` ` ``**     | Toggle the Terminal                  | `workbench.action.terminal.toggleTerminal`                   |
 | _`cmd/ctrl+i`_ | **`m`**         | Toggle the Maximized Terminal        | [`terminalAllInOne.toggleMaxTerm`](#toggle-max-term)\*       |
 | _`cmd/ctrl+i`_ | **`s`**         | Select a Default Shell               | `workbench.action.terminal.selectDefaultShell`               |
 | _`cmd/ctrl+i`_ | **`c`**         | Create a New Terminal Instance       | `workbench.action.terminal.new`                              |
@@ -235,7 +243,7 @@ OR
 | _`cmd/ctrl+i`_ | **`=`**         | Increase Terminal Font Size          | [`terminalAllInOne.increaseFontSize`](#increase-font-size)\* |
 | _`cmd/ctrl+i`_ | **`backspace`** | Clear the Terminal                   | [`terminalAllInOne.clearTerminal`](#clear-terminal)\*        |
 
-\*These commands are linked
+\*These commands are linked to their descriptions in the [Commands Section](#commands)
 
 ---
 
@@ -371,12 +379,12 @@ _Check out [first contributions](https://github.com/firstcontributions/first-con
 ---
 
 <!-- Dependency Badges -->
-<p align="center">
+<!-- <p align="center">
     <a href="https://david-dm.org/YashTotale/terminal-all-in-one"><img src="https://img.shields.io/david/YashTotale/terminal-all-in-one?style=for-the-badge&labelColor=000000&label=Dependencies" alt="Dependencies"></a>&nbsp;
     <a href="https://david-dm.org/YashTotale/terminal-all-in-one?type=dev"><img src="https://img.shields.io/david/dev/YashTotale/terminal-all-in-one?style=for-the-badge&labelColor=000000&label=Dev%20Dependencies" alt="Dev Dependencies"></a>&nbsp;
 </p>
 
----
+--- -->
 
 <!-- Commit Badges -->
 <p align="center">
