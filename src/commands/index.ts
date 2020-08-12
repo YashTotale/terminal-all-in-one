@@ -3,8 +3,7 @@ import ClearTerminal from "./clearTerminal";
 import RunScript from "./runScript";
 import ToggleMaxTerm from "./toggleMaxTerm";
 import ChangeFontSize from "./fontSize/changeFontSize";
-import IncreaseFontSize from "./fontSize/increaseFontSize";
-import DecreaseFontSize from "./fontSize/decreaseFontSize";
+import AdjustFontSizeByOne from "./fontSize/adjustFontSizeByOne";
 import { ExtensionContext } from "vscode";
 
 export default (context: ExtensionContext) => [
@@ -13,6 +12,6 @@ export default (context: ExtensionContext) => [
   new RunScript(context),
   new ToggleMaxTerm(context),
   new ChangeFontSize(context),
-  new IncreaseFontSize(context),
-  new DecreaseFontSize(context),
+  new AdjustFontSizeByOne(context, "decrease"),
+  new AdjustFontSizeByOne(context, "increase"),
 ];

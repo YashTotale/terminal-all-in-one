@@ -6,18 +6,17 @@ interface scriptObject {
   script: string | string[];
 }
 
+interface handlerArgs {
+  context: ExtensionContext;
+  index?: number;
+}
+
 export default class RunScript extends BaseCommand {
   constructor(context: ExtensionContext) {
     super("runScript", (index) => RunScript.handler({ context, index }));
   }
 
-  static async handler({
-    index,
-    context,
-  }: {
-    context: ExtensionContext;
-    index?: number;
-  }) {
+  static async handler({ index, context }: handlerArgs) {
     //All Scripts
     const scripts = RunScript.getScriptsConfig();
     //Check if the index has been passed and if it is a valid index
