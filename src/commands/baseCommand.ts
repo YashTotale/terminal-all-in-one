@@ -1,4 +1,10 @@
-import { QuickPickItem, window, QuickPickOptions, commands } from "vscode";
+import {
+  QuickPickItem,
+  window,
+  QuickPickOptions,
+  commands,
+  ConfigurationChangeEvent,
+} from "vscode";
 
 import {
   EXTENSION_NAME,
@@ -9,12 +15,18 @@ import { getConfig, updateConfig } from "../helpers/config";
 import showMessage, { messages } from "../messages";
 
 export default class BaseCommand {
-  constructor(name: string, handler: () => any) {
+  constructor(
+    name: string,
+    handler: (...params: any[]) => any,
+    config?: (e: ConfigurationChangeEvent) => any
+  ) {
     this.name = name;
     this.handler = handler;
+    this.config = config;
   }
   name: string;
-  handler: () => any;
+  handler: (...params: any[]) => any;
+  config: ((e: ConfigurationChangeEvent) => any) | undefined;
 
   static getExtensionName() {
     return EXTENSION_NAME;

@@ -10,10 +10,10 @@ interface fontSizeObject {
 
 export default class ChangeFontSize extends FontSize {
   constructor(context: ExtensionContext) {
-    super("changeFontSize", ChangeFontSize.handler);
+    super("changeFontSize", () => ChangeFontSize.handler(context));
   }
 
-  static handler() {
+  static handler(context: ExtensionContext) {
     const currentSize = ChangeFontSize.getFontSizeConfig();
     const fontSizes = ChangeFontSize.createFontSizes(currentSize);
     ChangeFontSize.showMessage("fontSizeQuickPickOpened");

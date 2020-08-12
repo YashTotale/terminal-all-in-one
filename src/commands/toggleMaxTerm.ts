@@ -3,10 +3,10 @@ import BaseCommand from "./baseCommand";
 
 export default class ToggleMaxTerm extends BaseCommand {
   constructor(context: ExtensionContext) {
-    super("toggleMaxTerm", ToggleMaxTerm.handler);
+    super("toggleMaxTerm", () => ToggleMaxTerm.handler(context));
   }
 
-  static handler() {
+  static handler(context: ExtensionContext) {
     commands.executeCommand("workbench.action.terminal.focus");
     commands.executeCommand("workbench.action.toggleMaximizedPanel");
   }

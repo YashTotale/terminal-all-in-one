@@ -1,4 +1,8 @@
-import { QuickPickItem, ExtensionContext } from "vscode";
+import {
+  QuickPickItem,
+  ExtensionContext,
+  ConfigurationChangeEvent,
+} from "vscode";
 import debounce from "lodash.debounce";
 
 import BaseCommand from "./baseCommand";
@@ -36,10 +40,14 @@ const themeSchemes = themes.map((theme: theme) => theme.colors);
 
 export default class ChooseTerminalTheme extends BaseCommand {
   constructor(context: ExtensionContext) {
-    super("chooseTerminalTheme", ChooseTerminalTheme.handler);
+    super(
+      "chooseTerminalTheme",
+      () => ChooseTerminalTheme.handler(context),
+      ChooseTerminalTheme.configChange
+    );
   }
 
-  static handler() {
+  static handler(context: ExtensionContext) {
     const currentColors = ChooseTerminalTheme.getColorCustomizations();
     const currentTheme = ChooseTerminalTheme.getThemeConfig();
     const themeNames = themes.map(({ name }: theme) => ({
@@ -62,6 +70,14 @@ export default class ChooseTerminalTheme extends BaseCommand {
         ChooseTerminalTheme.updateColorCustomizations(currentColors);
       }
     );
+  }
+
+  static configChange(event: ConfigurationChangeEvent) {
+    if (event.affectsConfiguration("terminalAllInOne.terminalTheme")) {
+      return ChooseTerminalTheme.updateTerminalTheme(
+        ChooseTerminalTheme.getThemeConfig()
+      );
+    }
   }
 
   static updateTerminalTheme(themeName: string) {
