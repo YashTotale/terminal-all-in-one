@@ -19,30 +19,41 @@ export default class RunScript extends BaseCommand {
   static async handler({ index, context }: handlerArgs) {
     //All Scripts
     const scripts = RunScript.getScriptsConfig();
+    if (!RunScript.handlerChecks(scripts, index)) {
+      //Create the QP items and show the QP
+      const items = scripts.map(
+        ({ name, script }: scriptObject, i: number) => ({
+          label: name,
+          description: Array.isArray(script) ? script.join(" -> ") : script,
+          index: i,
+        })
+      );
+      return BaseCommand.showQuickPick(
+        items,
+        { placeHolder: "Run a Script" },
+        (selectedScript) => {
+          //@ts-expect-error
+          return RunScript.execute(scripts[selectedScript.index]);
+        }
+      );
+    }
+  }
+
+  static handlerChecks(scripts: scriptObject[], index?: number) {
     //Check if the index has been passed and if it is a valid index
     if (typeof index === "number") {
       if (index < scripts.length) {
-        return RunScript.execute(scripts[index]);
+        RunScript.execute(scripts[index]);
+        return true;
       }
-      return BaseCommand.showMessage("noScripts", index);
+      BaseCommand.showMessage("noScripts", index);
+      return true;
     }
     if (!scripts.length) {
-      return BaseCommand.showMessage("noScripts");
+      BaseCommand.showMessage("noScripts");
+      return true;
     }
-    //Create the QP items and show the QP
-    const items = scripts.map(({ name, script }: scriptObject, i: number) => ({
-      label: name,
-      description: Array.isArray(script) ? script.join(" -> ") : script,
-      index: i,
-    }));
-    return BaseCommand.showQuickPick(
-      items,
-      { placeHolder: "Run a Script" },
-      (selectedScript) => {
-        //@ts-expect-error
-        return RunScript.execute(scripts[selectedScript.index]);
-      }
-    );
+    return false;
   }
 
   static async execute({ name, script }: scriptObject) {
