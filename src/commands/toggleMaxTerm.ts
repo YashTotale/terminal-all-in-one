@@ -1,11 +1,13 @@
-import { commands } from "vscode";
+import { commands, ExtensionContext } from "vscode";
+import BaseCommand from "./baseCommand";
 
-const toggleMaxTermHandler = () => {
-  commands.executeCommand("workbench.action.terminal.focus");
-  commands.executeCommand("workbench.action.toggleMaximizedPanel");
-};
+export default class ToggleMaxTerm extends BaseCommand {
+  constructor(context: ExtensionContext) {
+    super("toggleMaxTerm", () => ToggleMaxTerm.handler(context));
+  }
 
-export const toggleMaxTerm = {
-  name: "toggleMaxTerm",
-  handler: toggleMaxTermHandler,
-};
+  static handler(context: ExtensionContext) {
+    commands.executeCommand("workbench.action.terminal.focus");
+    commands.executeCommand("workbench.action.toggleMaximizedPanel");
+  }
+}

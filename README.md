@@ -26,21 +26,16 @@ _Table Of Contents_
 
 - [Installation](#installation)
 - [Commands](#commands)
-  - **[Choose Theme](#terminal-all-in-one-choose-theme)**
-  - **[Run Script](#terminal-all-in-one-run-script)**
-  - [Toggle Maximized Terminal](#terminal-all-in-one-toggle-maximized-terminal)
-  - [Change Font Size](#terminal-all-in-one-change-font-size)
-  - [Decrease Font Size](#terminal-all-in-one-decrease-font-size)
-  - [Increase Font Size](#terminal-all-in-one-increase-font-size)
-  - [Clear Terminal](#terminal-all-in-one-clear-terminal)
-- [Configuration](#configuration)
-  - **[Terminal Theme](#terminal-theme)**
+  - **[Themes](#themes)**
   - **[Scripts](#scripts)**
-  - [Disable All Keybindings](#disable-all-keybindings)
+  - [Display](#display)
+  - [Font Size](#font-size)
+- [Configuration](#configuration)
+  - **[Themes](#themes-1)**
+  - **[Scripts](#scripts-1)**
+  - [Keybindings](#keybindings)
   - [Messages](#messages)
-- [Keybindings](#keybindings)
-  - [Mac](#mac)
-  - [Windows and Linux](#windows-and-linux)
+- [Keybindings](#keybindings-1)
 - [Demos](#demos)
 - [Contribute](#contribute)
 - **[More Info](#more-info)**
@@ -68,64 +63,69 @@ OR
 
 ## Commands
 
-### Terminal All In One: Choose Theme
+### Themes
 
-- `terminalAllInOne.chooseTerminalTheme`
+- `terminalAllInOne.chooseTerminalTheme` <span id="choose-theme" name="choose-theme"><em>(Terminal All In One: Choose Theme)</em></span>
 
-- Opens a Theme Quick Pick<sup>[1](#quick-pick)</sup> with over **100** Themes to choose from
-- Live Preview in the Terminal
-- Keybinding: `cmd/ctrl+i t`
+  - Opens a Theme Quick Pick<sup>[1](#quick-pick)</sup> with over **100** Themes to choose from
 
-### Terminal All In One: Run Script
+  - Live Preview in the Terminal
+  - Keybinding: `cmd/ctrl+i t`
 
-- `terminalAllInOne.runScript`
+### Scripts
 
-- Opens a Script Quick Pick<sup>[1](#quick-pick)</sup> with [your defined scripts](#scripts) **OR** runs a specific script
-- Keybindings: `cmd/ctrl+i enter` for the Script Quick Pick<sup>[1](#quick-pick)</sup> **OR** `cmd/ctrl+i 0-9` for a specific script
+- `terminalAllInOne.runScript` <span id="run-script" name="run-script"><em>(Terminal All In One: Run Script)</em></span>
 
-### Terminal All In One: Toggle Maximized Terminal
+  - Opens a Script Quick Pick<sup>[1](#quick-pick)</sup> with [your defined scripts](#scripts) **OR** runs a specific script
 
-- `terminalAllInOne.toggleMaxTerm`
+  - Keybindings: `cmd/ctrl+i enter` for the Script Quick Pick<sup>[1](#quick-pick)</sup> **OR** `cmd/ctrl+i 0-9` for a specific script
 
-- Keybinding: `cmd/ctrl+i m`
+### Display
 
-### Terminal All In One: Change Font Size
+- `terminalAllInOne.toggleMaxTerm` <span id="toggle-max-term" name="toggle-max-term"><em>(Terminal All In One: Toggle Maximized Terminal)</em></span>
 
-- `terminalAllInOne.changeFontSize`
+  - Toggles the Maximized Terminal
 
-- Opens a Font Size Quick Pick<sup>[1](#quick-pick)</sup>
-- Live Preview in the Terminal
-- Keybinding: `cmd/ctrl+i f`
+  - Keybinding: `cmd/ctrl+i m`
 
-### Terminal All In One: Decrease Font Size
+- `terminalAllInOne.clearTerminal` <span id="clear-terminal" name="clear-terminal"><em>(Terminal All In One: Clear Terminal)</em></span>
 
-- `terminalAllInOne.decreaseFontSize`
+  - Clears the Terminal
 
-- Decrease the Terminal Font Size by 1-pt
-- Keybinding: `cmd/ctrl+i -`
+  - Keybinding: `cmd/ctrl+i backspace`
 
-### Terminal All In One: Increase Font Size
+### Font Size
 
-- `terminalAllInOne.increaseFontSize`
+- `terminalAllInOne.changeFontSize` <span id="change-font-size" name="change-font-size"><em>(Terminal All In One: Change Font Size)</em></span>
 
-- Increase the Terminal Font Size by 1-pt
-- Keybinding: `cmd/ctrl+i =`
+  - Opens a Font Size Quick Pick<sup>[1](#quick-pick)</sup>
 
-### Terminal All In One: Clear Terminal
+  - Live Preview in the Terminal
+  - Keybinding: `cmd/ctrl+i f`
 
-- `terminalAllInOne.clearTerminal`
+- `terminalAllInOne.decreaseFontSize` <span id="decrease-font-size" name="decrease-font-size"><em>(Terminal All In One: Decrease Font Size)</em></span>
 
-- Keybinding: `cmd/ctrl+i backspace`
+  - Decrease the Terminal Font Size by 1-pt
+
+  - Keybinding: `cmd/ctrl+i -`
+
+- `terminalAllInOne.increaseFontSize` <span id="increase-font-size" name="increase-font-size"><em>(Terminal All In One: Increase Font Size)</em></span>
+
+  - Increase the Terminal Font Size by 1-pt
+
+  - Keybinding: `cmd/ctrl+i =`
 
 ---
 
 ## Configuration
 
-### Terminal Theme
+### Themes
 
 - `terminalAllInOne.terminalTheme`
-- A Terminal Theme from [this list](https://glitchbone.github.io/vscode-base16-term/#/)
-- Use the command [`terminalAllInOne.chooseTerminalTheme`](#terminal-all-in-one-choose-theme) or the keybinding `cmd/ctrl+i t` to control this setting.
+
+  - A Terminal Theme from [this list](https://glitchbone.github.io/vscode-base16-term/#/)
+  - Use the command [`terminalAllInOne.chooseTerminalTheme`](#choose-theme) or the keybinding `cmd/ctrl+i t` to control this setting.
+
 - Default Configuration :
 
   ```json
@@ -137,27 +137,32 @@ OR
 ### Scripts
 
 - `terminalAllInOne.scripts`
-- Scripts are string representations of [Command Line commands](https://www.codecademy.com/articles/command-line-commands). Scripts can be strings (1 command) or arrays (multiple commands)
-- Use the command [`terminalAllInOne.runScript`](#terminal-all-in-one-run-script) or the keybinding `cmd/ctrl+i enter` to open the Script Quick Pick<sup>[1](#quick-pick)</sup>
-- Alternatively, use the keybindings `cmd/ctrl+i 0-9` to run a specific script whose index corresponds to the number pressed _(Note: Only your first 10 scripts will have corresponding keybindings)_
-- Variables:
 
-  - `${workspaceFolder}` - the path of the folder opened in VS Code
+  - Scripts are string representations of [Command Line commands](https://www.codecademy.com/articles/command-line-commands). Scripts can be strings (1 command) or arrays (multiple commands)
+  - Use the command [`terminalAllInOne.runScript`](#run-script) or the keybinding `cmd/ctrl+i enter` to open the Script Quick Pick<sup>[1](#quick-pick)</sup>
+  - Alternatively, use the keybindings `cmd/ctrl+i 0-9` to run a specific script whose index corresponds to the number pressed _(Note: Only your first 10 scripts will have corresponding keybindings)_
+  - Variables:
 
-  - `${workspaceFolderBasename}` - the name of the folder opened in VS Code without any slashes (/)
-  - `${file}` - the current opened file
-  - `${relativeFile}` - the current opened file relative to workspaceFolder
-  - `${relativeFileDirname}` - the current opened file's dirname relative to workspaceFolder
-  - `${fileBasename}` - the current opened file's basename
-  - `${fileBasenameNoExtension}` - the current opened file's basename with no file extension
-  - `${fileDirname}` - the current opened file's dirname
-  - `${fileExtname}` - the current opened file's extension
-  - `${cwd}` - the task runner's current working directory on startup
-  - `${lineNumber}` - the current selected line number in the active file
-  - `${selectedText}` - the current selected text in the active file
-  - `${execPath}` - the path to the running VS Code executable
-  - `${defaultBuildTask}` - the name of the default build task
-  - You can reference VS Code settings ("configurations") through `${config:Name}` syntax (for example, `${config:editor.fontSize}`).
+    - `${workspaceFolder}` - the path of the folder opened in VS Code
+
+    - `${workspaceFolderBasename}` - the name of the folder opened in VS Code without any slashes (/)
+    - `${file}` - the current opened file
+    - `${relativeFile}` - the current opened file relative to workspaceFolder
+    - `${relativeFileDirname}` - the current opened file's dirname relative to workspaceFolder
+    - `${fileBasename}` - the current opened file's basename
+    - `${fileBasenameNoExtension}` - the current opened file's basename with no file extension
+    - `${fileDirname}` - the current opened file's dirname
+    - `${fileExtname}` - the current opened file's extension
+    - `${cwd}` - the task runner's current working directory on startup
+    - `${lineNumber}` - the current selected line number in the active file
+    - `${selectedText}` - the current selected text in the active file
+    - `${execPath}` - the path to the running VS Code executable
+    - `${defaultBuildTask}` - the name of the default build task
+    - You can reference VS Code settings ("configurations") through `${config:Name}` syntax (for example, `${config:editor.fontSize}`).
+
+- `terminalAllInOne.script.disableDescription`
+
+  - Disable the Script Description that is run before the Script Commands
 
 - Sample Configuration:
 
@@ -181,10 +186,10 @@ OR
   }
   ```
 
-### Disable All Keybindings
+### Keybindings
 
 - `terminalAllInOne.disableAllKeybindings`
-- Controls whether all keybindings are disabled
+  - Controls whether all keybindings are disabled
 - Default Configuration :
 
   ```json
@@ -195,9 +200,10 @@ OR
 
 ### Messages
 
-- `terminalAllInOne.messages` & `terminalAllInOne.disableAllMessages`
-- `terminalAllInOne.messages` : Controls which messages should be shown if `terminalAllInOne.disableAllMessages` is set to false
-- `terminalAllInOne.disableAllMessages`: Controls whether all messages (info, warning, and error) from this extension are disabled
+- `terminalAllInOne.messages`
+  - Controls which messages should be shown if `terminalAllInOne.disableAllMessages` is set to false
+- `terminalAllInOne.disableAllMessages`
+  - Controls whether all messages (info, warning, and error) from this extension are disabled
 - Default Configuration :
 
   ```json
@@ -217,47 +223,27 @@ OR
 
 ## Keybindings
 
-**For each keybinding, press `cmd+i` (for Macs) or `ctrl+i` (for Windows & Linux), and the corresponding key for the terminal command.**
+**For each keybinding (except toggling the terminal) , press `cmd+i` (for Macs) or `ctrl+i` (for Windows & Linux), and the corresponding key for the terminal command.**
 
-### Mac
+| Chord          | Shortcut        | Description                          | Command                                                      |
+| -------------- | --------------- | ------------------------------------ | ------------------------------------------------------------ |
+| _`cmd/ctrl`_   | **`` ` ``**     | Toggle the Terminal                  | `workbench.action.terminal.toggleTerminal`                   |
+| _`cmd/ctrl+i`_ | **`m`**         | Toggle the Maximized Terminal        | [`terminalAllInOne.toggleMaxTerm`](#toggle-max-term)\*       |
+| _`cmd/ctrl+i`_ | **`s`**         | Select a Default Shell               | `workbench.action.terminal.selectDefaultShell`               |
+| _`cmd/ctrl+i`_ | **`c`**         | Create a New Terminal Instance       | `workbench.action.terminal.new`                              |
+| _`cmd/ctrl+i`_ | **`d`**         | Delete the Current Terminal Instance | `workbench.action.terminal.kill`                             |
+| _`cmd/ctrl+i`_ | **`r`**         | Rename the Current Terminal Instance | `workbench.action.terminal.rename`                           |
+| _`cmd/ctrl+i`_ | **`.`**         | Focus the Next Terminal Instance     | `workbench.action.terminal.focusNext`                        |
+| _`cmd/ctrl+i`_ | **`,`**         | Focus the Previous Terminal Instance | `workbench.action.terminal.focusPrevious`                    |
+| _`cmd/ctrl+i`_ | **`t`**         | Choose a Terminal Theme              | [`terminalAllInOne.chooseTerminalTheme`](#choose-theme)\*    |
+| _`cmd/ctrl+i`_ | **`enter`**     | Choose a Script                      | [`terminalAllInOne.runScript`](#run-script)\*                |
+| _`cmd/ctrl+i`_ | **`0-9`**       | Run a specific Script                | [`terminalAllInOne.runScript`](#run-script)\*                |
+| _`cmd/ctrl+i`_ | **`f`**         | Change Terminal Font Size            | [`terminalAllInOne.changeFontSize`](#change-font-size)\*     |
+| _`cmd/ctrl+i`_ | **`-`**         | Decrease Terminal Font Size          | [`terminalAllInOne.decreaseFontSize`](#decrease-font-size)\* |
+| _`cmd/ctrl+i`_ | **`=`**         | Increase Terminal Font Size          | [`terminalAllInOne.increaseFontSize`](#increase-font-size)\* |
+| _`cmd/ctrl+i`_ | **`backspace`** | Clear the Terminal                   | [`terminalAllInOne.clearTerminal`](#clear-terminal)\*        |
 
-| Shortcut          | Description                          | Command                                                                            |
-| ----------------- | ------------------------------------ | ---------------------------------------------------------------------------------- |
-| `` cmd+` ``       | Toggle the Terminal                  | `workbench.action.terminal.toggleTerminal`                                         |
-| `cmd+i m`         | Toggle the Maximized Terminal        | [`terminalAllInOne.toggleMaxTerm`](#terminal-all-in-one-toggle-maximized-terminal) |
-| `cmd+i s`         | Select a Default Shell               | `workbench.action.terminal.selectDefaultShell`                                     |
-| `cmd+i c`         | Create a New Terminal Instance       | `workbench.action.terminal.new`                                                    |
-| `cmd+i d`         | Delete the Current Terminal Instance | `workbench.action.terminal.kill`                                                   |
-| `cmd+i r`         | Rename the Current Terminal Instance | `workbench.action.terminal.rename`                                                 |
-| `cmd+i .`         | Focus the Next Terminal Instance     | `workbench.action.terminal.focusNext`                                              |
-| `cmd+i ,`         | Focus the Previous Terminal Instance | `workbench.action.terminal.focusPrevious`                                          |
-| `cmd+i t`         | Choose a Terminal Theme              | [`terminalAllInOne.chooseTerminalTheme`](#terminal-all-in-one-choose-theme)        |
-| `cmd+i enter`     | Choose a Script                      | [`terminalAllInOne.runScript`](#terminal-all-in-one-run-script)                    |
-| `cmd+i 0-9`       | Run a specific Script                | [`terminalAllInOne.runScript`](#terminal-all-in-one-run-script)                    |
-| `cmd+i f`         | Change Terminal Font Size            | [`terminalAllInOne.changeFontSize`](#terminal-all-in-one-change-font-size)         |
-| `cmd+i -`         | Decrease Terminal Font Size          | [`terminalAllInOne.decreaseFontSize`](#terminal-all-in-one-decrease-font-size)     |
-| `cmd+i =`         | Increase Terminal Font Size          | [`terminalAllInOne.increaseFontSize`](#terminal-all-in-one-increase-font-size)     |
-| `cmd+i backspace` | Clear the Terminal                   | [`terminalAllInOne.clearTerminal`](#terminal-all-in-one-clear-terminal)            |
-
-### Windows and Linux
-
-| Shortcut           | Description                          | Command                                                                            |
-| ------------------ | ------------------------------------ | ---------------------------------------------------------------------------------- |
-| `` ctrl+` ``       | Toggle the Terminal                  | `workbench.action.terminal.toggleTerminal`                                         |
-| `ctrl+i m`         | Toggle the Maximized Terminal        | [`terminalAllInOne.toggleMaxTerm`](#terminal-all-in-one-toggle-maximized-terminal) |
-| `ctrl+i s`         | Select a Default Shell               | `workbench.action.terminal.selectDefaultShell`                                     |
-| `ctrl+i c`         | Create a New Terminal Instance       | `workbench.action.terminal.new`                                                    |
-| `ctrl+i d`         | Delete the Current Terminal Instance | `workbench.action.terminal.kill`                                                   |
-| `ctrl+i r`         | Rename the Current Terminal Instance | `workbench.action.terminal.rename`                                                 |
-| `ctrl+i .`         | Focus the Next Terminal Instance     | `workbench.action.terminal.focusNext`                                              |
-| `ctrl+i ,`         | Focus the Previous Terminal Instance | `workbench.action.terminal.focusPrevious`                                          |
-| `ctrl+i t`         | Choose a Terminal Theme              | [`terminalAllInOne.chooseTerminalTheme`](#terminal-all-in-one-choose-theme)        |
-| `ctrl+i enter`     | Choose a Script                      | [`terminalAllInOne.runScript`](#terminal-all-in-one-run-script)                    |
-| `ctrl+i 0-9`       | Run a specific Script                | [`terminalAllInOne.runScript`](#terminal-all-in-one-run-script)                    |
-| `ctrl+i f`         | Change Terminal Font Size            | [`terminalAllInOne.changeFontSize`](#terminal-all-in-one-change-font-size)         |
-| `ctrl+i -`         | Decrease Terminal Font Size          | [`terminalAllInOne.decreaseFontSize`](#terminal-all-in-one-decrease-font-size)     |
-| `ctrl+i =`         | Increase Terminal Font Size          | [`terminalAllInOne.increaseFontSize`](#terminal-all-in-one-increase-font-size)     |
-| `ctrl+i backspace` | Clear the Terminal                   | [`terminalAllInOne.clearTerminal`](#terminal-all-in-one-clear-terminal)            |
+\*These commands are linked to their descriptions in the [Commands Section](#commands)
 
 ---
 
@@ -393,12 +379,12 @@ _Check out [first contributions](https://github.com/firstcontributions/first-con
 ---
 
 <!-- Dependency Badges -->
-<p align="center">
+<!-- <p align="center">
     <a href="https://david-dm.org/YashTotale/terminal-all-in-one"><img src="https://img.shields.io/david/YashTotale/terminal-all-in-one?style=for-the-badge&labelColor=000000&label=Dependencies" alt="Dependencies"></a>&nbsp;
     <a href="https://david-dm.org/YashTotale/terminal-all-in-one?type=dev"><img src="https://img.shields.io/david/dev/YashTotale/terminal-all-in-one?style=for-the-badge&labelColor=000000&label=Dev%20Dependencies" alt="Dev Dependencies"></a>&nbsp;
 </p>
 
----
+--- -->
 
 <!-- Commit Badges -->
 <p align="center">

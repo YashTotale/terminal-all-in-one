@@ -1,19 +1,18 @@
-import {
-  changeFontSize,
-  increaseFontSize,
-  decreaseFontSize,
-} from "./changeFontSize";
-import { chooseTerminalTheme } from "./chooseTerminalTheme";
-import { clearTerminal } from "./clearTerminal";
-import { runScript } from "./runScript";
-import { toggleMaxTerm } from "./toggleMaxTerm";
+import ChooseTerminalTheme from "./chooseTerminalTheme";
+import ClearTerminal from "./clearTerminal";
+import RunScript from "./runScript";
+import ToggleMaxTerm from "./toggleMaxTerm";
+import ChangeFontSize from "./fontSize/changeFontSize";
+import IncreaseFontSize from "./fontSize/increaseFontSize";
+import DecreaseFontSize from "./fontSize/decreaseFontSize";
+import { ExtensionContext } from "vscode";
 
-export default [
-  chooseTerminalTheme,
-  clearTerminal,
-  runScript,
-  toggleMaxTerm,
-  changeFontSize,
-  increaseFontSize,
-  decreaseFontSize,
+export default (context: ExtensionContext) => [
+  new ChooseTerminalTheme(context),
+  new ClearTerminal(context),
+  new RunScript(context),
+  new ToggleMaxTerm(context),
+  new ChangeFontSize(context),
+  new IncreaseFontSize(context),
+  new DecreaseFontSize(context),
 ];

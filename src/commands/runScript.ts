@@ -1,102 +1,116 @@
-import { commands, window } from "vscode";
-import { getConfig, updateConfig } from "../helpers/config";
-import showMessage from "../messages";
-
-const getScriptsConfig = () => {
-  return getConfig({ section: "terminalAllInOne.scripts" });
-};
-
-const shouldDisableDescription = () => {
-  return getConfig({ section: "terminalAllInOne.script.disableDescription" });
-};
-
-const disableDescription = () => {
-  return updateConfig({
-    section: "terminalAllInOne.script.disableDescription",
-    value: true,
-  });
-};
-
-const runInTerminal = async (command: string) => {
-  return commands.executeCommand("workbench.action.terminal.sendSequence", {
-    text: command,
-  });
-};
-
-const createDescription = ({ name, script }: scriptObject) => {
-  const echoCmd = (cmd: string, num: number) => {
-    return `echo -e "\\t ${num}. ${cmd}"; `;
-  };
-  const controlC = "\u0003";
-  const emptyLine = 'echo "";';
-  const ignoreAbove =
-    "echo '^ Ignore the above command (it tells the terminal to display the script info) ^';";
-  const running = `echo -e "Running script: \\033[1m${name}\\033[0m";`;
-  const enter = "\u000D";
-  let cmds = "";
-  if (typeof script === "string") {
-    cmds = echoCmd(script, 1);
-  } else {
-    script.forEach((s, i) => {
-      cmds += echoCmd(s, i + 1);
-    });
-  }
-  return `${controlC} ${emptyLine} ${ignoreAbove} ${emptyLine} ${running} ${emptyLine} ${cmds}${emptyLine} ${enter}`;
-};
+import { commands, ExtensionContext } from "vscode";
+import BaseCommand from "./baseCommand";
 
 interface scriptObject {
   name: string;
-  script: string | Array<string>;
+  script: string | string[];
 }
 
-const createCommands = (script: string | Array<string>) => {
-  if (typeof script === "string") {
-    return script;
+export default class RunScript extends BaseCommand {
+  constructor(context: ExtensionContext) {
+    super("runScript", (index) => RunScript.handler({ context, index }));
   }
-  let jointScript = "";
-  script.forEach((s, i) => {
-    jointScript += i ? ` && ${s}` : s;
-  });
-  return jointScript;
-};
 
-const execute = async ({ name, script }: scriptObject) => {
-  const cmds = createCommands(script);
-  await commands.executeCommand("workbench.action.terminal.focus");
-  if (!shouldDisableDescription()) {
-    await runInTerminal(createDescription({ name, script }));
-    showMessage("disableScriptDescription", disableDescription);
-  }
-  await runInTerminal(`${cmds} \u000D`);
-};
-
-const runScriptHandler = async (index: number | undefined) => {
-  const scripts = getScriptsConfig();
-  if (typeof index === "number") {
-    if (index < scripts.length) {
-      return execute(scripts[index]);
+  static async handler({
+    index,
+    context,
+  }: {
+    context: ExtensionContext;
+    index?: number;
+  }) {
+    //All Scripts
+    const scripts = RunScript.getScriptsConfig();
+    //Check if the index has been passed and if it is a valid index
+    if (typeof index === "number") {
+      if (index < scripts.length) {
+        return RunScript.execute(scripts[index]);
+      }
+      return BaseCommand.showMessage("noScripts", index);
     }
-    return showMessage("noScripts", index);
+    if (!scripts.length) {
+      return BaseCommand.showMessage("noScripts");
+    }
+    //Create the QP items and show the QP
+    const items = scripts.map(({ name, script }: scriptObject, i: number) => ({
+      label: name,
+      description: Array.isArray(script) ? script.join(" -> ") : script,
+      index: i,
+    }));
+    return BaseCommand.showQuickPick(
+      items,
+      { placeHolder: "Run a Script" },
+      (selectedScript) => {
+        //@ts-expect-error
+        return RunScript.execute(scripts[selectedScript.index]);
+      }
+    );
   }
-  if (!scripts.length) {
-    return showMessage("noScripts");
-  }
-  const options = scripts.map(({ name, script }: scriptObject, i: number) => ({
-    label: name,
-    description: Array.isArray(script) ? script.join(" -> ") : script,
-    index: i,
-  }));
-  const selectedScript = await window.showQuickPick(options, {
-    placeHolder: "Run a Script",
-    canPickMany: false,
-  });
-  if (selectedScript) {
-    //@ts-expect-error
-    return execute(scripts[selectedScript.index]);
-  }
-};
 
-export const runScript = {
-  name: "runScript",
-  handler: runScriptHandler,
-};
+  static async execute({ name, script }: scriptObject) {
+    const cmds = RunScript.createCommands(script);
+    await commands.executeCommand("workbench.action.terminal.focus");
+    if (!RunScript.getDisableDescriptionConfig()) {
+      await RunScript.runInTerminal(
+        RunScript.createDescription({ name, script })
+      );
+      BaseCommand.showMessage(
+        "disableScriptDescription",
+        RunScript.disableDescription
+      );
+    }
+    await RunScript.runInTerminal(`${cmds} \u000D`);
+  }
+
+  static createCommands(script: string | string[]) {
+    if (typeof script === "string") {
+      return script;
+    }
+    let jointScript = "";
+    script.forEach((s, i) => {
+      jointScript += i ? ` && ${s}` : s;
+    });
+    return jointScript;
+  }
+
+  static createDescription({ name, script }: scriptObject) {
+    const echoCmd = (cmd: string, num: number) => {
+      return `echo -e "\\t ${num}. ${cmd}"; `;
+    };
+    const controlC = "\u0003";
+    const emptyLine = 'echo "";';
+    const ignoreAbove =
+      "echo '^ Ignore the above command (it tells the terminal to display the script description) ^';";
+    const running = `echo -e "Running script: \\033[1m${name}\\033[0m";`;
+    const enter = "\u000D";
+    let cmds = "";
+    if (typeof script === "string") {
+      cmds = echoCmd(script, 1);
+    } else {
+      script.forEach((s, i) => {
+        cmds += echoCmd(s, i + 1);
+      });
+    }
+    return `${controlC} ${emptyLine} ${ignoreAbove} ${emptyLine} ${running} ${emptyLine} ${cmds}${emptyLine} ${enter}`;
+  }
+
+  static runInTerminal(command: string) {
+    return commands.executeCommand("workbench.action.terminal.sendSequence", {
+      text: command,
+    });
+  }
+
+  static getScriptsConfig() {
+    return BaseCommand.getExtensionConfig("scripts");
+  }
+
+  static getDisableDescriptionConfig() {
+    return BaseCommand.getExtensionConfig("script.disableDescription");
+  }
+
+  static disableDescription() {
+    return BaseCommand.updateExtensionConfig({
+      key: "script.disabelDescription",
+      value: true,
+    });
+  }
+}

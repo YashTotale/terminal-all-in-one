@@ -1,12 +1,14 @@
-import { commands } from "vscode";
+import { commands, ExtensionContext } from "vscode";
+import BaseCommand from "./baseCommand";
 
-const clearTerminalHandler = () => {
-  return commands.executeCommand("workbench.action.terminal.sendSequence", {
-    text: "\u0003 clear \u000D",
-  });
-};
+export default class ClearTerminal extends BaseCommand {
+  constructor(context: ExtensionContext) {
+    super("clearTerminal", () => ClearTerminal.handler(context));
+  }
 
-export const clearTerminal = {
-  name: "clearTerminal",
-  handler: clearTerminalHandler,
-};
+  static handler(context: ExtensionContext) {
+    return commands.executeCommand("workbench.action.terminal.sendSequence", {
+      text: "\u0003 clear \u000D",
+    });
+  }
+}
