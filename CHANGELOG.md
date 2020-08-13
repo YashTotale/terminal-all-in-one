@@ -60,6 +60,14 @@ The format of this Change Log is based on [Keep a Changelog](http://keepachangel
 
 ---
 
+### [v1.10.3] - (2020-08-12)
+
+#### Fixed
+
+- Minor fixes to Run Script
+
+---
+
 ### [v1.10.2] - (2020-08-12)
 
 #### Fixed
