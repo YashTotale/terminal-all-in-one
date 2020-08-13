@@ -369,22 +369,31 @@ _Check out [first contributions](https://github.com/firstcontributions/first-con
 
 ---
 
-<!-- Vulnerabilities/Alerts Badges -->
+<!-- Code Alerts/Issues Badges -->
 
 <p align="center">
-    <a href="https://snyk.io/test/github/YashTotale/terminal-all-in-one"><img src="https://img.shields.io/snyk/vulnerabilities/github/YashTotale/terminal-all-in-one?logo=snyk&style=for-the-badge&labelColor=000000&label=Vulnerabilities" alt="Vulnerabilities"></a>&nbsp;
+    <a href="https://codeclimate.com/github/YashTotale/terminal-all-in-one/issues"><img src="https://img.shields.io/codeclimate/issues/YashTotale/terminal-all-in-one.svg?style=for-the-badge&logo=code-climate&labelColor=000000&label=Issues" alt="Issues"></a>&nbsp;
     <a href="https://lgtm.com/projects/g/YashTotale/terminal-all-in-one/alerts/?mode=list"><img src="https://img.shields.io/lgtm/alerts/github/YashTotale/terminal-all-in-one?style=for-the-badge&labelColor=000000&logo=lgtm" alt="Alerts"></a>&nbsp;
 </p>
 
 ---
 
 <!-- Dependency Badges -->
-<!-- <p align="center">
+<p align="center">
     <a href="https://david-dm.org/YashTotale/terminal-all-in-one"><img src="https://img.shields.io/david/YashTotale/terminal-all-in-one?style=for-the-badge&labelColor=000000&label=Dependencies" alt="Dependencies"></a>&nbsp;
-    <a href="https://david-dm.org/YashTotale/terminal-all-in-one?type=dev"><img src="https://img.shields.io/david/dev/YashTotale/terminal-all-in-one?style=for-the-badge&labelColor=000000&label=Dev%20Dependencies" alt="Dev Dependencies"></a>&nbsp;
+    <a href="https://snyk.io/test/github/YashTotale/terminal-all-in-one"><img src="https://img.shields.io/snyk/vulnerabilities/github/YashTotale/terminal-all-in-one?logo=snyk&style=for-the-badge&labelColor=000000&label=Vulnerabilities" alt="Vulnerabilities"></a>&nbsp;
 </p>
 
---- -->
+---
+
+<!-- Code Maintainability Badges -->
+
+<p align="center">
+    <a href="https://codeclimate.com/github/YashTotale/terminal-all-in-one/trends/technical_debt"><img src="https://img.shields.io/codeclimate/tech-debt/YashTotale/terminal-all-in-one.svg?style=for-the-badge&logo=code-climate&labelColor=000000&label=Technical%20Debt" alt="Technical Debt"></a>&nbsp;
+    <a href="https://codeclimate.com/github/YashTotale/terminal-all-in-one"><img src="https://img.shields.io/codeclimate/maintainability-percentage/YashTotale/terminal-all-in-one.svg?style=for-the-badge&logo=code-climate&labelColor=000000&label=Maintainability" alt="Maintainability"></a>&nbsp;
+</p>
+
+---
 
 <!-- Commit Badges -->
 <p align="center">
