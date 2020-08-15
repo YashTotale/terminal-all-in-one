@@ -6,6 +6,7 @@ import {
 import debounce from "lodash.debounce";
 
 import BaseCommand from "./baseCommand";
+import ChangeFontSize from "./fontSize/changeFontSize";
 
 interface theme {
   colors: object;
@@ -74,7 +75,11 @@ export default class ChooseTerminalTheme extends BaseCommand {
   }
 
   static configChange(event: ConfigurationChangeEvent) {
-    if (event.affectsConfiguration("terminalAllInOne.terminalTheme")) {
+    if (
+      event.affectsConfiguration(
+        `${ChangeFontSize.getExtensionName()}.terminalTheme`
+      )
+    ) {
       return ChooseTerminalTheme.updateTerminalTheme(
         ChooseTerminalTheme.getThemeConfig()
       );

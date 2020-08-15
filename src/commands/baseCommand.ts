@@ -45,11 +45,18 @@ export default class BaseCommand {
   }
 
   static getExtensionConfig(property: string) {
-    return getConfig({ config: "terminalAllInOne", section: property });
+    return getConfig({
+      config: BaseCommand.getExtensionName(),
+      section: property,
+    });
   }
 
   static updateExtensionConfig({ key, value }: { key: string; value: any }) {
-    return updateConfig({ config: "terminalAllInOne", section: key, value });
+    return updateConfig({
+      config: BaseCommand.getExtensionName(),
+      section: key,
+      value,
+    });
   }
 
   static getConfig(property: string) {
@@ -83,6 +90,8 @@ export default class BaseCommand {
   }
 
   static clearTerminal() {
-    return commands.executeCommand("terminalAllInOne.clearTerminal");
+    return commands.executeCommand(
+      `${BaseCommand.getExtensionName()}.clearTerminal`
+    );
   }
 }
