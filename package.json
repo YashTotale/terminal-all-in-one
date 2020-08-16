@@ -434,6 +434,7 @@
     "@types/lodash.debounce": "^4.0.6",
     "@types/mocha": "^8.0.0",
     "@types/node": "^14.0.27",
+    "@types/serialize-javascript": "^4.0.0",
     "@types/vscode": "^1.47.0",
     "glob": "^7.1.6",
     "mocha": "^8.0.1",
@@ -444,6 +445,8 @@
   },
   "dependencies": {
     "lodash.debounce": "^4.0.8",
+    "moment": "^2.27.0",
+    "serialize-javascript": "^4.0.0",
     "ts-loader": "^8.0.2",
     "vscode-uri": "^2.1.2"
   }
