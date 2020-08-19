@@ -1,4 +1,4 @@
-import { window, commands, env, ExtensionContext, Uri } from "vscode";
+import { window, commands, env, Uri } from "vscode";
 import { getConfig, updateConfig } from "./helpers/config";
 import {
   EXTENSION_NAME,
@@ -34,7 +34,8 @@ async function updateMessagesConfig(key: string, value: any) {
 }
 
 interface messages {
-  onstart: Function;
+  onFirstStart: Function;
+  followUp: Function;
   themeQuickPickOpened: Function;
   themeDoesNotExist: Function;
   themeSelected: Function;
@@ -47,17 +48,27 @@ interface messages {
 
 export const messages: messages = {
   // Message on start
-  onstart: async (context: ExtensionContext) => {
-    const STATE_PROPERTY = "shouldNotShowOnStartMessage";
-    if (!context.globalState.get(STATE_PROPERTY)) {
-      const selection = await window.showInformationMessage(
-        `Thanks for installing ${READABLE_EXTENSION_NAME}. Check out our README for more information on the extension.`,
-        "README"
+  onFirstStart: async () => {
+    const selection = await window.showInformationMessage(
+      `Thanks for installing ${READABLE_EXTENSION_NAME}. Check out our README for more information on the extension.`,
+      "README"
+    );
+    if (selection === "README") {
+      commands.executeCommand("extension.open", EXTENSION_NAME_W_PUBLISHER);
+    }
+  },
+  //Message to follow up with users after a certain time
+  followUp: async () => {
+    const selection = await window.showInformationMessage(
+      `You've been using ${READABLE_EXTENSION_NAME} for some time. I hope it's been useful. Would you mind giving it a quick rating?`,
+      "No Problem!"
+    );
+    if (selection === "No Problem!") {
+      env.openExternal(
+        Uri.parse(
+          `https://marketplace.visualstudio.com/items?itemName=${EXTENSION_NAME_W_PUBLISHER}&ssr=false#review-details`
+        )
       );
-      context.globalState.update(STATE_PROPERTY, true);
-      if (selection === "README") {
-        commands.executeCommand("extension.open", EXTENSION_NAME_W_PUBLISHER);
-      }
     }
   },
   //Message when the theme quick pick is opened
