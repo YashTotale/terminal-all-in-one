@@ -254,7 +254,7 @@ OR
 <details>
 <summary>Toggle the Terminal</summary>
 
-[![Toggle the Terminal](https://raw.githubusercontent.com/YashTotale/terminal-all-in-one/master/static/demos/ToggleTerminal.gif)](https://raw.githubusercontent.com/YashTotale/terminal-all-in-one/master/static/demos/ToggleTerminal.gif)
+[![Toggle the Terminal](https://raw.githubusercontent.com/YashTotale/terminal-all-in-one/master/static/demos/ToggleTheTerminal.gif)](https://raw.githubusercontent.com/YashTotale/terminal-all-in-one/master/static/demos/ToggleTheTerminal.gif)
 
 </details>
 
