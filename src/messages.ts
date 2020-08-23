@@ -14,15 +14,6 @@ function getMessagesConfig(key: string) {
   return getConfig({ config: TERMINAL_MESSAGES_CONFIG, section: key });
 }
 
-async function infoWithDisableOption(configProperty: string, info: string) {
-  if (getMessagesConfig(configProperty)) {
-    const selection = await window.showInformationMessage(info, DONT_SHOW);
-    if (selection === DONT_SHOW) {
-      await updateMessagesConfig(configProperty, false);
-    }
-  }
-}
-
 async function updateMessagesConfig(key: string, value: any) {
   updateConfig({
     section: TERMINAL_MESSAGES_CONFIG,
@@ -31,6 +22,15 @@ async function updateMessagesConfig(key: string, value: any) {
       [key]: value,
     },
   });
+}
+
+async function infoWithDisableOption(configProperty: string, info: string) {
+  if (getMessagesConfig(configProperty)) {
+    const selection = await window.showInformationMessage(info, DONT_SHOW);
+    if (selection === DONT_SHOW) {
+      await updateMessagesConfig(configProperty, false);
+    }
+  }
 }
 
 interface messages {
@@ -126,7 +126,7 @@ export const messages: messages = {
     if (selection === "Scripts Explained") {
       return env.openExternal(
         Uri.parse(
-          "https://marketplace.visualstudio.com/items?itemName=yasht.terminal-all-in-one#scripts"
+          "https://marketplace.visualstudio.com/items?itemName=yasht.terminal-all-in-one#scripts-1"
         )
       );
     }

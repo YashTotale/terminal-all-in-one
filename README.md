@@ -76,7 +76,7 @@ OR
 
 - `terminalAllInOne.runScript` <span id="run-script" name="run-script"><em>(Terminal All In One: Run Script)</em></span>
 
-  - Opens a Script Quick Pick<sup>[1](#quick-pick)</sup> with [your defined scripts](#scripts) **OR** runs a specific script
+  - Opens a Script Quick Pick<sup>[1](#quick-pick)</sup> with [your defined scripts](#scripts-1) **OR** runs a specific script
 
   - Keybindings: `cmd/ctrl+i enter` for the Script Quick Pick<sup>[1](#quick-pick)</sup> **OR** `cmd/ctrl+i 0-9` for a specific script
 
@@ -355,7 +355,7 @@ OR
 - Go to the [github repository](https://github.com/YashTotale/terminal-all-in-one)
 - Open a new [issue](https://github.com/YashTotale/terminal-all-in-one/issues/new/choose) or [pull request](https://github.com/YashTotale/terminal-all-in-one/pulls)
 
-_Check out [first contributions](https://github.com/firstcontributions/first-contributions) if you are new to contributing_
+_Check out [first contributions](https://github.com/firstcontributions/first-contributions/blob/master/README.md) if you are new to contributing_
 
 ---
 
@@ -380,7 +380,8 @@ _Check out [first contributions](https://github.com/firstcontributions/first-con
 
 <!-- Dependency Badges -->
 <p align="center">
-    <a href="https://david-dm.org/YashTotale/terminal-all-in-one"><img src="https://img.shields.io/david/YashTotale/terminal-all-in-one?style=for-the-badge&labelColor=000000&label=Dependencies" alt="Dependencies"></a>&nbsp;
+    <!-- <a href="https://david-dm.org/YashTotale/terminal-all-in-one"><img src="https://img.shields.io/david/YashTotale/terminal-all-in-one?style=for-the-badge&labelColor=000000&label=Dependencies" alt="Dependencies"></a>&nbsp; -->
+    <a href="https://requires.io/github/YashTotale/terminal-all-in-one/requirements/?branch=master"><img src="https://img.shields.io/requires/github/YashTotale/terminal-all-in-one?style=for-the-badge&labelColor=000000&label=Dependencies" alt="Dependencies"></a>&nbsp;
     <a href="https://snyk.io/test/github/YashTotale/terminal-all-in-one"><img src="https://img.shields.io/snyk/vulnerabilities/github/YashTotale/terminal-all-in-one?logo=snyk&style=for-the-badge&labelColor=000000&label=Vulnerabilities" alt="Vulnerabilities"></a>&nbsp;
 </p>
 
