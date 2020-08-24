@@ -65,7 +65,7 @@ OR
 
 ### Themes
 
-- `terminalAllInOne.chooseTerminalTheme` <span id="choose-theme" name="choose-theme"><em>(Terminal All In One: Choose Theme)</em></span>
+- `terminalAllInOne.chooseTerminalTheme` <span id="cmd-choose-theme" name="cmd-choose-theme"><em>(Terminal All In One: Choose Theme)</em></span>
 
   - Opens a Theme Quick Pick<sup>[1](#quick-pick)</sup> with over **100** Themes to choose from
 
@@ -74,7 +74,7 @@ OR
 
 ### Scripts
 
-- `terminalAllInOne.runScript` <span id="run-script" name="run-script"><em>(Terminal All In One: Run Script)</em></span>
+- `terminalAllInOne.runScript` <span id="cmd-run-script" name="cmd-run-script"><em>(Terminal All In One: Run Script)</em></span>
 
   - Opens a Script Quick Pick<sup>[1](#quick-pick)</sup> with [your defined scripts](#scripts-1) **OR** runs a specific script
 
@@ -82,13 +82,13 @@ OR
 
 ### Display
 
-- `terminalAllInOne.toggleMaxTerm` <span id="toggle-max-term" name="toggle-max-term"><em>(Terminal All In One: Toggle Maximized Terminal)</em></span>
+- `terminalAllInOne.toggleMaxTerm` <span id="cmd-toggle-max-term" name="cmd-toggle-max-term"><em>(Terminal All In One: Toggle Maximized Terminal)</em></span>
 
   - Toggles the Maximized Terminal
 
   - Keybinding: `cmd/ctrl+i m`
 
-- `terminalAllInOne.clearTerminal` <span id="clear-terminal" name="clear-terminal"><em>(Terminal All In One: Clear Terminal)</em></span>
+- `terminalAllInOne.clearTerminal` <span id="cmd-clear-terminal" name="cmd-clear-terminal"><em>(Terminal All In One: Clear Terminal)</em></span>
 
   - Clears the Terminal
 
@@ -96,20 +96,20 @@ OR
 
 ### Font Size
 
-- `terminalAllInOne.changeFontSize` <span id="change-font-size" name="change-font-size"><em>(Terminal All In One: Change Font Size)</em></span>
+- `terminalAllInOne.changeFontSize` <span id="cmd-change-font-size" name="cmd-change-font-size"><em>(Terminal All In One: Change Font Size)</em></span>
 
   - Opens a Font Size Quick Pick<sup>[1](#quick-pick)</sup>
 
   - Live Preview in the Terminal
   - Keybinding: `cmd/ctrl+i f`
 
-- `terminalAllInOne.decreaseFontSize` <span id="decrease-font-size" name="decrease-font-size"><em>(Terminal All In One: Decrease Font Size)</em></span>
+- `terminalAllInOne.decreaseFontSize` <span id="cmd-decrease-font-size" name="cmd-decrease-font-size"><em>(Terminal All In One: Decrease Font Size)</em></span>
 
   - Decrease the Terminal Font Size by 1-pt
 
   - Keybinding: `cmd/ctrl+i -`
 
-- `terminalAllInOne.increaseFontSize` <span id="increase-font-size" name="increase-font-size"><em>(Terminal All In One: Increase Font Size)</em></span>
+- `terminalAllInOne.increaseFontSize` <span id="cmd-increase-font-size" name="cmd-increase-font-size"><em>(Terminal All In One: Increase Font Size)</em></span>
 
   - Increase the Terminal Font Size by 1-pt
 
@@ -124,7 +124,7 @@ OR
 - `terminalAllInOne.terminalTheme`
 
   - A Terminal Theme from [this list](https://glitchbone.github.io/vscode-base16-term/#/)
-  - Use the command [`terminalAllInOne.chooseTerminalTheme`](#choose-theme) or the keybinding `cmd/ctrl+i t` to control this setting.
+  - Use the command [`terminalAllInOne.chooseTerminalTheme`](#cmd-choose-theme) or the keybinding `cmd/ctrl+i t` to control this setting.
 
 - Default Configuration :
 
@@ -139,7 +139,7 @@ OR
 - `terminalAllInOne.scripts`
 
   - Scripts are string representations of [Command Line commands](https://www.codecademy.com/articles/command-line-commands). Scripts can be strings (1 command) or arrays (multiple commands)
-  - Use the command [`terminalAllInOne.runScript`](#run-script) or the keybinding `cmd/ctrl+i enter` to open the Script Quick Pick<sup>[1](#quick-pick)</sup>
+  - Use the command [`terminalAllInOne.runScript`](#cmd-run-script) or the keybinding `cmd/ctrl+i enter` to open the Script Quick Pick<sup>[1](#quick-pick)</sup>
   - Alternatively, use the keybindings `cmd/ctrl+i 0-9` to run a specific script whose index corresponds to the number pressed _(Note: Only your first 10 scripts will have corresponding keybindings)_
   - Variables:
 
@@ -225,23 +225,23 @@ OR
 
 **For each keybinding (except toggling the terminal) , press `cmd+i` (for Macs) or `ctrl+i` (for Windows & Linux), and the corresponding key for the terminal command.**
 
-| Chord          | Shortcut        | Description                          | Command                                                      |
-| -------------- | --------------- | ------------------------------------ | ------------------------------------------------------------ |
-| _`cmd/ctrl`_   | **`` ` ``**     | Toggle the Terminal                  | `workbench.action.terminal.toggleTerminal`                   |
-| _`cmd/ctrl+i`_ | **`m`**         | Toggle the Maximized Terminal        | [`terminalAllInOne.toggleMaxTerm`](#toggle-max-term)\*       |
-| _`cmd/ctrl+i`_ | **`s`**         | Select a Default Shell               | `workbench.action.terminal.selectDefaultShell`               |
-| _`cmd/ctrl+i`_ | **`c`**         | Create a New Terminal Instance       | `workbench.action.terminal.new`                              |
-| _`cmd/ctrl+i`_ | **`d`**         | Delete the Current Terminal Instance | `workbench.action.terminal.kill`                             |
-| _`cmd/ctrl+i`_ | **`r`**         | Rename the Current Terminal Instance | `workbench.action.terminal.rename`                           |
-| _`cmd/ctrl+i`_ | **`.`**         | Focus the Next Terminal Instance     | `workbench.action.terminal.focusNext`                        |
-| _`cmd/ctrl+i`_ | **`,`**         | Focus the Previous Terminal Instance | `workbench.action.terminal.focusPrevious`                    |
-| _`cmd/ctrl+i`_ | **`t`**         | Choose a Terminal Theme              | [`terminalAllInOne.chooseTerminalTheme`](#choose-theme)\*    |
-| _`cmd/ctrl+i`_ | **`enter`**     | Choose a Script                      | [`terminalAllInOne.runScript`](#run-script)\*                |
-| _`cmd/ctrl+i`_ | **`0-9`**       | Run a specific Script                | [`terminalAllInOne.runScript`](#run-script)\*                |
-| _`cmd/ctrl+i`_ | **`f`**         | Change Terminal Font Size            | [`terminalAllInOne.changeFontSize`](#change-font-size)\*     |
-| _`cmd/ctrl+i`_ | **`-`**         | Decrease Terminal Font Size          | [`terminalAllInOne.decreaseFontSize`](#decrease-font-size)\* |
-| _`cmd/ctrl+i`_ | **`=`**         | Increase Terminal Font Size          | [`terminalAllInOne.increaseFontSize`](#increase-font-size)\* |
-| _`cmd/ctrl+i`_ | **`backspace`** | Clear the Terminal                   | [`terminalAllInOne.clearTerminal`](#clear-terminal)\*        |
+| Chord          | Shortcut        | Description                          | Command                                                          |
+| -------------- | --------------- | ------------------------------------ | ---------------------------------------------------------------- |
+| _`cmd/ctrl`_   | **`` ` ``**     | Toggle the Terminal                  | `workbench.action.terminal.toggleTerminal`                       |
+| _`cmd/ctrl+i`_ | **`m`**         | Toggle the Maximized Terminal        | [`terminalAllInOne.toggleMaxTerm`](#cmd-toggle-max-term)\*       |
+| _`cmd/ctrl+i`_ | **`s`**         | Select a Default Shell               | `workbench.action.terminal.selectDefaultShell`                   |
+| _`cmd/ctrl+i`_ | **`c`**         | Create a New Terminal Instance       | `workbench.action.terminal.new`                                  |
+| _`cmd/ctrl+i`_ | **`d`**         | Delete the Current Terminal Instance | `workbench.action.terminal.kill`                                 |
+| _`cmd/ctrl+i`_ | **`r`**         | Rename the Current Terminal Instance | `workbench.action.terminal.rename`                               |
+| _`cmd/ctrl+i`_ | **`.`**         | Focus the Next Terminal Instance     | `workbench.action.terminal.focusNext`                            |
+| _`cmd/ctrl+i`_ | **`,`**         | Focus the Previous Terminal Instance | `workbench.action.terminal.focusPrevious`                        |
+| _`cmd/ctrl+i`_ | **`t`**         | Choose a Terminal Theme              | [`terminalAllInOne.chooseTerminalTheme`](#cmd-choose-theme)\*    |
+| _`cmd/ctrl+i`_ | **`enter`**     | Choose a Script                      | [`terminalAllInOne.runScript`](#cmd-run-script)\*                |
+| _`cmd/ctrl+i`_ | **`0-9`**       | Run a specific Script                | [`terminalAllInOne.runScript`](#cmd-run-script)\*                |
+| _`cmd/ctrl+i`_ | **`f`**         | Change Terminal Font Size            | [`terminalAllInOne.changeFontSize`](#cmd-change-font-size)\*     |
+| _`cmd/ctrl+i`_ | **`-`**         | Decrease Terminal Font Size          | [`terminalAllInOne.decreaseFontSize`](#cmd-decrease-font-size)\* |
+| _`cmd/ctrl+i`_ | **`=`**         | Increase Terminal Font Size          | [`terminalAllInOne.increaseFontSize`](#cmd-increase-font-size)\* |
+| _`cmd/ctrl+i`_ | **`backspace`** | Clear the Terminal                   | [`terminalAllInOne.clearTerminal`](#cmd-clear-terminal)\*        |
 
 \*These commands are linked to their descriptions in the [Commands Section](#commands)
 
@@ -251,7 +251,7 @@ OR
 
 <!-- Toggle the Terminal -->
 
-<details>
+<details id="demo-toggle-terminal" name="demo-toggle-terminal">
 <summary>Toggle the Terminal</summary>
 
 [![Toggle the Terminal](https://raw.githubusercontent.com/YashTotale/terminal-all-in-one/master/static/demos/ToggleTheTerminal.gif)](https://raw.githubusercontent.com/YashTotale/terminal-all-in-one/master/static/demos/ToggleTheTerminal.gif)
@@ -262,7 +262,7 @@ OR
 
 <!-- Toggle the Maximized Terminal -->
 
-<details>
+<details id="demo-toggle-max-term" name="demo-toggle-max-term">
 <summary>Toggle the Maximized Terminal</summary>
 
 [![Toggle the Maximized Terminal](https://raw.githubusercontent.com/YashTotale/terminal-all-in-one/master/static/demos/ToggleTheMaximizedTerminal.gif)](https://raw.githubusercontent.com/YashTotale/terminal-all-in-one/master/static/demos/ToggleTheMaximizedTerminal.gif)
@@ -273,7 +273,7 @@ OR
 
 <!-- Select a Default Shell -->
 
-<details>
+<details id="demo-select-default-shell" name="demo-select-default-shell">
 <summary>Select a Default Shell</summary>
 
 [![Select a Default Shell](https://raw.githubusercontent.com/YashTotale/terminal-all-in-one/master/static/demos/SelectADefaultShell.gif)](https://raw.githubusercontent.com/YashTotale/terminal-all-in-one/master/static/demos/SelectADefaultShell.gif)
@@ -284,7 +284,7 @@ OR
 
 <!-- Create a New Terminal Instance-->
 
-<details>
+<details id="demo-create-new-terminal" name="demo-create-new-terminal">
 <summary>Create a New Terminal Instance</summary>
 
 [![Create A New Terminal Instance](https://raw.githubusercontent.com/YashTotale/terminal-all-in-one/master/static/demos/CreateANewTerminalInstance.gif)](https://raw.githubusercontent.com/YashTotale/terminal-all-in-one/master/static/demos/CreateANewTerminalInstance.gif)
@@ -295,7 +295,7 @@ OR
 
 <!-- Remove the Current Terminal Instance -->
 
-<details>
+<details id="demo-remove-terminal" name="demo-remove-terminal">
 <summary>Remove the Current Terminal Instance</summary>
 
 [![Remove the Current Terminal Instance](https://raw.githubusercontent.com/YashTotale/terminal-all-in-one/master/static/demos/RemoveTheCurrentTerminalInstance.gif)](https://raw.githubusercontent.com/YashTotale/terminal-all-in-one/master/static/demos/RemoveTheCurrentTerminalInstance.gif)
@@ -306,7 +306,7 @@ OR
 
 <!-- Rename the Current Terminal Instance -->
 
-<details>
+<details id="demo-rename-terminal" name="demo-rename-terminal">
 <summary>Rename the Current Terminal Instance</summary>
 
 [![Rename the Current Terminal Instance](https://raw.githubusercontent.com/YashTotale/terminal-all-in-one/master/static/demos/RenameTheCurrentTerminalInstance.gif)](https://raw.githubusercontent.com/YashTotale/terminal-all-in-one/master/static/demos/RenameTheCurrentTerminalInstance.gif)
@@ -317,7 +317,7 @@ OR
 
 <!-- Focus the Next Terminal Instance -->
 
-<details>
+<details id="demo-focus-next-terminal" name="demo-focus-next-terminal">
 <summary>Focus the Next Terminal Instance</summary>
 
 [![Focus the Next Terminal Instance](https://raw.githubusercontent.com/YashTotale/terminal-all-in-one/master/static/demos/FocusTheNextTerminalInstance.gif)](https://raw.githubusercontent.com/YashTotale/terminal-all-in-one/master/static/demos/FocusTheNextTerminalInstance.gif)
@@ -328,7 +328,7 @@ OR
 
 <!-- Focus the Previous Terminal Instance -->
 
-<details>
+<details id="demo-focus-previous-terminal" name="demo-focus-previous-terminal">
 <summary>Focus the Previous Terminal Instance</summary>
 
 [![Focus the Previous Terminal Instance](https://raw.githubusercontent.com/YashTotale/terminal-all-in-one/master/static/demos/FocusThePreviousTerminalInstance.gif)](https://raw.githubusercontent.com/YashTotale/terminal-all-in-one/master/static/demos/FocusThePreviousTerminalInstance.gif)
@@ -339,7 +339,7 @@ OR
 
 <!-- Choose a Terminal Theme -->
 
-<details>
+<details id="demo-choose-terminal-theme" name="demo-choose-terminal-theme">
 <summary>Choose a Terminal Theme</summary>
 
 [![Choose a Terminal Theme](https://raw.githubusercontent.com/YashTotale/terminal-all-in-one/master/static/demos/ChooseATerminalTheme.gif)](https://raw.githubusercontent.com/YashTotale/terminal-all-in-one/master/static/demos/ChooseATerminalTheme.gif)
