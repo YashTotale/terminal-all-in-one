@@ -71,6 +71,7 @@ OR
 
   - Live Preview in the Terminal
   - Keybinding: `cmd/ctrl+i t`
+  - [Demo](#demo-choose-terminal-theme)
 
 ### Scripts
 
@@ -87,6 +88,7 @@ OR
   - Toggles the Maximized Terminal
 
   - Keybinding: `cmd/ctrl+i m`
+  - [Demo](#demo-toggle-max-term)
 
 - `terminalAllInOne.clearTerminal` <span id="cmd-clear-terminal" name="cmd-clear-terminal"><em>(Terminal All In One: Clear Terminal)</em></span>
 
