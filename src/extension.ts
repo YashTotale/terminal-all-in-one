@@ -1,4 +1,4 @@
-import { commands, workspace, ExtensionContext } from "vscode";
+import { commands, workspace, ExtensionContext, window } from "vscode";
 import moment from "moment";
 import showMessage from "./messages";
 import cmds from "./commands";
@@ -40,19 +40,18 @@ function createCommands(context: ExtensionContext) {
 function onFirstActivate(context: ExtensionContext) {
   if (!state.get(context, stateProps.SHOULD_NOT_SHOW_ON_START)) {
     showMessage("onFirstStart");
-    state.update(context, stateProps.DATE_INSTALLED, moment());
+    state.update(context, stateProps.LAST_FOLLOW_UP, moment());
     state.update(context, stateProps.SHOULD_NOT_SHOW_ON_START, true);
   }
 }
 
 function timeSinceInstall(context: ExtensionContext) {
-  const dateInstalled = state.get(context, stateProps.DATE_INSTALLED);
+  const lastFollowUp = state.get(context, stateProps.LAST_FOLLOW_UP) as Date;
   const currentDate = moment();
-  //@ts-expect-error
-  const diff = currentDate.diff(dateInstalled, "days");
+  const diff = currentDate.diff(lastFollowUp, "days");
   if (diff >= 30 && !state.get(context, stateProps.SHOULD_NOT_SHOW_FOLLOW_UP)) {
-    showMessage("followUp");
-    state.update(context, stateProps.SHOULD_NOT_SHOW_FOLLOW_UP, true);
+    showMessage("followUp", context);
+    state.update(context, stateProps.LAST_FOLLOW_UP, moment());
   }
 }
 

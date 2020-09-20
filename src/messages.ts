@@ -1,10 +1,12 @@
-import { window, commands, env, Uri } from "vscode";
+import { window, commands, env, Uri, ExtensionContext } from "vscode";
 import { getConfig, updateConfig } from "./helpers/config";
 import {
   EXTENSION_NAME,
   EXTENSION_NAME_W_PUBLISHER,
   READABLE_EXTENSION_NAME,
+  stateProps,
 } from "./helpers/constants";
+import state from "./helpers/globalState";
 
 const TERMINAL_MESSAGES_CONFIG = `${EXTENSION_NAME}.messages`;
 
@@ -58,9 +60,10 @@ export const messages: messages = {
     }
   },
   //Message to follow up with users after a certain time
-  followUp: async () => {
+  followUp: async (context: ExtensionContext) => {
     const selection = await window.showInformationMessage(
       `You've been using ${READABLE_EXTENSION_NAME} for some time. I hope it's been useful. Would you mind giving it a quick rating?`,
+      "Don't Show Again",
       "No Problem!"
     );
     if (selection === "No Problem!") {
@@ -69,6 +72,9 @@ export const messages: messages = {
           `https://marketplace.visualstudio.com/items?itemName=${EXTENSION_NAME_W_PUBLISHER}&ssr=false#review-details`
         )
       );
+      state.update(context, stateProps.SHOULD_NOT_SHOW_FOLLOW_UP, true);
+    } else if (selection === "Don't Show Again") {
+      state.update(context, stateProps.SHOULD_NOT_SHOW_FOLLOW_UP, true);
     }
   },
   //Message when the theme quick pick is opened
