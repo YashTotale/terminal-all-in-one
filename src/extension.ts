@@ -1,4 +1,4 @@
-import { commands, workspace, ExtensionContext, window } from "vscode";
+import { commands, workspace, ExtensionContext } from "vscode";
 import moment from "moment";
 import showMessage from "./messages";
 import cmds from "./commands";
