@@ -5,5 +5,5 @@ export const EXTENSION_NAME = "terminalAllInOne";
 export const stateProps = {
   LAST_FOLLOW_UP: "dateInstalled",
   SHOULD_NOT_SHOW_ON_START: "shouldNotShowOnStartMessage",
-  SHOULD_NOT_SHOW_FOLLOW_UP: "shouldNotShowFollowUpMessage",
+  SHOULD_NOT_SHOW_FOLLOW_UP: "shouldNotShowFollowUp",
 };
