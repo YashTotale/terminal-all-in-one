@@ -445,7 +445,7 @@
   },
   "dependencies": {
     "lodash.debounce": "^4.0.8",
-    "moment": "^2.28.0",
+    "moment": "^2.29.1",
     "serialize-javascript": "^4.0.0",
     "ts-loader": "^8.0.4",
     "vscode-uri": "^2.1.2"
