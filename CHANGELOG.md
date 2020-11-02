@@ -7,9 +7,9 @@ The format of this Change Log is based on [Keep a Changelog](http://keepachangel
 
 - [_Terminal All In One_ Change Log](#terminal-all-in-one-change-log)
   - [[Unreleased]](#unreleased)
-  - [[v.11.0] - (2020-10-21)](#v110---2020-10-21)
+  - [[v1.11.0] - (2020-10-21)](#v1110---2020-10-21)
     - [Added](#added)
-  - [[v.10.8] - (2020-10-21)](#v108---2020-10-21)
+  - [[v1.10.8] - (2020-10-21)](#v1108---2020-10-21)
     - [Fixed](#fixed)
   - [[v1.10.7] - (2020-08-31)](#v1107---2020-08-31)
     - [Changed](#changed)
