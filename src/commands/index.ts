@@ -1,12 +1,16 @@
 import ChooseTerminalTheme from "./chooseTerminalTheme";
 import ClearTerminal from "./clearTerminal";
 import RunScript from "./runScript";
+import ToggleTerminal from "./toggleTerminal";
+import SelectDefaultShell from "./selectDefaultShell";
 import ToggleMaxTerm from "./toggleMaxTerm";
 import ChangeFontSize from "./fontSize/changeFontSize";
 import AdjustFontSizeByOne from "./fontSize/adjustFontSizeByOne";
 import { ExtensionContext } from "vscode";
 
 export default (context: ExtensionContext) => [
+  new ToggleTerminal(context),
+  new SelectDefaultShell(context),
   new ChooseTerminalTheme(context),
   new ClearTerminal(context),
   new RunScript(context),
