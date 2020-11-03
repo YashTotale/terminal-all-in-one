@@ -28,6 +28,7 @@ _Table Of Contents_
 - [Commands](#commands)
   - **[Themes](#themes)**
   - **[Scripts](#scripts)**
+  - [Instances](#instances)
   - [Display](#display)
   - [Font Size](#font-size)
   - [Misc](#misc)
@@ -81,6 +82,15 @@ _Table Of Contents_
   - Opens a Script Quick Pick<sup>[1](#quick-pick)</sup> with [your defined scripts](#scripts-1) **OR** runs a specific script
 
   - Keybindings: `cmd/ctrl+i enter` for the Script Quick Pick<sup>[1](#quick-pick)</sup> **OR** `cmd/ctrl+i 0-9` for a specific script
+
+### Instances
+
+- `terminalAllInOne.createNewTerminal` <span id="cmd-create-new-terminal" name="cmd-create-new-terminal"><em>(Terminal All In One: Create New Terminal)</em></span>
+
+  - Creates a new Terminal Instance
+
+  - Keybindings: `cmd/ctrl+i c`
+  - [Demo](#demo-create-new-terminal)
 
 ### Display
 
@@ -243,7 +253,7 @@ _Table Of Contents_
 | _`cmd/ctrl`_   | **`` ` ``**     | Toggle the Terminal                  | `terminalAllInOne.toggleTerminal`                                    |
 | _`cmd/ctrl+i`_ | **`m`**         | Toggle the Maximized Terminal        | [`terminalAllInOne.toggleMaxTerm`](#cmd-toggle-max-term)\*           |
 | _`cmd/ctrl+i`_ | **`s`**         | Select a Default Shell               | [`terminalAllInOne.selectDefaultShell`](#cmd-select-default-shell)\* |
-| _`cmd/ctrl+i`_ | **`c`**         | Create a New Terminal Instance       | `workbench.action.terminal.new`                                      |
+| _`cmd/ctrl+i`_ | **`c`**         | Create a New Terminal Instance       | [`terminalAllInOne.createNewTerminal`](#cmd-create-new-terminal)\*   |
 | _`cmd/ctrl+i`_ | **`d`**         | Delete the Current Terminal Instance | `workbench.action.terminal.kill`                                     |
 | _`cmd/ctrl+i`_ | **`r`**         | Rename the Current Terminal Instance | `workbench.action.terminal.rename`                                   |
 | _`cmd/ctrl+i`_ | **`.`**         | Focus the Next Terminal Instance     | `workbench.action.terminal.focusNext`                                |
