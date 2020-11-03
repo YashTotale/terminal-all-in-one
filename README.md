@@ -316,12 +316,12 @@ _Table Of Contents_
 
 <br>
 
-<!-- Remove the Current Terminal Instance -->
+<!-- Delete the Current Terminal Instance -->
 
-<details id="demo-remove-terminal" name="demo-remove-terminal">
-<summary>Remove the Current Terminal Instance</summary>
+<details id="demo-delete-terminal" name="demo-delete-terminal">
+<summary>Delete the Current Terminal Instance</summary>
 
-[![Remove the Current Terminal Instance](https://raw.githubusercontent.com/YashTotale/terminal-all-in-one/master/static/demos/RemoveTheCurrentTerminalInstance.gif)](https://raw.githubusercontent.com/YashTotale/terminal-all-in-one/master/static/demos/RemoveTheCurrentTerminalInstance.gif)
+[![Delete the Current Terminal Instance](https://raw.githubusercontent.com/YashTotale/terminal-all-in-one/master/static/demos/DeleteTheCurrentTerminalInstance.gif)](https://raw.githubusercontent.com/YashTotale/terminal-all-in-one/master/static/demos/DeleteTheCurrentTerminalInstance.gif)
 
 </details>
 
