@@ -39,6 +39,7 @@
     "Themes"
   ],
   "activationEvents": [
+    "onCommand:terminalAllInOne.createNewTerminal",
     "onCommand:terminalAllInOne.selectDefaultShell",
     "onCommand:terminalAllInOne.toggleMaxTerm",
     "onCommand:terminalAllInOne.chooseTerminalTheme",
@@ -51,6 +52,10 @@
   ],
   "contributes": {
     "commands": [
+      {
+        "command": "terminalAllInOne.createNewTerminal",
+        "title": "Terminal All In One: Create New Terminal"
+      },
       {
         "command": "terminalAllInOne.selectDefaultShell",
         "title": "Terminal All In One: Select Default Shell"
@@ -100,7 +105,7 @@
       {
         "key": "ctrl+i c",
         "mac": "cmd+i c",
-        "command": "workbench.action.terminal.new",
+        "command": "terminalAllInOne.createNewTerminal",
         "when": "!config.terminalAllInOne.disableAllKeybindings"
       },
       {
