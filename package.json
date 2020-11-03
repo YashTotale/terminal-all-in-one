@@ -442,7 +442,7 @@
     "@types/serialize-javascript": "^4.0.0",
     "@types/vscode": "^1.47.0",
     "glob": "^7.1.6",
-    "mocha": "^8.2.0",
+    "mocha": "^8.2.1",
     "typescript": "^3.9.7",
     "ts-loader": "^8.0.7",
     "vscode-test": "^1.4.0",
