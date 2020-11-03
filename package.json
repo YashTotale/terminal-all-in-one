@@ -39,6 +39,7 @@
     "Themes"
   ],
   "activationEvents": [
+    "onCommand:terminalAllInOne.deleteCurrentTerminal",
     "onCommand:terminalAllInOne.createNewTerminal",
     "onCommand:terminalAllInOne.selectDefaultShell",
     "onCommand:terminalAllInOne.toggleMaxTerm",
@@ -55,6 +56,10 @@
       {
         "command": "terminalAllInOne.createNewTerminal",
         "title": "Terminal All In One: Create New Terminal"
+      },
+      {
+        "command": "terminalAllInOne.deleteCurrentTerminal",
+        "title": "Terminal All In One: Delete Current Terminal"
       },
       {
         "command": "terminalAllInOne.selectDefaultShell",
@@ -111,7 +116,7 @@
       {
         "key": "ctrl+i d",
         "mac": "cmd+i d",
-        "command": "workbench.action.terminal.kill",
+        "command": "terminalAllInOne.deleteCurrentTerminal",
         "when": "!config.terminalAllInOne.disableAllKeybindings"
       },
       {
