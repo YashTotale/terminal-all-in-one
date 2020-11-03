@@ -22,6 +22,11 @@ export default (context: ExtensionContext) => [
     "deleteCurrentTerminal",
     "workbench.action.terminal.kill"
   ),
+  new OneCommand(
+    context,
+    "renameCurrentTerminal",
+    "workbench.action.terminal.rename"
+  ),
   new ChooseTerminalTheme(context),
   new ClearTerminal(context),
   new RunScript(context),
