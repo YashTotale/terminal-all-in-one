@@ -84,13 +84,6 @@ _Table Of Contents_
 
 ### Display
 
-- `terminalAllInOne.toggleTerminal` <span id="cmd-toggle-terminal" name="cmd-toggle-terminal"><em>(Terminal All In One: Toggle Terminal)</em></span>
-
-  - Toggles the Terminal
-
-  - Keybinding: `` cmd/ctrl `  ``
-  - [Demo](#demo-toggle-terminal)
-
 - `terminalAllInOne.toggleMaxTerm` <span id="cmd-toggle-max-term" name="cmd-toggle-max-term"><em>(Terminal All In One: Toggle Maximized Terminal)</em></span>
 
   - Toggles the Maximized Terminal
@@ -247,7 +240,7 @@ _Table Of Contents_
 
 | Chord          | Shortcut        | Description                          | Command                                                              |
 | -------------- | --------------- | ------------------------------------ | -------------------------------------------------------------------- |
-| _`cmd/ctrl`_   | **`` ` ``**     | Toggle the Terminal                  | [`terminalAllInOne.toggleTerminal`](#cmd-toggle-terminal)\*          |
+| _`cmd/ctrl`_   | **`` ` ``**     | Toggle the Terminal                  | `terminalAllInOne.toggleTerminal`                                    |
 | _`cmd/ctrl+i`_ | **`m`**         | Toggle the Maximized Terminal        | [`terminalAllInOne.toggleMaxTerm`](#cmd-toggle-max-term)\*           |
 | _`cmd/ctrl+i`_ | **`s`**         | Select a Default Shell               | [`terminalAllInOne.selectDefaultShell`](#cmd-select-default-shell)\* |
 | _`cmd/ctrl+i`_ | **`c`**         | Create a New Terminal Instance       | `workbench.action.terminal.new`                                      |
