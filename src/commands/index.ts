@@ -32,6 +32,11 @@ export default (context: ExtensionContext) => [
     "focusNextTerminal",
     "workbench.action.terminal.focusNext"
   ),
+  new OneCommand(
+    context,
+    "focusPreviousTerminal",
+    "workbench.action.terminal.focusPrevious"
+  ),
   new ChooseTerminalTheme(context),
   new ClearTerminal(context),
   new RunScript(context),
