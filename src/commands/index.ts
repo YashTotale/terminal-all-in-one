@@ -27,6 +27,11 @@ export default (context: ExtensionContext) => [
     "renameCurrentTerminal",
     "workbench.action.terminal.rename"
   ),
+  new OneCommand(
+    context,
+    "focusNextTerminal",
+    "workbench.action.terminal.focusNext"
+  ),
   new ChooseTerminalTheme(context),
   new ClearTerminal(context),
   new RunScript(context),

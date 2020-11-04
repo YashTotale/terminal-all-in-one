@@ -42,6 +42,7 @@
     "onCommand:terminalAllInOne.deleteCurrentTerminal",
     "onCommand:terminalAllInOne.createNewTerminal",
     "onCommand:terminalAllInOne.renameCurrentTerminal",
+    "onCommand:terminalAllInOne.focusNextTerminal",
     "onCommand:terminalAllInOne.selectDefaultShell",
     "onCommand:terminalAllInOne.toggleMaxTerm",
     "onCommand:terminalAllInOne.chooseTerminalTheme",
@@ -57,6 +58,10 @@
       {
         "command": "terminalAllInOne.createNewTerminal",
         "title": "Terminal All In One: Create New Terminal"
+      },
+      {
+        "command": "terminalAllInOne.focusNextTerminal",
+        "title": "Terminal All In One: Focus Next Terminal"
       },
       {
         "command": "terminalAllInOne.deleteCurrentTerminal",
@@ -133,7 +138,7 @@
       {
         "key": "ctrl+i .",
         "mac": "cmd+i .",
-        "command": "workbench.action.terminal.focusNext",
+        "command": "terminalAllInOne.focusNextTerminal",
         "when": "!config.terminalAllInOne.disableAllKeybindings"
       },
       {
