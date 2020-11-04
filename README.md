@@ -106,6 +106,13 @@ _Table Of Contents_
   - Keybinding: `cmd/ctrl+i r`
   - [Demo](#demo-rename-current-terminal)
 
+- `terminalAllInOne.focusNextTerminal` <span id="cmd-focus-next-terminal" name="cmd-focus-next-terminal"><em>(Terminal All In One: Focus Next Terminal)</em></span>
+
+  - Focuses the Next Terminal Instance
+
+  - Keybinding: `cmd/ctrl+i .`
+  - [Demo](#demo-focus-next-terminal)
+
 ### Display
 
 - `terminalAllInOne.toggleMaxTerm` <span id="cmd-toggle-max-term" name="cmd-toggle-max-term"><em>(Terminal All In One: Toggle Maximized Terminal)</em></span>
@@ -270,7 +277,7 @@ _Table Of Contents_
 | _`cmd/ctrl+i`_ | **`c`**         | Create a New Terminal Instance       | [`terminalAllInOne.createNewTerminal`](#cmd-create-new-terminal)\*         |
 | _`cmd/ctrl+i`_ | **`d`**         | Delete the Current Terminal Instance | [`terminalAllInOne.deleteCurrentTerminal`](#cmd-delete-current-terminal)\* |
 | _`cmd/ctrl+i`_ | **`r`**         | Rename the Current Terminal Instance | [`terminalAllInOne.renameCurrentTerminal`](#cmd-rename-current-terminal)\* |
-| _`cmd/ctrl+i`_ | **`.`**         | Focus the Next Terminal Instance     | `workbench.action.terminal.focusNext`                                      |
+| _`cmd/ctrl+i`_ | **`.`**         | Focus the Next Terminal Instance     | [`terminalAllInOne.focusNextTerminal`](#cmd-focus-next-terminal)\*         |
 | _`cmd/ctrl+i`_ | **`,`**         | Focus the Previous Terminal Instance | `workbench.action.terminal.focusPrevious`                                  |
 | _`cmd/ctrl+i`_ | **`t`**         | Choose a Terminal Theme              | [`terminalAllInOne.chooseTerminalTheme`](#cmd-choose-theme)\*              |
 | _`cmd/ctrl+i`_ | **`enter`**     | Choose a Script                      | [`terminalAllInOne.runScript`](#cmd-run-script)\*                          |
