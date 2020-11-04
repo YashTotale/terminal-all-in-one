@@ -87,17 +87,24 @@ _Table Of Contents_
 
 - `terminalAllInOne.createNewTerminal` <span id="cmd-create-new-terminal" name="cmd-create-new-terminal"><em>(Terminal All In One: Create New Terminal)</em></span>
 
-  - Creates a new Terminal Instance
+  - Creates a New Terminal Instance
 
   - Keybinding: `cmd/ctrl+i c`
   - [Demo](#demo-create-new-terminal)
 
 - `terminalAllInOne.deleteCurrentTerminal` <span id="cmd-delete-current-terminal" name="cmd-delete-current-terminal"><em>(Terminal All In One: Delete Current Terminal)</em></span>
 
-  - Deletes the current Terminal Instance
+  - Deletes the Current Terminal Instance
 
   - Keybinding: `cmd/ctrl+i d`
   - [Demo](#demo-delete-current-terminal)
+
+- `terminalAllInOne.renameCurrentTerminal` <span id="cmd-rename-current-terminal" name="cmd-rename-current-terminal"><em>(Terminal All In One: Rename Current Terminal)</em></span>
+
+  - Renames the Current Terminal Instance
+
+  - Keybinding: `cmd/ctrl+i r`
+  - [Demo](#demo-rename-current-terminal)
 
 ### Display
 
@@ -257,12 +264,12 @@ _Table Of Contents_
 
 | Chord          | Shortcut        | Description                          | Command                                                                    |
 | -------------- | --------------- | ------------------------------------ | -------------------------------------------------------------------------- |
-| _`cmd/ctrl`_   | **`` ` ``**     | Toggle the Terminal                  | `terminalAllInOne.toggleTerminal`                                          |
+| _`cmd/ctrl`_   | **`` ` ``**     | Toggle the Terminal                  | `workbench.action.terminal.new`                                            |
 | _`cmd/ctrl+i`_ | **`m`**         | Toggle the Maximized Terminal        | [`terminalAllInOne.toggleMaxTerm`](#cmd-toggle-max-term)\*                 |
 | _`cmd/ctrl+i`_ | **`s`**         | Select a Default Shell               | [`terminalAllInOne.selectDefaultShell`](#cmd-select-default-shell)\*       |
 | _`cmd/ctrl+i`_ | **`c`**         | Create a New Terminal Instance       | [`terminalAllInOne.createNewTerminal`](#cmd-create-new-terminal)\*         |
 | _`cmd/ctrl+i`_ | **`d`**         | Delete the Current Terminal Instance | [`terminalAllInOne.deleteCurrentTerminal`](#cmd-delete-current-terminal)\* |
-| _`cmd/ctrl+i`_ | **`r`**         | Rename the Current Terminal Instance | `workbench.action.terminal.rename`                                         |
+| _`cmd/ctrl+i`_ | **`r`**         | Rename the Current Terminal Instance | [`terminalAllInOne.renameCurrentTerminal`](#cmd-rename-current-terminal)\* |
 | _`cmd/ctrl+i`_ | **`.`**         | Focus the Next Terminal Instance     | `workbench.action.terminal.focusNext`                                      |
 | _`cmd/ctrl+i`_ | **`,`**         | Focus the Previous Terminal Instance | `workbench.action.terminal.focusPrevious`                                  |
 | _`cmd/ctrl+i`_ | **`t`**         | Choose a Terminal Theme              | [`terminalAllInOne.chooseTerminalTheme`](#cmd-choose-theme)\*              |
@@ -336,7 +343,7 @@ _Table Of Contents_
 
 <!-- Rename the Current Terminal Instance -->
 
-<details id="demo-rename-terminal" name="demo-rename-terminal">
+<details id="demo-rename-current-terminal" name="demo-rename-current-terminal">
 <summary>Rename the Current Terminal Instance</summary>
 
 [![Rename the Current Terminal Instance](https://raw.githubusercontent.com/YashTotale/terminal-all-in-one/master/static/demos/RenameTheCurrentTerminalInstance.gif)](https://raw.githubusercontent.com/YashTotale/terminal-all-in-one/master/static/demos/RenameTheCurrentTerminalInstance.gif)
