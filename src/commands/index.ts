@@ -1,6 +1,7 @@
 import ChooseTerminalTheme from "./chooseTerminalTheme";
 import ClearTerminal from "./clearTerminal";
 import RunScript from "./runScript";
+import ChangeCursorWidth from "./changeCursorWidth";
 import OneCommand from "./oneCommand";
 import ChangeFontSize from "./fontSize/changeFontSize";
 import AdjustFontSizeByOne from "./fontSize/adjustFontSizeByOne";
@@ -40,6 +41,7 @@ export default (context: ExtensionContext) => [
   new ChooseTerminalTheme(context),
   new ClearTerminal(context),
   new RunScript(context),
+  new ChangeCursorWidth(context),
   new ChangeFontSize(context),
   new AdjustFontSizeByOne(context, "decrease"),
   new AdjustFontSizeByOne(context, "increase"),

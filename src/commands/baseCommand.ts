@@ -40,8 +40,12 @@ export default class BaseCommand {
     return READABLE_EXTENSION_NAME;
   }
 
-  static showMessage(message: keyof typeof messages, params?: any) {
-    showMessage(message, params);
+  static showMessage(
+    message: keyof typeof messages,
+    params?: Parameters<typeof messages[typeof message]>[0],
+    params1?: Parameters<typeof messages[typeof message]>[1]
+  ) {
+    showMessage(message, params, params1);
   }
 
   static getExtensionConfig(property: string) {
@@ -93,5 +97,9 @@ export default class BaseCommand {
     return commands.executeCommand(
       `${BaseCommand.getExtensionName()}.clearTerminal`
     );
+  }
+
+  static focusTerminal() {
+    commands.executeCommand("workbench.action.terminal.focus");
   }
 }

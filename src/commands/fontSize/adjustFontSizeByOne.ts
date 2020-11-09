@@ -8,10 +8,12 @@ export default class AdjustFontSizeByOne extends FontSize {
     );
   }
 
-  static async handler(context: ExtensionContext, operation: string) {
+  static handler(context: ExtensionContext, operation: string) {
     const currentSize = AdjustFontSizeByOne.getFontSizeConfig();
     const newSize = currentSize - (operation === "increase" ? -1 : 1);
-    await AdjustFontSizeByOne.updateFontSizeConfig(newSize);
-    AdjustFontSizeByOne.showFontSizeSelectedMessage(`${newSize}-pt`);
+    AdjustFontSizeByOne.updateFontSizeConfig(newSize);
+    AdjustFontSizeByOne.showFontSizeSelectedMessage(`${newSize}-pt`, () =>
+      AdjustFontSizeByOne.updateFontSizeConfig(currentSize)
+    );
   }
 }

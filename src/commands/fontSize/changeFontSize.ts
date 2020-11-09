@@ -3,7 +3,7 @@ import { QuickPickItem, ExtensionContext } from "vscode";
 
 import FontSize from "./index";
 
-interface fontSizeObject {
+interface FontSizeObject {
   label: string;
   description: string | undefined;
 }
@@ -16,7 +16,10 @@ export default class ChangeFontSize extends FontSize {
   static handler(context: ExtensionContext) {
     const currentSize = ChangeFontSize.getFontSizeConfig();
     const fontSizes = ChangeFontSize.createFontSizes(currentSize);
-    ChangeFontSize.showMessage("fontSizeQuickPickOpened");
+    ChangeFontSize.showMessage(
+      "fontSizeQuickPickOpened",
+      ChangeFontSize.focusTerminal
+    );
     return ChangeFontSize.showQuickPick(
       fontSizes,
       {
@@ -27,12 +30,14 @@ export default class ChangeFontSize extends FontSize {
         }, 300),
       },
       (selectedSize) =>
-        ChangeFontSize.showFontSizeSelectedMessage(selectedSize.label),
+        ChangeFontSize.showFontSizeSelectedMessage(selectedSize.label, () =>
+          ChangeFontSize.updateFontSizeConfig(currentSize)
+        ),
       () => ChangeFontSize.updateFontSizeConfig(currentSize)
     );
   }
 
-  static createFontSizes(currentSize: number): fontSizeObject[] {
+  static createFontSizes(currentSize: number): FontSizeObject[] {
     let fontSizes = [];
     for (let i = 8; i < 27; i++) {
       fontSizes.push({

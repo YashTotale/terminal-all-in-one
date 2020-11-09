@@ -5,15 +5,15 @@ export default class FontSize extends BaseCommand {
     return FontSize.getConfig("terminal.integrated.fontSize");
   }
 
-  static async updateFontSizeConfig(value: any) {
-    await FontSize.updateConfig({
+  static updateFontSizeConfig(value: any) {
+    FontSize.updateConfig({
       key: "terminal.integrated.fontSize",
       value,
     });
     FontSize.clearTerminal();
   }
 
-  static showFontSizeSelectedMessage(fontSize: string) {
-    return FontSize.showMessage("fontSizeSelected", fontSize);
+  static showFontSizeSelectedMessage(fontSize: string, undo: () => any) {
+    return FontSize.showMessage("fontSizeSelected", fontSize, undo);
   }
 }

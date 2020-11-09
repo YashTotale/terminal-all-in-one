@@ -26,26 +26,39 @@ async function updateMessagesConfig(key: string, value: any) {
   });
 }
 
-async function infoWithDisableOption(configProperty: string, info: string) {
+async function infoWithDisableOption(
+  configProperty: string,
+  info: string,
+  ...rest: { message: string; func: () => any }[]
+) {
   if (getMessagesConfig(configProperty)) {
-    const selection = await window.showInformationMessage(info, DONT_SHOW);
+    const selection = await window.showInformationMessage(
+      info,
+      DONT_SHOW,
+      ...rest.map((r) => r.message)
+    );
     if (selection === DONT_SHOW) {
       await updateMessagesConfig(configProperty, false);
     }
+    rest.forEach((r) => {
+      if (selection === r.message) r.func();
+    });
   }
 }
 
 interface messages {
-  onFirstStart: Function;
-  followUp: Function;
-  themeQuickPickOpened: Function;
-  themeDoesNotExist: Function;
-  themeSelected: Function;
-  fontSizeQuickPickOpened: Function;
-  fontSizeSelected: Function;
-  noScripts: Function;
-  disableScriptDescription: Function;
-  error: Function;
+  onFirstStart: () => any;
+  followUp: (context: ExtensionContext) => any;
+  themeQuickPickOpened: () => any;
+  themeDoesNotExist: () => any;
+  themeSelected: (selectedTheme: string) => any;
+  fontSizeQuickPickOpened: (open: () => any) => any;
+  fontSizeSelected: (selectedSize: string, undo: () => any) => any;
+  cursorWidthQuickPickOpened: (open: () => any) => any;
+  cursorWidthSelected: (selectedWidth: string, undo: () => any) => any;
+  noScripts: (index: number) => any;
+  disableScriptDescription: (disable: () => any) => any;
+  error: (message: string) => any;
 }
 
 export const messages: messages = {
@@ -63,7 +76,7 @@ export const messages: messages = {
   followUp: async (context: ExtensionContext) => {
     const selection = await window.showInformationMessage(
       `You've been using ${READABLE_EXTENSION_NAME} for some time. I hope it's been useful. Would you mind giving it a quick rating?`,
-      "Don't Show Again",
+      DONT_SHOW,
       "No Problem!"
     );
     if (selection === "No Problem!") {
@@ -73,7 +86,7 @@ export const messages: messages = {
         )
       );
       state.update(context, stateProps.SHOULD_NOT_SHOW_FOLLOW_UP, true);
-    } else if (selection === "Don't Show Again") {
+    } else if (selection === DONT_SHOW) {
       state.update(context, stateProps.SHOULD_NOT_SHOW_FOLLOW_UP, true);
     }
   },
@@ -104,16 +117,45 @@ export const messages: messages = {
     );
   },
   //Message when the font size quick pick is opened
-  fontSizeQuickPickOpened: async () => {
+  fontSizeQuickPickOpened: async (open: () => any) => {
     infoWithDisableOption(
       "shouldShowFontSizeQuickPickMessage",
-      "Open the terminal for a live preview. If a terminal was already open and you cannot see your previous commands, scroll up in the terminal."
+      "Open the terminal for a live preview. If a terminal was already open and you cannot see your previous commands, scroll up in the terminal.",
+      {
+        message: "Open",
+        func: open,
+      }
     );
   },
-  fontSizeSelected: async (selectedSize: string) => {
+  fontSizeSelected: async (selectedSize: string, undo: () => any) => {
     infoWithDisableOption(
       "shouldShowSelectedFontSizeMessage",
-      `Font Size "${selectedSize}" has been applied`
+      `Font Size "${selectedSize}" has been applied`,
+      {
+        message: "Undo",
+        func: undo,
+      }
+    );
+  },
+  //Messages when the cursor width quick pick is opened
+  cursorWidthQuickPickOpened: async (open: () => any) => {
+    infoWithDisableOption(
+      "shouldShowCursorWidthQuickPickMessage",
+      "Open the terminal for a live preview",
+      {
+        message: "Open",
+        func: open,
+      }
+    );
+  },
+  cursorWidthSelected: async (selectedWidth: string, undo: () => any) => {
+    infoWithDisableOption(
+      "shouldShowSelectedCursorWidthMessage",
+      `Cursor Width "${selectedWidth}" has been applied`,
+      {
+        message: "Undo",
+        func: undo,
+      }
     );
   },
   noScripts: async (index: number) => {
@@ -137,35 +179,33 @@ export const messages: messages = {
       );
     }
   },
-  disableScriptDescription: async (disable: Function) => {
-    const CONFIG_PROPERTY = "shouldShowDisableScriptDescriptionMessage";
-    const DISABLE = "Disable";
-    if (getMessagesConfig(CONFIG_PROPERTY)) {
-      const selection = await window.showInformationMessage(
-        "You can disable the script description",
-        DONT_SHOW,
-        DISABLE
-      );
-      if (selection === DONT_SHOW) {
-        await updateMessagesConfig(CONFIG_PROPERTY, false);
+  disableScriptDescription: async (disable: () => any) => {
+    infoWithDisableOption(
+      "shouldShowDisableScriptDescriptionMessage",
+      "You can disable the script description",
+      {
+        message: "Disable",
+        func: disable,
       }
-      if (selection === DISABLE) {
-        return disable();
-      }
-    }
+    );
   },
   error: async (message: string) => {
     window.showErrorMessage(message);
   },
 };
 
-const showMessage = function (id: keyof typeof messages, params?: any): void {
+const showMessage = function (
+  id: keyof typeof messages,
+  params?: Parameters<messages[typeof id]>[0],
+  params1?: Parameters<messages[typeof id]>[1]
+): void {
   const shouldShow = !getConfig({
     section: `${EXTENSION_NAME}.disableAllMessages`,
   });
   if (shouldShow) {
     const messageToShow = messages[id];
-    messageToShow(params);
+    //@ts-ignore
+    messageToShow(params, params1);
   }
 };
 
