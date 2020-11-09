@@ -23,4 +23,4 @@ node_modules
 # Misc
 **/*.map
 **/.DS_Store
-static/demos/
+demos/
