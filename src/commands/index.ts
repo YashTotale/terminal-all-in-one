@@ -1,11 +1,12 @@
 import ChooseTerminalTheme from "./chooseTerminalTheme";
 import ClearTerminal from "./clearTerminal";
 import RunScript from "./runScript";
-import ChangeCursorWidth from "./changeCursorWidth";
+import ChangeCursorWidth from "./cursor/changeCursorWidth";
 import OneCommand from "./oneCommand";
 import ChangeFontSize from "./fontSize/changeFontSize";
 import AdjustFontSizeByOne from "./fontSize/adjustFontSizeByOne";
 import { ExtensionContext } from "vscode";
+import ChangeCursorStyle from "./cursor/changeCursorStyle";
 
 export default (context: ExtensionContext) => [
   new OneCommand(
@@ -42,6 +43,7 @@ export default (context: ExtensionContext) => [
   new ClearTerminal(context),
   new RunScript(context),
   new ChangeCursorWidth(context),
+  new ChangeCursorStyle(context),
   new ChangeFontSize(context),
   new AdjustFontSizeByOne(context, "decrease"),
   new AdjustFontSizeByOne(context, "increase"),

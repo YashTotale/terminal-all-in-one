@@ -56,6 +56,8 @@ interface messages {
   fontSizeSelected: (selectedSize: string, undo: () => any) => any;
   cursorWidthQuickPickOpened: (open: () => any) => any;
   cursorWidthSelected: (selectedWidth: string, undo: () => any) => any;
+  cursorStyleQuickPickOpened: (open: () => any) => any;
+  cursorStyleSelected: (selectedStyle: string, undo: () => any) => any;
   noScripts: (index: number) => any;
   disableScriptDescription: (disable: () => any) => any;
   error: (message: string) => any;
@@ -152,6 +154,27 @@ export const messages: messages = {
     infoWithDisableOption(
       "shouldShowSelectedCursorWidthMessage",
       `Cursor Width "${selectedWidth}" has been applied`,
+      {
+        message: "Undo",
+        func: undo,
+      }
+    );
+  },
+  //Messages when the cursor style quick pick is opened
+  cursorStyleQuickPickOpened: async (open: () => any) => {
+    infoWithDisableOption(
+      "shouldShowCursorStyleQuickPickMessage",
+      "Open the terminal for a live preview",
+      {
+        message: "Open",
+        func: open,
+      }
+    );
+  },
+  cursorStyleSelected: async (selectedStyle: string, undo: () => any) => {
+    infoWithDisableOption(
+      "shouldShowSelectedCursorStyleMessage",
+      `Cursor Style "${selectedStyle}" has been applied`,
       {
         message: "Undo",
         func: undo,

@@ -48,6 +48,7 @@
     "onCommand:terminalAllInOne.toggleMaxTerm",
     "onCommand:terminalAllInOne.chooseTerminalTheme",
     "onCommand:terminalAllInOne.changeCursorWidth",
+    "onCommand:terminalAllInOne.changeCursorStyle",
     "onCommand:terminalAllInOne.changeFontSize",
     "onCommand:terminalAllInOne.decreaseFontSize",
     "onCommand:terminalAllInOne.increaseFontSize",
@@ -92,6 +93,10 @@
       {
         "command": "terminalAllInOne.changeCursorWidth",
         "title": "Terminal All In One: Change Cursor Width"
+      },
+      {
+        "command": "terminalAllInOne.changeCursorStyle",
+        "title": "Terminal All In One: Change Cursor Style"
       },
       {
         "command": "terminalAllInOne.changeFontSize",
@@ -173,6 +178,12 @@
         "key": "ctrl+i w",
         "mac": "cmd+i w",
         "command": "terminalAllInOne.changeCursorWidth",
+        "when": "!config.terminalAllInOne.disableAllKeybindings"
+      },
+      {
+        "key": "ctrl+i y",
+        "mac": "cmd+i y",
+        "command": "terminalAllInOne.changeCursorStyle",
         "when": "!config.terminalAllInOne.disableAllKeybindings"
       },
       {
@@ -403,6 +414,8 @@
             "shouldShowSelectedFontSizeMessage": true,
             "shouldShowCursorWidthQuickPickMessage": true,
             "shouldShowSelectedCursorWidthMessage": true,
+            "shouldShowCursorStyleQuickPickMessage": true,
+            "shouldShowSelectedCursorStyleMessage": true,
             "shouldShowDisableScriptDescriptionMessage": true
           },
           "properties": {
@@ -422,6 +435,12 @@
               "type": "boolean"
             },
             "shouldShowSelectedCursorWidthMessage": {
+              "type": "boolean"
+            },
+            "shouldShowCursorStyleQuickPickMessage": {
+              "type": "boolean"
+            },
+            "shouldShowSelectedCursorStyleMessage": {
               "type": "boolean"
             },
             "shouldShowDisableScriptDescriptionMessage": {

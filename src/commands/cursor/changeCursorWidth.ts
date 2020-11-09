@@ -1,7 +1,7 @@
 import { QuickPickItem, ExtensionContext } from "vscode";
 import debounce from "lodash.debounce";
 
-import BaseCommand from "./baseCommand";
+import BaseCommand from "../baseCommand";
 
 interface CursorWidthObject {
   label: string;
