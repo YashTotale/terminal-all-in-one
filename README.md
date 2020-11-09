@@ -30,7 +30,6 @@ _Table Of Contents_
   - **[Scripts](#scripts)**
   - [Instances](#instances)
   - [Display](#display)
-  - [Font Size](#font-size)
   - [Misc](#misc)
 - [Configuration](#configuration)
   - **[Themes](#themes-1)**
@@ -135,7 +134,12 @@ _Table Of Contents_
 
   - Keybinding: `cmd/ctrl+i backspace`
 
-### Font Size
+- `terminalAllInOne.changeCursorWidth` <span id="cmd-change-cursor-width" name="cmd-change-cursor-width"><em>(Terminal All In One: Change Cursor Width)</em></span>
+
+  - Opens a Cursor Width Quick Pick<sup>[1](#quick-pick)</sup>
+
+  - Live Preview in the Terminal
+  - Keybinding: `cmd/ctrl+i w`
 
 - `terminalAllInOne.changeFontSize` <span id="cmd-change-font-size" name="cmd-change-font-size"><em>(Terminal All In One: Change Font Size)</em></span>
 
@@ -289,6 +293,7 @@ _Table Of Contents_
 | _`cmd/ctrl+i`_ | **`t`**         | Choose a Terminal Theme              | [`terminalAllInOne.chooseTerminalTheme`](#cmd-choose-theme)\*              |
 | _`cmd/ctrl+i`_ | **`enter`**     | Choose a Script                      | [`terminalAllInOne.runScript`](#cmd-run-script)\*                          |
 | _`cmd/ctrl+i`_ | **`0-9`**       | Run a specific Script                | [`terminalAllInOne.runScript`](#cmd-run-script)\*                          |
+| _`cmd/ctrl+i`_ | **`w`**         | Change Terminal Cursor Width         | [`terminalAllInOne.changeCursorWidth`](#cmd-change-cursor-width)\*         |
 | _`cmd/ctrl+i`_ | **`f`**         | Change Terminal Font Size            | [`terminalAllInOne.changeFontSize`](#cmd-change-font-size)\*               |
 | _`cmd/ctrl+i`_ | **`-`**         | Decrease Terminal Font Size          | [`terminalAllInOne.decreaseFontSize`](#cmd-decrease-font-size)\*           |
 | _`cmd/ctrl+i`_ | **`=`**         | Increase Terminal Font Size          | [`terminalAllInOne.increaseFontSize`](#cmd-increase-font-size)\*           |
