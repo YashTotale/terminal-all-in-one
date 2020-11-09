@@ -1,4 +1,4 @@
-import { QuickPickItem, ExtensionContext } from "vscode";
+import { ExtensionContext } from "vscode";
 import debounce from "lodash.debounce";
 
 import BaseCommand from "../baseCommand";
