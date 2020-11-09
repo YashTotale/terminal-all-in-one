@@ -88,6 +88,14 @@ The format of this Change Log is based on [Keep a Changelog](http://keepachangel
 
 ---
 
+### [v1.11.8] - (2020-11-9)
+
+#### Fixed
+
+- Disable Script Description works
+
+---
+
 ### [v1.11.7] - (2020-11-3)
 
 #### Added
