@@ -119,7 +119,7 @@ export default class RunScript extends BaseCommand {
 
   static disableDescription() {
     return BaseCommand.updateExtensionConfig({
-      key: "script.disabelDescription",
+      key: "script.disableDescription",
       value: true,
     });
   }
