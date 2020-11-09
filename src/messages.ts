@@ -58,6 +58,7 @@ interface messages {
   cursorWidthSelected: (selectedWidth: string, undo: () => any) => any;
   cursorStyleQuickPickOpened: (open: () => any) => any;
   cursorStyleSelected: (selectedStyle: string, undo: () => any) => any;
+  blinkingCursorToggled: (isBlinking: boolean, undo: () => any) => any;
   noScripts: (index: number) => any;
   disableScriptDescription: (disable: () => any) => any;
   error: (message: string) => any;
@@ -175,6 +176,16 @@ export const messages: messages = {
     infoWithDisableOption(
       "shouldShowSelectedCursorStyleMessage",
       `Cursor Style "${selectedStyle}" has been applied`,
+      {
+        message: "Undo",
+        func: undo,
+      }
+    );
+  },
+  blinkingCursorToggled: (isBlinking: boolean, undo: () => any) => {
+    infoWithDisableOption(
+      "shouldShowBlinkingCursorToggledMessage",
+      `Blinking Cursor set to ${isBlinking}`,
       {
         message: "Undo",
         func: undo,
