@@ -54,6 +54,8 @@ interface messages {
   themeSelected: (selectedTheme: string) => any;
   fontSizeQuickPickOpened: (open: () => any) => any;
   fontSizeSelected: (selectedSize: string, undo: () => any) => any;
+  fontWeightQuickPickOpened: (open: () => any) => any;
+  fontWeightSelected: (selectedWeight: string, undo: () => any) => any;
   cursorWidthQuickPickOpened: (open: () => any) => any;
   cursorWidthSelected: (selectedWidth: string, undo: () => any) => any;
   cursorStyleQuickPickOpened: (open: () => any) => any;
@@ -134,6 +136,27 @@ export const messages: messages = {
     infoWithDisableOption(
       "shouldShowSelectedFontSizeMessage",
       `Font Size "${selectedSize}" has been applied`,
+      {
+        message: "Undo",
+        func: undo,
+      }
+    );
+  },
+  //Message when the font weight quick pick is opened
+  fontWeightQuickPickOpened: async (open: () => any) => {
+    infoWithDisableOption(
+      "shouldShowFontWeightQuickPickMessage",
+      "Open the terminal for a live preview.",
+      {
+        message: "Open",
+        func: open,
+      }
+    );
+  },
+  fontWeightSelected: async (selectedWeight: string, undo: () => any) => {
+    infoWithDisableOption(
+      "shouldShowSelectedFontWeightMessage",
+      `Font Weight "${selectedWeight}" has been applied`,
       {
         message: "Undo",
         func: undo,

@@ -5,7 +5,7 @@ export default class FontSize extends BaseCommand {
     return FontSize.getConfig("terminal.integrated.fontSize");
   }
 
-  static updateFontSizeConfig(value: any) {
+  static updateFontSizeConfig(value: number) {
     FontSize.updateConfig({
       key: "terminal.integrated.fontSize",
       value,

@@ -51,6 +51,7 @@
     "onCommand:terminalAllInOne.changeCursorStyle",
     "onCommand:terminalAllInOne.toggleBlinkingCursor",
     "onCommand:terminalAllInOne.changeFontSize",
+    "onCommand:terminalAllInOne.changeFontWeight",
     "onCommand:terminalAllInOne.decreaseFontSize",
     "onCommand:terminalAllInOne.increaseFontSize",
     "onCommand:terminalAllInOne.clearTerminal",
@@ -114,6 +115,10 @@
       {
         "command": "terminalAllInOne.increaseFontSize",
         "title": "Terminal All In One: Increase Font Size"
+      },
+      {
+        "command": "terminalAllInOne.changeFontWeight",
+        "title": "Terminal All In One: Change Font Weight"
       },
       {
         "command": "terminalAllInOne.clearTerminal",
@@ -213,6 +218,12 @@
         "key": "ctrl+i =",
         "mac": "cmd+i =",
         "command": "terminalAllInOne.increaseFontSize",
+        "when": "!config.terminalAllInOne.disableAllKeybindings"
+      },
+      {
+        "key": "ctrl+i q",
+        "mac": "cmd+i q",
+        "command": "terminalAllInOne.changeFontWeight",
         "when": "!config.terminalAllInOne.disableAllKeybindings"
       },
       {
@@ -423,6 +434,8 @@
             "shouldShowSelectedThemeMessage": true,
             "shouldShowFontSizeQuickPickMessage": true,
             "shouldShowSelectedFontSizeMessage": true,
+            "shouldShowFontWeightQuickPickMessage": true,
+            "shouldShowSelectedFontWeightMessage": true,
             "shouldShowCursorWidthQuickPickMessage": true,
             "shouldShowSelectedCursorWidthMessage": true,
             "shouldShowCursorStyleQuickPickMessage": true,
@@ -441,6 +454,12 @@
               "type": "boolean"
             },
             "shouldShowSelectedFontSizeMessage": {
+              "type": "boolean"
+            },
+            "shouldShowFontWeightQuickPickMessage": {
+              "type": "boolean"
+            },
+            "shouldShowSelectedFontWeightMessage": {
               "type": "boolean"
             },
             "shouldShowCursorWidthQuickPickMessage": {

@@ -1,6 +1,7 @@
 import ChooseTerminalTheme from "./chooseTerminalTheme";
 import ClearTerminal from "./clearTerminal";
 import RunScript from "./runScript";
+import ChangeFontWeight from "./changeFontWeight";
 import ChangeCursorWidth from "./cursor/changeCursorWidth";
 import ChangeCursorStyle from "./cursor/changeCursorStyle";
 import ToggleBlinkingCursor from "./cursor/toggleBlinkingCursor";
@@ -46,6 +47,7 @@ export default (context: ExtensionContext) => [
   new ChangeCursorWidth(context),
   new ChangeCursorStyle(context),
   new ToggleBlinkingCursor(context),
+  new ChangeFontWeight(context),
   new ChangeFontSize(context),
   new AdjustFontSizeByOne(context, "decrease"),
   new AdjustFontSizeByOne(context, "increase"),

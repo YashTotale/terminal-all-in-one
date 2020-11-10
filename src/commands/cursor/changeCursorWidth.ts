@@ -51,7 +51,7 @@ export default class ChangeCursorWidth extends BaseCommand {
 
   static createCursorWidths(currentWidth: number): CursorWidthObject[] {
     let cursorWidths = [];
-    for (let i = 1; i < 13; i++) {
+    for (let i = 1; i < 9; i++) {
       cursorWidths.push({
         label: `${i}-pt`,
         description: currentWidth === i ? "current" : undefined,
@@ -65,10 +65,6 @@ export default class ChangeCursorWidth extends BaseCommand {
   }
 
   static showCursorWidthSelectedMessage(cursorWidth: string, undo: () => any) {
-    return ChangeCursorWidth.showMessage(
-      "cursorWidthSelected",
-      cursorWidth,
-      undo
-    );
+    ChangeCursorWidth.showMessage("cursorWidthSelected", cursorWidth, undo);
   }
 }
