@@ -173,6 +173,13 @@ _Table Of Contents_
 
   - Keybinding: `cmd/ctrl+i =`
 
+- `terminalAllInOne.changeFontWeight` <span id="cmd-change-font-weight" name="cmd-change-font-weight"><em>(Terminal All In One: Change Font Weight)</em></span>
+
+  - Opens a Font Weight Quick Pick<sup>[1](#quick-pick)</sup>
+
+  - Live Preview in the Terminal
+  - Keybinding: `cmd/ctrl+i q`
+
 ### Misc
 
 - `terminalAllInOne.selectDefaultShell` <span id="cmd-select-default-shell" name="cmd-select-default-shell"><em>(Terminal All In One: Select Default Shell)</em></span>
@@ -312,6 +319,7 @@ _Table Of Contents_
 | _`cmd/ctrl+i`_ | **`f`**         | Change Terminal Font Size            | [`terminalAllInOne.changeFontSize`](#cmd-change-font-size)\*               |
 | _`cmd/ctrl+i`_ | **`-`**         | Decrease Terminal Font Size          | [`terminalAllInOne.decreaseFontSize`](#cmd-decrease-font-size)\*           |
 | _`cmd/ctrl+i`_ | **`=`**         | Increase Terminal Font Size          | [`terminalAllInOne.increaseFontSize`](#cmd-increase-font-size)\*           |
+| _`cmd/ctrl+i`_ | **`q`**         | Change Terminal Font Weight          | [`terminalAllInOne.changeFontWeight`](#cmd-change-font-weight)\*           |
 | _`cmd/ctrl+i`_ | **`backspace`** | Clear the Terminal                   | [`terminalAllInOne.clearTerminal`](#cmd-clear-terminal)\*                  |
 
 \*These commands are linked to their descriptions in the [Commands Section](#commands)
