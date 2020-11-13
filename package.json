@@ -549,7 +549,7 @@
   "dependencies": {
     "lodash.debounce": "^4.0.8",
     "moment": "^2.29.1",
-    "serialize-javascript": "^4.0.0",
+    "serialize-javascript": "^5.0.1",
     "vscode-uri": "^2.1.2"
   }
 }
