@@ -116,10 +116,17 @@ _Table Of Contents_
 
   - Focuses the Previous Terminal Instance
 
-  - Keybinding: `cmd/ctrl+i .`
+  - Keybinding: `cmd/ctrl+i ,`
   - [Demo](#demo-focus-next-terminal)
 
 ### Display
+
+- `workbench.action.terminal.toggleTerminal` <span id="cmd-toggle-terminal" name="cmd-toggle-terminal"><em>(View: Toggle Integrated Terminal)</em></span>
+
+  - Toggles the Terminal
+
+  - Keybinding: `` cmd/ctrl+i `  ``
+  - [Demo](#demo-toggle-terminal)
 
 - `terminalAllInOne.toggleMaxTerm` <span id="cmd-toggle-max-term" name="cmd-toggle-max-term"><em>(Terminal All In One: Toggle Maximized Terminal)</em></span>
 
@@ -288,6 +295,13 @@ _Table Of Contents_
       "shouldShowSelectedThemeMessage": true,
       "shouldShowFontSizeQuickPickMessage": true,
       "shouldShowSelectedFontSizeMessage": true,
+      "shouldShowFontWeightQuickPickMessage": true,
+      "shouldShowSelectedFontWeightMessage": true,
+      "shouldShowCursorWidthQuickPickMessage": true,
+      "shouldShowSelectedCursorWidthMessage": true,
+      "shouldShowCursorStyleQuickPickMessage": true,
+      "shouldShowSelectedCursorStyleMessage": true,
+      "shouldShowBlinkingCursorToggledMessage": true,
       "shouldShowDisableScriptDescriptionMessage": true
     },
     "terminalAllInOne.disableAllMessages": false
@@ -300,29 +314,27 @@ _Table Of Contents_
 
 **For each keybinding (except toggling the terminal) , press `cmd+i` (for Macs) or `ctrl+i` (for Windows & Linux), and the corresponding key for the terminal command.**
 
-| Chord          | Shortcut        | Description                          | Command                                                                    |
-| -------------- | --------------- | ------------------------------------ | -------------------------------------------------------------------------- |
-| _`cmd/ctrl`_   | **`` ` ``**     | Toggle the Terminal                  | `workbench.action.terminal.new`                                            |
-| _`cmd/ctrl+i`_ | **`m`**         | Toggle the Maximized Terminal        | [`terminalAllInOne.toggleMaxTerm`](#cmd-toggle-max-term)\*                 |
-| _`cmd/ctrl+i`_ | **`s`**         | Select a Default Shell               | [`terminalAllInOne.selectDefaultShell`](#cmd-select-default-shell)\*       |
-| _`cmd/ctrl+i`_ | **`c`**         | Create a New Terminal Instance       | [`terminalAllInOne.createNewTerminal`](#cmd-create-new-terminal)\*         |
-| _`cmd/ctrl+i`_ | **`d`**         | Delete the Current Terminal Instance | [`terminalAllInOne.deleteCurrentTerminal`](#cmd-delete-current-terminal)\* |
-| _`cmd/ctrl+i`_ | **`r`**         | Rename the Current Terminal Instance | [`terminalAllInOne.renameCurrentTerminal`](#cmd-rename-current-terminal)\* |
-| _`cmd/ctrl+i`_ | **`.`**         | Focus the Next Terminal Instance     | [`terminalAllInOne.focusNextTerminal`](#cmd-focus-next-terminal)\*         |
-| _`cmd/ctrl+i`_ | **`,`**         | Focus the Previous Terminal Instance | [`terminalAllInOne.focusPreviousTerminal`](#cmd-focus-previous-terminal)\* |
-| _`cmd/ctrl+i`_ | **`t`**         | Choose a Terminal Theme              | [`terminalAllInOne.chooseTerminalTheme`](#cmd-choose-theme)\*              |
-| _`cmd/ctrl+i`_ | **`enter`**     | Choose a Script                      | [`terminalAllInOne.runScript`](#cmd-run-script)\*                          |
-| _`cmd/ctrl+i`_ | **`0-9`**       | Run a specific Script                | [`terminalAllInOne.runScript`](#cmd-run-script)\*                          |
-| _`cmd/ctrl+i`_ | **`w`**         | Change Terminal Cursor Width         | [`terminalAllInOne.changeCursorWidth`](#cmd-change-cursor-width)\*         |
-| _`cmd/ctrl+i`_ | **`y`**         | Change Terminal Cursor Style         | [`terminalAllInOne.changeCursorStyle`](#cmd-change-cursor-style)\*         |
-| _`cmd/ctrl+i`_ | **`b`**         | Toggle Blinking Terminal Cursor      | [`terminalAllInOne.toggleBlinkingCursor`](#cmd-toggle-blinking-cursor)\*   |
-| _`cmd/ctrl+i`_ | **`f`**         | Change Terminal Font Size            | [`terminalAllInOne.changeFontSize`](#cmd-change-font-size)\*               |
-| _`cmd/ctrl+i`_ | **`-`**         | Decrease Terminal Font Size          | [`terminalAllInOne.decreaseFontSize`](#cmd-decrease-font-size)\*           |
-| _`cmd/ctrl+i`_ | **`=`**         | Increase Terminal Font Size          | [`terminalAllInOne.increaseFontSize`](#cmd-increase-font-size)\*           |
-| _`cmd/ctrl+i`_ | **`q`**         | Change Terminal Font Weight          | [`terminalAllInOne.changeFontWeight`](#cmd-change-font-weight)\*           |
-| _`cmd/ctrl+i`_ | **`backspace`** | Clear the Terminal                   | [`terminalAllInOne.clearTerminal`](#cmd-clear-terminal)\*                  |
-
-\*These commands are linked to their descriptions in the [Commands Section](#commands)
+| Chord          | Shortcut        | Description                                                          | Command                                    |
+| -------------- | --------------- | -------------------------------------------------------------------- | ------------------------------------------ |
+| _`cmd/ctrl`_   | **`` ` ``**     | [Toggle the Terminal](#cmd-toggle-terminal)                          | `workbench.action.terminal.toggleTerminal` |
+| _`cmd/ctrl+i`_ | **`m`**         | [Toggle the Maximized Terminal](#cmd-toggle-max-term)                | `terminalAllInOne.toggleMaxTerm`           |
+| _`cmd/ctrl+i`_ | **`s`**         | [Select a Default Shell](#cmd-select-default-shell)                  | `terminalAllInOne.selectDefaultShell`      |
+| _`cmd/ctrl+i`_ | **`c`**         | [Create a New Terminal Instance](#cmd-create-new-terminal)           | `terminalAllInOne.createNewTerminal`       |
+| _`cmd/ctrl+i`_ | **`d`**         | [Delete the Current Terminal Instance](#cmd-delete-current-terminal) | `terminalAllInOne.deleteCurrentTerminal`   |
+| _`cmd/ctrl+i`_ | **`r`**         | [Rename the Current Terminal Instance](#cmd-rename-current-terminal) | `terminalAllInOne.renameCurrentTerminal`   |
+| _`cmd/ctrl+i`_ | **`.`**         | [Focus the Next Terminal Instance](#cmd-focus-next-terminal)         | `terminalAllInOne.focusNextTerminal`       |
+| _`cmd/ctrl+i`_ | **`,`**         | [Focus the Previous Terminal Instance](#cmd-focus-previous-terminal) | `terminalAllInOne.focusPreviousTerminal`   |
+| _`cmd/ctrl+i`_ | **`t`**         | [Choose a Terminal Theme](#cmd-choose-theme)                         | `terminalAllInOne.chooseTerminalTheme`     |
+| _`cmd/ctrl+i`_ | **`enter`**     | [Choose a Script](#cmd-run-script)                                   | `terminalAllInOne.runScript`               |
+| _`cmd/ctrl+i`_ | **`0-9`**       | [Run a specific Script](#cmd-run-script)                             | `terminalAllInOne.runScript`               |
+| _`cmd/ctrl+i`_ | **`w`**         | [Change Terminal Cursor Width](#cmd-change-cursor-width)             | `terminalAllInOne.changeCursorWidth`       |
+| _`cmd/ctrl+i`_ | **`y`**         | [Change Terminal Cursor Style](#cmd-change-cursor-style)             | `terminalAllInOne.changeCursorStyle`       |
+| _`cmd/ctrl+i`_ | **`b`**         | [Toggle Blinking Terminal Cursor](#cmd-toggle-blinking-cursor)       | `terminalAllInOne.toggleBlinkingCursor`    |
+| _`cmd/ctrl+i`_ | **`f`**         | [Change Terminal Font Size](#cmd-change-font-size)                   | `terminalAllInOne.changeFontSize`          |
+| _`cmd/ctrl+i`_ | **`-`**         | [Decrease Terminal Font Size](#cmd-decrease-font-size)               | `terminalAllInOne.decreaseFontSize`        |
+| _`cmd/ctrl+i`_ | **`=`**         | [Increase Terminal Font Size](#cmd-increase-font-size)               | `terminalAllInOne.increaseFontSize`        |
+| _`cmd/ctrl+i`_ | **`q`**         | [Change Terminal Font Weight](#cmd-change-font-weight)               | `terminalAllInOne.changeFontWeight`        |
+| _`cmd/ctrl+i`_ | **`backspace`** | [Clear the Terminal](#cmd-clear-terminal)                            | `terminalAllInOne.clearTerminal`           |
 
 ---
 
