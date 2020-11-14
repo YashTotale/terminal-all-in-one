@@ -1,4 +1,4 @@
-import { commands, ExtensionContext } from "vscode";
+import { ExtensionContext } from "vscode";
 import BaseCommand from "../baseCommand";
 
 export default class ToggleBlinkingCursor extends BaseCommand {
