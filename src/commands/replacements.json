@@ -29,5 +29,9 @@
   {
     "name": "focusPreviousTerminal",
     "cmd": "workbench.action.terminal.focusPrevious"
+  },
+  {
+    "name": "clearTerminal",
+    "cmd": "workbench.action.terminal.relaunch"
   }
 ]

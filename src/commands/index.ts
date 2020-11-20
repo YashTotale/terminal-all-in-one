@@ -1,7 +1,6 @@
 import { ExtensionContext } from "vscode";
 
 import ChooseTerminalTheme from "./chooseTerminalTheme";
-import ClearTerminal from "./clearTerminal";
 import RunScript from "./runScript";
 import ChangeFontWeight from "./changeFontWeight";
 import ChangeCursorWidth from "./cursor/changeCursorWidth";
@@ -18,7 +17,6 @@ export default (context: ExtensionContext) => [
     return new OneCommand(context, name, cmd);
   }),
   new ChooseTerminalTheme(context),
-  new ClearTerminal(context),
   new RunScript(context),
   new ChangeCursorWidth(context),
   new ChangeCursorStyle(context),
