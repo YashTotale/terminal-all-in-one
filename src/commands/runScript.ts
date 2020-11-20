@@ -6,7 +6,7 @@ interface scriptObject {
   script: string | string[];
 }
 
-interface handlerArgs {
+interface HandlerArgs {
   context: ExtensionContext;
   index?: number;
 }
@@ -16,7 +16,7 @@ export default class RunScript extends BaseCommand {
     super("runScript", (index) => this.handler({ context, index }));
   }
 
-  async handler({ index, context }: handlerArgs) {
+  async handler({ index, context }: HandlerArgs) {
     //All Scripts
     const scripts = this.getScriptsConfig();
     if (!this.handlerChecks(scripts, index)) {
