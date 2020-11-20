@@ -15,32 +15,33 @@ import { getConfig, updateConfig } from "../helpers/config";
 import showMessage, { messages } from "../messages";
 
 export default class BaseCommand {
+  name: string;
+  handlerFunc: (...params: any[]) => any;
+  config?: (e: ConfigurationChangeEvent) => any;
+
   constructor(
     name: string,
-    handler: (...params: any[]) => any,
+    handlerFunc: (...params: any[]) => any,
     config?: (e: ConfigurationChangeEvent) => any
   ) {
     this.name = name;
-    this.handler = handler;
+    this.handlerFunc = handlerFunc;
     this.config = config;
   }
-  name: string;
-  handler: (...params: any[]) => any;
-  config: ((e: ConfigurationChangeEvent) => any) | undefined;
 
-  static getExtensionName() {
+  getExtensionName() {
     return EXTENSION_NAME;
   }
 
-  static getExtensionNameWithPublisher() {
+  getExtensionNameWithPublisher() {
     return EXTENSION_NAME_W_PUBLISHER;
   }
 
-  static getReadableExtensionName() {
+  getReadableExtensionName() {
     return READABLE_EXTENSION_NAME;
   }
 
-  static showMessage(
+  showMessage(
     message: keyof typeof messages,
     params?: Parameters<typeof messages[typeof message]>[0],
     params1?: Parameters<typeof messages[typeof message]>[1]
@@ -48,30 +49,30 @@ export default class BaseCommand {
     showMessage(message, params, params1);
   }
 
-  static getExtensionConfig(property: string) {
+  getExtensionConfig(property: string) {
     return getConfig({
-      config: BaseCommand.getExtensionName(),
+      config: this.getExtensionName(),
       section: property,
     });
   }
 
-  static updateExtensionConfig({ key, value }: { key: string; value: any }) {
+  updateExtensionConfig({ key, value }: { key: string; value: any }) {
     return updateConfig({
-      config: BaseCommand.getExtensionName(),
+      config: this.getExtensionName(),
       section: key,
       value,
     });
   }
 
-  static getConfig(property: string) {
+  getConfig(property: string) {
     return getConfig({ section: property });
   }
 
-  static updateConfig({ key, value }: { key: string; value: any }) {
+  updateConfig({ key, value }: { key: string; value: any }) {
     return updateConfig({ section: key, value });
   }
 
-  static async showQuickPick(
+  async showQuickPick(
     items: QuickPickItem[],
     options: QuickPickOptions,
     onSelect: (selectedItem: QuickPickItem) => any,
@@ -93,13 +94,11 @@ export default class BaseCommand {
     }
   }
 
-  static clearTerminal() {
-    return commands.executeCommand(
-      `${BaseCommand.getExtensionName()}.clearTerminal`
-    );
+  clearTerminal() {
+    return commands.executeCommand(`${this.getExtensionName()}.clearTerminal`);
   }
 
-  static focusTerminal() {
+  focusTerminal() {
     commands.executeCommand("workbench.action.terminal.focus");
   }
 }

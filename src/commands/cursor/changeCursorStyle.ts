@@ -12,45 +12,42 @@ interface CursorStyleObject {
 
 export default class ChangeCursorStyle extends BaseCommand {
   constructor(context: ExtensionContext) {
-    super("changeCursorStyle", () => ChangeCursorStyle.handler(context));
+    super("changeCursorStyle", () => this.handler(context));
   }
 
-  static getCursorStyleConfig(): CursorStyle {
-    return ChangeCursorStyle.getConfig("terminal.integrated.cursorStyle");
+  getCursorStyleConfig(): CursorStyle {
+    return this.getConfig("terminal.integrated.cursorStyle");
   }
 
-  static updateCursorStyleConfig(value: CursorStyle) {
-    ChangeCursorStyle.updateConfig({
+  updateCursorStyleConfig(value: CursorStyle) {
+    this.updateConfig({
       key: "terminal.integrated.cursorStyle",
       value,
     });
   }
 
-  static handler(context: ExtensionContext) {
-    const currentStyle = ChangeCursorStyle.getCursorStyleConfig();
-    const cursorStyles = ChangeCursorStyle.createCursorStyles(currentStyle);
-    ChangeCursorStyle.showMessage(
-      "cursorStyleQuickPickOpened",
-      ChangeCursorStyle.focusTerminal
-    );
-    return ChangeCursorStyle.showQuickPick(
+  handler(context: ExtensionContext) {
+    const currentStyle = this.getCursorStyleConfig();
+    const cursorStyles = this.createCursorStyles(currentStyle);
+    this.showMessage("cursorStyleQuickPickOpened", this.focusTerminal);
+    return this.showQuickPick(
       cursorStyles,
       {
         placeHolder: "Choose a Cursor Style",
         onDidSelectItem: debounce(async (cursorStyle: CursorStyleObject) => {
-          return ChangeCursorStyle.updateCursorStyleConfig(cursorStyle.label);
+          return this.updateCursorStyleConfig(cursorStyle.label);
         }, 300),
       },
       (selectedStyle) =>
-        ChangeCursorStyle.showCursorStyleSelectedMessage(
+        this.showCursorStyleSelectedMessage(
           selectedStyle.label as CursorStyle,
-          () => ChangeCursorStyle.updateCursorStyleConfig(currentStyle)
+          () => this.updateCursorStyleConfig(currentStyle)
         ),
-      () => ChangeCursorStyle.updateCursorStyleConfig(currentStyle)
+      () => this.updateCursorStyleConfig(currentStyle)
     );
   }
 
-  static createCursorStyles(currentStyle: CursorStyle): CursorStyleObject[] {
+  createCursorStyles(currentStyle: CursorStyle): CursorStyleObject[] {
     const cursorStyles: CursorStyle[] = ["line", "block", "underline"];
     return cursorStyles.map((style) => ({
       label: style,
@@ -58,14 +55,7 @@ export default class ChangeCursorStyle extends BaseCommand {
     }));
   }
 
-  static showCursorStyleSelectedMessage(
-    cursorStyle: CursorStyle,
-    undo: () => any
-  ) {
-    return ChangeCursorStyle.showMessage(
-      "cursorStyleSelected",
-      cursorStyle,
-      undo
-    );
+  showCursorStyleSelectedMessage(cursorStyle: CursorStyle, undo: () => any) {
+    return this.showMessage("cursorStyleSelected", cursorStyle, undo);
   }
 }

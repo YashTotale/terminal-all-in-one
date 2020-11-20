@@ -6,7 +6,6 @@ import {
 import debounce from "lodash.debounce";
 
 import BaseCommand from "./baseCommand";
-import ChangeFontSize from "./fontSize/changeFontSize";
 
 interface theme {
   colors: object;
@@ -36,57 +35,53 @@ interface colors {
   "terminal.ansiYellow": string;
 }
 
-const themes = require("../themes.json");
+import themes from "../themes.json";
 const themeSchemes = themes.map((theme: theme) => theme.colors);
 
 export default class ChooseTerminalTheme extends BaseCommand {
   constructor(context: ExtensionContext) {
     super(
       "chooseTerminalTheme",
-      () => ChooseTerminalTheme.handler(context),
-      ChooseTerminalTheme.configChange
+      () => this.handler(context),
+      (e) => this.configChange(e)
     );
   }
 
-  static handler(context: ExtensionContext) {
-    const currentColors = ChooseTerminalTheme.getColorCustomizations();
-    const currentTheme = ChooseTerminalTheme.getThemeConfig();
+  handler(context: ExtensionContext) {
+    const currentColors = this.getColorCustomizations();
+    const currentTheme = this.getThemeConfig();
     const themeNames = themes.map(({ name }: theme) => ({
       label: name,
-      description: currentTheme === name ? "current" : null,
+      description: currentTheme === name ? "current" : undefined,
     }));
-    ChooseTerminalTheme.showMessage("themeQuickPickOpened");
-    ChooseTerminalTheme.showQuickPick(
+    this.showMessage("themeQuickPickOpened");
+    this.showQuickPick(
       themeNames,
       {
         placeHolder: "Choose a Terminal Theme",
         onDidSelectItem: debounce(async (theme: QuickPickItem) => {
-          ChooseTerminalTheme.updateTerminalTheme(theme.label);
+          this.updateTerminalTheme(theme.label);
         }, 300),
       },
       ({ label }) => {
-        ChooseTerminalTheme.showMessage("themeSelected", label);
-        ChooseTerminalTheme.updateThemeConfig(label);
+        this.showMessage("themeSelected", label);
+        this.updateThemeConfig(label);
       },
       () => {
-        ChooseTerminalTheme.updateColorCustomizations(currentColors);
+        this.updateColorCustomizations(currentColors);
       }
     );
   }
 
-  static configChange(event: ConfigurationChangeEvent) {
+  configChange(event: ConfigurationChangeEvent) {
     if (
-      event.affectsConfiguration(
-        `${ChangeFontSize.getExtensionName()}.terminalTheme`
-      )
+      event.affectsConfiguration(`${this.getExtensionName()}.terminalTheme`)
     ) {
-      return ChooseTerminalTheme.updateTerminalTheme(
-        ChooseTerminalTheme.getThemeConfig()
-      );
+      return this.updateTerminalTheme(this.getThemeConfig());
     }
   }
 
-  static updateTerminalTheme(themeName: string) {
+  updateTerminalTheme(themeName: string) {
     //Check if theme exists and set the index of it
     let themeIndex = 0;
     const themeExists = themes.some(({ name }: theme, i: number) => {
@@ -98,21 +93,21 @@ export default class ChooseTerminalTheme extends BaseCommand {
     });
     if (!themeExists) {
       //If the theme doesn't exist, show an error message
-      return ChooseTerminalTheme.showMessage("themeDoesNotExist");
+      return this.showMessage("themeDoesNotExist");
     }
-    const currentColors = ChooseTerminalTheme.getColorCustomizations();
+    const currentColors = this.getColorCustomizations();
     if (themeName === "None") {
       //Remove all the terminal styles
-      return ChooseTerminalTheme.updateColorCustomizations(
-        ChooseTerminalTheme.getNonTerminalStyles(currentColors)
+      return this.updateColorCustomizations(
+        this.getNonTerminalStyles(currentColors)
       );
     }
     //If the theme does exist and is not None, set the new colors
     const themeScheme = { ...currentColors, ...themeSchemes[themeIndex] };
-    return ChooseTerminalTheme.updateColorCustomizations(themeScheme);
+    return this.updateColorCustomizations(themeScheme);
   }
 
-  static getNonTerminalStyles(allStyles: object) {
+  getNonTerminalStyles(allStyles: object) {
     return Object.keys(allStyles).reduce((nonTerminalStyles, currentStyle) => {
       if (!currentStyle.includes("terminal")) {
         //@ts-expect-error
@@ -122,23 +117,23 @@ export default class ChooseTerminalTheme extends BaseCommand {
     }, {});
   }
 
-  static getColorCustomizations() {
-    return ChooseTerminalTheme.getConfig("workbench.colorCustomizations");
+  getColorCustomizations() {
+    return this.getConfig("workbench.colorCustomizations");
   }
 
-  static updateColorCustomizations(value: colors | {}) {
-    return ChooseTerminalTheme.updateConfig({
+  updateColorCustomizations(value: colors | {}) {
+    return this.updateConfig({
       key: "workbench.colorCustomizations",
       value,
     });
   }
 
-  static getThemeConfig() {
-    return ChooseTerminalTheme.getExtensionConfig("terminalTheme");
+  getThemeConfig() {
+    return this.getExtensionConfig("terminalTheme");
   }
 
-  static updateThemeConfig(value: string) {
-    return ChooseTerminalTheme.updateExtensionConfig({
+  updateThemeConfig(value: string) {
+    return this.updateExtensionConfig({
       key: "terminalTheme",
       value,
     });

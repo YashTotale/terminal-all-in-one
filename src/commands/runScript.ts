@@ -13,13 +13,13 @@ interface handlerArgs {
 
 export default class RunScript extends BaseCommand {
   constructor(context: ExtensionContext) {
-    super("runScript", (index) => RunScript.handler({ context, index }));
+    super("runScript", (index) => this.handler({ context, index }));
   }
 
-  static async handler({ index, context }: handlerArgs) {
+  async handler({ index, context }: handlerArgs) {
     //All Scripts
-    const scripts = RunScript.getScriptsConfig();
-    if (!RunScript.handlerChecks(scripts, index)) {
+    const scripts = this.getScriptsConfig();
+    if (!this.handlerChecks(scripts, index)) {
       //Create the QP items and show the QP
       const items = scripts.map(
         ({ name, script }: scriptObject, i: number) => ({
@@ -28,50 +28,45 @@ export default class RunScript extends BaseCommand {
           index: i,
         })
       );
-      return BaseCommand.showQuickPick(
+      return this.showQuickPick(
         items,
         { placeHolder: "Run a Script" },
         (selectedScript) => {
           //@ts-expect-error
-          return RunScript.execute(scripts[selectedScript.index]);
+          return this.execute(scripts[selectedScript.index]);
         }
       );
     }
   }
 
-  static handlerChecks(scripts: scriptObject[], index?: number) {
+  handlerChecks(scripts: scriptObject[], index?: number) {
     //Check if the index has been passed and if it is a valid index
     if (typeof index === "number") {
       if (index < scripts.length) {
-        RunScript.execute(scripts[index]);
+        this.execute(scripts[index]);
         return true;
       }
-      BaseCommand.showMessage("noScripts", index);
+      this.showMessage("noScripts", index);
       return true;
     }
     if (!scripts.length) {
-      BaseCommand.showMessage("noScripts");
+      this.showMessage("noScripts");
       return true;
     }
     return false;
   }
 
-  static async execute({ name, script }: scriptObject) {
-    const cmds = RunScript.createCommands(script);
+  async execute({ name, script }: scriptObject) {
+    const cmds = this.createCommands(script);
     await commands.executeCommand("workbench.action.terminal.focus");
-    if (!RunScript.getDisableDescriptionConfig()) {
-      await RunScript.runInTerminal(
-        RunScript.createDescription({ name, script })
-      );
-      BaseCommand.showMessage(
-        "disableScriptDescription",
-        RunScript.disableDescription
-      );
+    if (!this.getDisableDescriptionConfig()) {
+      await this.runInTerminal(this.createDescription({ name, script }));
+      this.showMessage("disableScriptDescription", this.disableDescription);
     }
-    await RunScript.runInTerminal(`${cmds} \u000D`);
+    await this.runInTerminal(`${cmds} \u000D`);
   }
 
-  static createCommands(script: string | string[]) {
+  createCommands(script: string | string[]) {
     if (typeof script === "string") {
       return script;
     }
@@ -82,7 +77,7 @@ export default class RunScript extends BaseCommand {
     return jointScript;
   }
 
-  static createDescription({ name, script }: scriptObject) {
+  createDescription({ name, script }: scriptObject) {
     const echoCmd = (cmd: string, num: number) => {
       return `echo -e "\\t ${num}. ${cmd}"; `;
     };
@@ -103,22 +98,22 @@ export default class RunScript extends BaseCommand {
     return `${controlC} ${emptyLine} ${ignoreAbove} ${emptyLine} ${running} ${emptyLine} ${cmds}${emptyLine} ${enter}`;
   }
 
-  static runInTerminal(command: string) {
+  runInTerminal(command: string) {
     return commands.executeCommand("workbench.action.terminal.sendSequence", {
       text: command,
     });
   }
 
-  static getScriptsConfig() {
-    return BaseCommand.getExtensionConfig("scripts");
+  getScriptsConfig() {
+    return this.getExtensionConfig("scripts");
   }
 
-  static getDisableDescriptionConfig() {
-    return BaseCommand.getExtensionConfig("script.disableDescription");
+  getDisableDescriptionConfig() {
+    return this.getExtensionConfig("script.disableDescription");
   }
 
-  static disableDescription() {
-    return BaseCommand.updateExtensionConfig({
+  disableDescription() {
+    return this.updateExtensionConfig({
       key: "script.disableDescription",
       value: true,
     });

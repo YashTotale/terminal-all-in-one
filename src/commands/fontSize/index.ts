@@ -1,19 +1,19 @@
 import BaseCommand from "../baseCommand";
 
 export default class FontSize extends BaseCommand {
-  static getFontSizeConfig(): number {
-    return FontSize.getConfig("terminal.integrated.fontSize");
+  getFontSizeConfig(): number {
+    return this.getConfig("terminal.integrated.fontSize");
   }
 
-  static updateFontSizeConfig(value: number) {
-    FontSize.updateConfig({
+  updateFontSizeConfig(value: number) {
+    this.updateConfig({
       key: "terminal.integrated.fontSize",
       value,
     });
-    FontSize.clearTerminal();
+    this.clearTerminal();
   }
 
-  static showFontSizeSelectedMessage(fontSize: string, undo: () => any) {
-    return FontSize.showMessage("fontSizeSelected", fontSize, undo);
+  showFontSizeSelectedMessage(fontSize: string, undo: () => any) {
+    return this.showMessage("fontSizeSelected", fontSize, undo);
   }
 }

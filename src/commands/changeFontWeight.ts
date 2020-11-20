@@ -5,45 +5,41 @@ import BaseCommand from "./baseCommand";
 
 export default class ChangeFontWeight extends BaseCommand {
   constructor(context: ExtensionContext) {
-    super("changeFontWeight", () => ChangeFontWeight.handler(context));
+    super("changeFontWeight", () => this.handler(context));
   }
 
-  static getFontWeightConfig(): string {
-    return ChangeFontWeight.getConfig("terminal.integrated.fontWeight");
+  getFontWeightConfig(): string {
+    return this.getConfig("terminal.integrated.fontWeight");
   }
 
-  static updateFontWeightConfig(value: string) {
-    ChangeFontWeight.updateConfig({
+  updateFontWeightConfig(value: string) {
+    this.updateConfig({
       key: "terminal.integrated.fontWeight",
       value,
     });
   }
 
-  static handler(context: ExtensionContext) {
-    const currentWeight = ChangeFontWeight.getFontWeightConfig();
-    const fontWeights = ChangeFontWeight.createFontWeights(currentWeight);
-    ChangeFontWeight.showMessage(
-      "fontWeightQuickPickOpened",
-      ChangeFontWeight.focusTerminal
-    );
-    return ChangeFontWeight.showQuickPick(
+  handler(context: ExtensionContext) {
+    const currentWeight = this.getFontWeightConfig();
+    const fontWeights = this.createFontWeights(currentWeight);
+    this.showMessage("fontWeightQuickPickOpened", this.focusTerminal);
+    return this.showQuickPick(
       fontWeights,
       {
         placeHolder: "Choose a Font Weight",
         onDidSelectItem: debounce(async (fontWeight: QuickPickItem) => {
-          return ChangeFontWeight.updateFontWeightConfig(fontWeight.label);
+          return this.updateFontWeightConfig(fontWeight.label);
         }, 300),
       },
       (selectedWeight) =>
-        ChangeFontWeight.showFontWeightSelectedMessage(
-          selectedWeight.label,
-          () => ChangeFontWeight.updateFontWeightConfig(currentWeight)
+        this.showFontWeightSelectedMessage(selectedWeight.label, () =>
+          this.updateFontWeightConfig(currentWeight)
         ),
-      () => ChangeFontWeight.updateFontWeightConfig(currentWeight)
+      () => this.updateFontWeightConfig(currentWeight)
     );
   }
 
-  static createFontWeights(currentWeight: string) {
+  createFontWeights(currentWeight: string) {
     let fontWeights = [];
     ["normal", "bold"].forEach((val) =>
       fontWeights.push({
@@ -61,7 +57,7 @@ export default class ChangeFontWeight extends BaseCommand {
     return fontWeights;
   }
 
-  static showFontWeightSelectedMessage(fontWeight: string, undo: () => any) {
-    ChangeFontWeight.showMessage("fontWeightSelected", fontWeight, undo);
+  showFontWeightSelectedMessage(fontWeight: string, undo: () => any) {
+    this.showMessage("fontWeightSelected", fontWeight, undo);
   }
 }

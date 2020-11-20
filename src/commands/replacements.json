@@ -1,0 +1,33 @@
+[
+  {
+    "name": "selectDefaultShell",
+    "cmd": "workbench.action.terminal.selectDefaultShell"
+  },
+  {
+    "name": "toggleMaxTerm",
+    "cmd": [
+      "workbench.action.terminal.focus",
+      "workbench.action.toggleMaximizedPanel"
+    ]
+  },
+  {
+    "name": "createNewTerminal",
+    "cmd": "workbench.action.terminal.new"
+  },
+  {
+    "name": "deleteCurrentTerminal",
+    "cmd": "workbench.action.terminal.kill"
+  },
+  {
+    "name": "renameCurrentTerminal",
+    "cmd": "workbench.action.terminal.rename"
+  },
+  {
+    "name": "focusNextTerminal",
+    "cmd": "workbench.action.terminal.focusNext"
+  },
+  {
+    "name": "focusPreviousTerminal",
+    "cmd": "workbench.action.terminal.focusPrevious"
+  }
+]

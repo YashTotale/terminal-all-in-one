@@ -12,27 +12,31 @@ function createCommandName(name: string) {
 
 interface registerCommand {
   commandName: string;
-  handler: (...args: any[]) => any;
+  handlerFunc: (...args: any[]) => any;
   context: ExtensionContext;
 }
 
-function registerCommand({ commandName, handler, context }: registerCommand) {
+function registerCommand({
+  commandName,
+  handlerFunc,
+  context,
+}: registerCommand) {
   return context.subscriptions.push(
-    commands.registerCommand(commandName, handler)
+    commands.registerCommand(commandName, handlerFunc)
   );
 }
 
-interface command {
+interface Command {
   name: string;
-  handler: (...args: any[]) => any;
+  handlerFunc: (...args: any[]) => any;
   config?: any;
 }
 
 function createCommands(context: ExtensionContext) {
-  cmds(context).forEach((command: command) => {
-    const { name, handler, config } = command;
+  cmds(context).forEach((command: Command) => {
+    const { name, handlerFunc, config } = command;
     const commandName = createCommandName(name);
-    registerCommand({ commandName, handler, context });
+    registerCommand({ commandName, handlerFunc, context });
     workspace.onDidChangeConfiguration(config);
   });
 }

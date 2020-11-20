@@ -3,25 +3,25 @@ import BaseCommand from "../baseCommand";
 
 export default class ToggleBlinkingCursor extends BaseCommand {
   constructor(context: ExtensionContext) {
-    super("toggleBlinkingCursor", () => ToggleBlinkingCursor.handler(context));
+    super("toggleBlinkingCursor", () => this.handler(context));
   }
 
-  static getBlinkingCursorConfig(): boolean {
-    return ToggleBlinkingCursor.getConfig("terminal.integrated.cursorBlinking");
+  getBlinkingCursorConfig(): boolean {
+    return this.getConfig("terminal.integrated.cursorBlinking");
   }
 
-  static updateBlinkingCursorConfig(value: boolean) {
-    ToggleBlinkingCursor.updateConfig({
+  updateBlinkingCursorConfig(value: boolean) {
+    this.updateConfig({
       key: "terminal.integrated.cursorBlinking",
       value,
     });
   }
 
-  static handler(context: ExtensionContext) {
-    const isBlinking = ToggleBlinkingCursor.getBlinkingCursorConfig();
-    ToggleBlinkingCursor.updateBlinkingCursorConfig(!isBlinking);
-    ToggleBlinkingCursor.showMessage("blinkingCursorToggled", !isBlinking, () =>
-      ToggleBlinkingCursor.updateBlinkingCursorConfig(isBlinking)
+  handler(context: ExtensionContext) {
+    const isBlinking = this.getBlinkingCursorConfig();
+    this.updateBlinkingCursorConfig(!isBlinking);
+    this.showMessage("blinkingCursorToggled", !isBlinking, () =>
+      this.updateBlinkingCursorConfig(isBlinking)
     );
   }
 }

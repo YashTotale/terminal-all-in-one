@@ -10,34 +10,31 @@ interface FontSizeObject {
 
 export default class ChangeFontSize extends FontSize {
   constructor(context: ExtensionContext) {
-    super("changeFontSize", () => ChangeFontSize.handler(context));
+    super("changeFontSize", () => this.handler(context));
   }
 
-  static handler(context: ExtensionContext) {
-    const currentSize = ChangeFontSize.getFontSizeConfig();
-    const fontSizes = ChangeFontSize.createFontSizes(currentSize);
-    ChangeFontSize.showMessage(
-      "fontSizeQuickPickOpened",
-      ChangeFontSize.focusTerminal
-    );
-    return ChangeFontSize.showQuickPick(
+  handler(context: ExtensionContext) {
+    const currentSize = this.getFontSizeConfig();
+    const fontSizes = this.createFontSizes(currentSize);
+    this.showMessage("fontSizeQuickPickOpened", this.focusTerminal);
+    return this.showQuickPick(
       fontSizes,
       {
         placeHolder: "Choose a Font Size",
         onDidSelectItem: debounce(async (fontSize: QuickPickItem) => {
-          const trueSize = ChangeFontSize.getTrueSize(fontSize.label);
-          return ChangeFontSize.updateFontSizeConfig(trueSize);
+          const trueSize = this.getTrueSize(fontSize.label);
+          return this.updateFontSizeConfig(trueSize);
         }, 300),
       },
       (selectedSize) =>
-        ChangeFontSize.showFontSizeSelectedMessage(selectedSize.label, () =>
-          ChangeFontSize.updateFontSizeConfig(currentSize)
+        this.showFontSizeSelectedMessage(selectedSize.label, () =>
+          this.updateFontSizeConfig(currentSize)
         ),
-      () => ChangeFontSize.updateFontSizeConfig(currentSize)
+      () => this.updateFontSizeConfig(currentSize)
     );
   }
 
-  static createFontSizes(currentSize: number): FontSizeObject[] {
+  createFontSizes(currentSize: number): FontSizeObject[] {
     let fontSizes = [];
     for (let i = 8; i < 27; i++) {
       fontSizes.push({
@@ -48,7 +45,7 @@ export default class ChangeFontSize extends FontSize {
     return fontSizes;
   }
 
-  static getTrueSize(fontSizeStr: string): number {
+  getTrueSize(fontSizeStr: string): number {
     return parseInt(fontSizeStr.slice(0, -3));
   }
 }
