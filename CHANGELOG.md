@@ -7,6 +7,8 @@ The format of this Change Log is based on [Keep a Changelog](http://keepachangel
 
 - [_Terminal All In One_ Change Log](#terminal-all-in-one-change-log)
   - [[Unreleased]](#unreleased)
+  - [[v1.11.14] - (2020-11-10)](#v11114---2020-11-10)
+    - [Changed](#changed)
   - [[v1.11.13] - (2020-11-10)](#v11113---2020-11-10)
     - [Fixed](#fixed)
   - [[v1.11.12] - (2020-11-10)](#v11112---2020-11-10)
@@ -38,7 +40,7 @@ The format of this Change Log is based on [Keep a Changelog](http://keepachangel
   - [[v1.10.8] - (2020-10-21)](#v1108---2020-10-21)
     - [Fixed](#fixed-4)
   - [[v1.10.7] - (2020-08-31)](#v1107---2020-08-31)
-    - [Changed](#changed)
+    - [Changed](#changed-1)
   - [[v1.10.6] - (2020-08-23)](#v1106---2020-08-23)
     - [Fixed](#fixed-5)
   - [[v.1.10.5] - (2020-08-21)](#v1105---2020-08-21)
@@ -50,10 +52,10 @@ The format of this Change Log is based on [Keep a Changelog](http://keepachangel
   - [[v1.10.2] - (2020-08-12)](#v1102---2020-08-12)
     - [Fixed](#fixed-8)
   - [[v1.10.1] - (2020-08-10)](#v1101---2020-08-10)
-    - [Changed](#changed-1)
+    - [Changed](#changed-2)
     - [Fixed](#fixed-9)
   - [[v1.10.0] - (2020-08-09)](#v1100---2020-08-09)
-    - [Changed](#changed-2)
+    - [Changed](#changed-3)
   - [[1.9.0] - (2020-08-08)](#190---2020-08-08)
     - [Added](#added-11)
   - [[1.8.0] - (2020-08-07)](#180---2020-08-07)
@@ -78,7 +80,7 @@ The format of this Change Log is based on [Keep a Changelog](http://keepachangel
   - [[1.1.1] - (2020-08-03)](#111---2020-08-03)
     - [Fixed](#fixed-13)
   - [[1.1.0] - (2020-08-02)](#110---2020-08-02)
-    - [Changed](#changed-3)
+    - [Changed](#changed-4)
   - [[1.0.9] - (2020-08-01)](#109---2020-08-01)
     - [Fixed](#fixed-14)
   - [[1.0.7] - (2020-07-31)](#107---2020-07-31)
@@ -86,7 +88,7 @@ The format of this Change Log is based on [Keep a Changelog](http://keepachangel
   - [[1.0.3] - (2020-07-30)](#103---2020-07-30)
     - [Added](#added-19)
   - [[1.0.2] - (2020-07-30)](#102---2020-07-30)
-    - [Changed](#changed-4)
+    - [Changed](#changed-5)
   - [[1.0.1] - (2020-07-30)](#101---2020-07-30)
     - [Added](#added-20)
   - [[1.0.0] - (2020-07-29)](#100---2020-07-29)
@@ -97,6 +99,14 @@ The format of this Change Log is based on [Keep a Changelog](http://keepachangel
 ### [Unreleased]
 
 - Terminal Tabs in the status bar
+
+---
+
+### [v1.11.14] - (2020-11-19)
+
+#### Changed
+
+- Clear Terminal relaunches the active terminal
 
 ---
 
