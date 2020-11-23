@@ -400,20 +400,9 @@ The format of this Change Log is based on [Keep a Changelog](http://keepachangel
 - Messages Config is now one object
 - Terminal Theme Quick Pick can be closed by focusing out of it
 
----
-
-### [1.0.9] - (2020-08-01)
-
 #### Fixed
 
 - Inconsistent badges in README
-
----
-
-### [1.0.7] - (2020-07-31)
-
-#### Fixed
-
 - Links in TOC in README
 
 ---
@@ -423,10 +412,6 @@ The format of this Change Log is based on [Keep a Changelog](http://keepachangel
 #### Added
 
 - _New Configuration_: Messages
-
----
-
-### [1.0.2] - (2020-07-30)
 
 #### Changed
 

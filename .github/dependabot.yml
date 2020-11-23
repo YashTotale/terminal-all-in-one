@@ -10,3 +10,5 @@ updates:
       timezone: "America/Los_Angeles"
     labels:
       - "dependencies"
+    assignees:
+      - "YashTotale"
