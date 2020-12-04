@@ -536,7 +536,7 @@
     "@types/lodash.debounce": "^4.0.6",
     "@types/mocha": "^8.0.0",
     "@types/node": "^14.14.10",
-    "@types/serialize-javascript": "^4.0.0",
+    "@types/serialize-javascript": "^5.0.0",
     "@types/vscode": "^1.47.0",
     "glob": "^7.1.6",
     "mocha": "^8.2.1",
