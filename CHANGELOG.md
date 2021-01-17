@@ -7,70 +7,72 @@ The format of this Change Log is based on [Keep a Changelog](http://keepachangel
 
 - [_Terminal All In One_ Change Log](#terminal-all-in-one-change-log)
   - [[Unreleased]](#unreleased)
-  - [[v1.11.15] - (2020-11-19)](#v11115---2020-11-19)
-    - [Changed](#changed)
-  - [[v1.11.13] - (2020-11-10)](#v11113---2020-11-10)
+  - [[1.11.16] - (2021-01-04)](#11116---2021-01-04)
     - [Fixed](#fixed)
-  - [[v1.11.12] - (2020-11-10)](#v11112---2020-11-10)
-    - [Added](#added)
-  - [[v1.11.11] - (2020-11-9)](#v11111---2020-11-9)
-    - [Added](#added-1)
-  - [[v1.11.10] - (2020-11-9)](#v11110---2020-11-9)
-    - [Added](#added-2)
-  - [[v1.11.9] - (2020-11-9)](#v1119---2020-11-9)
-    - [Added](#added-3)
-  - [[v1.11.8] - (2020-11-9)](#v1118---2020-11-9)
+  - [[1.11.15] - (2020-11-19)](#11115---2020-11-19)
+    - [Changed](#changed)
+  - [[1.11.13] - (2020-11-10)](#11113---2020-11-10)
     - [Fixed](#fixed-1)
-  - [[v1.11.7] - (2020-11-3)](#v1117---2020-11-3)
-    - [Added](#added-4)
-  - [[v1.11.6] - (2020-11-3)](#v1116---2020-11-3)
-    - [Added](#added-5)
-  - [[v1.11.5] - (2020-11-3)](#v1115---2020-11-3)
-    - [Added](#added-6)
-  - [[v1.11.4] - (2020-11-3)](#v1114---2020-11-3)
-    - [Added](#added-7)
-  - [[v1.11.3] - (2020-11-3)](#v1113---2020-11-3)
-    - [Added](#added-8)
-  - [[v1.11.2] - (2020-11-3)](#v1112---2020-11-3)
+  - [[1.11.12] - (2020-11-10)](#11112---2020-11-10)
+    - [Added](#added)
+  - [[1.11.11] - (2020-11-09)](#11111---2020-11-09)
+    - [Added](#added-1)
+  - [[1.11.10] - (2020-11-09)](#11110---2020-11-09)
+    - [Added](#added-2)
+  - [[1.11.9] - (2020-11-09)](#1119---2020-11-09)
+    - [Added](#added-3)
+  - [[1.11.8] - (2020-11-09)](#1118---2020-11-09)
     - [Fixed](#fixed-2)
-  - [[v1.11.1] - (2020-11-3)](#v1111---2020-11-3)
+  - [[1.11.7] - (2020-11-03)](#1117---2020-11-03)
+    - [Added](#added-4)
+  - [[1.11.6] - (2020-11-03)](#1116---2020-11-03)
+    - [Added](#added-5)
+  - [[1.11.5] - (2020-11-03)](#1115---2020-11-03)
+    - [Added](#added-6)
+  - [[1.11.4] - (2020-11-03)](#1114---2020-11-03)
+    - [Added](#added-7)
+  - [[1.11.3] - (2020-11-03)](#1113---2020-11-03)
+    - [Added](#added-8)
+  - [[1.11.2] - (2020-11-03)](#1112---2020-11-03)
     - [Fixed](#fixed-3)
-  - [[v1.11.0] - (2020-11-2)](#v1110---2020-11-2)
-    - [Added](#added-9)
-  - [[v1.10.8] - (2020-10-21)](#v1108---2020-10-21)
+  - [[1.11.1] - (2020-11-03)](#1111---2020-11-03)
     - [Fixed](#fixed-4)
-  - [[v1.10.7] - (2020-08-31)](#v1107---2020-08-31)
-    - [Changed](#changed-1)
-  - [[v1.10.6] - (2020-08-23)](#v1106---2020-08-23)
+  - [[1.11.0] - (2020-11-02)](#1110---2020-11-02)
+    - [Added](#added-9)
+  - [[1.10.8] - (2020-10-21)](#1108---2020-10-21)
     - [Fixed](#fixed-5)
-  - [[v.1.10.5] - (2020-08-21)](#v1105---2020-08-21)
+  - [[1.10.7] - (2020-08-31)](#1107---2020-08-31)
+    - [Changed](#changed-1)
+  - [[1.10.6] - (2020-08-23)](#1106---2020-08-23)
     - [Fixed](#fixed-6)
-  - [[v1.10.4] - (2020-08-18)](#v1104---2020-08-18)
-    - [Added](#added-10)
-  - [[v1.10.3] - (2020-08-12)](#v1103---2020-08-12)
+  - [[1.10.5] - (2020-08-21)](#1105---2020-08-21)
     - [Fixed](#fixed-7)
-  - [[v1.10.2] - (2020-08-12)](#v1102---2020-08-12)
+  - [[1.10.4] - (2020-08-18)](#1104---2020-08-18)
+    - [Added](#added-10)
+  - [[1.10.3] - (2020-08-12)](#1103---2020-08-12)
     - [Fixed](#fixed-8)
-  - [[v1.10.1] - (2020-08-10)](#v1101---2020-08-10)
-    - [Changed](#changed-2)
+  - [[1.10.2] - (2020-08-12)](#1102---2020-08-12)
     - [Fixed](#fixed-9)
-  - [[v1.10.0] - (2020-08-09)](#v1100---2020-08-09)
+  - [[1.10.1] - (2020-08-10)](#1101---2020-08-10)
+    - [Changed](#changed-2)
+    - [Fixed](#fixed-10)
+  - [[1.10.0] - (2020-08-09)](#1100---2020-08-09)
     - [Changed](#changed-3)
   - [[1.9.0] - (2020-08-08)](#190---2020-08-08)
     - [Added](#added-11)
   - [[1.8.0] - (2020-08-07)](#180---2020-08-07)
     - [Added](#added-12)
-    - [Fixed](#fixed-10)
+    - [Fixed](#fixed-11)
   - [[1.7.0] - (2020-08-06)](#170---2020-08-06)
     - [Added](#added-13)
   - [[1.6.1] - (2020-08-06)](#161---2020-08-06)
-    - [Fixed](#fixed-11)
+    - [Fixed](#fixed-12)
   - [[1.6.0] - (2020-08-06)](#160---2020-08-06)
     - [Added](#added-14)
   - [[1.5.0] - (2020-08-06)](#150---2020-08-06)
     - [Added](#added-15)
   - [[1.4.1] - (2020-08-05)](#141---2020-08-05)
-    - [Fixed](#fixed-12)
+    - [Fixed](#fixed-13)
   - [[1.4.0] - (2020-08-05)](#140---2020-08-05)
     - [Added](#added-16)
   - [[1.3.0] - (2020-08-05)](#130---2020-08-05)
@@ -78,16 +80,12 @@ The format of this Change Log is based on [Keep a Changelog](http://keepachangel
   - [[1.2.0] - (2020-08-04)](#120---2020-08-04)
     - [Added](#added-18)
   - [[1.1.1] - (2020-08-03)](#111---2020-08-03)
-    - [Fixed](#fixed-13)
+    - [Fixed](#fixed-14)
   - [[1.1.0] - (2020-08-02)](#110---2020-08-02)
     - [Changed](#changed-4)
-  - [[1.0.9] - (2020-08-01)](#109---2020-08-01)
-    - [Fixed](#fixed-14)
-  - [[1.0.7] - (2020-07-31)](#107---2020-07-31)
     - [Fixed](#fixed-15)
   - [[1.0.3] - (2020-07-30)](#103---2020-07-30)
     - [Added](#added-19)
-  - [[1.0.2] - (2020-07-30)](#102---2020-07-30)
     - [Changed](#changed-5)
   - [[1.0.1] - (2020-07-30)](#101---2020-07-30)
     - [Added](#added-20)
@@ -102,7 +100,15 @@ The format of this Change Log is based on [Keep a Changelog](http://keepachangel
 
 ---
 
-### [v1.11.15] - (2020-11-19)
+### [1.11.16] - (2021-01-04)
+
+#### Fixed
+
+- CHANGELOG formatting
+
+---
+
+### [1.11.15] - (2020-11-19)
 
 #### Changed
 
@@ -110,7 +116,7 @@ The format of this Change Log is based on [Keep a Changelog](http://keepachangel
 
 ---
 
-### [v1.11.13] - (2020-11-10)
+### [1.11.13] - (2020-11-10)
 
 #### Fixed
 
@@ -118,7 +124,7 @@ The format of this Change Log is based on [Keep a Changelog](http://keepachangel
 
 ---
 
-### [v1.11.12] - (2020-11-10)
+### [1.11.12] - (2020-11-10)
 
 #### Added
 
@@ -126,7 +132,7 @@ The format of this Change Log is based on [Keep a Changelog](http://keepachangel
 
 ---
 
-### [v1.11.11] - (2020-11-9)
+### [1.11.11] - (2020-11-09)
 
 #### Added
 
@@ -134,7 +140,7 @@ The format of this Change Log is based on [Keep a Changelog](http://keepachangel
 
 ---
 
-### [v1.11.10] - (2020-11-9)
+### [1.11.10] - (2020-11-09)
 
 #### Added
 
@@ -142,7 +148,7 @@ The format of this Change Log is based on [Keep a Changelog](http://keepachangel
 
 ---
 
-### [v1.11.9] - (2020-11-9)
+### [1.11.9] - (2020-11-09)
 
 #### Added
 
@@ -150,7 +156,7 @@ The format of this Change Log is based on [Keep a Changelog](http://keepachangel
 
 ---
 
-### [v1.11.8] - (2020-11-9)
+### [1.11.8] - (2020-11-09)
 
 #### Fixed
 
@@ -158,7 +164,7 @@ The format of this Change Log is based on [Keep a Changelog](http://keepachangel
 
 ---
 
-### [v1.11.7] - (2020-11-3)
+### [1.11.7] - (2020-11-03)
 
 #### Added
 
@@ -166,7 +172,7 @@ The format of this Change Log is based on [Keep a Changelog](http://keepachangel
 
 ---
 
-### [v1.11.6] - (2020-11-3)
+### [1.11.6] - (2020-11-03)
 
 #### Added
 
@@ -174,7 +180,7 @@ The format of this Change Log is based on [Keep a Changelog](http://keepachangel
 
 ---
 
-### [v1.11.5] - (2020-11-3)
+### [1.11.5] - (2020-11-03)
 
 #### Added
 
@@ -182,7 +188,7 @@ The format of this Change Log is based on [Keep a Changelog](http://keepachangel
 
 ---
 
-### [v1.11.4] - (2020-11-3)
+### [1.11.4] - (2020-11-03)
 
 #### Added
 
@@ -190,7 +196,7 @@ The format of this Change Log is based on [Keep a Changelog](http://keepachangel
 
 ---
 
-### [v1.11.3] - (2020-11-3)
+### [1.11.3] - (2020-11-03)
 
 #### Added
 
@@ -198,7 +204,7 @@ The format of this Change Log is based on [Keep a Changelog](http://keepachangel
 
 ---
 
-### [v1.11.2] - (2020-11-3)
+### [1.11.2] - (2020-11-03)
 
 #### Fixed
 
@@ -206,7 +212,7 @@ The format of this Change Log is based on [Keep a Changelog](http://keepachangel
 
 ---
 
-### [v1.11.1] - (2020-11-3)
+### [1.11.1] - (2020-11-03)
 
 #### Fixed
 
@@ -214,7 +220,7 @@ The format of this Change Log is based on [Keep a Changelog](http://keepachangel
 
 ---
 
-### [v1.11.0] - (2020-11-2)
+### [1.11.0] - (2020-11-02)
 
 #### Added
 
@@ -223,7 +229,7 @@ The format of this Change Log is based on [Keep a Changelog](http://keepachangel
 
 ---
 
-### [v1.10.8] - (2020-10-21)
+### [1.10.8] - (2020-10-21)
 
 #### Fixed
 
@@ -231,7 +237,7 @@ The format of this Change Log is based on [Keep a Changelog](http://keepachangel
 
 ---
 
-### [v1.10.7] - (2020-08-31)
+### [1.10.7] - (2020-08-31)
 
 #### Changed
 
@@ -239,7 +245,7 @@ The format of this Change Log is based on [Keep a Changelog](http://keepachangel
 
 ---
 
-### [v1.10.6] - (2020-08-23)
+### [1.10.6] - (2020-08-23)
 
 #### Fixed
 
@@ -247,7 +253,7 @@ The format of this Change Log is based on [Keep a Changelog](http://keepachangel
 
 ---
 
-### [v.1.10.5] - (2020-08-21)
+### [1.10.5] - (2020-08-21)
 
 #### Fixed
 
@@ -255,7 +261,7 @@ The format of this Change Log is based on [Keep a Changelog](http://keepachangel
 
 ---
 
-### [v1.10.4] - (2020-08-18)
+### [1.10.4] - (2020-08-18)
 
 #### Added
 
@@ -263,7 +269,7 @@ The format of this Change Log is based on [Keep a Changelog](http://keepachangel
 
 ---
 
-### [v1.10.3] - (2020-08-12)
+### [1.10.3] - (2020-08-12)
 
 #### Fixed
 
@@ -271,7 +277,7 @@ The format of this Change Log is based on [Keep a Changelog](http://keepachangel
 
 ---
 
-### [v1.10.2] - (2020-08-12)
+### [1.10.2] - (2020-08-12)
 
 #### Fixed
 
@@ -279,7 +285,7 @@ The format of this Change Log is based on [Keep a Changelog](http://keepachangel
 
 ---
 
-### [v1.10.1] - (2020-08-10)
+### [1.10.1] - (2020-08-10)
 
 #### Changed
 
@@ -291,7 +297,7 @@ The format of this Change Log is based on [Keep a Changelog](http://keepachangel
 
 ---
 
-### [v1.10.0] - (2020-08-09)
+### [1.10.0] - (2020-08-09)
 
 #### Changed
 
