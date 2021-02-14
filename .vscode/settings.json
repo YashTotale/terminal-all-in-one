@@ -1,4 +1,11 @@
 {
+  "files.associations": {
+    ".imgbotconfig": "json",
+    ".lintstagedrc": "json",
+    ".markdownlintignore": "ignore",
+    ".snyk": "yaml",
+    ".huskyrc": "json"
+  },
   "terminalAllInOne.scripts": [
     {
       "name": "Test",

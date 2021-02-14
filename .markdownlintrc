@@ -1,2 +1,8 @@
-// See https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md for information on markdownlint rules
-{}
+{
+  "MD013": false,
+  "MD024": false,
+  "MD033": false,
+  "MD036": false,
+  "MD038": false,
+  "MD041": false
+}
