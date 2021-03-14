@@ -5,7 +5,7 @@ import FontSize from "./index";
 
 interface FontSizeObject {
   label: string;
-  description: string | undefined;
+  description?: string;
 }
 
 export default class ChangeFontSize extends FontSize {
@@ -35,7 +35,7 @@ export default class ChangeFontSize extends FontSize {
   }
 
   createFontSizes(currentSize: number): FontSizeObject[] {
-    let fontSizes = [];
+    const fontSizes: FontSizeObject[] = [];
     for (let i = 8; i < 27; i++) {
       fontSizes.push({
         label: `${i}-pt`,

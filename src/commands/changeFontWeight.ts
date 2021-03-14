@@ -3,6 +3,11 @@ import debounce from "lodash.debounce";
 
 import BaseCommand from "./baseCommand";
 
+interface FontWeight {
+  label: string;
+  description?: string;
+}
+
 export default class ChangeFontWeight extends BaseCommand {
   constructor(context: ExtensionContext) {
     super("changeFontWeight", () => this.handler(context));
@@ -40,7 +45,7 @@ export default class ChangeFontWeight extends BaseCommand {
   }
 
   createFontWeights(currentWeight: string) {
-    let fontWeights = [];
+    const fontWeights: FontWeight[] = [];
     ["normal", "bold"].forEach((val) =>
       fontWeights.push({
         label: val,

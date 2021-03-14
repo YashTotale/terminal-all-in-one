@@ -16,7 +16,7 @@ export default class RunScript extends BaseCommand {
     super("runScript", (index) => this.handler({ context, index }));
   }
 
-  async handler({ index, context }: HandlerArgs) {
+  async handler({ index }: HandlerArgs) {
     //All Scripts
     const scripts = this.getScriptsConfig();
     if (!this.handlerChecks(scripts, index)) {
@@ -32,7 +32,7 @@ export default class RunScript extends BaseCommand {
         items,
         { placeHolder: "Run a Script" },
         (selectedScript) => {
-          //@ts-expect-error
+          //@ts-ignore
           return this.execute(scripts[selectedScript.index]);
         }
       );
@@ -82,7 +82,7 @@ export default class RunScript extends BaseCommand {
       return `echo -e "\\t ${num}. ${cmd}"; `;
     };
     const controlC = "\u0003";
-    const emptyLine = 'echo "";';
+    const emptyLine = "echo '';";
     const ignoreAbove =
       "echo '^ Ignore the above command (it tells the terminal to display the script description) ^';";
     const running = `echo -e "Running script: \\033[1m${name}\\033[0m";`;

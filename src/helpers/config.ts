@@ -5,16 +5,16 @@ export const configuration = function (section: string | undefined) {
   return workspace.getConfiguration(section);
 };
 
-interface getConfig {
+interface GetConfig {
   config?: string;
   section: string;
 }
 
-export const getConfig = function ({ config, section }: getConfig): any {
+export const getConfig = function ({ config, section }: GetConfig): any {
   return configuration(config).get(section);
 };
 
-interface updateConfig {
+interface UpdateConfig {
   config?: string;
   section: string;
   value: any;
@@ -24,7 +24,7 @@ export const updateConfig = function ({
   config,
   section,
   value,
-}: updateConfig) {
+}: UpdateConfig) {
   try {
     configuration(config).update(section, value, true);
   } catch ({ message }) {

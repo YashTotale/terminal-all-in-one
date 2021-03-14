@@ -60,4 +60,6 @@ export function activate(context: ExtensionContext) {
   timeSinceInstall(context);
 }
 
-export function deactivate() {}
+export function deactivate() {
+  // Nothing to do here
+}

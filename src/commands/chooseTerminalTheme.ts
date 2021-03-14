@@ -110,7 +110,6 @@ export default class ChooseTerminalTheme extends BaseCommand {
   getNonTerminalStyles(allStyles: object) {
     return Object.keys(allStyles).reduce((nonTerminalStyles, currentStyle) => {
       if (!currentStyle.includes("terminal")) {
-        //@ts-expect-error
         nonTerminalStyles[currentStyle] = allStyles[currentStyle];
       }
       return nonTerminalStyles;

@@ -1,14 +1,22 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
-    "target": "es2019",
-    "lib": ["ES2019"],
-    "outDir": "out",
-    "sourceMap": true,
-    "strict": true,
+    "module": "CommonJS",
+    "target": "ES6",
     "rootDir": "src",
-    "esModuleInterop": true,
-    "resolveJsonModule": true
+    "outDir": "out",
+    "lib": ["ES6"],
+    "sourceMap": true,
+    "declaration": false,
+    "allowJs": false,
+    "moduleResolution": "node",
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "strictNullChecks": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true
   },
-  "exclude": ["node_modules", ".vscode-test"]
+  "include": ["src"]
 }

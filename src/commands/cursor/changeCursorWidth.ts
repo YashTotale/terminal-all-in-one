@@ -46,7 +46,7 @@ export default class ChangeCursorWidth extends BaseCommand {
   }
 
   createCursorWidths(currentWidth: number): CursorWidthObject[] {
-    let cursorWidths = [];
+    const cursorWidths: CursorWidthObject[] = [];
     for (let i = 1; i < 9; i++) {
       cursorWidths.push({
         label: `${i}-pt`,

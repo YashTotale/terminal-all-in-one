@@ -31,5 +31,8 @@ jobs:
           npm run test:compile
           xvfb-run -a npm test
 
+      - name: Lint Project
+        run: npm run lint
+
       - name: Show Extension Data
         run: npm run show-data

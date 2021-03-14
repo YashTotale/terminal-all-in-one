@@ -1,12 +1,11 @@
-"use strict";
+import { resolve } from "path";
+import { Configuration } from "webpack";
 
-const path = require("path");
-
-const config = {
+const config: Configuration = {
   target: "node",
   entry: "./src/extension.ts",
   output: {
-    path: path.resolve(__dirname, "dist"),
+    path: resolve(__dirname, "dist"),
     filename: "extension.js",
     libraryTarget: "commonjs2",
     devtoolModuleFilenameTemplate: "../[resource-path]",
@@ -32,4 +31,5 @@ const config = {
     ],
   },
 };
-module.exports = config;
+
+export default config;
