@@ -542,7 +542,7 @@
     "glob": "^7.1.6",
     "mocha": "^8.3.2",
     "typescript": "^4.1.4",
-    "ts-loader": "^8.0.16",
+    "ts-loader": "^8.0.18",
     "vscode-test": "^1.5.1",
     "webpack": "^5.21.2",
     "webpack-cli": "^4.5.0"
