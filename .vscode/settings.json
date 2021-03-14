@@ -5,11 +5,5 @@
     ".markdownlintignore": "ignore",
     ".snyk": "yaml",
     ".huskyrc": "json"
-  },
-  "terminalAllInOne.scripts": [
-    {
-      "name": "Test",
-      "script": ["ls ${workspaceFolder}"]
-    }
-  ]
+  }
 }

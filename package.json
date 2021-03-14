@@ -526,17 +526,18 @@
   },
   "scripts": {
     "test": "node ./out/test/runTest.js",
-    "test-compile": "tsc -p ./",
-    "vscode:prepublish": "webpack --mode production",
-    "webpack": "webpack --mode development",
-    "webpack-dev": "webpack --mode development --watch"
+    "test:compile": "tsc -p ./",
+    "build": "webpack --mode production",
+    "build:dev": "webpack --mode development",
+    "vscode:prepublish": "npm run build",
+    "watch": "npm run build:dev -- --watch",
+    "show-data": "vsce show yasht.terminal-all-in-one"
   },
   "devDependencies": {
     "@types/glob": "^7.1.1",
     "@types/lodash.debounce": "^4.0.6",
     "@types/mocha": "^8.2.1",
     "@types/node": "^14.14.25",
-    "@types/serialize-javascript": "^5.0.0",
     "@types/vscode": "^1.53.0",
     "glob": "^7.1.6",
     "mocha": "^8.3.2",
@@ -549,7 +550,6 @@
   "dependencies": {
     "lodash.debounce": "^4.0.8",
     "moment": "^2.29.1",
-    "serialize-javascript": "^5.0.1",
     "vscode-uri": "^3.0.2"
   }
 }
