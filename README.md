@@ -17,11 +17,11 @@
 
 <p align="center">
     <a href="https://marketplace.visualstudio.com/items?itemName=yasht.terminal-all-in-one&ssr=false#review-details"><img src="https://img.shields.io/visual-studio-marketplace/r/yasht.terminal-all-in-one?logo=visual-studio-code&style=for-the-badge&labelColor=000000&label=Rating" alt="Rating"></a>&nbsp;
-    <a href="https://travis-ci.com/github/YashTotale/terminal-all-in-one"><img src="https://img.shields.io/travis/com/YashTotale/terminal-all-in-one?logo=travis-ci&logoColor=FFFFFF&style=for-the-badge&labelColor=000000&label=Build" alt="Build"></a>&nbsp;
+    <a href="https://github.com/YashTotale/terminal-all-in-one/actions?query=workflow%3A%22Node+CI%22"><img src="https://img.shields.io/github/workflow/status/YashTotale/terminal-all-in-one/Node%20CI?style=for-the-badge&label=Build&logo=github&logoColor=FFFFFF&labelColor=000000" alt="Build"/></a>&nbsp;
     <a href="https://lgtm.com/projects/g/YashTotale/terminal-all-in-one/context:javascript"><img src="https://img.shields.io/lgtm/grade/javascript/github/YashTotale/terminal-all-in-one?style=for-the-badge&labelColor=000000&logo=lgtm&label=Code%20Quality" alt="Code Quality"></a>&nbsp;
 </p>
 
-_Table Of Contents_  
+_Table Of Contents_
 **Featured Content is Bolded**
 
 - [Installation](#installation)
