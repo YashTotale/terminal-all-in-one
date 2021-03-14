@@ -1,10 +1,20 @@
 {
   "files.associations": {
-    ".imgbotconfig": "json",
-    ".lintstagedrc": "json",
     ".markdownlintignore": "ignore",
+    ".markdownlintrc": "json",
+
+    ".prettierignore": "ignore",
+    ".prettierc": "json",
+
+    ".eslintignore": "ignore",
+    ".eslintrc": "json",
+
+    ".vscodeignore": "ignore",
+
+    ".lintstagedrc": "json",
+
     ".snyk": "yaml",
-    ".huskyrc": "json"
+    ".imgbotconfig": "json"
   },
   "markdown.extension.toc.updateOnSave": false
 }

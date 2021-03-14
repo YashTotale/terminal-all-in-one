@@ -1,17 +1,7 @@
 # VSCode
-.vscode/**
-.vscode-test/**
 vsc-extension-quickstart.md
 
-# Git
-.github/**
-.gitignore
-
 # Config
-**/jsconfig.json
-**/.eslintrc.json
-**/.markdownlint.json
-**/.travis.yml
 webpack.config.js
 tsconfig.json
 
@@ -22,4 +12,6 @@ node_modules/
 
 # Misc
 **/*.map
-**/.DS_Store
+.*
+.*/
+CODEOWNERS
