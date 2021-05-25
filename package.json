@@ -564,7 +564,6 @@
   },
   "dependencies": {
     "lodash.debounce": "^4.0.8",
-    "moment": "^2.29.1",
-    "vscode-uri": "^3.0.2"
+    "moment": "^2.29.1"
   }
 }
