@@ -22,6 +22,7 @@
 </p>
 
 _Table Of Contents_
+
 **Featured Content is Bolded**
 
 - [Installation](#installation)
