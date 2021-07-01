@@ -142,6 +142,12 @@ _Table Of Contents_
 
   - Keybinding: `cmd/ctrl+i backspace`
 
+- `terminalAllInOne.splitTerminal` <span id="cmd-split-terminal" name="cmd-split-terminal"><em>(Terminal All In One: Split Terminal)</em></span>
+
+  - Splits the Terminal
+
+  - Keybinding: `cmd/ctrl+i ]`
+
 - `terminalAllInOne.changeCursorWidth` <span id="cmd-change-cursor-width" name="cmd-change-cursor-width"><em>(Terminal All In One: Change Cursor Width)</em></span>
 
   - Opens a Cursor Width Quick Pick<sup>[1](#quick-pick)</sup>
@@ -336,6 +342,7 @@ _Table Of Contents_
 | _`cmd/ctrl+i`_ | **`=`**         | [Increase Terminal Font Size](#cmd-increase-font-size)               | `terminalAllInOne.increaseFontSize`        |
 | _`cmd/ctrl+i`_ | **`q`**         | [Change Terminal Font Weight](#cmd-change-font-weight)               | `terminalAllInOne.changeFontWeight`        |
 | _`cmd/ctrl+i`_ | **`backspace`** | [Clear the Terminal](#cmd-clear-terminal)                            | `terminalAllInOne.clearTerminal`           |
+| _`cmd/ctrl+i`_ | **`]`**         | [Split the Terminal](#cmd-split-terminal)                            | `terminalAllInOne.splitTerminal`           |
 
 ---
 
