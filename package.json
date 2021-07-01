@@ -56,6 +56,7 @@
     "onCommand:terminalAllInOne.increaseFontSize",
     "onCommand:terminalAllInOne.clearTerminal",
     "onCommand:terminalAllInOne.runScript",
+    "onCommand:terminalAllInOne.runScript",
     "onStartupFinished"
   ],
   "contributes": {
@@ -123,6 +124,10 @@
       {
         "command": "terminalAllInOne.clearTerminal",
         "title": "Terminal All In One: Clear Terminal"
+      },
+      {
+        "command": "terminalAllInOne.splitTerminal",
+        "title": "Terminal All In One: Split Terminal"
       },
       {
         "command": "terminalAllInOne.runScript",
@@ -230,6 +235,12 @@
         "key": "ctrl+i backspace",
         "mac": "cmd+i backspace",
         "command": "terminalAllInOne.clearTerminal",
+        "when": "!config.terminalAllInOne.disableAllKeybindings"
+      },
+      {
+        "key": "ctrl+i ]",
+        "mac": "cmd+i ]",
+        "command": "terminalAllInOne.splitTerminal",
         "when": "!config.terminalAllInOne.disableAllKeybindings"
       },
       {

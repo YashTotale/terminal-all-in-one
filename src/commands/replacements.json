@@ -33,5 +33,9 @@
   {
     "name": "clearTerminal",
     "cmd": "workbench.action.terminal.relaunch"
+  },
+  {
+    "name": "splitTerminal",
+    "cmd": "workbench.action.terminal.split"
   }
 ]
