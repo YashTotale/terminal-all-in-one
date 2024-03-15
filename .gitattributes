@@ -6,7 +6,3 @@
 .markdownlintignore linguist-language=Ignore-List
 
 .vscodeignore linguist-language=Ignore-List
-
-.imgbotconfig linguist-language=JSON
-
-.snyk linguist-language=YAML
