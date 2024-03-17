@@ -17,8 +17,7 @@
 
 <p align="center">
     <a href="https://marketplace.visualstudio.com/items?itemName=yasht.terminal-all-in-one&ssr=false#review-details"><img src="https://img.shields.io/visual-studio-marketplace/r/yasht.terminal-all-in-one?logo=visual-studio-code&style=for-the-badge&labelColor=000000&label=Rating" alt="Rating"></a>&nbsp;
-    <a href="https://github.com/YashTotale/terminal-all-in-one/actions?query=workflow%3A%22Node+CI%22"><img src="https://img.shields.io/github/workflow/status/YashTotale/terminal-all-in-one/Node%20CI?style=for-the-badge&label=Build&logo=github&logoColor=FFFFFF&labelColor=000000" alt="Build"/></a>&nbsp;
-    <a href="https://lgtm.com/projects/g/YashTotale/terminal-all-in-one/context:javascript"><img src="https://img.shields.io/lgtm/grade/javascript/github/YashTotale/terminal-all-in-one?style=for-the-badge&labelColor=000000&logo=lgtm&label=Code%20Quality" alt="Code Quality"></a>&nbsp;
+    <a href="https://github.com/YashTotale/terminal-all-in-one/actions/workflows/integrate.yml"><img src="https://img.shields.io/github/actions/workflow/status/YashTotale/terminal-all-in-one/integrate.yml?branch=master&style=for-the-badge&label=Build&logo=github&logoColor=FFFFFF&labelColor=000000" alt="Build"/></a>&nbsp;
 </p>
 
 _Table Of Contents_
@@ -40,7 +39,7 @@ _Table Of Contents_
 - [Keybindings](#keybindings-1)
 - [Demos](#demos)
 - [Contribute](#contribute)
-- **[More Info](#more-info)**
+- [More Info](#more-info)
 
 ---
 
@@ -464,41 +463,6 @@ _Check out [first contributions](https://github.com/firstcontributions/first-con
 <p align="center">
     <a href="https://marketplace.visualstudio.com/items?itemName=yasht.terminal-all-in-one"><img src="https://img.shields.io/visual-studio-marketplace/i/yasht.terminal-all-in-one?logo=visual-studio-code&style=for-the-badge&labelColor=000000&label=Installs" alt="Installs"></a>&nbsp;
     <a href="https://marketplace.visualstudio.com/items?itemName=yasht.terminal-all-in-one"><img src="https://img.shields.io/visual-studio-marketplace/d/yasht.terminal-all-in-one?logo=visual-studio-code&style=for-the-badge&labelColor=000000&label=Downloads" alt="Downloads"></a>&nbsp;
-</p>
-
----
-
-<!-- Code Alerts/Issues Badges -->
-
-<p align="center">
-    <a href="https://codeclimate.com/github/YashTotale/terminal-all-in-one/issues"><img src="https://img.shields.io/codeclimate/issues/YashTotale/terminal-all-in-one.svg?style=for-the-badge&logo=code-climate&labelColor=000000&label=Issues" alt="Issues"></a>&nbsp;
-    <a href="https://lgtm.com/projects/g/YashTotale/terminal-all-in-one/alerts/?mode=list"><img src="https://img.shields.io/lgtm/alerts/github/YashTotale/terminal-all-in-one?style=for-the-badge&labelColor=000000&logo=lgtm" alt="Alerts"></a>&nbsp;
-</p>
-
----
-
-<!-- Dependency Badges -->
-<p align="center">
-    <!-- <a href="https://david-dm.org/YashTotale/terminal-all-in-one"><img src="https://img.shields.io/david/YashTotale/terminal-all-in-one?style=for-the-badge&labelColor=000000&label=Dependencies" alt="Dependencies"></a>&nbsp; -->
-    <a href="https://requires.io/github/YashTotale/terminal-all-in-one/requirements/?branch=master"><img src="https://img.shields.io/requires/github/YashTotale/terminal-all-in-one?style=for-the-badge&labelColor=000000&label=Dependencies" alt="Dependencies"></a>&nbsp;
-    <a href="https://snyk.io/test/github/YashTotale/terminal-all-in-one"><img src="https://img.shields.io/snyk/vulnerabilities/github/YashTotale/terminal-all-in-one?logo=snyk&style=for-the-badge&labelColor=000000&label=Vulnerabilities" alt="Vulnerabilities"></a>&nbsp;
-</p>
-
----
-
-<!-- Code Maintainability Badges -->
-
-<p align="center">
-    <a href="https://codeclimate.com/github/YashTotale/terminal-all-in-one/trends/technical_debt"><img src="https://img.shields.io/codeclimate/tech-debt/YashTotale/terminal-all-in-one.svg?style=for-the-badge&logo=code-climate&labelColor=000000&label=Technical%20Debt" alt="Technical Debt"></a>&nbsp;
-    <a href="https://codeclimate.com/github/YashTotale/terminal-all-in-one"><img src="https://img.shields.io/codeclimate/maintainability-percentage/YashTotale/terminal-all-in-one.svg?style=for-the-badge&logo=code-climate&labelColor=000000&label=Maintainability" alt="Maintainability"></a>&nbsp;
-</p>
-
----
-
-<!-- Commit Badges -->
-<p align="center">
-    <a href="https://github.com/YashTotale/terminal-all-in-one/commits/master"><img src="https://img.shields.io/github/last-commit/YashTotale/terminal-all-in-one?style=for-the-badge&logo=github&labelColor=000000&label=Last%20Commit&color=007EC6" alt="Last Commit"></a>&nbsp;
-    <a href="https://github.com/YashTotale/terminal-all-in-one/pulse/monthly"><img src="https://img.shields.io/github/commit-activity/m/YashTotale/terminal-all-in-one?style=for-the-badge&logo=github&labelColor=000000&label=Commit%20Activity&color=007EC6" alt="Commit Activity"></a>&nbsp;
 </p>
 
 ---
