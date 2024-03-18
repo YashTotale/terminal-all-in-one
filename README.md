@@ -1,23 +1,19 @@
 <h1 align="center">
   <br>
-    <a href="https://raw.githubusercontent.com/YashTotale/terminal-all-in-one/master/images/terminal-icon.jpg"><img src="https://raw.githubusercontent.com/YashTotale/terminal-all-in-one/master/images/terminal-icon.jpg" alt="Terminal All In One" width="200"></a>
-  <br>
+  <img src="https://raw.githubusercontent.com/YashTotale/terminal-all-in-one/master/images/terminal-icon.jpg" alt="Terminal All In One" width="200">
   <br>
   <b>Terminal All In One</b>
-  <br>
-  <br>
-  <!-- Version -->
-  <a
-    href="https://marketplace.visualstudio.com/items?itemName=yasht.terminal-all-in-one">
-    <img
-      src="https://img.shields.io/visual-studio-marketplace/v/yasht.terminal-all-in-one?style=for-the-badge&labelColor=000000&label=Version"
-      alt="Version">
-  </a>
 </h1>
 
+<h4 align="center">Supercharge your terminal with themes, commands, scripts, and key bindings!<h4>
+
 <p align="center">
-    <a href="https://marketplace.visualstudio.com/items?itemName=yasht.terminal-all-in-one&ssr=false#review-details"><img src="https://img.shields.io/visual-studio-marketplace/r/yasht.terminal-all-in-one?logo=visual-studio-code&style=for-the-badge&labelColor=000000&label=Rating" alt="Rating"></a>&nbsp;
-    <a href="https://github.com/YashTotale/terminal-all-in-one/actions/workflows/integrate.yml"><img src="https://img.shields.io/github/actions/workflow/status/YashTotale/terminal-all-in-one/integrate.yml?branch=master&style=for-the-badge&label=Build&logo=github&logoColor=FFFFFF&labelColor=000000" alt="Build"/></a>&nbsp;
+  <!-- Version -->
+  <a href="https://marketplace.visualstudio.com/items?itemName=yasht.terminal-all-in-one"><img src="https://img.shields.io/visual-studio-marketplace/v/yasht.terminal-all-in-one?style=for-the-badge&labelColor=000000&label=Version" alt="Version"></a>&nbsp;
+  <!-- Rating -->
+  <a href="https://marketplace.visualstudio.com/items?itemName=yasht.terminal-all-in-one&ssr=false#review-details"><img src="https://img.shields.io/visual-studio-marketplace/r/yasht.terminal-all-in-one?logo=visual-studio-code&style=for-the-badge&labelColor=000000&label=Rating" alt="Rating"></a>&nbsp;
+  <!-- Build -->
+  <a href="https://github.com/YashTotale/terminal-all-in-one/actions/workflows/integrate.yml"><img src="https://img.shields.io/github/actions/workflow/status/YashTotale/terminal-all-in-one/integrate.yml?branch=master&style=for-the-badge&label=Build&logo=github&logoColor=FFFFFF&labelColor=000000" alt="Build"/></a>&nbsp;
 </p>
 
 _Table Of Contents_
