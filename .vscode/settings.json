@@ -11,10 +11,7 @@
 
     ".vscodeignore": "ignore",
 
-    ".lintstagedrc": "json",
-
-    ".snyk": "yaml",
-    ".imgbotconfig": "json"
+    ".lintstagedrc": "json"
   },
   "markdown.extension.toc.updateOnSave": false
 }

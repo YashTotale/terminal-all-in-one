@@ -1,4 +1,4 @@
-# Contributing to Introspect
+# Contributing to Terminal All In One
 
 Welcome, and thank you for your interest in contributing to terminal-all-in-one!
 
@@ -12,7 +12,7 @@ The active community will be eager to assist you. Your well-worded question will
 
 ## Reporting Issues
 
-Have you identified a reproducible problem in terminal-all-in-one? Have a feature request? We want to hear about it! Here's how you can make reporting your issue as effective as possible.
+Have you identified a reproducible problem in Terminal All In One? Have a feature request? We want to hear about it! Here's how you can make reporting your issue as effective as possible.
 
 ### Look For an Existing Issue
 
