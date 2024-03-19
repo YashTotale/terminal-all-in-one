@@ -1,11 +1,10 @@
 <h1 align="center">
-  <br>
   <img src="https://raw.githubusercontent.com/YashTotale/terminal-all-in-one/master/images/terminal-icon.jpg" alt="Terminal All In One" width="200">
   <br>
   <b>Terminal All In One</b>
 </h1>
 
-<h4 align="center">Supercharge your terminal with themes, commands, scripts, and key bindings!<h4>
+**<p align="center">Supercharge your terminal with themes, commands, scripts, and key bindings!</p>**
 
 <p align="center">
   <!-- Version -->
@@ -13,23 +12,23 @@
   <!-- Rating -->
   <a href="https://marketplace.visualstudio.com/items?itemName=yasht.terminal-all-in-one&ssr=false#review-details"><img src="https://img.shields.io/visual-studio-marketplace/r/yasht.terminal-all-in-one?logo=visual-studio-code&style=for-the-badge&labelColor=000000&label=Rating" alt="Rating"></a>&nbsp;
   <!-- Build -->
-  <a href="https://github.com/YashTotale/terminal-all-in-one/actions/workflows/integrate.yml"><img src="https://img.shields.io/github/actions/workflow/status/YashTotale/terminal-all-in-one/integrate.yml?branch=master&style=for-the-badge&label=Build&logo=github&logoColor=FFFFFF&labelColor=000000" alt="Build"/></a>&nbsp;
+  <a href="https://github.com/YashTotale/terminal-all-in-one/actions/workflows/integrate.yml?query=branch%3Amaster"><img src="https://img.shields.io/github/actions/workflow/status/YashTotale/terminal-all-in-one/integrate.yml?branch=master&style=for-the-badge&label=Build&logo=github&logoColor=FFFFFF&labelColor=000000" alt="Build"/></a>&nbsp;
 </p>
 
-_Table Of Contents_
+## Contents <!-- omit in toc -->
 
 **Featured Content is Bolded**
 
 - [Installation](#installation)
 - [Commands](#commands)
-  - **[Themes](#themes)**
-  - **[Scripts](#scripts)**
+  - [Themes](#themes)
+  - [Scripts](#scripts)
   - [Instances](#instances)
   - [Display](#display)
   - [Misc](#misc)
 - [Configuration](#configuration)
-  - **[Themes](#themes-1)**
-  - **[Scripts](#scripts-1)**
+  - [Themes](#themes-1)
+  - [Scripts](#scripts-1)
   - [Keybindings](#keybindings)
   - [Messages](#messages)
 - [Keybindings](#keybindings-1)
