@@ -8,17 +8,25 @@ on:
     branches:
       - master
 
+permissions:
+  contents: read
+
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        node-version: [20.x, 22.x]
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Setup Node
-        uses: actions/setup-node@v2.1.4
+        uses: actions/setup-node@v4
         with:
-          node-version: 15.x
+          node-version: ${{ matrix.node-version }}
 
       - name: Install Dependencies
         run: npm ci
@@ -26,13 +34,22 @@ jobs:
       - name: Build Project
         run: npm run build
 
-      - name: Test Project
-        run: |
-          npm run test:compile
-          xvfb-run -a npm test
+      - name: Compile Tests
+        run: npm run test:compile
+
+      # VS Code integration tests need a display; Linux runners are headless and require xvfb.
+      - name: Test Project (Linux)
+        if: runner.os == 'Linux'
+        run: xvfb-run -a npm test
+
+      - name: Test Project (macOS / Windows)
+        if: runner.os != 'Linux'
+        run: npm test
 
       - name: Lint Project
         run: npm run lint
 
+      # Informational marketplace lookup; run once to avoid redundant API calls across the matrix.
       - name: Show Extension Data
+        if: runner.os == 'Linux' && matrix.node-version == '20.x'
         run: npm run show-data
