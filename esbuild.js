@@ -31,8 +31,8 @@ async function main() {
     entryPoints: ["src/extension.ts"],
     bundle: true,
     format: "cjs",
-    // Downlevel to the minimum supported VS Code engine's runtime (1.53 -> Electron 11 / Node 12). Raise alongside engines.vscode.
-    target: ["node12"],
+    // Downlevel to the minimum supported VS Code engine's runtime (1.84 -> Electron 25 / Node 18). Raise alongside engines.vscode.
+    target: ["node18"],
     minify: production,
     sourcemap: !production,
     sourcesContent: false,

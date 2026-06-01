@@ -18,7 +18,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
-        node-version: [20.x, 22.x]
+        node-version: [22.x]
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -51,5 +51,5 @@ jobs:
 
       # Informational marketplace lookup; run once to avoid redundant API calls across the matrix.
       - name: Show Extension Data
-        if: runner.os == 'Linux' && matrix.node-version == '20.x'
+        if: runner.os == 'Linux' && matrix.node-version == '22.x'
         run: npm run show-data
