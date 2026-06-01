@@ -18,7 +18,7 @@ interface registerCommand {
 
 function registerCommand({ name, handlerFunc, context }: registerCommand) {
   return context.subscriptions.push(
-    commands.registerCommand(name, handlerFunc)
+    commands.registerCommand(name, handlerFunc),
   );
 }
 

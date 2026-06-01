@@ -1,3 +1,13 @@
+# Normalize all text files to LF in the repo and on checkout (every platform),
+# so eslint's linebreak-style: unix passes on Windows CI runners.
+* text=auto eol=lf
+
+# Binary assets must never be line-ending normalized.
+*.jpg binary
+*.gif binary
+*.png binary
+*.vsix binary
+
 .prettierrc linguist-language=JSON
 
 .lintstagedrc linguist-language=JSON

@@ -43,7 +43,7 @@ export default class ChooseTerminalTheme extends BaseCommand {
     super(
       "chooseTerminalTheme",
       () => this.handler(context),
-      (e) => this.configChange(e)
+      (e) => this.configChange(e),
     );
   }
 
@@ -69,7 +69,7 @@ export default class ChooseTerminalTheme extends BaseCommand {
       },
       () => {
         this.updateColorCustomizations(currentColors);
-      }
+      },
     );
   }
 
@@ -99,7 +99,7 @@ export default class ChooseTerminalTheme extends BaseCommand {
     if (themeName === "None") {
       //Remove all the terminal styles
       return this.updateColorCustomizations(
-        this.getNonTerminalStyles(currentColors)
+        this.getNonTerminalStyles(currentColors),
       );
     }
     //If the theme does exist and is not None, set the new colors

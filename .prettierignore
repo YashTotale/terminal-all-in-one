@@ -12,3 +12,9 @@ build/
 
 # misc
 .husky/_
+
+# generated (managed by npm)
+package-lock.json
+
+# Conductor workspace scratch (git-ignored, not part of the repo)
+.context/
