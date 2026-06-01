@@ -41,6 +41,10 @@ You'll need [Node.js](https://nodejs.org/) and [VS Code](https://code.visualstud
    pnpm run lint
    ```
 
+### Running in Conductor
+
+[Conductor](https://conductor.build/) reads `conductor.json` to set up each workspace, then clicking **Run** builds the extension and opens an isolated Extension Development Host with it loaded, watching for changes. This requires the `code` CLI on your PATH (in VS Code: **Shell Command: Install 'code' command in PATH**). After editing, reload the dev host with **Cmd+R** to pick up the rebuilt extension.
+
 ## Reporting Bugs & Requesting Features
 
 Search [existing issues](https://github.com/YashTotale/terminal-all-in-one/issues) first. If nothing matches, open a [new issue](https://github.com/YashTotale/terminal-all-in-one/issues/new/choose) and include:
