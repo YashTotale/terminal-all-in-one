@@ -554,7 +554,7 @@
     "@types/lodash.debounce": "^4.0.6",
     "@types/mocha": "^10.0.10",
     "@types/node": "^20.19.41",
-    "@types/vscode": "^1.53.0",
+    "@types/vscode": "1.53.0",
     "@vscode/test-cli": "^0.0.12",
     "@vscode/test-electron": "^2.5.2",
     "@vscode/vsce": "^3.9.1",
