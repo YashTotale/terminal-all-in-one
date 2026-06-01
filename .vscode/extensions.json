@@ -1,6 +1,8 @@
 {
   "recommendations": [
-    "hack4impact.h4i-recommendations",
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "DavidAnson.vscode-markdownlint",
     "yasht.terminal-all-in-one"
   ]
 }

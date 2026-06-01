@@ -4,14 +4,16 @@
     ".markdownlintrc": "json",
 
     ".prettierignore": "ignore",
-    ".prettierc": "json",
-
-    ".eslintignore": "ignore",
-    ".eslintrc": "json",
+    ".prettierrc": "json",
 
     ".vscodeignore": "ignore",
 
     ".lintstagedrc": "json"
   },
-  "markdown.extension.toc.updateOnSave": false
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  "typescript.tsdk": "node_modules/typescript/lib"
 }
