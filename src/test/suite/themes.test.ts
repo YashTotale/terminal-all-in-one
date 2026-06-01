@@ -21,13 +21,13 @@ suite("Themes Test Suite", () => {
       assert.deepStrictEqual(
         keys.length,
         themeKeys.length,
-        "Theme object has correct number of keys"
+        "Theme object has correct number of keys",
       );
 
       keys.forEach((key) => {
         assert.ok(
           themeKeys.some((themeKey) => themeKey === key),
-          "Theme object has correct key"
+          "Theme object has correct key",
         );
       });
     }

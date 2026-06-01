@@ -11,7 +11,7 @@ export default class AdjustFontSizeByOne extends FontSize {
     const newSize = currentSize - (operation === "increase" ? -1 : 1);
     this.updateFontSizeConfig(newSize);
     this.showFontSizeSelectedMessage(`${newSize}-pt`, () =>
-      this.updateFontSizeConfig(currentSize)
+      this.updateFontSizeConfig(currentSize),
     );
   }
 }

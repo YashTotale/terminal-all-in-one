@@ -41,9 +41,9 @@ export default class ChangeCursorStyle extends BaseCommand {
       (selectedStyle) =>
         this.showCursorStyleSelectedMessage(
           selectedStyle.label as CursorStyle,
-          () => this.updateCursorStyleConfig(currentStyle)
+          () => this.updateCursorStyleConfig(currentStyle),
         ),
-      () => this.updateCursorStyleConfig(currentStyle)
+      () => this.updateCursorStyleConfig(currentStyle),
     );
   }
 

@@ -22,7 +22,7 @@ export default class BaseCommand {
   constructor(
     name: string,
     handlerFunc: (...params: any[]) => any,
-    config?: (e: ConfigurationChangeEvent) => any
+    config?: (e: ConfigurationChangeEvent) => any,
   ) {
     this.name = name;
     this.handlerFunc = handlerFunc;
@@ -43,8 +43,8 @@ export default class BaseCommand {
 
   showMessage(
     message: keyof typeof messages,
-    params?: Parameters<typeof messages[typeof message]>[0],
-    params1?: Parameters<typeof messages[typeof message]>[1]
+    params?: Parameters<(typeof messages)[typeof message]>[0],
+    params1?: Parameters<(typeof messages)[typeof message]>[1],
   ) {
     showMessage(message, params, params1);
   }
@@ -76,7 +76,7 @@ export default class BaseCommand {
     items: QuickPickItem[],
     options: QuickPickOptions,
     onSelect: (selectedItem: QuickPickItem) => any,
-    onNoSelect?: () => any
+    onNoSelect?: () => any,
   ) {
     const selectedItem = await window.showQuickPick(items, {
       matchOnDescription: true,

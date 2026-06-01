@@ -35,7 +35,7 @@ async function infoWithDisableOption(
     const selection = await window.showInformationMessage(
       info,
       DONT_SHOW,
-      ...rest.map((r) => r.message)
+      ...rest.map((r) => r.message),
     );
     if (selection === DONT_SHOW) {
       await updateMessagesConfig(configProperty, false);
@@ -71,7 +71,7 @@ export const messages: messages = {
   onFirstStart: async () => {
     const selection = await window.showInformationMessage(
       `Thanks for installing ${READABLE_EXTENSION_NAME}. Check out our README for more information on the extension.`,
-      "README"
+      "README",
     );
     if (selection === "README") {
       commands.executeCommand("extension.open", EXTENSION_NAME_W_PUBLISHER);
@@ -82,13 +82,13 @@ export const messages: messages = {
     const selection = await window.showInformationMessage(
       `You've been using ${READABLE_EXTENSION_NAME} for some time. I hope it's been useful. Would you mind giving it a quick rating?`,
       DONT_SHOW,
-      "No Problem!"
+      "No Problem!",
     );
     if (selection === "No Problem!") {
       env.openExternal(
         Uri.parse(
-          `https://marketplace.visualstudio.com/items?itemName=${EXTENSION_NAME_W_PUBLISHER}&ssr=false#review-details`
-        )
+          `https://marketplace.visualstudio.com/items?itemName=${EXTENSION_NAME_W_PUBLISHER}&ssr=false#review-details`,
+        ),
       );
       state.update(context, stateProps.SHOULD_NOT_SHOW_FOLLOW_UP, true);
     } else if (selection === DONT_SHOW) {
@@ -99,18 +99,18 @@ export const messages: messages = {
   themeQuickPickOpened: async () => {
     await infoWithDisableOption(
       "shouldShowThemeQuickPickMessage",
-      "Open the terminal to see a live preview"
+      "Open the terminal to see a live preview",
     );
   },
   //Message when a theme that does not exist is chosen
   themeDoesNotExist: async () => {
     const selection = await window.showErrorMessage(
       "That theme doesn't seem to exist. Please open a new issue in the github repository if this theme does exist.",
-      "Issues Page"
+      "Issues Page",
     );
     if (selection === "Issues Page") {
       env.openExternal(
-        Uri.parse("https://github.com/YashTotale/terminal-all-in-one/issues")
+        Uri.parse("https://github.com/YashTotale/terminal-all-in-one/issues"),
       );
     }
   },
@@ -118,7 +118,7 @@ export const messages: messages = {
   themeSelected: async (selectedTheme: string) => {
     infoWithDisableOption(
       "shouldShowSelectedThemeMessage",
-      `"${selectedTheme}" has been applied`
+      `"${selectedTheme}" has been applied`,
     );
   },
   //Message when the font size quick pick is opened
@@ -129,7 +129,7 @@ export const messages: messages = {
       {
         message: "Open",
         func: open,
-      }
+      },
     );
   },
   fontSizeSelected: async (selectedSize: string, undo: () => any) => {
@@ -139,7 +139,7 @@ export const messages: messages = {
       {
         message: "Undo",
         func: undo,
-      }
+      },
     );
   },
   //Message when the font weight quick pick is opened
@@ -150,7 +150,7 @@ export const messages: messages = {
       {
         message: "Open",
         func: open,
-      }
+      },
     );
   },
   fontWeightSelected: async (selectedWeight: string, undo: () => any) => {
@@ -160,7 +160,7 @@ export const messages: messages = {
       {
         message: "Undo",
         func: undo,
-      }
+      },
     );
   },
   //Messages when the cursor width quick pick is opened
@@ -171,7 +171,7 @@ export const messages: messages = {
       {
         message: "Open",
         func: open,
-      }
+      },
     );
   },
   cursorWidthSelected: async (selectedWidth: string, undo: () => any) => {
@@ -181,7 +181,7 @@ export const messages: messages = {
       {
         message: "Undo",
         func: undo,
-      }
+      },
     );
   },
   //Messages when the cursor style quick pick is opened
@@ -192,7 +192,7 @@ export const messages: messages = {
       {
         message: "Open",
         func: open,
-      }
+      },
     );
   },
   cursorStyleSelected: async (selectedStyle: string, undo: () => any) => {
@@ -202,7 +202,7 @@ export const messages: messages = {
       {
         message: "Undo",
         func: undo,
-      }
+      },
     );
   },
   blinkingCursorToggled: (isBlinking: boolean, undo: () => any) => {
@@ -212,7 +212,7 @@ export const messages: messages = {
       {
         message: "Undo",
         func: undo,
-      }
+      },
     );
   },
   noScripts: async (index: number) => {
@@ -223,7 +223,7 @@ export const messages: messages = {
     const selection = await window.showWarningMessage(
       message,
       "Settings",
-      "Scripts Explained"
+      "Scripts Explained",
     );
     if (selection === "Settings") {
       return commands.executeCommand("workbench.action.openSettingsJson");
@@ -231,10 +231,11 @@ export const messages: messages = {
     if (selection === "Scripts Explained") {
       return env.openExternal(
         Uri.parse(
-          "https://marketplace.visualstudio.com/items?itemName=yasht.terminal-all-in-one#scripts-1"
-        )
+          "https://marketplace.visualstudio.com/items?itemName=yasht.terminal-all-in-one#scripts-1",
+        ),
       );
     }
+    return undefined;
   },
   disableScriptDescription: async (disable: () => any) => {
     infoWithDisableOption(
@@ -243,7 +244,7 @@ export const messages: messages = {
       {
         message: "Disable",
         func: disable,
-      }
+      },
     );
   },
   error: async (message: string) => {
@@ -254,7 +255,7 @@ export const messages: messages = {
 const showMessage = function (
   id: keyof typeof messages,
   params?: Parameters<messages[typeof id]>[0],
-  params1?: Parameters<messages[typeof id]>[1]
+  params1?: Parameters<messages[typeof id]>[1],
 ): void {
   const shouldShow = !getConfig({
     section: `${EXTENSION_NAME}.disableAllMessages`,

@@ -28,9 +28,9 @@ export default class ChangeFontSize extends FontSize {
       },
       (selectedSize) =>
         this.showFontSizeSelectedMessage(selectedSize.label, () =>
-          this.updateFontSizeConfig(currentSize)
+          this.updateFontSizeConfig(currentSize),
         ),
-      () => this.updateFontSizeConfig(currentSize)
+      () => this.updateFontSizeConfig(currentSize),
     );
   }
 
