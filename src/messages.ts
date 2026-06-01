@@ -231,7 +231,7 @@ export const messages: messages = {
     if (selection === "Scripts Explained") {
       return env.openExternal(
         Uri.parse(
-          "https://marketplace.visualstudio.com/items?itemName=yasht.terminal-all-in-one#scripts-1"
+          "https://marketplace.visualstudio.com/items?itemName=yasht.terminal-all-in-one#scripts"
         )
       );
     }
