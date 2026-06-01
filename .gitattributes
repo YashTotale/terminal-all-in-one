@@ -5,8 +5,6 @@
 # Binary assets must never be line-ending normalized.
 *.jpg binary
 *.gif binary
-*.png binary
-*.vsix binary
 
 .prettierrc linguist-language=JSON
 
