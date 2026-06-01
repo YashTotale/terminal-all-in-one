@@ -10,6 +10,9 @@ src/
 out/
 node_modules/
 
+# Demos (referenced via raw GitHub URLs, never loaded from the package)
+demos/
+
 # Misc
 **/*.map
 .*
