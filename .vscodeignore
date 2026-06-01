@@ -5,6 +5,8 @@ vsc-extension-quickstart.md
 esbuild.js
 eslint.config.mjs
 tsconfig.json
+pnpm-lock.yaml
+pnpm-workspace.yaml
 
 # Extension
 src/

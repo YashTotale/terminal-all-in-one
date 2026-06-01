@@ -23,33 +23,37 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
+          cache: pnpm
 
       - name: Install Dependencies
-        run: npm ci
+        run: pnpm install --frozen-lockfile
 
       - name: Build Project
-        run: npm run build
+        run: pnpm run build
 
       - name: Compile Tests
-        run: npm run test:compile
+        run: pnpm run test:compile
 
       # VS Code integration tests need a display; Linux runners are headless and require xvfb.
       - name: Test Project (Linux)
         if: runner.os == 'Linux'
-        run: xvfb-run -a npm test
+        run: xvfb-run -a pnpm test
 
       - name: Test Project (macOS / Windows)
         if: runner.os != 'Linux'
-        run: npm test
+        run: pnpm test
 
       - name: Lint Project
-        run: npm run lint
+        run: pnpm run lint
 
       # Informational marketplace lookup; run once to avoid redundant API calls across the matrix.
       - name: Show Extension Data
         if: runner.os == 'Linux' && matrix.node-version == '22.x'
-        run: npm run show-data
+        run: pnpm run show-data
