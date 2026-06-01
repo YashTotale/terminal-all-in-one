@@ -1,9 +1,6 @@
 name: Greetings
 
-# pull_request_target (not pull_request) so PRs opened from forks get a
-# write-capable token and first-time contributors are actually greeted.
-# Safe here: this workflow never checks out or runs PR code — it only posts
-# a comment via the trusted, pinned first-interaction action.
+# pull_request_target gives fork PRs a write-capable token; safe here since this workflow only posts a comment, never runs PR code.
 on:
   pull_request_target:
     types:
@@ -24,6 +21,6 @@ jobs:
       - uses: actions/first-interaction@v3
         with:
           issue_message: |
-            👋 Thanks for opening your first issue on **Terminal All In One**! We appreciate you taking the time to help improve the extension — a maintainer will take a look soon.
+            👋 Thanks for opening your first issue on **Terminal All In One**! I appreciate you taking the time to help improve the extension.
           pr_message: |
-            🎉 Thanks for opening your first pull request to **Terminal All In One**! We really appreciate the contribution and will review it as soon as we can.
+            🎉 Thanks for opening your first pull request to **Terminal All In One**! I really appreciate the contribution and will review it as soon as I can.
