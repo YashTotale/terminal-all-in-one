@@ -1,0 +1,5 @@
+# Dependencies allowed to run install/build scripts (pnpm blocks them by default).
+allowBuilds:
+  "@vscode/vsce-sign": true
+  esbuild: true
+  keytar: true

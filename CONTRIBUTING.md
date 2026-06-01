@@ -4,7 +4,7 @@ Thanks for your interest in contributing! This guide covers local development, r
 
 ## Development Setup
 
-You'll need [Node.js](https://nodejs.org/) and [VS Code](https://code.visualstudio.com/). The extension targets VS Code `^1.53.0`.
+You'll need [Node.js](https://nodejs.org/) and [VS Code](https://code.visualstudio.com/). The extension targets VS Code `^1.84.0`. This project uses [pnpm](https://pnpm.io/) — enable it with `corepack enable`.
 
 1. Fork and clone the repository:
 
@@ -16,14 +16,14 @@ You'll need [Node.js](https://nodejs.org/) and [VS Code](https://code.visualstud
 2. Install dependencies:
 
    ```bash
-   npm install
+   pnpm install
    ```
 
 3. Build the extension once, or rebuild on every change:
 
    ```bash
-   npm run build:dev   # one-off development build
-   npm run watch       # rebuild on file changes
+   pnpm run build:dev   # one-off development build
+   pnpm run watch       # rebuild on file changes
    ```
 
 4. Press **F5** in VS Code to launch an Extension Development Host with the extension loaded. Try the commands via `cmd/ctrl+i` or the Command Palette (**Terminal All In One**).
@@ -31,14 +31,14 @@ You'll need [Node.js](https://nodejs.org/) and [VS Code](https://code.visualstud
 5. Run the tests:
 
    ```bash
-   npm run test:compile   # compile the tests to ./out
-   npm test
+   pnpm run test:compile   # compile the tests to ./out
+   pnpm test
    ```
 
 6. Lint before opening a pull request:
 
    ```bash
-   npm run lint
+   pnpm run lint
    ```
 
 ## Reporting Bugs & Requesting Features
