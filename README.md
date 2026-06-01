@@ -24,28 +24,28 @@
 
 Press `cmd+i` (macOS) or `ctrl+i` (Windows/Linux), then the key below — toggling the terminal is the one exception (no `i`). Every command is also available from the Command Palette under **Terminal All In One**. Set `terminalAllInOne.disableAllKeybindings` to `true` to turn the keybindings off.
 
-| Keybinding             | Command                   | Description                                          |
-| ---------------------- | ------------------------- | ---------------------------------------------------- |
-| `cmd/ctrl+i t`         | Choose Theme              | Live-preview and apply one of 100+ terminal themes   |
-| `cmd/ctrl+i enter`     | Run Script                | Pick a saved script to run                           |
-| `cmd/ctrl+i 0`–`9`     | Run Script                | Run one of your first 10 saved scripts directly      |
-| `` cmd/ctrl+` ``       | Toggle Terminal           | Show or hide the integrated terminal                 |
-| `cmd/ctrl+i m`         | Toggle Maximized Terminal | Maximize or restore the terminal panel               |
-| `cmd/ctrl+i c`         | Create New Terminal       | Open a new terminal instance                         |
-| `cmd/ctrl+i d`         | Delete Current Terminal   | Close the active terminal                            |
-| `cmd/ctrl+i r`         | Rename Current Terminal   | Rename the active terminal                           |
-| `cmd/ctrl+i .`         | Focus Next Terminal       | Switch to the next terminal                          |
-| `cmd/ctrl+i ,`         | Focus Previous Terminal   | Switch to the previous terminal                      |
-| `cmd/ctrl+i ]`         | Split Terminal            | Split the active terminal                            |
-| `cmd/ctrl+i backspace` | Clear Terminal            | Clear and relaunch the active terminal               |
-| `cmd/ctrl+i s`         | Select Default Shell      | Choose the default shell (bash, zsh, etc.)           |
-| `cmd/ctrl+i w`         | Change Cursor Width       | Live-preview and set the cursor width                |
-| `cmd/ctrl+i y`         | Change Cursor Style       | Live-preview and set the cursor style                |
-| `cmd/ctrl+i b`         | Toggle Blinking Cursor    | Turn cursor blinking on or off                       |
-| `cmd/ctrl+i f`         | Change Font Size          | Live-preview and set the terminal font size          |
-| `cmd/ctrl+i -`         | Decrease Font Size        | Decrease the terminal font size by 1pt               |
-| `cmd/ctrl+i =`         | Increase Font Size        | Increase the terminal font size by 1pt               |
-| `cmd/ctrl+i q`         | Change Font Weight        | Live-preview and set the terminal font weight        |
+| Keybinding             | Command                   | Description                                        |
+| ---------------------- | ------------------------- | -------------------------------------------------- |
+| `cmd/ctrl+i t`         | Choose Theme              | Live-preview and apply one of 100+ terminal themes |
+| `cmd/ctrl+i enter`     | Run Script                | Pick a saved script to run                         |
+| `cmd/ctrl+i 0`–`9`     | Run Script                | Run one of your first 10 saved scripts directly    |
+| `` cmd/ctrl+` ``       | Toggle Terminal           | Show or hide the integrated terminal               |
+| `cmd/ctrl+i m`         | Toggle Maximized Terminal | Maximize or restore the terminal panel             |
+| `cmd/ctrl+i c`         | Create New Terminal       | Open a new terminal instance                       |
+| `cmd/ctrl+i d`         | Delete Current Terminal   | Close the active terminal                          |
+| `cmd/ctrl+i r`         | Rename Current Terminal   | Rename the active terminal                         |
+| `cmd/ctrl+i .`         | Focus Next Terminal       | Switch to the next terminal                        |
+| `cmd/ctrl+i ,`         | Focus Previous Terminal   | Switch to the previous terminal                    |
+| `cmd/ctrl+i ]`         | Split Terminal            | Split the active terminal                          |
+| `cmd/ctrl+i backspace` | Clear Terminal            | Clear and relaunch the active terminal             |
+| `cmd/ctrl+i s`         | Select Default Shell      | Choose the default shell (bash, zsh, etc.)         |
+| `cmd/ctrl+i w`         | Change Cursor Width       | Live-preview and set the cursor width              |
+| `cmd/ctrl+i y`         | Change Cursor Style       | Live-preview and set the cursor style              |
+| `cmd/ctrl+i b`         | Toggle Blinking Cursor    | Turn cursor blinking on or off                     |
+| `cmd/ctrl+i f`         | Change Font Size          | Live-preview and set the terminal font size        |
+| `cmd/ctrl+i -`         | Decrease Font Size        | Decrease the terminal font size by 1pt             |
+| `cmd/ctrl+i =`         | Increase Font Size        | Increase the terminal font size by 1pt             |
+| `cmd/ctrl+i q`         | Change Font Weight        | Live-preview and set the terminal font weight      |
 
 ## Configuration
 
@@ -62,7 +62,10 @@ Press `cmd+i` (macOS) or `ctrl+i` (Windows/Linux), then the key below — toggli
   "terminalAllInOne.scripts": [
     { "name": "Greet", "script": ["echo hello", "echo How was your day?"] },
     { "name": "List workspace", "script": "ls ${workspaceFolder}" },
-    { "name": "Install deps", "script": ["npm i react", "npm i --save-dev mocha"] }
+    {
+      "name": "Install deps",
+      "script": ["npm i react", "npm i --save-dev mocha"]
+    }
   ]
 }
 ```
