@@ -31,7 +31,8 @@
   },
   "main": "./dist/extension",
   "engines": {
-    "vscode": "^1.53.0"
+    "vscode": "^1.84.0",
+    "node": ">=22"
   },
   "categories": [
     "Other",
@@ -39,25 +40,23 @@
     "Themes"
   ],
   "activationEvents": [
-    "onCommand:terminalAllInOne.deleteCurrentTerminal",
-    "onCommand:terminalAllInOne.createNewTerminal",
-    "onCommand:terminalAllInOne.renameCurrentTerminal",
-    "onCommand:terminalAllInOne.focusNextTerminal",
-    "onCommand:terminalAllInOne.focusPreviousTerminal",
-    "onCommand:terminalAllInOne.selectDefaultShell",
-    "onCommand:terminalAllInOne.toggleMaxTerm",
-    "onCommand:terminalAllInOne.chooseTerminalTheme",
-    "onCommand:terminalAllInOne.changeCursorWidth",
-    "onCommand:terminalAllInOne.changeCursorStyle",
-    "onCommand:terminalAllInOne.toggleBlinkingCursor",
-    "onCommand:terminalAllInOne.changeFontSize",
-    "onCommand:terminalAllInOne.changeFontWeight",
-    "onCommand:terminalAllInOne.decreaseFontSize",
-    "onCommand:terminalAllInOne.increaseFontSize",
-    "onCommand:terminalAllInOne.clearTerminal",
-    "onCommand:terminalAllInOne.runScript",
-    "onCommand:terminalAllInOne.runScript",
     "onStartupFinished"
+  ],
+  "capabilities": {
+    "untrustedWorkspaces": {
+      "supported": "limited",
+      "restrictedConfigurations": [
+        "terminalAllInOne.scripts"
+      ],
+      "description": "Running saved scripts executes user-defined shell commands."
+    },
+    "virtualWorkspaces": {
+      "supported": "limited",
+      "description": "Terminal management and running scripts need an integrated terminal, which virtual workspaces lack; only theme, font, and cursor settings apply."
+    }
+  },
+  "extensionKind": [
+    "ui"
   ],
   "contributes": {
     "commands": [
@@ -554,7 +553,7 @@
     "@types/lodash.debounce": "^4.0.6",
     "@types/mocha": "^10.0.10",
     "@types/node": "^20.19.41",
-    "@types/vscode": "1.53.0",
+    "@types/vscode": "1.84.0",
     "@vscode/test-cli": "^0.0.12",
     "@vscode/test-electron": "^2.5.2",
     "@vscode/vsce": "^3.9.1",
