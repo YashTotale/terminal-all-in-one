@@ -16,7 +16,5 @@ build/
 # generated (managed by npm)
 package-lock.json
 
-# owned by other tooling / issues: markdownlint handles *.md, CI owns *.yml
-*.md
-*.yml
-*.yaml
+# Conductor workspace scratch (git-ignored, not part of the repo)
+.context/
