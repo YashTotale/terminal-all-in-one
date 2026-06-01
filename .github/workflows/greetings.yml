@@ -1,0 +1,29 @@
+name: Greetings
+
+# pull_request_target (not pull_request) so PRs opened from forks get a
+# write-capable token and first-time contributors are actually greeted.
+# Safe here: this workflow never checks out or runs PR code — it only posts
+# a comment via the trusted, pinned first-interaction action.
+on:
+  pull_request_target:
+    types:
+      - opened
+  issues:
+    types:
+      - opened
+
+permissions:
+  issues: write
+  pull-requests: write
+
+jobs:
+  greeting:
+    name: Greet First-Time Contributors
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/first-interaction@v3
+        with:
+          issue_message: |
+            👋 Thanks for opening your first issue on **Terminal All In One**! We appreciate you taking the time to help improve the extension — a maintainer will take a look soon.
+          pr_message: |
+            🎉 Thanks for opening your first pull request to **Terminal All In One**! We really appreciate the contribution and will review it as soon as we can.
