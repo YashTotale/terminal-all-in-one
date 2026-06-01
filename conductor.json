@@ -1,0 +1,8 @@
+{
+  "scripts": {
+    "setup": "pnpm install",
+    "run": "pnpm run build:dev && code --new-window --disable-extensions --extensionDevelopmentPath=\"$PWD\" --user-data-dir=\"${TMPDIR:-/tmp}/conductor-vscode/${CONDUCTOR_WORKSPACE_NAME}\" \"$PWD\" && pnpm run watch",
+    "archive": "rm -rf \"${TMPDIR:-/tmp}/conductor-vscode/${CONDUCTOR_WORKSPACE_NAME}\""
+  },
+  "runScriptMode": "concurrent"
+}
