@@ -541,7 +541,7 @@
     "watch": "node esbuild.js --watch",
     "typecheck": "tsc --noEmit -p ./",
     "test:compile": "tsc -p ./",
-    "pretest": "npm run test:compile",
+    "pretest": "npm run test:compile && npm run build:dev",
     "test": "vscode-test",
     "lint": "eslint . && prettier --check . && markdownlint \"**/*.md\"",
     "lint:staged": "lint-staged",
