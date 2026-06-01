@@ -26,7 +26,7 @@ export default class RunScript extends BaseCommand {
           label: name,
           description: Array.isArray(script) ? script.join(" -> ") : script,
           index: i,
-        })
+        }),
       );
       return this.showQuickPick(
         items,
@@ -34,7 +34,7 @@ export default class RunScript extends BaseCommand {
         (selectedScript) => {
           //@ts-ignore
           return this.execute(scripts[selectedScript.index]);
-        }
+        },
       );
     }
   }

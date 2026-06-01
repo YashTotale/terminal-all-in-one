@@ -38,9 +38,9 @@ export default class ChangeFontWeight extends BaseCommand {
       },
       (selectedWeight) =>
         this.showFontWeightSelectedMessage(selectedWeight.label, () =>
-          this.updateFontWeightConfig(currentWeight)
+          this.updateFontWeightConfig(currentWeight),
         ),
-      () => this.updateFontWeightConfig(currentWeight)
+      () => this.updateFontWeightConfig(currentWeight),
     );
   }
 
@@ -50,7 +50,7 @@ export default class ChangeFontWeight extends BaseCommand {
       fontWeights.push({
         label: val,
         description: currentWeight === val ? "current" : undefined,
-      })
+      }),
     );
     for (let i = 100; i <= 900; i += 100) {
       const weight = JSON.stringify(i);

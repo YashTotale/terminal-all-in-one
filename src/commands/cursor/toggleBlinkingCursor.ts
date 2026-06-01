@@ -21,7 +21,7 @@ export default class ToggleBlinkingCursor extends BaseCommand {
     const isBlinking = this.getBlinkingCursorConfig();
     this.updateBlinkingCursorConfig(!isBlinking);
     this.showMessage("blinkingCursorToggled", !isBlinking, () =>
-      this.updateBlinkingCursorConfig(isBlinking)
+      this.updateBlinkingCursorConfig(isBlinking),
     );
   }
 }

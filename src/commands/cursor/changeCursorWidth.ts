@@ -39,9 +39,9 @@ export default class ChangeCursorWidth extends BaseCommand {
       },
       (selectedWidth) =>
         this.showCursorWidthSelectedMessage(selectedWidth.label, () =>
-          this.updateCursorWidthConfig(currentWidth)
+          this.updateCursorWidthConfig(currentWidth),
         ),
-      () => this.updateCursorWidthConfig(currentWidth)
+      () => this.updateCursorWidthConfig(currentWidth),
     );
   }
 

@@ -2,7 +2,8 @@
 vsc-extension-quickstart.md
 
 # Config
-webpack.config.js
+esbuild.js
+eslint.config.mjs
 tsconfig.json
 
 # Extension
