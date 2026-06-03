@@ -5,5 +5,5 @@ node_modules
 dist
 out
 
-# Demo source recordings (re-encode source for demos/*.gif); the GIFs are committed, the raw video is not
+# Raw demo recordings; only the generated GIFs are committed.
 demos/*.mp4
