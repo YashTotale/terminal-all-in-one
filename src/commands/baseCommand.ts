@@ -2,17 +2,17 @@ import {
   QuickPickItem,
   window,
   QuickPickOptions,
-  commands,
   ConfigurationChangeEvent,
 } from "vscode";
 
+import { EXTENSION_NAME } from "../helpers/constants";
 import {
-  EXTENSION_NAME,
-  EXTENSION_NAME_W_PUBLISHER,
-  READABLE_EXTENSION_NAME,
-} from "../helpers/constants";
-import { getConfig, updateConfig } from "../helpers/config";
-import showMessage, { messages } from "../messages";
+  getConfig,
+  updateConfig,
+  inspectScope,
+  writeScoped,
+} from "../helpers/config";
+import debounce from "../helpers/debounce";
 
 export default class BaseCommand {
   name: string;
@@ -33,27 +33,8 @@ export default class BaseCommand {
     return EXTENSION_NAME;
   }
 
-  getExtensionNameWithPublisher() {
-    return EXTENSION_NAME_W_PUBLISHER;
-  }
-
-  getReadableExtensionName() {
-    return READABLE_EXTENSION_NAME;
-  }
-
-  showMessage(
-    message: keyof typeof messages,
-    params?: Parameters<(typeof messages)[typeof message]>[0],
-    params1?: Parameters<(typeof messages)[typeof message]>[1],
-  ) {
-    showMessage(message, params, params1);
-  }
-
   getExtensionConfig(property: string) {
-    return getConfig({
-      config: this.getExtensionName(),
-      section: property,
-    });
+    return getConfig({ config: this.getExtensionName(), section: property });
   }
 
   updateExtensionConfig({ key, value }: { key: string; value: any }) {
@@ -68,17 +49,13 @@ export default class BaseCommand {
     return getConfig({ section: property });
   }
 
-  updateConfig({ key, value }: { key: string; value: any }) {
-    return updateConfig({ section: key, value });
-  }
-
-  async showQuickPick(
-    items: QuickPickItem[],
+  async showQuickPick<T extends QuickPickItem>(
+    items: T[],
     options: QuickPickOptions,
-    onSelect: (selectedItem: QuickPickItem) => any,
+    onSelect: (selectedItem: T) => any,
     onNoSelect?: () => any,
   ) {
-    const selectedItem = await window.showQuickPick(items, {
+    const selectedItem = await window.showQuickPick<T>(items, {
       matchOnDescription: true,
       matchOnDetail: true,
       canPickMany: false,
@@ -94,11 +71,43 @@ export default class BaseCommand {
     }
   }
 
-  clearTerminal() {
-    return commands.executeCommand(`${this.getExtensionName()}.clearTerminal`);
-  }
-
-  focusTerminal() {
-    commands.executeCommand("workbench.action.terminal.focus");
+  // Preview a setting on quick-pick hover, then persist on accept or restore the captured original on cancel/Escape/hide/error. Reads/writes at the value's real scope so we never shadow a workspace setting with a global one.
+  async livePreview<T extends QuickPickItem>({
+    section,
+    items,
+    toValue,
+    options,
+  }: {
+    section: string;
+    items: T[];
+    toValue: (item: T) => any;
+    options?: QuickPickOptions;
+  }) {
+    const original = inspectScope(section);
+    let previewWrite: Promise<unknown> = Promise.resolve();
+    const preview = debounce((item: T) => {
+      previewWrite = Promise.resolve(
+        writeScoped(section, toValue(item), original.target),
+      );
+    }, 300);
+    let picked: T | undefined;
+    try {
+      picked = await window.showQuickPick<T>(items, {
+        matchOnDescription: true,
+        matchOnDetail: true,
+        ...options,
+        onDidSelectItem: (item) => preview(item as T),
+      });
+    } finally {
+      // Stop new previews, let any in-flight preview write settle, then write the final value last so a late preview can't clobber it.
+      preview.cancel();
+      await previewWrite;
+      await writeScoped(
+        section,
+        picked ? toValue(picked) : original.value,
+        original.target,
+      );
+    }
+    return picked;
   }
 }

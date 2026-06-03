@@ -32,7 +32,7 @@
   },
   {
     "name": "clearTerminal",
-    "cmd": "workbench.action.terminal.relaunch"
+    "cmd": "workbench.action.terminal.clear"
   },
   {
     "name": "splitTerminal",

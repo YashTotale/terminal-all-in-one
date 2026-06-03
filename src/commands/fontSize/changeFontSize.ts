@@ -1,51 +1,32 @@
-import debounce from "lodash.debounce";
-import { QuickPickItem, ExtensionContext } from "vscode";
+import { ExtensionContext } from "vscode";
 
 import FontSize from "./index";
 
-interface FontSizeObject {
+interface FontSizeItem {
   label: string;
   description?: string;
 }
 
 export default class ChangeFontSize extends FontSize {
   constructor(context: ExtensionContext) {
-    super("changeFontSize", () => this.handler(context));
+    super("changeFontSize", () => this.handler());
   }
 
-  handler(context: ExtensionContext) {
+  handler() {
     const currentSize = this.getFontSizeConfig();
-    const fontSizes = this.createFontSizes(currentSize);
-    this.showMessage("fontSizeQuickPickOpened", this.focusTerminal);
-    return this.showQuickPick(
-      fontSizes,
-      {
-        placeHolder: "Choose a Font Size",
-        onDidSelectItem: debounce(async (fontSize: QuickPickItem) => {
-          const trueSize = this.getTrueSize(fontSize.label);
-          return this.updateFontSizeConfig(trueSize);
-        }, 300),
-      },
-      (selectedSize) =>
-        this.showFontSizeSelectedMessage(selectedSize.label, () =>
-          this.updateFontSizeConfig(currentSize),
-        ),
-      () => this.updateFontSizeConfig(currentSize),
-    );
+    return this.livePreview<FontSizeItem>({
+      section: this.section,
+      items: this.createFontSizes(currentSize),
+      toValue: (item) => parseInt(item.label.slice(0, -3)),
+      options: { placeHolder: "Choose a Font Size" },
+    });
   }
 
-  createFontSizes(currentSize: number): FontSizeObject[] {
-    const fontSizes: FontSizeObject[] = [];
-    for (let i = 8; i < 27; i++) {
-      fontSizes.push({
-        label: `${i}-pt`,
-        description: currentSize === i ? "current" : undefined,
-      });
-    }
-    return fontSizes;
-  }
-
-  getTrueSize(fontSizeStr: string): number {
-    return parseInt(fontSizeStr.slice(0, -3));
+  createFontSizes(currentSize: number): FontSizeItem[] {
+    const sizes = Array.from({ length: 19 }, (_, i) => i + 8);
+    return sizes.map((size) => ({
+      label: `${size}-pt`,
+      description: currentSize === size ? "current" : undefined,
+    }));
   }
 }

@@ -1,56 +1,49 @@
 import { commands, workspace, ExtensionContext } from "vscode";
-import moment from "moment";
-import showMessage from "./messages";
+import { showWelcome, showRatingPrompt } from "./messages";
 import cmds from "./commands";
-
-import state from "./helpers/globalState";
 import { EXTENSION_NAME, stateProps } from "./helpers/constants";
+import { daysSince } from "./helpers/time";
 
 function createCommandName(name: string) {
   return `${EXTENSION_NAME}.${name}`;
 }
 
-interface registerCommand {
-  name: string;
-  handlerFunc: (...args: any[]) => any;
-  context: ExtensionContext;
-}
-
-function registerCommand({ name, handlerFunc, context }: registerCommand) {
-  return context.subscriptions.push(
-    commands.registerCommand(name, handlerFunc),
-  );
-}
-
 interface Command {
   name: string;
   handlerFunc: (...args: any[]) => any;
-  config?: any;
+  config?: (e: any) => any;
 }
 
 function createCommands(context: ExtensionContext) {
   cmds(context).forEach((command: Command) => {
-    const { name, config } = command;
-    registerCommand({ ...command, name: createCommandName(name), context });
-    workspace.onDidChangeConfiguration(config);
+    context.subscriptions.push(
+      commands.registerCommand(
+        createCommandName(command.name),
+        command.handlerFunc,
+      ),
+    );
+    if (command.config) {
+      context.subscriptions.push(
+        workspace.onDidChangeConfiguration(command.config),
+      );
+    }
   });
 }
 
 function onFirstActivate(context: ExtensionContext) {
-  if (!state.get(context, stateProps.SHOULD_NOT_SHOW_ON_START)) {
-    showMessage("onFirstStart");
-    state.update(context, stateProps.LAST_FOLLOW_UP, moment());
-    state.update(context, stateProps.SHOULD_NOT_SHOW_ON_START, true);
+  if (!context.globalState.get(stateProps.LAST_FOLLOW_UP)) {
+    showWelcome();
+    context.globalState.update(stateProps.LAST_FOLLOW_UP, Date.now());
   }
 }
 
 function timeSinceInstall(context: ExtensionContext) {
-  const lastFollowUp = state.get(context, stateProps.LAST_FOLLOW_UP) as Date;
-  const currentDate = moment();
-  const diff = currentDate.diff(lastFollowUp, "days");
-  if (diff >= 30 && !state.get(context, stateProps.SHOULD_NOT_SHOW_FOLLOW_UP)) {
-    showMessage("followUp", context);
-    state.update(context, stateProps.LAST_FOLLOW_UP, moment());
+  const stored = context.globalState.get(stateProps.LAST_FOLLOW_UP);
+  if (stored === undefined) return;
+  if (context.globalState.get(stateProps.SHOULD_NOT_SHOW_FOLLOW_UP)) return;
+  if (daysSince(stored as string | number) >= 30) {
+    showRatingPrompt(context);
+    context.globalState.update(stateProps.LAST_FOLLOW_UP, Date.now());
   }
 }
 
