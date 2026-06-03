@@ -9,3 +9,6 @@ coverage/
 dist/
 out/
 build/
+
+# local planning docs
+docs/superpowers/

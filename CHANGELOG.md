@@ -9,7 +9,7 @@ The format of this Change Log is based on [Keep a Changelog](http://keepachangel
 
 #### Added
 
-- Option to insert a script's command into the terminal without running it (`terminalAllInOne.script.disableAutoRun`). Closes [#414](https://github.com/YashTotale/terminal-all-in-one/issues/414).
+- Option to insert a script's command into the terminal without running it (`terminalAllInOne.script.disableAutoRun`).
 
 #### Changed
 

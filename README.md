@@ -28,14 +28,13 @@
 
 ## Commands & Keybindings
 
-Press `cmd+i` (macOS) or `ctrl+i` (Windows/Linux), then the key below — toggling the terminal is the one exception (no `i`). Every command is also available from the Command Palette under **Terminal All In One**. Set `terminalAllInOne.disableAllKeybindings` to `true` to turn the keybindings off.
+Press `cmd+i` (macOS) or `ctrl+i` (Windows/Linux), then the key below. Every command is also available from the Command Palette under **Terminal All In One**. Set `terminalAllInOne.disableAllKeybindings` to `true` to turn the keybindings off.
 
 | Keybinding             | Command                   | Description                                        |
 | ---------------------- | ------------------------- | -------------------------------------------------- |
 | `cmd/ctrl+i t`         | Choose Theme              | Live-preview and apply one of 100+ terminal themes |
 | `cmd/ctrl+i enter`     | Run Script                | Pick a saved script to run                         |
 | `cmd/ctrl+i 0`–`9`     | Run Script                | Run one of your first 10 saved scripts directly    |
-| `` cmd/ctrl+` ``       | Toggle Terminal           | Show or hide the integrated terminal               |
 | `cmd/ctrl+i m`         | Toggle Maximized Terminal | Maximize or restore the terminal panel             |
 | `cmd/ctrl+i c`         | Create New Terminal       | Open a new terminal instance                       |
 | `cmd/ctrl+i d`         | Delete Current Terminal   | Close the active terminal                          |

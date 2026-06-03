@@ -16,6 +16,10 @@ node_modules/
 # Demos (referenced via raw GitHub URLs, never loaded from the package)
 demos/
 
+# Dev tooling & local docs (never shipped in the extension)
+scripts/
+docs/
+
 # Misc
 **/*.map
 .*
