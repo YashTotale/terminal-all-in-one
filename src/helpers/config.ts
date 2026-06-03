@@ -20,13 +20,14 @@ interface UpdateConfig {
   value: any;
 }
 
-export const updateConfig = function ({
+// async/await so both synchronous throws and async update() rejections reach showError; resolves (never rejects) so fire-and-forget callers don't leak unhandled rejections.
+export const updateConfig = async function ({
   config,
   section,
   value,
 }: UpdateConfig) {
   try {
-    configuration(config).update(section, value, true);
+    await configuration(config).update(section, value, true);
   } catch (e) {
     showError(e instanceof Error ? e.message : String(e));
   }
@@ -55,13 +56,14 @@ export const inspectScope = function (section: string): ScopedValue {
   return { target: ConfigurationTarget.Global, value: info?.globalValue };
 };
 
-export const writeScoped = function (
+// Same handling as updateConfig: await so async rejections surface to showError instead of leaking from non-awaiting callers (live preview, toggleBlinkingCursor, adjustFontSizeByOne).
+export const writeScoped = async function (
   section: string,
   value: any,
   target: ConfigurationTarget,
 ) {
   try {
-    return configuration().update(section, value, target);
+    return await configuration().update(section, value, target);
   } catch (e) {
     showError(e instanceof Error ? e.message : String(e));
     return undefined;

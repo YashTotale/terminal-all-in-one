@@ -7,14 +7,21 @@ suite("RunScript.execute", () => {
   const realCreateTerminal = window.createTerminal;
   const realExecuteCommand = commands.executeCommand;
   let sequence: string | undefined;
+  let originalActiveTerminal: PropertyDescriptor | undefined;
+  let activeTerminalRedefined = false;
 
   suiteSetup(() => {
     // No real terminals are ever created in tests, so activeTerminal stays undefined and execute() takes the createTerminal path.
+    originalActiveTerminal = Object.getOwnPropertyDescriptor(
+      window,
+      "activeTerminal",
+    );
     try {
       Object.defineProperty(window, "activeTerminal", {
         configurable: true,
         get: () => undefined,
       });
+      activeTerminalRedefined = true;
     } catch {
       // Fall back to the "no real terminal in the test host" assumption.
     }
@@ -27,6 +34,13 @@ suite("RunScript.execute", () => {
     (
       commands as { executeCommand: typeof commands.executeCommand }
     ).executeCommand = realExecuteCommand;
+    if (activeTerminalRedefined) {
+      if (originalActiveTerminal) {
+        Object.defineProperty(window, "activeTerminal", originalActiveTerminal);
+      } else {
+        delete (window as { activeTerminal?: unknown }).activeTerminal;
+      }
+    }
     await workspace
       .getConfiguration("terminalAllInOne")
       .update("script.disableAutoRun", undefined, ConfigurationTarget.Global);

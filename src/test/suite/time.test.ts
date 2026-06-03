@@ -10,7 +10,8 @@ suite("daysSince", () => {
 
   test("computes days from a millisecond number (new value)", () => {
     const fortyDaysAgo = Date.now() - 40 * DAY_MS;
-    assert.ok(daysSince(fortyDaysAgo) >= 39.9, "expected >= ~40 days");
+    const d = daysSince(fortyDaysAgo);
+    assert.ok(d >= 39.9 && d <= 40.1, `expected ~40, got ${d}`);
   });
 
   test("returns NaN for unparseable input", () => {

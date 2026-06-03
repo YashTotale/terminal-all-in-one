@@ -13,7 +13,7 @@ The format of this Change Log is based on [Keep a Changelog](http://keepachangel
 
 #### Changed
 
-- **v2.0.0 modernization** — simplified the extension's internals, refreshed the docs, and modernized the toolchain, with no user-facing breaking changes. Saved scripts, terminal themes, and keybindings all work exactly as before.
+- **v2.0.0 modernization** — simplified the extension's internals, refreshed the docs, and modernized the toolchain. Saved scripts, terminal themes, and keybindings all work exactly as before; only a few rarely-used message and description settings were removed (see Removed below).
 - Running a script no longer force-interrupts a command already running in the terminal.
 
 #### Fixed
