@@ -7,6 +7,12 @@
 <p align="center"><strong>Save and run terminal scripts, apply 100+ terminal themes, and control your terminal with keybindings</strong></p>
 
 <p align="center">
+  <a href="https://marketplace.visualstudio.com/items?itemName=yasht.terminal-all-in-one"><img src="https://vsmarketplacebadges.dev/version-short/yasht.terminal-all-in-one.svg?style=for-the-badge&labelColor=000000&label=Version&color=007ACC&logo=gnometerminal&logoColor=FFFFFF" alt="Version"></a>&nbsp;
+  <a href="https://marketplace.visualstudio.com/items?itemName=yasht.terminal-all-in-one"><img src="https://vsmarketplacebadges.dev/installs-short/yasht.terminal-all-in-one.svg?style=for-the-badge&labelColor=000000&label=Installs&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI%2BPHBhdGggZmlsbD0iI2ZmZiIgZD0iTTUgMjBoMTR2LTJINXYyek0xMiA0djguMTdsMy41OS0zLjU4TDE3IDEwbC01IDUtNS01IDEuNDEtMS40MUwxMSAxMi4xN1Y0aDJ6Ii8%2BPC9zdmc%2B" alt="Installs"></a>&nbsp;
+  <a href="https://marketplace.visualstudio.com/items?itemName=yasht.terminal-all-in-one&ssr=false#review-details"><img src="https://vsmarketplacebadges.dev/rating-short/yasht.terminal-all-in-one.svg?style=for-the-badge&labelColor=000000&label=Rating&color=FE7D37&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI%2BPHBhdGggZmlsbD0iI2ZmZiIgZD0iTTEyIDJsMy4wOSA2LjI2TDIyIDkuMjdsLTUgNC44NyAxLjE4IDYuODhMMTIgMTcuNzdsLTYuMTggMy4yNUw3IDE0LjE0IDIgOS4yN2w2LjkxLTEuMDF6Ii8%2BPC9zdmc%2B" alt="Rating"></a>
+</p>
+
+<p align="center">
   <img src="https://raw.githubusercontent.com/YashTotale/terminal-all-in-one/master/demos/ChooseATerminalTheme.gif" alt="Choosing a terminal theme" width="600">
 </p>
 
