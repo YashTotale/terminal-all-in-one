@@ -24,14 +24,14 @@ function createCommands(context: ExtensionContext) {
   });
 }
 
-function onFirstActivate(context: ExtensionContext) {
+export function onFirstActivate(context: ExtensionContext) {
   if (!context.globalState.get(stateProps.LAST_FOLLOW_UP)) {
     showWelcome();
     context.globalState.update(stateProps.LAST_FOLLOW_UP, Date.now());
   }
 }
 
-function timeSinceInstall(context: ExtensionContext) {
+export function timeSinceInstall(context: ExtensionContext) {
   const stored = context.globalState.get(stateProps.LAST_FOLLOW_UP);
   if (stored === undefined) return;
   if (context.globalState.get(stateProps.SHOULD_NOT_SHOW_FOLLOW_UP)) return;

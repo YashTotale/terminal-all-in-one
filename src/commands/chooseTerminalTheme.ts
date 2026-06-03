@@ -67,7 +67,7 @@ export function onTerminalThemeChange(event: ConfigurationChangeEvent) {
 }
 
 // Merge the theme's terminal colors onto the user's existing colorCustomizations, written at that setting's real scope. "None" strips terminal colors.
-function applyTheme(themeName: string) {
+export function applyTheme(themeName: string) {
   const themeIndex = themes.findIndex((t: theme) => t.name === themeName);
   if (themeIndex === -1) {
     return showThemeDoesNotExist();

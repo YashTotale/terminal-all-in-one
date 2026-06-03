@@ -55,7 +55,7 @@ export function execute({ name, script }: ScriptObject) {
   });
 }
 
-function getScriptsConfig(): ScriptObject[] {
+export function getScriptsConfig(): ScriptObject[] {
   const scripts = getConfig({ config: EXTENSION_NAME, section: "scripts" });
   if (!Array.isArray(scripts)) return [];
   return scripts.filter(

@@ -9,7 +9,7 @@ import {
 
 const DONT_SHOW = "Don't Show Again";
 
-function messagesEnabled() {
+export function messagesEnabled() {
   return !getConfig({ section: `${EXTENSION_NAME}.disableAllMessages` });
 }
 
