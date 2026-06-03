@@ -84,8 +84,11 @@ export default class BaseCommand {
     options?: QuickPickOptions;
   }) {
     const original = inspectScope(section);
+    let previewWrite: Promise<unknown> = Promise.resolve();
     const preview = debounce((item: T) => {
-      writeScoped(section, toValue(item), original.target);
+      previewWrite = Promise.resolve(
+        writeScoped(section, toValue(item), original.target),
+      );
     }, 300);
     let picked: T | undefined;
     try {
@@ -95,14 +98,15 @@ export default class BaseCommand {
         ...options,
         onDidSelectItem: (item) => preview(item as T),
       });
-      if (picked) {
-        await writeScoped(section, toValue(picked), original.target);
-      }
     } finally {
+      // Stop new previews, let any in-flight preview write settle, then write the final value last so a late preview can't clobber it.
       preview.cancel();
-      if (!picked) {
-        await writeScoped(section, original.value, original.target);
-      }
+      await previewWrite;
+      await writeScoped(
+        section,
+        picked ? toValue(picked) : original.value,
+        original.target,
+      );
     }
     return picked;
   }

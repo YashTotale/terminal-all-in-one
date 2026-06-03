@@ -36,8 +36,9 @@ export default class ChooseTerminalTheme extends BaseCommand {
     }));
 
     const original = inspectScope(COLOR_CUSTOMIZATIONS);
+    let previewWrite: Promise<unknown> = Promise.resolve();
     const preview = debounce((item: QuickPickItem) => {
-      this.applyTheme(item.label);
+      previewWrite = Promise.resolve(this.applyTheme(item.label));
     }, 300);
 
     let picked: QuickPickItem | undefined;
@@ -47,13 +48,14 @@ export default class ChooseTerminalTheme extends BaseCommand {
         placeHolder: "Choose a Terminal Theme",
         onDidSelectItem: (item) => preview(item as QuickPickItem),
       });
+    } finally {
+      // Stop new previews and let any in-flight preview settle before finalizing, so a late preview can't clobber the accepted theme or the restore.
+      preview.cancel();
+      await previewWrite;
       if (picked) {
         // Persist the theme name; the configChange listener applies its colors at the correct scope.
         this.updateThemeConfig(picked.label);
-      }
-    } finally {
-      preview.cancel();
-      if (!picked) {
+      } else {
         await writeScoped(
           COLOR_CUSTOMIZATIONS,
           original.value,
