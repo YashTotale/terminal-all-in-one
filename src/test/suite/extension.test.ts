@@ -8,6 +8,7 @@ import {
 } from "../../extension";
 import { stateProps } from "../../helpers/constants";
 import { DAY_MS } from "../../helpers/time";
+import { stub } from "./helpers";
 
 function fakeContext(initial: Record<string, unknown> = {}) {
   const store = new Map(Object.entries(initial));
@@ -28,13 +29,11 @@ suite("extension startup gating", () => {
 
   suiteSetup(() => {
     // Silence the welcome / rating prompts so the gating logic runs without UI.
-    (window as { showInformationMessage: any }).showInformationMessage =
-      async () => undefined;
+    stub(window, "showInformationMessage", async () => undefined);
   });
 
   suiteTeardown(() => {
-    (window as { showInformationMessage: any }).showInformationMessage =
-      realInfo;
+    stub(window, "showInformationMessage", realInfo);
   });
 
   test("activate and deactivate are exported", () => {

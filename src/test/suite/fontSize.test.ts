@@ -1,58 +1,44 @@
 import assert from "assert";
-import { window, commands, workspace, ConfigurationTarget } from "vscode";
+import { window, commands } from "vscode";
 import { changeFontSize } from "../../commands/fontSize";
+import { tick, stub, globalSetting } from "./helpers";
 
 const SECTION = "terminal.integrated.fontSize";
-const tick = () => new Promise((r) => setTimeout(r, 100));
 
 suite("fontSize commands", () => {
   const realShowQuickPick = window.showQuickPick;
-  let original: number | undefined;
+  const size = globalSetting<number>(SECTION);
 
-  suiteSetup(() => {
-    original = workspace.getConfiguration().inspect(SECTION)?.globalValue as
-      | number
-      | undefined;
-  });
+  suiteSetup(size.capture);
 
   suiteTeardown(async () => {
-    (window as { showQuickPick: any }).showQuickPick = realShowQuickPick;
-    await workspace
-      .getConfiguration()
-      .update(SECTION, original, ConfigurationTarget.Global);
+    stub(window, "showQuickPick", realShowQuickPick);
+    await size.restore();
   });
 
   test("increase then decrease adjusts by 1 at global scope", async () => {
-    await workspace
-      .getConfiguration()
-      .update(SECTION, 12, ConfigurationTarget.Global);
+    await size.set(12);
     await commands.executeCommand("terminalAllInOne.increaseFontSize");
     await tick();
-    assert.strictEqual(
-      workspace.getConfiguration().inspect(SECTION)?.globalValue,
-      13,
-    );
+    assert.strictEqual(size.value(), 13);
     await commands.executeCommand("terminalAllInOne.decreaseFontSize");
     await tick();
-    assert.strictEqual(workspace.getConfiguration().get(SECTION), 12);
+    assert.strictEqual(size.value(), 12);
   });
 
   test("changeFontSize persists the picked size", async () => {
-    await workspace
-      .getConfiguration()
-      .update(SECTION, 12, ConfigurationTarget.Global);
-    (window as { showQuickPick: any }).showQuickPick = async (items: any[]) =>
-      items.find((i) => i.label === "16-pt");
+    await size.set(12);
+    stub(window, "showQuickPick", async (items: any[]) =>
+      items.find((i) => i.label === "16-pt"),
+    );
     await changeFontSize();
-    assert.strictEqual(workspace.getConfiguration().get(SECTION), 16);
+    assert.strictEqual(size.value(), 16);
   });
 
   test("changeFontSize restores on cancel", async () => {
-    await workspace
-      .getConfiguration()
-      .update(SECTION, 11, ConfigurationTarget.Global);
-    (window as { showQuickPick: any }).showQuickPick = async () => undefined;
+    await size.set(11);
+    stub(window, "showQuickPick", async () => undefined);
     await changeFontSize();
-    assert.strictEqual(workspace.getConfiguration().get(SECTION), 11);
+    assert.strictEqual(size.value(), 11);
   });
 });

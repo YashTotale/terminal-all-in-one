@@ -5,6 +5,7 @@ import {
   EXTENSION_NAME_W_PUBLISHER,
 } from "../../helpers/constants";
 import commandList from "../../commands";
+import { stub } from "./helpers";
 
 suite("manifest ↔ registration parity", () => {
   const extension = extensions.getExtension(EXTENSION_NAME_W_PUBLISHER);
@@ -49,15 +50,15 @@ suite("passthrough commands", () => {
   let calls: string[];
 
   suiteTeardown(() => {
-    (commands as { executeCommand: any }).executeCommand = realExecuteCommand;
+    stub(commands, "executeCommand", realExecuteCommand);
   });
 
   setup(() => {
     calls = [];
-    (commands as { executeCommand: any }).executeCommand = (cmd: string) => {
+    stub(commands, "executeCommand", (cmd: string) => {
       calls.push(cmd);
       return Promise.resolve();
-    };
+    });
   });
 
   test("a single-command passthrough runs its built-in", async () => {

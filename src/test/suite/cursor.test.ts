@@ -1,6 +1,7 @@
 import assert from "assert";
-import { window, commands, workspace, ConfigurationTarget } from "vscode";
+import { window, commands } from "vscode";
 import { changeCursorStyle, changeCursorWidth } from "../../commands/cursor";
+import { stub, globalSetting } from "./helpers";
 
 const BLINK = "terminal.integrated.cursorBlinking";
 const STYLE = "terminal.integrated.cursorStyle";
@@ -8,64 +9,53 @@ const WIDTH = "terminal.integrated.cursorWidth";
 
 suite("cursor commands", () => {
   const realShowQuickPick = window.showQuickPick;
-  let origBlink: boolean | undefined;
-  let origStyle: string | undefined;
-  let origWidth: number | undefined;
+  const blink = globalSetting<boolean>(BLINK);
+  const style = globalSetting<string>(STYLE);
+  const width = globalSetting<number>(WIDTH);
 
   suiteSetup(() => {
-    const c = workspace.getConfiguration();
-    origBlink = c.inspect(BLINK)?.globalValue as boolean | undefined;
-    origStyle = c.inspect(STYLE)?.globalValue as string | undefined;
-    origWidth = c.inspect(WIDTH)?.globalValue as number | undefined;
+    blink.capture();
+    style.capture();
+    width.capture();
   });
 
   suiteTeardown(async () => {
-    (window as { showQuickPick: any }).showQuickPick = realShowQuickPick;
-    const c = workspace.getConfiguration();
-    await c.update(BLINK, origBlink, ConfigurationTarget.Global);
-    await c.update(STYLE, origStyle, ConfigurationTarget.Global);
-    await c.update(WIDTH, origWidth, ConfigurationTarget.Global);
+    stub(window, "showQuickPick", realShowQuickPick);
+    await blink.restore();
+    await style.restore();
+    await width.restore();
   });
 
   test("toggleBlinkingCursor flips the setting at global scope", async () => {
-    await workspace
-      .getConfiguration()
-      .update(BLINK, false, ConfigurationTarget.Global);
+    await blink.set(false);
     await commands.executeCommand("terminalAllInOne.toggleBlinkingCursor");
-    assert.strictEqual(
-      workspace.getConfiguration().inspect(BLINK)?.globalValue,
-      true,
-    );
+    assert.strictEqual(blink.value(), true);
     await commands.executeCommand("terminalAllInOne.toggleBlinkingCursor");
-    assert.strictEqual(workspace.getConfiguration().get(BLINK), false);
+    assert.strictEqual(blink.value(), false);
   });
 
   test("changeCursorStyle persists the picked style", async () => {
-    await workspace
-      .getConfiguration()
-      .update(STYLE, "line", ConfigurationTarget.Global);
-    (window as { showQuickPick: any }).showQuickPick = async (items: any[]) =>
-      items.find((i) => i.label === "block");
+    await style.set("line");
+    stub(window, "showQuickPick", async (items: any[]) =>
+      items.find((i) => i.label === "block"),
+    );
     await changeCursorStyle();
-    assert.strictEqual(workspace.getConfiguration().get(STYLE), "block");
+    assert.strictEqual(style.value(), "block");
   });
 
   test("changeCursorStyle restores on cancel", async () => {
-    await workspace
-      .getConfiguration()
-      .update(STYLE, "underline", ConfigurationTarget.Global);
-    (window as { showQuickPick: any }).showQuickPick = async () => undefined;
+    await style.set("underline");
+    stub(window, "showQuickPick", async () => undefined);
     await changeCursorStyle();
-    assert.strictEqual(workspace.getConfiguration().get(STYLE), "underline");
+    assert.strictEqual(style.value(), "underline");
   });
 
   test("changeCursorWidth parses the picked label to a number", async () => {
-    await workspace
-      .getConfiguration()
-      .update(WIDTH, 1, ConfigurationTarget.Global);
-    (window as { showQuickPick: any }).showQuickPick = async (items: any[]) =>
-      items.find((i) => i.label === "5-pt");
+    await width.set(1);
+    stub(window, "showQuickPick", async (items: any[]) =>
+      items.find((i) => i.label === "5-pt"),
+    );
     await changeCursorWidth();
-    assert.strictEqual(workspace.getConfiguration().get(WIDTH), 5);
+    assert.strictEqual(width.value(), 5);
   });
 });
