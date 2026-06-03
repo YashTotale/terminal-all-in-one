@@ -1,6 +1,6 @@
 # Contributing to Terminal All In One
 
-Thanks for your interest in contributing! This guide covers local development, reporting issues, and asking questions.
+Thanks for your interest in contributing!
 
 ## Development Setup
 
