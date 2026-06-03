@@ -4,3 +4,6 @@ node_modules
 .DS_Store
 dist
 out
+
+# Demo source recordings (re-encode source for demos/*.gif); the GIFs are committed, the raw video is not
+demos/*.mp4

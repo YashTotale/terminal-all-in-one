@@ -7,7 +7,7 @@
 <p align="center"><strong>Save and run terminal scripts, apply 100+ terminal themes, and control your terminal with keybindings</strong></p>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/YashTotale/terminal-all-in-one/master/demos/ChooseATerminalTheme.gif" alt="Choosing a terminal theme" width="600">
+  <img src="https://raw.githubusercontent.com/YashTotale/terminal-all-in-one/master/demos/terminal-theme.gif" alt="Choosing a terminal theme" width="800">
 </p>
 
 ## Contents <!-- omit in toc -->
