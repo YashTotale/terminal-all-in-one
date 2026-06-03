@@ -4,7 +4,7 @@ import process from "node:process";
 
 const CHANGELOG_PATH = "CHANGELOG.md";
 
-// Body of the "### [<version>]" section: lines until the next "### [" heading, with thematic breaks (---) and surrounding whitespace stripped. Returns null if the heading is absent.
+// Body of the "### [<version>]" section: lines until the next "### [" heading, with the trailing --- separator and surrounding whitespace stripped. Returns null if the heading is absent.
 export function extractNotes(content, version) {
   const escaped = version.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
   const headingRe = new RegExp(`^### \\[${escaped}\\]`);
@@ -18,7 +18,7 @@ export function extractNotes(content, version) {
   }
   return body
     .join("\n")
-    .replace(/^\s*-{3,}\s*$/gm, "")
+    .replace(/\n\s*-{3,}\s*$/, "")
     .trim();
 }
 

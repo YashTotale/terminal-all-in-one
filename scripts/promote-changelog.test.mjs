@@ -38,6 +38,31 @@ test("extractNotes returns null for a missing section", () => {
   assert.equal(extractNotes(SAMPLE, "9.9.9"), null);
 });
 
+test("extractNotes keeps a --- inside the body, dropping only the trailing one", () => {
+  const withRule = [
+    "### [Unreleased]",
+    "",
+    "#### Added",
+    "",
+    "- Before the rule.",
+    "",
+    "---",
+    "",
+    "- After the rule.",
+    "",
+    "---",
+    "",
+    "### [1.0.0] - (2020-01-01)",
+    "",
+    "- Initial",
+    "",
+  ].join("\n");
+  assert.equal(
+    extractNotes(withRule, "Unreleased"),
+    "#### Added\n\n- Before the rule.\n\n---\n\n- After the rule.",
+  );
+});
+
 test("promote moves Unreleased content under a dated version heading", () => {
   const { promoted } = promote(SAMPLE, "2.0.0", "2026-06-03");
   assert.match(promoted, /### \[2\.0\.0\] - \(2026-06-03\)/);

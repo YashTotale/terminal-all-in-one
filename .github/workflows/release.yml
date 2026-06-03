@@ -137,7 +137,7 @@ jobs:
             git commit -m "Release v$VERSION [skip ci]"
           fi
           if ! git rev-parse -q --verify "refs/tags/v$VERSION" >/dev/null; then
-            git tag "v$VERSION"
+            git tag -a "v$VERSION" -m "v$VERSION"
           fi
           git push --follow-tags origin HEAD:master
 
