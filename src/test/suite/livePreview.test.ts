@@ -1,6 +1,6 @@
 import assert from "assert";
 import { window, workspace, ConfigurationTarget, QuickPickItem } from "vscode";
-import BaseCommand from "../../commands/baseCommand";
+import livePreview from "../../helpers/livePreview";
 
 const SECTION = "terminal.integrated.fontSize";
 
@@ -11,8 +11,7 @@ interface SizeItem extends QuickPickItem {
 const ITEMS: SizeItem[] = [8, 9, 10, 11].map((n) => ({ label: `${n}-pt` }));
 const toValue = (item: SizeItem) => parseInt(item.label.slice(0, -3));
 
-suite("BaseCommand.livePreview", () => {
-  const cmd = new BaseCommand("test", () => undefined);
+suite("livePreview", () => {
   const realShowQuickPick = window.showQuickPick;
   let original: number | undefined;
 
@@ -43,7 +42,7 @@ suite("BaseCommand.livePreview", () => {
   test("persists the picked value on accept", async () => {
     await setBaseline(12);
     stubQuickPick(async (items) => items[2]); // pick 10-pt
-    await cmd.livePreview({ section: SECTION, items: ITEMS, toValue });
+    await livePreview({ section: SECTION, items: ITEMS, toValue });
     assert.strictEqual(workspace.getConfiguration().get(SECTION), 10);
   });
 
@@ -57,7 +56,7 @@ suite("BaseCommand.livePreview", () => {
       options.onDidSelectItem?.(ITEMS[3]);
       return undefined;
     });
-    await cmd.livePreview({ section: SECTION, items: ITEMS, toValue });
+    await livePreview({ section: SECTION, items: ITEMS, toValue });
     assert.strictEqual(workspace.getConfiguration().get(SECTION), 12);
   });
 });

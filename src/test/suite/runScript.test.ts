@@ -1,9 +1,8 @@
 import assert from "assert";
 import { window, commands, workspace, ConfigurationTarget } from "vscode";
-import RunScript from "../../commands/runScript";
+import { execute } from "../../commands/runScript";
 
-suite("RunScript.execute", () => {
-  const cmd = new RunScript({ subscriptions: [] } as never);
+suite("runScript execute", () => {
   const realCreateTerminal = window.createTerminal;
   const realExecuteCommand = commands.executeCommand;
   let sequence: string | undefined;
@@ -65,7 +64,7 @@ suite("RunScript.execute", () => {
     await workspace
       .getConfiguration("terminalAllInOne")
       .update("script.disableAutoRun", false, ConfigurationTarget.Global);
-    await cmd.execute({ name: "Multi", script: ["a", "b", "c"] });
+    await execute({ name: "Multi", script: ["a", "b", "c"] });
     assert.strictEqual(sequence, "a && b && c\r");
   });
 
@@ -73,7 +72,7 @@ suite("RunScript.execute", () => {
     await workspace
       .getConfiguration("terminalAllInOne")
       .update("script.disableAutoRun", true, ConfigurationTarget.Global);
-    await cmd.execute({ name: "Solo", script: "echo hi" });
+    await execute({ name: "Solo", script: "echo hi" });
     assert.strictEqual(sequence, "echo hi");
   });
 });
