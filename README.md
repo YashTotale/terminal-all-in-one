@@ -82,6 +82,6 @@ Scripts support [VS Code variables](https://code.visualstudio.com/docs/editor/va
 
 ## Contributing
 
-Contributions are welcome! See [CONTRIBUTING.md](CONTRIBUTING.md) for local development setup. To report a bug or request a feature, open an [issue](https://github.com/YashTotale/terminal-all-in-one/issues/new/choose); for usage questions, start a thread in [Discussions](https://github.com/YashTotale/terminal-all-in-one/discussions/categories/q-a).
+Contributions are welcome! See [CONTRIBUTING.md](https://github.com/YashTotale/terminal-all-in-one?tab=contributing-ov-file#readme) for local development setup. To report a bug or request a feature, open an [issue](https://github.com/YashTotale/terminal-all-in-one/issues/new/choose); for usage questions, start a thread in [Discussions](https://github.com/YashTotale/terminal-all-in-one/discussions/categories/q-a).
 
-Licensed under [MIT](LICENSE).
+Licensed under [MIT](https://github.com/YashTotale/terminal-all-in-one?tab=MIT-1-ov-file#readme).
