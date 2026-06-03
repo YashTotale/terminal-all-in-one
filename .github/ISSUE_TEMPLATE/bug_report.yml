@@ -60,7 +60,7 @@ body:
     attributes:
       label: Extension version
       description: Shown next to "Terminal All In One" in the Extensions view.
-      placeholder: "1.12.2"
+      placeholder: "2.0.0"
     validations:
       required: true
   - type: input
@@ -68,7 +68,7 @@ body:
     attributes:
       label: VS Code version
       description: From Help → About, or run `code --version`.
-      placeholder: "1.85.0"
+      placeholder: "1.96.0"
     validations:
       required: true
   - type: input

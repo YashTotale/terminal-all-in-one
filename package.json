@@ -1,15 +1,15 @@
 {
   "keywords": [
     "terminal",
+    "terminal themes",
+    "scripts",
     "keybindings",
     "shell",
-    "keymap",
-    "theme",
-    "script"
+    "base16"
   ],
   "name": "terminal-all-in-one",
   "displayName": "Terminal All In One",
-  "description": "Supercharge your terminal with themes, commands, scripts, and key bindings!",
+  "description": "Apply 100+ terminal themes, save and run terminal scripts, and control your terminal with keybindings",
   "version": "1.12.2",
   "homepage": "https://marketplace.visualstudio.com/items?itemName=yasht.terminal-all-in-one",
   "license": "MIT",
@@ -25,9 +25,10 @@
   "bugs": {
     "url": "https://github.com/YashTotale/terminal-all-in-one/issues"
   },
+  "qna": "https://github.com/YashTotale/terminal-all-in-one/discussions/categories/q-a",
   "icon": "images/terminal-icon.jpg",
   "author": {
-    "name": "Yash T"
+    "name": "Yash Totale"
   },
   "main": "./dist/extension",
   "engines": {
@@ -36,7 +37,6 @@
   },
   "packageManager": "pnpm@11.0.8+sha512.4c4097e1dd2d42372c4e7fa5a791ff28fc75a484c7ac192e64b1df0fdef17594ba982f9b4fed9adfb3c757846f565b799b2763fb3733d1de1bcb82cf46684912",
   "categories": [
-    "Other",
     "Keymaps",
     "Themes"
   ],
