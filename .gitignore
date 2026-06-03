@@ -4,3 +4,6 @@ node_modules
 .DS_Store
 dist
 out
+
+# Raw demo recordings; only the generated GIFs are committed.
+demos/*.mp4
