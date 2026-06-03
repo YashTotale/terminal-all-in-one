@@ -1,15 +1,21 @@
 import assert from "assert";
-import { window, commands, workspace, ConfigurationTarget } from "vscode";
+import { window, commands } from "vscode";
 import { execute, runScript, getScriptsConfig } from "../../commands/runScript";
+import { stub, globalSetting } from "./helpers";
 
 suite("runScript execute", () => {
   const realCreateTerminal = window.createTerminal;
   const realExecuteCommand = commands.executeCommand;
+  const autoRun = globalSetting<boolean>(
+    "script.disableAutoRun",
+    "terminalAllInOne",
+  );
   let sequence: string | undefined;
   let originalActiveTerminal: PropertyDescriptor | undefined;
   let activeTerminalRedefined = false;
 
   suiteSetup(() => {
+    autoRun.capture();
     // No real terminals are ever created in tests, so activeTerminal stays undefined and execute() takes the createTerminal path.
     originalActiveTerminal = Object.getOwnPropertyDescriptor(
       window,
@@ -27,12 +33,8 @@ suite("runScript execute", () => {
   });
 
   suiteTeardown(async () => {
-    (
-      window as { createTerminal: typeof window.createTerminal }
-    ).createTerminal = realCreateTerminal;
-    (
-      commands as { executeCommand: typeof commands.executeCommand }
-    ).executeCommand = realExecuteCommand;
+    stub(window, "createTerminal", realCreateTerminal);
+    stub(commands, "executeCommand", realExecuteCommand);
     if (activeTerminalRedefined) {
       if (originalActiveTerminal) {
         Object.defineProperty(window, "activeTerminal", originalActiveTerminal);
@@ -40,66 +42,52 @@ suite("runScript execute", () => {
         delete (window as { activeTerminal?: unknown }).activeTerminal;
       }
     }
-    await workspace
-      .getConfiguration("terminalAllInOne")
-      .update("script.disableAutoRun", undefined, ConfigurationTarget.Global);
+    await autoRun.restore();
   });
 
   setup(() => {
     sequence = undefined;
-    (window as { createTerminal: any }).createTerminal = () =>
-      ({ show() {} }) as never;
-    (commands as { executeCommand: any }).executeCommand = (
-      command: string,
-      args?: { text?: string },
-    ) => {
-      if (command === "workbench.action.terminal.sendSequence") {
-        sequence = args?.text;
-      }
-      return Promise.resolve();
-    };
+    stub(window, "createTerminal", () => ({ show() {} }) as never);
+    stub(
+      commands,
+      "executeCommand",
+      (command: string, args?: { text?: string }) => {
+        if (command === "workbench.action.terminal.sendSequence") {
+          sequence = args?.text;
+        }
+        return Promise.resolve();
+      },
+    );
   });
 
   test("joins array commands with && and runs them (trailing carriage return)", async () => {
-    await workspace
-      .getConfiguration("terminalAllInOne")
-      .update("script.disableAutoRun", false, ConfigurationTarget.Global);
+    await autoRun.set(false);
     await execute({ name: "Multi", script: ["a", "b", "c"] });
     assert.strictEqual(sequence, "a && b && c\r");
   });
 
   test("disableAutoRun inserts the command without running it (no carriage return)", async () => {
-    await workspace
-      .getConfiguration("terminalAllInOne")
-      .update("script.disableAutoRun", true, ConfigurationTarget.Global);
+    await autoRun.set(true);
     await execute({ name: "Solo", script: "echo hi" });
     assert.strictEqual(sequence, "echo hi");
   });
 });
 
 suite("getScriptsConfig", () => {
-  suiteTeardown(async () => {
-    await workspace
-      .getConfiguration("terminalAllInOne")
-      .update("scripts", undefined, ConfigurationTarget.Global);
-  });
+  const scripts = globalSetting<unknown[]>("scripts", "terminalAllInOne");
+
+  suiteTeardown(() => scripts.set(undefined));
 
   test("keeps valid entries and drops malformed ones", async () => {
-    await workspace
-      .getConfiguration("terminalAllInOne")
-      .update(
-        "scripts",
-        [
-          { name: "ok", script: "echo hi" },
-          { name: "arr", script: ["a", "b"] },
-          { name: "missingScript" },
-          { script: "missingName" },
-          "not an object",
-          null,
-          { name: 1, script: "badName" },
-        ],
-        ConfigurationTarget.Global,
-      );
+    await scripts.set([
+      { name: "ok", script: "echo hi" },
+      { name: "arr", script: ["a", "b"] },
+      { name: "missingScript" },
+      { script: "missingName" },
+      "not an object",
+      null,
+      { name: 1, script: "badName" },
+    ]);
     assert.deepStrictEqual(getScriptsConfig(), [
       { name: "ok", script: "echo hi" },
       { name: "arr", script: ["a", "b"] },
@@ -107,9 +95,7 @@ suite("getScriptsConfig", () => {
   });
 
   test("returns [] when scripts is unset", async () => {
-    await workspace
-      .getConfiguration("terminalAllInOne")
-      .update("scripts", undefined, ConfigurationTarget.Global);
+    await scripts.set(undefined);
     assert.deepStrictEqual(getScriptsConfig(), []);
   });
 });
@@ -119,49 +105,40 @@ suite("runScript routing", () => {
   const realShowWarningMessage = window.showWarningMessage;
   const realExecuteCommand = commands.executeCommand;
   const realCreateTerminal = window.createTerminal;
+  const scripts = globalSetting<unknown[]>("scripts", "terminalAllInOne");
   let sequence: string | undefined;
   let warning: string | undefined;
 
   suiteTeardown(async () => {
-    (window as { showQuickPick: any }).showQuickPick = realShowQuickPick;
-    (window as { showWarningMessage: any }).showWarningMessage =
-      realShowWarningMessage;
-    (commands as { executeCommand: any }).executeCommand = realExecuteCommand;
-    (window as { createTerminal: any }).createTerminal = realCreateTerminal;
-    await workspace
-      .getConfiguration("terminalAllInOne")
-      .update("scripts", undefined, ConfigurationTarget.Global);
+    stub(window, "showQuickPick", realShowQuickPick);
+    stub(window, "showWarningMessage", realShowWarningMessage);
+    stub(commands, "executeCommand", realExecuteCommand);
+    stub(window, "createTerminal", realCreateTerminal);
+    await scripts.set(undefined);
   });
 
   setup(() => {
     sequence = undefined;
     warning = undefined;
-    (window as { createTerminal: any }).createTerminal = () => ({ show() {} });
-    (window as { showWarningMessage: any }).showWarningMessage = (
-      msg: string,
-    ) => {
+    stub(window, "createTerminal", () => ({ show() {} }));
+    stub(window, "showWarningMessage", (msg: string) => {
       warning = msg;
       return Promise.resolve(undefined);
-    };
-    (commands as { executeCommand: any }).executeCommand = (
-      command: string,
-      args?: { text?: string },
-    ) => {
-      if (command === "workbench.action.terminal.sendSequence") {
-        sequence = args?.text;
-      }
-      return Promise.resolve();
-    };
+    });
+    stub(
+      commands,
+      "executeCommand",
+      (command: string, args?: { text?: string }) => {
+        if (command === "workbench.action.terminal.sendSequence") {
+          sequence = args?.text;
+        }
+        return Promise.resolve();
+      },
+    );
   });
 
-  async function setScripts(scripts: unknown[]) {
-    await workspace
-      .getConfiguration("terminalAllInOne")
-      .update("scripts", scripts, ConfigurationTarget.Global);
-  }
-
   test("a valid index runs that script", async () => {
-    await setScripts([
+    await scripts.set([
       { name: "first", script: "echo one" },
       { name: "second", script: "echo two" },
     ]);
@@ -170,25 +147,24 @@ suite("runScript routing", () => {
   });
 
   test("an out-of-range index warns and runs nothing", async () => {
-    await setScripts([{ name: "only", script: "echo one" }]);
+    await scripts.set([{ name: "only", script: "echo one" }]);
     await runScript(5);
     assert.strictEqual(sequence, undefined);
     assert.strictEqual(warning, "No script has been defined for that index");
   });
 
   test("no scripts and no index warns", async () => {
-    await setScripts([]);
+    await scripts.set([]);
     await runScript();
     assert.strictEqual(warning, "No scripts have been defined");
   });
 
   test("the picker runs the selected script", async () => {
-    await setScripts([
+    await scripts.set([
       { name: "first", script: "echo one" },
       { name: "second", script: "echo two" },
     ]);
-    (window as { showQuickPick: any }).showQuickPick = async (items: any[]) =>
-      items[1];
+    stub(window, "showQuickPick", async (items: any[]) => items[1]);
     await runScript();
     assert.strictEqual(sequence, "echo two\r");
   });

@@ -1,117 +1,95 @@
 import assert from "assert";
-import { window, workspace, ConfigurationTarget } from "vscode";
+import { window } from "vscode";
 import {
   applyTheme,
   onTerminalThemeChange,
   chooseTerminalTheme,
 } from "../../commands/chooseTerminalTheme";
 import themes from "../../themes.json";
+import { tick, stub, globalSetting } from "./helpers";
 
 const COLORS = "workbench.colorCustomizations";
 const THEME = "terminalAllInOne.terminalTheme";
 const sample = themes[0];
 
-function colorsValue() {
-  return workspace.getConfiguration().inspect(COLORS)?.globalValue as
-    | Record<string, string>
-    | undefined;
-}
-async function setColors(value: Record<string, string> | undefined) {
-  await workspace
-    .getConfiguration()
-    .update(COLORS, value, ConfigurationTarget.Global);
-}
-const tick = () => new Promise((r) => setTimeout(r, 100));
-
 suite("chooseTerminalTheme", () => {
   const realShowQuickPick = window.showQuickPick;
   const realShowErrorMessage = window.showErrorMessage;
-  let originalColors: Record<string, string> | undefined;
-  let originalTheme: string | undefined;
+  const colors = globalSetting<Record<string, string>>(COLORS);
+  const theme = globalSetting<string>(THEME);
 
   suiteSetup(() => {
-    originalColors = colorsValue();
-    originalTheme = workspace.getConfiguration().inspect(THEME)?.globalValue as
-      | string
-      | undefined;
+    colors.capture();
+    theme.capture();
   });
 
   suiteTeardown(async () => {
-    (window as { showQuickPick: any }).showQuickPick = realShowQuickPick;
-    (window as { showErrorMessage: any }).showErrorMessage =
-      realShowErrorMessage;
-    await setColors(originalColors);
-    await workspace
-      .getConfiguration()
-      .update(THEME, originalTheme, ConfigurationTarget.Global);
+    stub(window, "showQuickPick", realShowQuickPick);
+    stub(window, "showErrorMessage", realShowErrorMessage);
+    await colors.restore();
+    await theme.restore();
   });
 
   test("applyTheme merges the theme's colors onto existing customizations", async () => {
-    await setColors({ "editor.background": "#123456" });
+    await colors.set({ "editor.background": "#123456" });
     await applyTheme(sample.name);
-    assert.deepStrictEqual(colorsValue(), {
+    assert.deepStrictEqual(colors.value(), {
       "editor.background": "#123456",
       ...sample.colors,
     });
   });
 
   test("applyTheme('None') strips terminal colors, keeping the rest", async () => {
-    await setColors({
+    await colors.set({
       "editor.background": "#123456",
       "terminal.background": "#000000",
       "terminalCursor.foreground": "#ffffff",
     });
     await applyTheme("None");
-    assert.deepStrictEqual(colorsValue(), { "editor.background": "#123456" });
+    assert.deepStrictEqual(colors.value(), { "editor.background": "#123456" });
   });
 
   test("applyTheme on an unknown theme errors and writes nothing", async () => {
-    await setColors({ "editor.background": "#123456" });
+    await colors.set({ "editor.background": "#123456" });
     let shown = false;
-    (window as { showErrorMessage: any }).showErrorMessage = () => {
+    stub(window, "showErrorMessage", () => {
       shown = true;
       return Promise.resolve(undefined);
-    };
+    });
     await applyTheme("Definitely Not A Real Theme");
     assert.ok(shown, "expected the theme-does-not-exist error");
-    assert.deepStrictEqual(colorsValue(), { "editor.background": "#123456" });
+    assert.deepStrictEqual(colors.value(), { "editor.background": "#123456" });
   });
 
   test("onTerminalThemeChange applies the saved theme only when affected", async () => {
-    await workspace
-      .getConfiguration()
-      .update(THEME, sample.name, ConfigurationTarget.Global);
+    await theme.set(sample.name);
     await tick();
-    await setColors({});
+    await colors.set({});
     onTerminalThemeChange({
       affectsConfiguration: (s: string) => s === THEME,
     } as any);
     await tick();
-    assert.deepStrictEqual(colorsValue(), { ...sample.colors });
+    assert.deepStrictEqual(colors.value(), { ...sample.colors });
 
-    await setColors({ "editor.background": "#123456" });
+    await colors.set({ "editor.background": "#123456" });
     onTerminalThemeChange({ affectsConfiguration: () => false } as any);
     await tick();
-    assert.deepStrictEqual(colorsValue(), { "editor.background": "#123456" });
+    assert.deepStrictEqual(colors.value(), { "editor.background": "#123456" });
   });
 
   test("the picker persists the chosen theme name on accept", async () => {
-    await workspace
-      .getConfiguration()
-      .update(THEME, "None", ConfigurationTarget.Global);
-    (window as { showQuickPick: any }).showQuickPick = async () => ({
-      label: sample.name,
-    });
+    await theme.set("None");
+    stub(window, "showQuickPick", async () => ({ label: sample.name }));
     await chooseTerminalTheme();
     // chooseTerminalTheme persists the theme name without awaiting the write.
     await tick();
-    assert.strictEqual(workspace.getConfiguration().get(THEME), sample.name);
+    assert.strictEqual(theme.value(), sample.name);
   });
 
   test("the picker restores colorCustomizations on cancel", async () => {
-    await setColors({ "editor.background": "#abcabc" });
-    (window as { showQuickPick: any }).showQuickPick = async () => undefined;
+    await colors.set({ "editor.background": "#abcabc" });
+    stub(window, "showQuickPick", async () => undefined);
     await chooseTerminalTheme();
-    assert.deepStrictEqual(colorsValue(), { "editor.background": "#abcabc" });
+    assert.deepStrictEqual(colors.value(), { "editor.background": "#abcabc" });
   });
 });
