@@ -38,11 +38,14 @@ suite("config get/update wrappers", () => {
     "terminalAllInOne",
   );
 
-  suiteSetup(size.capture);
+  suiteSetup(() => {
+    size.capture();
+    disabled.capture();
+  });
 
   suiteTeardown(async () => {
     await size.restore();
-    await disabled.set(undefined);
+    await disabled.restore();
   });
 
   test("getConfig reads a value, with and without a config prefix", async () => {

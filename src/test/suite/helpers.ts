@@ -2,7 +2,7 @@ import { workspace, ConfigurationTarget } from "vscode";
 
 export const tick = () => new Promise((r) => setTimeout(r, 100));
 
-// Swap a (readonly) method on window/commands for a stub; pass the saved original back to restore it.
+// Overwrite a readonly method with a stub; pass the saved original back to restore.
 export function stub<T, K extends keyof T>(
   obj: T,
   key: K,
