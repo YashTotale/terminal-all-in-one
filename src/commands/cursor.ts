@@ -46,5 +46,5 @@ export function changeCursorStyle() {
 export function toggleBlinkingCursor() {
   const isBlinking = getConfig({ section: BLINKING }) as boolean;
   const { target } = inspectScope(BLINKING);
-  writeScoped(BLINKING, !isBlinking, target);
+  return writeScoped(BLINKING, !isBlinking, target);
 }
