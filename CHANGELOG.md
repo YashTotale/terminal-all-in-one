@@ -7,9 +7,23 @@ The format of this Change Log is based on [Keep a Changelog](http://keepachangel
 
 ### [Unreleased]
 
+#### Added
+
+- Option to insert a script's command into the terminal without running it (`terminalAllInOne.script.disableAutoRun`). Closes [#414](https://github.com/YashTotale/terminal-all-in-one/issues/414).
+
 #### Changed
 
 - **v2.0.0 modernization** — simplified the extension's internals, refreshed the docs, and modernized the toolchain, with no user-facing breaking changes. Saved scripts, terminal themes, and keybindings all work exactly as before.
+- Running a script no longer force-interrupts a command already running in the terminal.
+
+#### Fixed
+
+- **Clear Terminal** (`cmd/ctrl+i backspace`) now clears the active terminal instead of killing and relaunching it.
+- Font, cursor, and theme live-previews now reliably restore your previous value (at its original settings scope) when you cancel or press Escape.
+
+#### Removed
+
+- The `terminalAllInOne.messages` per-message toggles and the `terminalAllInOne.script.disableDescription` setting (`terminalAllInOne.disableAllMessages` still silences everything).
 
 ---
 

@@ -1,66 +1,34 @@
-import { QuickPickItem, ExtensionContext } from "vscode";
-import debounce from "lodash.debounce";
+import { ExtensionContext } from "vscode";
 
 import BaseCommand from "../baseCommand";
 
-interface CursorWidthObject {
+interface CursorWidthItem {
   label: string;
-  description: string | undefined;
+  description?: string;
 }
+
+const SECTION = "terminal.integrated.cursorWidth";
 
 export default class ChangeCursorWidth extends BaseCommand {
   constructor(context: ExtensionContext) {
-    super("changeCursorWidth", () => this.handler(context));
+    super("changeCursorWidth", () => this.handler());
   }
 
-  getCursorWidthConfig(): number {
-    return this.getConfig("terminal.integrated.cursorWidth");
-  }
-
-  updateCursorWidthConfig(value: number) {
-    this.updateConfig({
-      key: "terminal.integrated.cursorWidth",
-      value,
+  handler() {
+    const currentWidth = this.getConfig(SECTION) as number;
+    return this.livePreview<CursorWidthItem>({
+      section: SECTION,
+      items: this.createCursorWidths(currentWidth),
+      toValue: (item) => parseInt(item.label.slice(0, -3)),
+      options: { placeHolder: "Choose a Cursor Width" },
     });
   }
 
-  handler(context: ExtensionContext) {
-    const currentWidth = this.getCursorWidthConfig();
-    const cursorWidths = this.createCursorWidths(currentWidth);
-    this.showMessage("cursorWidthQuickPickOpened", this.focusTerminal);
-    return this.showQuickPick(
-      cursorWidths,
-      {
-        placeHolder: "Choose a Cursor Width",
-        onDidSelectItem: debounce(async (cursorWidth: QuickPickItem) => {
-          const trueSize = this.getTrueWidth(cursorWidth.label);
-          return this.updateCursorWidthConfig(trueSize);
-        }, 300),
-      },
-      (selectedWidth) =>
-        this.showCursorWidthSelectedMessage(selectedWidth.label, () =>
-          this.updateCursorWidthConfig(currentWidth),
-        ),
-      () => this.updateCursorWidthConfig(currentWidth),
-    );
-  }
-
-  createCursorWidths(currentWidth: number): CursorWidthObject[] {
-    const cursorWidths: CursorWidthObject[] = [];
-    for (let i = 1; i < 9; i++) {
-      cursorWidths.push({
-        label: `${i}-pt`,
-        description: currentWidth === i ? "current" : undefined,
-      });
-    }
-    return cursorWidths;
-  }
-
-  getTrueWidth(cursorWidthStr: string): number {
-    return parseInt(cursorWidthStr.slice(0, -3));
-  }
-
-  showCursorWidthSelectedMessage(cursorWidth: string, undo: () => any) {
-    this.showMessage("cursorWidthSelected", cursorWidth, undo);
+  createCursorWidths(currentWidth: number): CursorWidthItem[] {
+    const widths = Array.from({ length: 8 }, (_, i) => i + 1);
+    return widths.map((width) => ({
+      label: `${width}-pt`,
+      description: currentWidth === width ? "current" : undefined,
+    }));
   }
 }

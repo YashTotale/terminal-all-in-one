@@ -437,62 +437,6 @@
           "description": "Controls whether all keybindings are disabled",
           "default": false
         },
-        "terminalAllInOne.messages": {
-          "type": "object",
-          "markdownDescription": "Controls which messages should be shown if `#terminalAllInOne.disableAllMessages#` is set to false",
-          "default": {
-            "shouldShowThemeQuickPickMessage": true,
-            "shouldShowSelectedThemeMessage": true,
-            "shouldShowFontSizeQuickPickMessage": true,
-            "shouldShowSelectedFontSizeMessage": true,
-            "shouldShowFontWeightQuickPickMessage": true,
-            "shouldShowSelectedFontWeightMessage": true,
-            "shouldShowCursorWidthQuickPickMessage": true,
-            "shouldShowSelectedCursorWidthMessage": true,
-            "shouldShowCursorStyleQuickPickMessage": true,
-            "shouldShowSelectedCursorStyleMessage": true,
-            "shouldShowBlinkingCursorToggledMessage": true,
-            "shouldShowDisableScriptDescriptionMessage": true
-          },
-          "properties": {
-            "shouldShowThemeQuickPickMessage": {
-              "type": "boolean"
-            },
-            "shouldShowSelectedThemeMessage": {
-              "type": "boolean"
-            },
-            "shouldShowFontSizeQuickPickMessage": {
-              "type": "boolean"
-            },
-            "shouldShowSelectedFontSizeMessage": {
-              "type": "boolean"
-            },
-            "shouldShowFontWeightQuickPickMessage": {
-              "type": "boolean"
-            },
-            "shouldShowSelectedFontWeightMessage": {
-              "type": "boolean"
-            },
-            "shouldShowCursorWidthQuickPickMessage": {
-              "type": "boolean"
-            },
-            "shouldShowSelectedCursorWidthMessage": {
-              "type": "boolean"
-            },
-            "shouldShowCursorStyleQuickPickMessage": {
-              "type": "boolean"
-            },
-            "shouldShowSelectedCursorStyleMessage": {
-              "type": "boolean"
-            },
-            "shouldShowBlinkingCursorToggledMessage": {
-              "type": "boolean"
-            },
-            "shouldShowDisableScriptDescriptionMessage": {
-              "type": "boolean"
-            }
-          }
-        },
         "terminalAllInOne.disableAllMessages": {
           "type": "boolean",
           "description": "Controls whether all messages (info, warning, and error) from this extension are disabled",
@@ -527,9 +471,9 @@
             ]
           }
         },
-        "terminalAllInOne.script.disableDescription": {
+        "terminalAllInOne.script.disableAutoRun": {
           "type": "boolean",
-          "description": "Controls whether the script description command is disabled when running a script",
+          "description": "Insert a script's command into the terminal without running it",
           "default": false
         }
       }
@@ -551,7 +495,6 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.39.4",
-    "@types/lodash.debounce": "^4.0.6",
     "@types/mocha": "^10.0.10",
     "@types/node": "^20.19.41",
     "@types/vscode": "1.84.0",
@@ -568,9 +511,5 @@
     "prettier": "^3.8.3",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.60.0"
-  },
-  "dependencies": {
-    "lodash.debounce": "^4.0.8",
-    "moment": "^2.29.1"
   }
 }

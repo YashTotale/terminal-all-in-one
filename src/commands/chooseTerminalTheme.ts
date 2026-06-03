@@ -1,140 +1,111 @@
 import {
   QuickPickItem,
+  window,
   ExtensionContext,
   ConfigurationChangeEvent,
 } from "vscode";
-import debounce from "lodash.debounce";
 
 import BaseCommand from "./baseCommand";
+import { inspectScope, writeScoped } from "../helpers/config";
+import debounce from "../helpers/debounce";
+import { showThemeDoesNotExist } from "../messages";
+import themes from "../themes.json";
 
 interface theme {
-  colors: object;
+  colors: Record<string, string>;
   name: string;
 }
 
-interface colors {
-  "terminal.background": string;
-  "terminal.foreground": string;
-  "terminalCursor.background": string;
-  "terminalCursor.foreground": string;
-  "terminal.ansiBlack": string;
-  "terminal.ansiBlue": string;
-  "terminal.ansiBrightBlack": string;
-  "terminal.ansiBrightBlue": string;
-  "terminal.ansiBrightCyan": string;
-  "terminal.ansiBrightGreen": string;
-  "terminal.ansiBrightMagenta": string;
-  "terminal.ansiBrightRed": string;
-  "terminal.ansiBrightWhite": string;
-  "terminal.ansiBrightYellow": string;
-  "terminal.ansiCyan": string;
-  "terminal.ansiGreen": string;
-  "terminal.ansiMagenta": string;
-  "terminal.ansiRed": string;
-  "terminal.ansiWhite": string;
-  "terminal.ansiYellow": string;
-}
-
-import themes from "../themes.json";
-const themeSchemes = themes.map((theme: theme) => theme.colors);
+const themeSchemes = themes.map((t: theme) => t.colors);
+const COLOR_CUSTOMIZATIONS = "workbench.colorCustomizations";
 
 export default class ChooseTerminalTheme extends BaseCommand {
   constructor(context: ExtensionContext) {
     super(
       "chooseTerminalTheme",
-      () => this.handler(context),
+      () => this.handler(),
       (e) => this.configChange(e),
     );
   }
 
-  handler(context: ExtensionContext) {
-    const currentColors = this.getColorCustomizations();
+  async handler() {
     const currentTheme = this.getThemeConfig();
-    const themeNames = themes.map(({ name }: theme) => ({
+    const items: QuickPickItem[] = themes.map(({ name }: theme) => ({
       label: name,
       description: currentTheme === name ? "current" : undefined,
     }));
-    this.showMessage("themeQuickPickOpened");
-    this.showQuickPick(
-      themeNames,
-      {
+
+    const original = inspectScope(COLOR_CUSTOMIZATIONS);
+    const preview = debounce((item: QuickPickItem) => {
+      this.applyTheme(item.label);
+    }, 300);
+
+    let picked: QuickPickItem | undefined;
+    try {
+      picked = await window.showQuickPick(items, {
+        matchOnDescription: true,
         placeHolder: "Choose a Terminal Theme",
-        onDidSelectItem: debounce(async (theme: QuickPickItem) => {
-          this.updateTerminalTheme(theme.label);
-        }, 300),
-      },
-      ({ label }) => {
-        this.showMessage("themeSelected", label);
-        this.updateThemeConfig(label);
-      },
-      () => {
-        this.updateColorCustomizations(currentColors);
-      },
-    );
+        onDidSelectItem: (item) => preview(item as QuickPickItem),
+      });
+      if (picked) {
+        // Persist the theme name; the configChange listener applies its colors at the correct scope.
+        this.updateThemeConfig(picked.label);
+      }
+    } finally {
+      preview.cancel();
+      if (!picked) {
+        await writeScoped(
+          COLOR_CUSTOMIZATIONS,
+          original.value,
+          original.target,
+        );
+      }
+    }
   }
 
   configChange(event: ConfigurationChangeEvent) {
     if (
       event.affectsConfiguration(`${this.getExtensionName()}.terminalTheme`)
     ) {
-      return this.updateTerminalTheme(this.getThemeConfig());
+      this.applyTheme(this.getThemeConfig());
     }
   }
 
-  updateTerminalTheme(themeName: string) {
-    //Check if theme exists and set the index of it
-    let themeIndex = 0;
-    const themeExists = themes.some(({ name }: theme, i: number) => {
-      if (name === themeName) {
-        themeIndex = i;
-        return true;
-      }
-      return false;
-    });
-    if (!themeExists) {
-      //If the theme doesn't exist, show an error message
-      return this.showMessage("themeDoesNotExist");
+  // Merge the theme's terminal colors onto the user's existing colorCustomizations, written at that setting's real scope. "None" strips terminal colors.
+  applyTheme(themeName: string) {
+    const themeIndex = themes.findIndex((t: theme) => t.name === themeName);
+    if (themeIndex === -1) {
+      return showThemeDoesNotExist();
     }
-    const currentColors = this.getColorCustomizations();
+    const scope = inspectScope(COLOR_CUSTOMIZATIONS);
+    const current = (scope.value as Record<string, string>) ?? {};
     if (themeName === "None") {
-      //Remove all the terminal styles
-      return this.updateColorCustomizations(
-        this.getNonTerminalStyles(currentColors),
+      return writeScoped(
+        COLOR_CUSTOMIZATIONS,
+        this.getNonTerminalStyles(current),
+        scope.target,
       );
     }
-    //If the theme does exist and is not None, set the new colors
-    const themeScheme = { ...currentColors, ...themeSchemes[themeIndex] };
-    return this.updateColorCustomizations(themeScheme);
+    return writeScoped(
+      COLOR_CUSTOMIZATIONS,
+      { ...current, ...themeSchemes[themeIndex] },
+      scope.target,
+    );
   }
 
-  getNonTerminalStyles(allStyles: object) {
-    return Object.keys(allStyles).reduce((nonTerminalStyles, currentStyle) => {
-      if (!currentStyle.includes("terminal")) {
-        nonTerminalStyles[currentStyle] = allStyles[currentStyle];
-      }
-      return nonTerminalStyles;
-    }, {});
+  getNonTerminalStyles(allStyles: Record<string, string>) {
+    const nonTerminal: Record<string, string> = {};
+    for (const key of Object.keys(allStyles)) {
+      if (!key.includes("terminal")) nonTerminal[key] = allStyles[key];
+    }
+    return nonTerminal;
   }
 
-  getColorCustomizations() {
-    return this.getConfig("workbench.colorCustomizations");
-  }
-
-  updateColorCustomizations(value: colors | {}) {
-    return this.updateConfig({
-      key: "workbench.colorCustomizations",
-      value,
-    });
-  }
-
-  getThemeConfig() {
+  getThemeConfig(): string {
     return this.getExtensionConfig("terminalTheme");
   }
 
   updateThemeConfig(value: string) {
-    return this.updateExtensionConfig({
-      key: "terminalTheme",
-      value,
-    });
+    return this.updateExtensionConfig({ key: "terminalTheme", value });
   }
 }

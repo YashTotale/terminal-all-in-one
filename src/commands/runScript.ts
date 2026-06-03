@@ -1,121 +1,74 @@
-import { commands, ExtensionContext } from "vscode";
+import { window, commands, ExtensionContext, QuickPickItem } from "vscode";
 import BaseCommand from "./baseCommand";
+import { showNoScripts } from "../messages";
 
-interface scriptObject {
+interface ScriptObject {
   name: string;
   script: string | string[];
 }
 
-interface HandlerArgs {
-  context: ExtensionContext;
-  index?: number;
+interface ScriptPickItem extends QuickPickItem {
+  index: number;
 }
 
 export default class RunScript extends BaseCommand {
   constructor(context: ExtensionContext) {
-    super("runScript", (index) => this.handler({ context, index }));
+    super("runScript", (index?: number) => this.handler(index));
   }
 
-  async handler({ index }: HandlerArgs) {
-    //All Scripts
+  handler(index?: number) {
     const scripts = this.getScriptsConfig();
-    if (!this.handlerChecks(scripts, index)) {
-      //Create the QP items and show the QP
-      const items = scripts.map(
-        ({ name, script }: scriptObject, i: number) => ({
-          label: name,
-          description: Array.isArray(script) ? script.join(" -> ") : script,
-          index: i,
-        }),
-      );
-      return this.showQuickPick(
-        items,
-        { placeHolder: "Run a Script" },
-        (selectedScript) => {
-          //@ts-ignore
-          return this.execute(scripts[selectedScript.index]);
-        },
-      );
-    }
-  }
 
-  handlerChecks(scripts: scriptObject[], index?: number) {
-    //Check if the index has been passed and if it is a valid index
     if (typeof index === "number") {
       if (index < scripts.length) {
         this.execute(scripts[index]);
-        return true;
+      } else {
+        showNoScripts(index);
       }
-      this.showMessage("noScripts", index);
-      return true;
+      return undefined;
     }
+
     if (!scripts.length) {
-      this.showMessage("noScripts");
-      return true;
+      showNoScripts();
+      return undefined;
     }
-    return false;
+
+    const items: ScriptPickItem[] = scripts.map(({ name, script }, i) => ({
+      label: name,
+      description: Array.isArray(script) ? script.join(" -> ") : script,
+      index: i,
+    }));
+    return this.showQuickPick<ScriptPickItem>(
+      items,
+      { placeHolder: "Run a Script" },
+      (selected) => this.execute(scripts[selected.index]),
+    );
   }
 
-  async execute({ name, script }: scriptObject) {
-    const cmds = this.createCommands(script);
-    await commands.executeCommand("workbench.action.terminal.focus");
-    if (!this.getDisableDescriptionConfig()) {
-      await this.runInTerminal(this.createDescription({ name, script }));
-      this.showMessage("disableScriptDescription", this.disableDescription);
-    }
-    await this.runInTerminal(`${cmds} \u000D`);
-  }
-
-  createCommands(script: string | string[]) {
-    if (typeof script === "string") {
-      return script;
-    }
-    let jointScript = "";
-    script.forEach((s, i) => {
-      jointScript += i ? ` && ${s}` : s;
-    });
-    return jointScript;
-  }
-
-  createDescription({ name, script }: scriptObject) {
-    const echoCmd = (cmd: string, num: number) => {
-      return `echo -e "\\t ${num}. ${cmd}"; `;
-    };
-    const controlC = "\u0003";
-    const emptyLine = "echo '';";
-    const ignoreAbove =
-      "echo '^ Ignore the above command (it tells the terminal to display the script description) ^';";
-    const running = `echo -e "Running script: \\033[1m${name}\\033[0m";`;
-    const enter = "\u000D";
-    let cmds = "";
-    if (typeof script === "string") {
-      cmds = echoCmd(script, 1);
-    } else {
-      script.forEach((s, i) => {
-        cmds += echoCmd(s, i + 1);
-      });
-    }
-    return `${controlC} ${emptyLine} ${ignoreAbove} ${emptyLine} ${running} ${emptyLine} ${cmds}${emptyLine} ${enter}`;
-  }
-
-  runInTerminal(command: string) {
+  execute({ name, script }: ScriptObject) {
+    const command = Array.isArray(script) ? script.join(" && ") : script;
+    // Reuse the active terminal so the script runs in the user's session (cwd/env); otherwise open one named after the script.
+    const terminal = window.activeTerminal ?? window.createTerminal(name);
+    terminal.show();
+    // sendSequence (not sendText) so VS Code resolves variables like ${workspaceFolder}, ${file}, ${selectedText}, ${config:Name}. The trailing carriage return runs the command; omit it to only insert (disableAutoRun).
+    const text = this.getDisableAutoRunConfig() ? command : `${command}\r`;
     return commands.executeCommand("workbench.action.terminal.sendSequence", {
-      text: command,
+      text,
     });
   }
 
-  getScriptsConfig() {
-    return this.getExtensionConfig("scripts");
+  getScriptsConfig(): ScriptObject[] {
+    const scripts = this.getExtensionConfig("scripts");
+    if (!Array.isArray(scripts)) return [];
+    return scripts.filter(
+      (s): s is ScriptObject =>
+        !!s &&
+        typeof s.name === "string" &&
+        (typeof s.script === "string" || Array.isArray(s.script)),
+    );
   }
 
-  getDisableDescriptionConfig() {
-    return this.getExtensionConfig("script.disableDescription");
-  }
-
-  disableDescription() {
-    return this.updateExtensionConfig({
-      key: "script.disableDescription",
-      value: true,
-    });
+  getDisableAutoRunConfig(): boolean {
+    return this.getExtensionConfig("script.disableAutoRun") === true;
   }
 }

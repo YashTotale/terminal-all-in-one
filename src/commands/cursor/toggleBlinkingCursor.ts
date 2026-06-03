@@ -1,27 +1,18 @@
 import { ExtensionContext } from "vscode";
+
 import BaseCommand from "../baseCommand";
+import { inspectScope, writeScoped } from "../../helpers/config";
+
+const SECTION = "terminal.integrated.cursorBlinking";
 
 export default class ToggleBlinkingCursor extends BaseCommand {
   constructor(context: ExtensionContext) {
-    super("toggleBlinkingCursor", () => this.handler(context));
+    super("toggleBlinkingCursor", () => this.handler());
   }
 
-  getBlinkingCursorConfig(): boolean {
-    return this.getConfig("terminal.integrated.cursorBlinking");
-  }
-
-  updateBlinkingCursorConfig(value: boolean) {
-    this.updateConfig({
-      key: "terminal.integrated.cursorBlinking",
-      value,
-    });
-  }
-
-  handler(context: ExtensionContext) {
-    const isBlinking = this.getBlinkingCursorConfig();
-    this.updateBlinkingCursorConfig(!isBlinking);
-    this.showMessage("blinkingCursorToggled", !isBlinking, () =>
-      this.updateBlinkingCursorConfig(isBlinking),
-    );
+  handler() {
+    const isBlinking = this.getConfig(SECTION) as boolean;
+    const { target } = inspectScope(SECTION);
+    writeScoped(SECTION, !isBlinking, target);
   }
 }

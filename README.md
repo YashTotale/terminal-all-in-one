@@ -37,7 +37,7 @@ Press `cmd+i` (macOS) or `ctrl+i` (Windows/Linux), then the key below — toggli
 | `cmd/ctrl+i .`         | Focus Next Terminal       | Switch to the next terminal                        |
 | `cmd/ctrl+i ,`         | Focus Previous Terminal   | Switch to the previous terminal                    |
 | `cmd/ctrl+i ]`         | Split Terminal            | Split the active terminal                          |
-| `cmd/ctrl+i backspace` | Clear Terminal            | Clear and relaunch the active terminal             |
+| `cmd/ctrl+i backspace` | Clear Terminal            | Clear the active terminal                          |
 | `cmd/ctrl+i s`         | Select Default Shell      | Choose the default shell (bash, zsh, etc.)         |
 | `cmd/ctrl+i w`         | Change Cursor Width       | Live-preview and set the cursor width              |
 | `cmd/ctrl+i y`         | Change Cursor Style       | Live-preview and set the cursor style              |
@@ -70,7 +70,7 @@ Press `cmd+i` (macOS) or `ctrl+i` (Windows/Linux), then the key below — toggli
 }
 ```
 
-Scripts support [VS Code variables](https://code.visualstudio.com/docs/editor/variables-reference) such as `${workspaceFolder}`, `${file}`, `${relativeFile}`, `${lineNumber}`, `${selectedText}`, and `${config:Name}`. Set `terminalAllInOne.script.disableDescription` to `true` to skip echoing each script's description before it runs.
+Scripts support [VS Code variables](https://code.visualstudio.com/docs/editor/variables-reference) such as `${workspaceFolder}`, `${file}`, `${relativeFile}`, `${lineNumber}`, `${selectedText}`, and `${config:Name}`. Set `terminalAllInOne.script.disableAutoRun` to `true` to insert a script's command into the terminal without running it.
 
 ### Keybindings
 
@@ -78,7 +78,7 @@ Scripts support [VS Code variables](https://code.visualstudio.com/docs/editor/va
 
 ### Messages
 
-`terminalAllInOne.disableAllMessages` — set to `true` to silence all info, warning, and error messages from the extension. For finer control, toggle individual messages under `terminalAllInOne.messages`.
+`terminalAllInOne.disableAllMessages` — set to `true` to silence all info, warning, and error messages from the extension.
 
 ## Contributing
 

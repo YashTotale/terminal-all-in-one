@@ -1,68 +1,38 @@
-import { QuickPickItem, ExtensionContext } from "vscode";
-import debounce from "lodash.debounce";
+import { ExtensionContext } from "vscode";
 
 import BaseCommand from "./baseCommand";
 
-interface FontWeight {
+interface FontWeightItem {
   label: string;
   description?: string;
 }
 
+const SECTION = "terminal.integrated.fontWeight";
+
 export default class ChangeFontWeight extends BaseCommand {
   constructor(context: ExtensionContext) {
-    super("changeFontWeight", () => this.handler(context));
+    super("changeFontWeight", () => this.handler());
   }
 
-  getFontWeightConfig(): string {
-    return this.getConfig("terminal.integrated.fontWeight");
-  }
-
-  updateFontWeightConfig(value: string) {
-    this.updateConfig({
-      key: "terminal.integrated.fontWeight",
-      value,
+  handler() {
+    const currentWeight = this.getConfig(SECTION) as string;
+    return this.livePreview<FontWeightItem>({
+      section: SECTION,
+      items: this.createFontWeights(currentWeight),
+      toValue: (item) => item.label,
+      options: { placeHolder: "Choose a Font Weight" },
     });
   }
 
-  handler(context: ExtensionContext) {
-    const currentWeight = this.getFontWeightConfig();
-    const fontWeights = this.createFontWeights(currentWeight);
-    this.showMessage("fontWeightQuickPickOpened", this.focusTerminal);
-    return this.showQuickPick(
-      fontWeights,
-      {
-        placeHolder: "Choose a Font Weight",
-        onDidSelectItem: debounce(async (fontWeight: QuickPickItem) => {
-          return this.updateFontWeightConfig(fontWeight.label);
-        }, 300),
-      },
-      (selectedWeight) =>
-        this.showFontWeightSelectedMessage(selectedWeight.label, () =>
-          this.updateFontWeightConfig(currentWeight),
-        ),
-      () => this.updateFontWeightConfig(currentWeight),
-    );
-  }
-
-  createFontWeights(currentWeight: string) {
-    const fontWeights: FontWeight[] = [];
-    ["normal", "bold"].forEach((val) =>
-      fontWeights.push({
-        label: val,
-        description: currentWeight === val ? "current" : undefined,
-      }),
-    );
-    for (let i = 100; i <= 900; i += 100) {
-      const weight = JSON.stringify(i);
-      fontWeights.push({
-        label: weight,
-        description: currentWeight === weight ? "current" : undefined,
-      });
-    }
-    return fontWeights;
-  }
-
-  showFontWeightSelectedMessage(fontWeight: string, undo: () => any) {
-    this.showMessage("fontWeightSelected", fontWeight, undo);
+  createFontWeights(currentWeight: string): FontWeightItem[] {
+    const weights = [
+      "normal",
+      "bold",
+      ...Array.from({ length: 9 }, (_, i) => String((i + 1) * 100)),
+    ];
+    return weights.map((weight) => ({
+      label: weight,
+      description: currentWeight === weight ? "current" : undefined,
+    }));
   }
 }
