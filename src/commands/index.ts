@@ -1,28 +1,44 @@
-import { ExtensionContext } from "vscode";
-
-import ChooseTerminalTheme from "./chooseTerminalTheme";
-import RunScript from "./runScript";
-import ChangeFontWeight from "./changeFontWeight";
-import ChangeCursorWidth from "./cursor/changeCursorWidth";
-import ChangeCursorStyle from "./cursor/changeCursorStyle";
-import ToggleBlinkingCursor from "./cursor/toggleBlinkingCursor";
-import ChangeFontSize from "./fontSize/changeFontSize";
-import AdjustFontSizeByOne from "./fontSize/adjustFontSizeByOne";
+import { commands, ConfigurationChangeEvent } from "vscode";
 
 import replacements from "./replacements.json";
-import OneCommand from "./oneCommand";
+import {
+  chooseTerminalTheme,
+  onTerminalThemeChange,
+} from "./chooseTerminalTheme";
+import { runScript } from "./runScript";
+import { changeFontWeight } from "./changeFontWeight";
+import {
+  changeCursorWidth,
+  changeCursorStyle,
+  toggleBlinkingCursor,
+} from "./cursor";
+import { changeFontSize, decreaseFontSize, increaseFontSize } from "./fontSize";
 
-export default (context: ExtensionContext) => [
-  ...replacements.map(({ name, cmd }) => {
-    return new OneCommand(context, name, cmd);
-  }),
-  new ChooseTerminalTheme(context),
-  new RunScript(context),
-  new ChangeCursorWidth(context),
-  new ChangeCursorStyle(context),
-  new ToggleBlinkingCursor(context),
-  new ChangeFontWeight(context),
-  new ChangeFontSize(context),
-  new AdjustFontSizeByOne(context, "decrease"),
-  new AdjustFontSizeByOne(context, "increase"),
+export interface Command {
+  name: string;
+  handler: (...args: any[]) => any;
+  config?: (e: ConfigurationChangeEvent) => any;
+}
+
+// Re-run one or more built-in VS Code commands under our own command ID/keybinding.
+const passthrough = (cmd: string | string[]) => () =>
+  (Array.isArray(cmd) ? cmd : [cmd]).forEach((c) => commands.executeCommand(c));
+
+const commandList: Command[] = [
+  ...replacements.map(({ name, cmd }) => ({ name, handler: passthrough(cmd) })),
+  {
+    name: "chooseTerminalTheme",
+    handler: chooseTerminalTheme,
+    config: onTerminalThemeChange,
+  },
+  { name: "runScript", handler: runScript },
+  { name: "changeCursorWidth", handler: changeCursorWidth },
+  { name: "changeCursorStyle", handler: changeCursorStyle },
+  { name: "toggleBlinkingCursor", handler: toggleBlinkingCursor },
+  { name: "changeFontWeight", handler: changeFontWeight },
+  { name: "changeFontSize", handler: changeFontSize },
+  { name: "decreaseFontSize", handler: decreaseFontSize },
+  { name: "increaseFontSize", handler: increaseFontSize },
 ];
+
+export default commandList;

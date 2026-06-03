@@ -56,7 +56,7 @@ export const inspectScope = function (section: string): ScopedValue {
   return { target: ConfigurationTarget.Global, value: info?.globalValue };
 };
 
-// Same handling as updateConfig: await so async rejections surface to showError instead of leaking from non-awaiting callers (live preview, toggleBlinkingCursor, adjustFontSizeByOne).
+// Same handling as updateConfig: await so async rejections surface to showError instead of leaking from non-awaiting callers (livePreview, toggleBlinkingCursor, adjustFontSize).
 export const writeScoped = async function (
   section: string,
   value: any,

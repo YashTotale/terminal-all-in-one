@@ -1,6 +1,6 @@
 import { commands, workspace, ExtensionContext } from "vscode";
 import { showWelcome, showRatingPrompt } from "./messages";
-import cmds from "./commands";
+import commandList from "./commands";
 import { EXTENSION_NAME, stateProps } from "./helpers/constants";
 import { daysSince } from "./helpers/time";
 
@@ -8,18 +8,12 @@ function createCommandName(name: string) {
   return `${EXTENSION_NAME}.${name}`;
 }
 
-interface Command {
-  name: string;
-  handlerFunc: (...args: any[]) => any;
-  config?: (e: any) => any;
-}
-
 function createCommands(context: ExtensionContext) {
-  cmds(context).forEach((command: Command) => {
+  commandList.forEach((command) => {
     context.subscriptions.push(
       commands.registerCommand(
         createCommandName(command.name),
-        command.handlerFunc,
+        command.handler,
       ),
     );
     if (command.config) {
