@@ -60,3 +60,14 @@ jobs:
       - name: Show Extension Data
         if: runner.os == 'Linux' && matrix.node-version == '22.x'
         run: pnpm run show-data
+
+  lint-workflows:
+    name: Lint workflows
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      # actionlint validates workflow YAML/expressions and runs shellcheck over run: blocks.
+      - name: Lint GitHub Actions workflows
+        run: docker run --rm -v "$PWD:/repo" --workdir /repo rhysd/actionlint:latest -color
