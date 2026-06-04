@@ -7,6 +7,10 @@ The format of this Change Log is based on [Keep a Changelog](http://keepachangel
 
 ### [Unreleased]
 
+---
+
+### [2.0.0] - (2026-06-04)
+
 #### Added
 
 - Option to insert a script's command into the terminal without running it (`terminalAllInOne.script.disableAutoRun`).
