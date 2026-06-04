@@ -131,7 +131,7 @@ jobs:
           if ! git rev-parse -q --verify "refs/tags/v$VERSION" >/dev/null; then
             git tag -a "v$VERSION" -m "v$VERSION"
           fi
-          git push --follow-tags "https://x-access-token:${PUSH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" HEAD:master
+          git push --atomic --follow-tags "https://x-access-token:${PUSH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" HEAD:master
 
       - name: Create GitHub Release
         if: ${{ !inputs.dry_run }}
