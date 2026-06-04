@@ -67,7 +67,9 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+        with:
+          persist-credentials: false
 
       # actionlint validates workflow YAML/expressions and runs shellcheck over run: blocks.
       - name: Lint GitHub Actions workflows
-        run: docker run --rm -v "$PWD:/repo" --workdir /repo rhysd/actionlint:latest -color
+        run: docker run --rm -v "$PWD:/repo" --workdir /repo rhysd/actionlint:1.7.12 -color

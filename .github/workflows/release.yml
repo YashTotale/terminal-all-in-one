@@ -78,7 +78,7 @@ jobs:
             fi
           fi
           release_complete=false
-          if gh release view "v$current" --json assets --jq '.assets[].name' 2>/dev/null | grep -qx "$asset"; then
+          if gh release view "v$current" --json assets --jq '.assets[].name' 2>/dev/null | grep -Fqx "$asset"; then
             release_complete=true
           fi
           CURRENT="$current" PUBLISHED="$published" BUMP="${{ inputs.bump }}" \
