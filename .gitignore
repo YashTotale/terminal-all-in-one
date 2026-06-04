@@ -11,3 +11,6 @@ demos/*.mp4
 # Local brainstorming specs & implementation plans
 docs/superpowers/specs/
 docs/superpowers/plans/
+
+# Release workflow scratch dir (created by .github/workflows/release.yml)
+.release/

@@ -32,6 +32,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          persist-credentials: false
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
@@ -69,11 +70,15 @@ jobs:
           published=$(node -p "require('./.release/marketplace.json').versions[0].version")
           newer=$(printf '%s\n%s\n' "$current" "$published" | sort -V | tail -1)
           if [ "$published" != "$current" ] && [ "$newer" = "$published" ]; then
-            version="$published"
-            echo "Orphan recovery: Marketplace has v$published but master is at v$current; finalizing v$published."
+            echo "::error::Marketplace has v$published but master is at v$current with no v$published tag. A prior release published without pushing its commit/tag; reconcile v$published manually (push its commit + tag and create the Release) before re-running."
+            exit 1
           elif git rev-parse -q --verify "refs/tags/v$current" >/dev/null && ! gh release view "v$current" >/dev/null 2>&1; then
+            if [ "$(git rev-parse HEAD)" != "$(git rev-parse "refs/tags/v$current^{commit}")" ]; then
+              echo "::error::Tag v$current exists without a Release, but HEAD has moved past the tagged commit. Re-run from the tagged commit so the Release asset matches the published build, or reconcile manually."
+              exit 1
+            fi
             version="$current"
-            echo "Finalize recovery: tag v$current exists without a Release."
+            echo "Finalize recovery: tag v$current exists without a Release; HEAD matches the tag."
           else
             version=$(node -e "const [a,b,c]=process.argv[1].split('.').map(Number); const t=process.argv[2]; console.log((t==='major'?[a+1,0,0]:t==='minor'?[a,b+1,0]:[a,b,c+1]).join('.'))" "$current" "${{ inputs.bump }}")
             echo "Normal release: v$current -> v$version."
@@ -115,6 +120,7 @@ jobs:
         if: ${{ !inputs.dry_run }}
         env:
           VERSION: ${{ steps.plan.outputs.version }}
+          PUSH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -125,7 +131,7 @@ jobs:
           if ! git rev-parse -q --verify "refs/tags/v$VERSION" >/dev/null; then
             git tag -a "v$VERSION" -m "v$VERSION"
           fi
-          git push --follow-tags origin HEAD:master
+          git push --follow-tags "https://x-access-token:${PUSH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" HEAD:master
 
       - name: Create GitHub Release
         if: ${{ !inputs.dry_run }}
