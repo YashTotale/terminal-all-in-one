@@ -76,4 +76,4 @@ jobs:
         with:
           reporter: local
           filter_mode: nofilter
-          fail_level: error
+          fail_level: any
