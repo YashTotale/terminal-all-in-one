@@ -1,0 +1,154 @@
+name: Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      bump:
+        description: Version bump
+        type: choice
+        options:
+          - major
+          - minor
+          - patch
+        required: true
+      dry_run:
+        description: Rehearse without publishing
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    if: github.ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
+    environment: release
+    env:
+      EXTENSION_ID: yasht.terminal-all-in-one
+      PUBLISHER: yasht
+    steps:
+      - name: Checkout master
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22.x
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Verify marketplace token
+        env:
+          VSCE_PAT: ${{ secrets.VSCE_PAT }}
+        run: pnpm exec vsce verify-pat "$PUBLISHER"
+
+      - name: Gate (build, test, lint)
+        run: |
+          pnpm run build
+          pnpm run test:scripts
+          pnpm run test:compile
+          xvfb-run -a pnpm test
+          pnpm run lint
+
+      - name: Determine release plan
+        id: plan
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          mkdir -p .release
+          current=$(node -p "require('./package.json').version")
+          pnpm exec vsce show "$EXTENSION_ID" --json > .release/marketplace.json
+          published=$(node -p "require('./.release/marketplace.json').versions[0].version")
+          asset="terminal-all-in-one-$current.vsix"
+          tag_exists=false
+          head_matches_tag=false
+          if git rev-parse -q --verify "refs/tags/v$current^{commit}" >/dev/null; then
+            tag_exists=true
+            if [ "$(git rev-parse HEAD)" = "$(git rev-parse "refs/tags/v$current^{commit}")" ]; then
+              head_matches_tag=true
+            fi
+          fi
+          release_complete=false
+          if gh release view "v$current" --json assets --jq '.assets[].name' 2>/dev/null | grep -Fqx "$asset"; then
+            release_complete=true
+          fi
+          CURRENT="$current" PUBLISHED="$published" BUMP="${{ inputs.bump }}" \
+            TAG_EXISTS="$tag_exists" HEAD_MATCHES_TAG="$head_matches_tag" \
+            RELEASE_COMPLETE="$release_complete" \
+            node scripts/release-plan.mjs
+
+      - name: Set version and changelog
+        env:
+          VERSION: ${{ steps.plan.outputs.version }}
+        run: |
+          if [ "$VERSION" != "$(node -p "require('./package.json').version")" ]; then
+            pnpm version "$VERSION" --no-git-tag-version
+          fi
+          if node scripts/promote-changelog.mjs notes "$VERSION" > .release/notes.md 2>/dev/null; then
+            echo "Changelog already lists v$VERSION; reusing its notes."
+          else
+            node scripts/promote-changelog.mjs promote "$VERSION" "$(date -u +%Y-%m-%d)" > .release/notes.md
+          fi
+
+      - name: Package extension
+        run: pnpm exec vsce package --no-dependencies -o "${{ steps.plan.outputs.vsix }}"
+
+      - name: Publish to Marketplace
+        if: ${{ !inputs.dry_run }}
+        env:
+          VSCE_PAT: ${{ secrets.VSCE_PAT }}
+          VERSION: ${{ steps.plan.outputs.version }}
+          VSIX: ${{ steps.plan.outputs.vsix }}
+        run: |
+          already=$(node -p "require('./.release/marketplace.json').versions.some((v) => v.version === process.argv[1])" "$VERSION")
+          if [ "$already" = "true" ]; then
+            echo "v$VERSION is already on the Marketplace; skipping publish."
+          else
+            pnpm exec vsce publish --packagePath "$VSIX"
+          fi
+
+      - name: Commit, tag, and push
+        if: ${{ !inputs.dry_run }}
+        env:
+          VERSION: ${{ steps.plan.outputs.version }}
+          PUSH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add package.json CHANGELOG.md
+          if ! git diff --cached --quiet; then
+            git commit -m "Release v$VERSION [skip ci]"
+          fi
+          if ! git rev-parse -q --verify "refs/tags/v$VERSION" >/dev/null; then
+            git tag -a "v$VERSION" -m "v$VERSION"
+          fi
+          git push --atomic --follow-tags "https://x-access-token:${PUSH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" HEAD:master
+
+      - name: Create GitHub Release
+        if: ${{ !inputs.dry_run }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          VERSION: ${{ steps.plan.outputs.version }}
+          VSIX: ${{ steps.plan.outputs.vsix }}
+        run: |
+          if gh release view "v$VERSION" >/dev/null 2>&1; then
+            gh release upload "v$VERSION" "$VSIX" --clobber
+          else
+            gh release create "v$VERSION" --title "v$VERSION" --notes-file .release/notes.md "$VSIX"
+          fi
+
+      - name: Upload dry-run artifact
+        if: ${{ inputs.dry_run }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ steps.plan.outputs.vsix }}
+          path: ${{ steps.plan.outputs.vsix }}

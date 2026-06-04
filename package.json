@@ -481,15 +481,17 @@
   },
   "scripts": {
     "build": "node esbuild.js --production",
+    "vscode:prepublish": "pnpm run build",
     "build:dev": "node esbuild.js",
     "watch": "node esbuild.js --watch",
     "typecheck": "tsc --noEmit -p ./",
     "test:compile": "tsc -p ./",
     "pretest": "pnpm run test:compile && pnpm run build:dev",
     "test": "vscode-test",
+    "test:scripts": "node --test \"scripts/**/*.test.mjs\"",
     "lint": "eslint . && prettier --check . && markdownlint \"**/*.md\"",
     "lint:staged": "lint-staged",
-    "deploy": "pnpm run build && vsce publish --no-dependencies",
+    "lint:workflows": "docker run --rm -v \"$PWD:/repo\" --workdir /repo rhysd/actionlint:1.7.12 -color",
     "show-data": "vsce show yasht.terminal-all-in-one",
     "prepare": "husky"
   },
