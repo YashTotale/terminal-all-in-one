@@ -491,7 +491,6 @@
     "test:scripts": "node --test \"scripts/**/*.test.mjs\"",
     "lint": "eslint . && prettier --check . && markdownlint \"**/*.md\"",
     "lint:staged": "lint-staged",
-    "lint:workflows": "docker run --rm -v \"$PWD:/repo\" --workdir /repo rhysd/actionlint:1.7.12 -color",
     "show-data": "vsce show yasht.terminal-all-in-one",
     "prepare": "husky"
   },
