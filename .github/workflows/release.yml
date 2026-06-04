@@ -68,28 +68,23 @@ jobs:
           current=$(node -p "require('./package.json').version")
           pnpm exec vsce show "$EXTENSION_ID" --json > .release/marketplace.json
           published=$(node -p "require('./.release/marketplace.json').versions[0].version")
-          newer=$(printf '%s\n%s\n' "$current" "$published" | sort -V | tail -1)
           asset="terminal-all-in-one-$current.vsix"
+          tag_exists=false
+          head_matches_tag=false
+          if git rev-parse -q --verify "refs/tags/v$current^{commit}" >/dev/null; then
+            tag_exists=true
+            if [ "$(git rev-parse HEAD)" = "$(git rev-parse "refs/tags/v$current^{commit}")" ]; then
+              head_matches_tag=true
+            fi
+          fi
           release_complete=false
           if gh release view "v$current" --json assets --jq '.assets[].name' 2>/dev/null | grep -qx "$asset"; then
             release_complete=true
           fi
-          if [ "$published" != "$current" ] && [ "$newer" = "$published" ]; then
-            echo "::error::Marketplace has v$published but master is at v$current with no v$published tag. A prior release published without pushing its commit/tag; reconcile v$published manually (push its commit + tag and create the Release) before re-running."
-            exit 1
-          elif git rev-parse -q --verify "refs/tags/v$current" >/dev/null && [ "$release_complete" = false ]; then
-            if [ "$(git rev-parse HEAD)" != "$(git rev-parse "refs/tags/v$current^{commit}")" ]; then
-              echo "::error::Tag v$current exists but its Release is missing or has no asset, and HEAD has moved past the tagged commit. Re-run from the tagged commit so the Release asset matches the published build, or reconcile manually."
-              exit 1
-            fi
-            version="$current"
-            echo "Finalize recovery: v$current is tagged but its Release is missing or has no $asset asset; HEAD matches the tag."
-          else
-            version=$(node -e "const [a,b,c]=process.argv[1].split('.').map(Number); const t=process.argv[2]; console.log((t==='major'?[a+1,0,0]:t==='minor'?[a,b+1,0]:[a,b,c+1]).join('.'))" "$current" "${{ inputs.bump }}")
-            echo "Normal release: v$current -> v$version."
-          fi
-          echo "version=$version" >> "$GITHUB_OUTPUT"
-          echo "vsix=terminal-all-in-one-$version.vsix" >> "$GITHUB_OUTPUT"
+          CURRENT="$current" PUBLISHED="$published" BUMP="${{ inputs.bump }}" \
+            TAG_EXISTS="$tag_exists" HEAD_MATCHES_TAG="$head_matches_tag" \
+            RELEASE_COMPLETE="$release_complete" \
+            node scripts/release-plan.mjs
 
       - name: Set version and changelog
         env:
