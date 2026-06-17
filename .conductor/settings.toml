@@ -1,0 +1,7 @@
+"$schema" = "https://conductor.build/schemas/settings.repo.schema.json"
+
+[scripts]
+archive = "rm -rf \"${TMPDIR:-/tmp}/conductor-vscode/${CONDUCTOR_WORKSPACE_NAME}\""
+run = "pnpm run build:dev && code --new-window --disable-extensions --extensionDevelopmentPath=\"$PWD\" --user-data-dir=\"${TMPDIR:-/tmp}/conductor-vscode/${CONDUCTOR_WORKSPACE_NAME}\" \"$PWD\" && pnpm run watch"
+run_mode = "concurrent"
+setup = "pnpm install"
