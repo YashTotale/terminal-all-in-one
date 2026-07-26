@@ -65,15 +65,13 @@ suite("chooseTerminalTheme", () => {
     await theme.set(sample.name);
     await tick();
     await colors.set({});
-    onTerminalThemeChange({
+    await onTerminalThemeChange({
       affectsConfiguration: (s: string) => s === THEME,
     } as any);
-    await tick();
     assert.deepStrictEqual(colors.value(), { ...sample.colors });
 
     await colors.set({ "editor.background": "#123456" });
-    onTerminalThemeChange({ affectsConfiguration: () => false } as any);
-    await tick();
+    await onTerminalThemeChange({ affectsConfiguration: () => false } as any);
     assert.deepStrictEqual(colors.value(), { "editor.background": "#123456" });
   });
 

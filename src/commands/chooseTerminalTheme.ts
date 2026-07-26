@@ -61,9 +61,10 @@ export async function chooseTerminalTheme() {
 }
 
 export function onTerminalThemeChange(event: ConfigurationChangeEvent) {
-  if (event.affectsConfiguration(`${EXTENSION_NAME}.${THEME_SECTION}`)) {
-    applyTheme(getConfig({ config: EXTENSION_NAME, section: THEME_SECTION }));
-  }
+  if (!event.affectsConfiguration(`${EXTENSION_NAME}.${THEME_SECTION}`)) return;
+  return applyTheme(
+    getConfig({ config: EXTENSION_NAME, section: THEME_SECTION }),
+  );
 }
 
 // Merge the theme's terminal colors onto the user's existing colorCustomizations, written at that setting's real scope. "None" strips terminal colors.
