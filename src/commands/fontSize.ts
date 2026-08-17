@@ -27,7 +27,7 @@ export function changeFontSize() {
 function adjustFontSize(delta: number) {
   const currentSize = getConfig({ section: SECTION }) as number;
   const { target } = inspectScope(SECTION);
-  writeScoped(SECTION, currentSize + delta, target);
+  return writeScoped(SECTION, currentSize + delta, target);
 }
 
 export const decreaseFontSize = () => adjustFontSize(-1);

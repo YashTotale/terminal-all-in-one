@@ -500,7 +500,7 @@
     "@types/node": "^20.19.41",
     "@types/vscode": "1.84.0",
     "@vscode/test-cli": "^0.0.12",
-    "@vscode/test-electron": "^2.5.2",
+    "@vscode/test-electron": "^3.1.0",
     "@vscode/vsce": "^3.9.1",
     "esbuild": "^0.28.0",
     "eslint": "^9.39.4",
