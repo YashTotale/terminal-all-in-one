@@ -3,8 +3,23 @@ updates:
   - package-ecosystem: github-actions
     directory: /
     schedule:
-      interval: weekly
+      interval: monthly
     groups:
       github-actions:
         patterns:
           - "*"
+
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: monthly
+    groups:
+      npm:
+        patterns:
+          - "*"
+        update-types:
+          - minor
+          - patch
+    ignore:
+      # Must stay in lockstep with engines.vscode - vsce fails if it is higher.
+      - dependency-name: "@types/vscode"
