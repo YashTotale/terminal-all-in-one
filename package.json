@@ -499,18 +499,18 @@
     "@types/mocha": "^10.0.10",
     "@types/node": "^20.19.41",
     "@types/vscode": "1.84.0",
-    "@vscode/test-cli": "^0.0.12",
+    "@vscode/test-cli": "^0.0.15",
     "@vscode/test-electron": "^3.1.0",
-    "@vscode/vsce": "^3.9.1",
-    "esbuild": "^0.28.0",
+    "@vscode/vsce": "^3.9.2",
+    "esbuild": "^0.28.2",
     "eslint": "^9.39.4",
-    "globals": "^17.6.0",
+    "globals": "^17.11.0",
     "husky": "^9.1.7",
-    "lint-staged": "^17.0.7",
-    "markdownlint-cli": "^0.48.0",
-    "mocha": "^11.7.6",
-    "prettier": "^3.8.3",
+    "lint-staged": "^17.3.0",
+    "markdownlint-cli": "^0.49.1",
+    "mocha": "^11.8.0",
+    "prettier": "^3.9.6",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.60.0"
+    "typescript-eslint": "^8.67.0"
   }
 }
