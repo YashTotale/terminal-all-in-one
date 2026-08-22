@@ -495,7 +495,7 @@
     "prepare": "husky"
   },
   "devDependencies": {
-    "@eslint/js": "^9.39.4",
+    "@eslint/js": "^9.39.5",
     "@types/mocha": "^10.0.10",
     "@types/node": "^20.19.41",
     "@types/vscode": "1.84.0",
