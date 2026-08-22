@@ -16,6 +16,8 @@ permissions:
 jobs:
   greeting:
     name: Greet First-Time Contributors
+    # first-interaction greets anyone who has never opened an *issue*, so bots like Dependabot get greeted on every PR.
+    if: github.event.sender.type != 'Bot'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/first-interaction@1c4688942c71f71d4f5502a26ea67c331730fa4d # v3.1.0
