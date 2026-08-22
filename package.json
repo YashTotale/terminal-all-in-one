@@ -497,7 +497,7 @@
   "devDependencies": {
     "@eslint/js": "^9.39.5",
     "@types/mocha": "^10.0.10",
-    "@types/node": "^20.19.41",
+    "@types/node": "^26.2.0",
     "@types/vscode": "1.84.0",
     "@vscode/test-cli": "^0.0.15",
     "@vscode/test-electron": "^3.1.0",
