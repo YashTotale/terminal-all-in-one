@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "module": "CommonJS",
+    "module": "Node18",
     "target": "ES2022",
     "rootDir": "src",
     "outDir": "out",
@@ -8,10 +8,11 @@
     "sourceMap": true,
     "declaration": false,
     "allowJs": false,
-    "moduleResolution": "node",
+    "types": ["node", "mocha"],
     "forceConsistentCasingInFileNames": true,
     "noImplicitReturns": true,
     "noImplicitThis": true,
+    "strict": false,
     "strictNullChecks": true,
     "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true,

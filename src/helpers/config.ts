@@ -14,25 +14,6 @@ export const getConfig = function ({ config, section }: GetConfig): any {
   return configuration(config).get(section);
 };
 
-interface UpdateConfig {
-  config?: string;
-  section: string;
-  value: any;
-}
-
-// async/await so both synchronous throws and async update() rejections reach showError; resolves (never rejects) so fire-and-forget callers don't leak unhandled rejections.
-export const updateConfig = async function ({
-  config,
-  section,
-  value,
-}: UpdateConfig) {
-  try {
-    await configuration(config).update(section, value, true);
-  } catch (e) {
-    showError(e instanceof Error ? e.message : String(e));
-  }
-};
-
 export interface ScopedValue {
   target: ConfigurationTarget;
   value: any;
@@ -56,15 +37,17 @@ export const inspectScope = function (section: string): ScopedValue {
   return { target: ConfigurationTarget.Global, value: info?.globalValue };
 };
 
+/** Save at the requested scope, reporting errors and returning whether the write succeeded. */
 export const writeScoped = async function (
   section: string,
   value: any,
   target: ConfigurationTarget,
-) {
+): Promise<boolean> {
   try {
-    return await configuration().update(section, value, target);
+    await configuration().update(section, value, target);
+    return true;
   } catch (e) {
     showError(e instanceof Error ? e.message : String(e));
-    return undefined;
+    return false;
   }
 };

@@ -4,7 +4,7 @@ Thanks for your interest in contributing!
 
 ## Development Setup
 
-You'll need [Node.js](https://nodejs.org/) and [VS Code](https://code.visualstudio.com/). The extension targets VS Code `^1.84.0`. This project uses [pnpm](https://pnpm.io/) — enable it with `corepack enable`.
+You'll need [Node.js](https://nodejs.org/) (`^22.22.1 || >=24`) and [VS Code](https://code.visualstudio.com/). This Node.js requirement is for development tooling; the extension still targets VS Code `^1.84.0`. This project uses [pnpm](https://pnpm.io/) — enable it with `corepack enable`.
 
 1. Fork and clone the repository:
 

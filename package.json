@@ -33,7 +33,7 @@
   "main": "./dist/extension",
   "engines": {
     "vscode": "^1.84.0",
-    "node": ">=22"
+    "node": "^22.22.1 || >=24"
   },
   "packageManager": "pnpm@11.0.8+sha512.4c4097e1dd2d42372c4e7fa5a791ff28fc75a484c7ac192e64b1df0fdef17594ba982f9b4fed9adfb3c757846f565b799b2763fb3733d1de1bcb82cf46684912",
   "categories": [
@@ -497,20 +497,20 @@
   "devDependencies": {
     "@eslint/js": "^9.39.5",
     "@types/mocha": "^10.0.10",
-    "@types/node": "^20.19.41",
+    "@types/node": "^26.6.6",
     "@types/vscode": "1.84.0",
     "@vscode/test-cli": "^0.0.15",
     "@vscode/test-electron": "^3.1.0",
     "@vscode/vsce": "^3.9.2",
     "esbuild": "^0.28.2",
-    "eslint": "^9.39.4",
-    "globals": "^17.11.0",
+    "eslint": "^10.14.0",
+    "globals": "^17.14.0",
     "husky": "^9.1.7",
-    "lint-staged": "^17.3.0",
-    "markdownlint-cli": "^0.49.1",
+    "lint-staged": "^17.6.0",
+    "markdownlint-cli": "^0.50.0",
     "mocha": "^11.8.0",
-    "prettier": "^3.9.6",
+    "prettier": "^3.9.10",
     "typescript": "^6.0.3",
-    "typescript-eslint": "^8.67.0"
+    "typescript-eslint": "^8.72.1"
   }
 }
