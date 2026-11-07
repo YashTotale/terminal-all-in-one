@@ -19,9 +19,15 @@ suite("config scope helpers", () => {
   });
 
   test("writeScoped writes at the target, and undefined clears back to default", async () => {
-    await writeScoped(SECTION, 20, ConfigurationTarget.Global);
+    assert.strictEqual(
+      await writeScoped(SECTION, 20, ConfigurationTarget.Global),
+      true,
+    );
     assert.strictEqual(size.value(), 20);
-    await writeScoped(SECTION, undefined, ConfigurationTarget.Global);
+    assert.strictEqual(
+      await writeScoped(SECTION, undefined, ConfigurationTarget.Global),
+      true,
+    );
     assert.strictEqual(size.value(), undefined);
   });
 });
@@ -67,7 +73,10 @@ suite("config read/write helpers", () => {
       update: () => Promise.reject(new Error("update failed")),
     }));
     try {
-      await writeScoped(SECTION, 1, ConfigurationTarget.Global);
+      assert.strictEqual(
+        await writeScoped(SECTION, 1, ConfigurationTarget.Global),
+        false,
+      );
       assert.strictEqual(shown, "update failed");
     } finally {
       stub(workspace, "getConfiguration", realGetConfiguration);

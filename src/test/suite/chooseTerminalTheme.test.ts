@@ -170,6 +170,54 @@ for (const target of targets) {
         assert.deepStrictEqual(colors.value(), { ...sample.colors });
       });
 
+      for (const original of [undefined, { "editor.background": "#abcabc" }]) {
+        test(`a failed theme save restores ${original ? "existing" : "unset"} colors after preview`, async () => {
+          await colors.set(original);
+          const realGetConfiguration = workspace.getConfiguration;
+          const colorWrites: unknown[] = [];
+          let shown: string | undefined;
+          stub(window, "showErrorMessage", async (message: string) => {
+            shown = message;
+          });
+          stub(
+            workspace,
+            "getConfiguration",
+            (...args: Parameters<typeof realGetConfiguration>) => {
+              const config = realGetConfiguration(...args);
+              return {
+                ...config,
+                update: (
+                  section: string,
+                  value: any,
+                  target: ConfigurationTarget,
+                ) => {
+                  if (section === THEME)
+                    return Promise.reject(new Error("theme save failed"));
+                  if (section === COLORS) colorWrites.push(value);
+                  return config.update(section, value, target);
+                },
+              };
+            },
+          );
+          stub(window, "showQuickPick", async (_items: any, options: any) => {
+            await preview(options, themes[1].name);
+            return { label: sample.name };
+          });
+          try {
+            await chooseTerminalTheme();
+            assert.strictEqual(theme.value(), "None");
+            assert.deepStrictEqual(colors.value(), original);
+            assert.deepStrictEqual(colorWrites, [
+              { ...original, ...themes[1].colors },
+              original,
+            ]);
+            assert.strictEqual(shown, "theme save failed");
+          } finally {
+            stub(workspace, "getConfiguration", realGetConfiguration);
+          }
+        });
+      }
+
       if (target === ConfigurationTarget.Global) {
         test("the picker defaults to User settings when the theme is unset", async () => {
           await theme.set(undefined);
@@ -231,6 +279,105 @@ for (const target of targets) {
     },
   );
 }
+
+suite("theme change ordering", () => {
+  const realGetConfiguration = workspace.getConfiguration;
+  const realShowErrorMessage = window.showErrorMessage;
+  const changed = {
+    affectsConfiguration: (section: string) => section === THEME,
+  } as any;
+  let workspaceTheme: string | undefined;
+  let workspaceColors: Record<string, unknown> | undefined;
+  let userColors: Record<string, unknown> | undefined;
+  let beforeWrite: (() => Promise<void>) | undefined;
+  let failRead: boolean;
+
+  function deferred() {
+    let resolve!: () => void;
+    const promise = new Promise<void>((done) => {
+      resolve = done;
+    });
+    return { promise, resolve };
+  }
+
+  setup(() => {
+    workspaceTheme = undefined;
+    workspaceColors = { "editor.background": "#123456" };
+    userColors = { ...themes[1].colors };
+    beforeWrite = undefined;
+    failRead = false;
+    stub(window, "showErrorMessage", async () => undefined);
+    stub(workspace, "getConfiguration", () => ({
+      get: (section: string) =>
+        section === THEME ? (workspaceTheme ?? themes[1].name) : undefined,
+      inspect: (section: string) => {
+        if (section === THEME) return { workspaceValue: workspaceTheme };
+        if (failRead) {
+          failRead = false;
+          throw new Error("colors read failed");
+        }
+        return { workspaceValue: workspaceColors, globalValue: userColors };
+      },
+      update: async (
+        section: string,
+        value: Record<string, unknown> | undefined,
+        target: ConfigurationTarget,
+      ) => {
+        assert.strictEqual(section, COLORS);
+        await beforeWrite?.();
+        if (target === ConfigurationTarget.Workspace) workspaceColors = value;
+        else userColors = value;
+      },
+    }));
+  });
+
+  teardown(() => {
+    stub(workspace, "getConfiguration", realGetConfiguration);
+    stub(window, "showErrorMessage", realShowErrorMessage);
+  });
+
+  for (const newTheme of [undefined, "Unknown Theme"]) {
+    test(`a reset waits for a pending apply${newTheme ? " and survives a newer override" : ""}`, async () => {
+      const started = deferred();
+      const release = deferred();
+      beforeWrite = async () => {
+        beforeWrite = undefined;
+        started.resolve();
+        await release.promise;
+      };
+      const onTerminalThemeChange = createTerminalThemeChangeHandler();
+      workspaceTheme = sample.name;
+      const applying = onTerminalThemeChange(changed);
+      await started.promise;
+      workspaceTheme = undefined;
+      const resetting = onTerminalThemeChange(changed);
+      workspaceTheme = newTheme;
+      const replacing = newTheme ? onTerminalThemeChange(changed) : undefined;
+      release.resolve();
+      await Promise.all([applying, resetting, replacing]);
+      assert.deepStrictEqual(workspaceColors, {
+        "editor.background": "#123456",
+      });
+      assert.deepStrictEqual(userColors, themes[1].colors);
+    });
+  }
+
+  test("a rejected run reports its error without blocking later changes", async () => {
+    const onTerminalThemeChange = createTerminalThemeChangeHandler();
+    workspaceTheme = sample.name;
+    failRead = true;
+    await assert.rejects(
+      async () => onTerminalThemeChange(changed),
+      /colors read failed/,
+    );
+    workspaceTheme = themes[2].name;
+    assert.strictEqual(await onTerminalThemeChange(changed), true);
+    assert.deepStrictEqual(workspaceColors, {
+      "editor.background": "#123456",
+      ...themes[2].colors,
+    });
+  });
+});
 
 if (hasWorkspace) {
   suite("workspace theme reset", () => {

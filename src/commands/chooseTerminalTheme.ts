@@ -34,7 +34,7 @@ function getThemeColors(target: ConfigurationTarget) {
     : colors?.globalValue;
 }
 
-/** Preview and save at the theme's scope, restoring the original colors on cancel or picker failure. */
+/** Preview and save at the theme's scope, restoring the original colors on cancel or failure. */
 export async function chooseTerminalTheme() {
   const currentTheme = getConfig({ section: THEME_SECTION });
   const items: QuickPickItem[] = themes.map(({ name }) => ({
@@ -60,8 +60,7 @@ export async function chooseTerminalTheme() {
     // Finish any pending preview before accepting or restoring the colors.
     preview.cancel();
     await previewWrite;
-    if (picked) {
-      await writeScoped(THEME_SECTION, picked.label, target);
+    if (picked && (await writeScoped(THEME_SECTION, picked.label, target))) {
       await applyTheme(picked.label, target);
     } else {
       await writeScoped(COLOR_CUSTOMIZATIONS, original, target);
@@ -69,17 +68,22 @@ export async function chooseTerminalTheme() {
   }
 }
 
-/** Track Workspace theme changes so removing an override clears its generated colors. */
+/** Serialize theme changes and capture Workspace resets before later events can hide them. */
 export function createTerminalThemeChangeHandler() {
   let workspaceTheme = getWorkspaceTheme();
-  return async (event: ConfigurationChangeEvent) => {
+  let queue: Promise<unknown> = Promise.resolve();
+  return (event: ConfigurationChangeEvent) => {
     if (!event.affectsConfiguration(THEME_SECTION)) return;
     const previousTheme = workspaceTheme;
     workspaceTheme = getWorkspaceTheme();
-    if (previousTheme !== undefined && workspaceTheme === undefined) {
-      await clearWorkspaceTheme(previousTheme);
-    }
-    return applyTheme(getConfig({ section: THEME_SECTION }));
+    const clearedTheme =
+      workspaceTheme === undefined ? previousTheme : undefined;
+    const run = queue.then(async () => {
+      if (clearedTheme !== undefined) await clearWorkspaceTheme(clearedTheme);
+      return applyTheme(getConfig({ section: THEME_SECTION }));
+    });
+    queue = run.catch(() => undefined);
+    return run;
   };
 }
 
