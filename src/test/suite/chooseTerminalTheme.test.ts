@@ -362,6 +362,30 @@ suite("theme change ordering", () => {
     });
   }
 
+  test("a reset clears the queued replacement theme after a slow write", async () => {
+    const started = deferred();
+    const release = deferred();
+    beforeWrite = async () => {
+      beforeWrite = undefined;
+      started.resolve();
+      await release.promise;
+    };
+    const onTerminalThemeChange = createTerminalThemeChangeHandler();
+    workspaceTheme = sample.name;
+    const applying = onTerminalThemeChange(changed);
+    await started.promise;
+    workspaceTheme = themes[2].name;
+    const replacing = onTerminalThemeChange(changed);
+    workspaceTheme = undefined;
+    const resetting = onTerminalThemeChange(changed);
+    release.resolve();
+    await Promise.all([applying, replacing, resetting]);
+    assert.deepStrictEqual(workspaceColors, {
+      "editor.background": "#123456",
+    });
+    assert.deepStrictEqual(userColors, themes[1].colors);
+  });
+
   test("a rejected run reports its error without blocking later changes", async () => {
     const onTerminalThemeChange = createTerminalThemeChangeHandler();
     workspaceTheme = sample.name;

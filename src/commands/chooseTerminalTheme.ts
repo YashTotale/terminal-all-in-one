@@ -68,7 +68,7 @@ export async function chooseTerminalTheme() {
   }
 }
 
-/** Serialize theme changes and capture Workspace resets before later events can hide them. */
+/** Serialize theme changes using each event's theme, scope, and Workspace reset. */
 export function createTerminalThemeChangeHandler() {
   let workspaceTheme = getWorkspaceTheme();
   let queue: Promise<unknown> = Promise.resolve();
@@ -78,9 +78,11 @@ export function createTerminalThemeChangeHandler() {
     workspaceTheme = getWorkspaceTheme();
     const clearedTheme =
       workspaceTheme === undefined ? previousTheme : undefined;
+    const themeName = getConfig({ section: THEME_SECTION });
+    const target = getThemeTarget();
     const run = queue.then(async () => {
       if (clearedTheme !== undefined) await clearWorkspaceTheme(clearedTheme);
-      return applyTheme(getConfig({ section: THEME_SECTION }));
+      return applyTheme(themeName, target);
     });
     queue = run.catch(() => undefined);
     return run;
