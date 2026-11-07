@@ -3,7 +3,7 @@ import { commands, ConfigurationChangeEvent } from "vscode";
 import replacements from "./replacements.json";
 import {
   chooseTerminalTheme,
-  onTerminalThemeChange,
+  createTerminalThemeChangeHandler,
 } from "./chooseTerminalTheme";
 import { runScript } from "./runScript";
 import { changeFontWeight } from "./changeFontWeight";
@@ -29,7 +29,7 @@ const commandList: Command[] = [
   {
     name: "chooseTerminalTheme",
     handler: chooseTerminalTheme,
-    config: onTerminalThemeChange,
+    config: createTerminalThemeChangeHandler(),
   },
   { name: "runScript", handler: runScript },
   { name: "changeCursorWidth", handler: changeCursorWidth },

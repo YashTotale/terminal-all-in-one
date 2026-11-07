@@ -2,7 +2,7 @@ import assert from "assert";
 import { window, workspace, ConfigurationTarget } from "vscode";
 import {
   applyTheme,
-  onTerminalThemeChange,
+  createTerminalThemeChangeHandler,
   chooseTerminalTheme,
 } from "../../commands/chooseTerminalTheme";
 import themes from "../../themes.json";
@@ -145,6 +145,7 @@ for (const target of targets) {
       });
 
       test("onTerminalThemeChange applies the saved theme only when affected", async () => {
+        const onTerminalThemeChange = createTerminalThemeChangeHandler();
         await theme.set(sample.name);
         await tick();
         await colors.set({});
@@ -229,4 +230,120 @@ for (const target of targets) {
       });
     },
   );
+}
+
+if (hasWorkspace) {
+  suite("workspace theme reset", () => {
+    const userTheme = globalSetting<string>(THEME);
+    const userColors = globalSetting<Record<string, unknown>>(COLORS);
+    const workspaceTheme = scopedSetting<string>(
+      THEME,
+      ConfigurationTarget.Workspace,
+    );
+    const workspaceColors = scopedSetting<Record<string, unknown>>(
+      COLORS,
+      ConfigurationTarget.Workspace,
+    );
+    const originalUserColors = {
+      "editor.foreground": "#abcdef",
+      ...sample.colors,
+    };
+    const changed = {
+      affectsConfiguration: (section: string) => section === THEME,
+    } as any;
+
+    suiteSetup(() => {
+      userTheme.capture();
+      userColors.capture();
+      workspaceTheme.capture();
+      workspaceColors.capture();
+    });
+
+    setup(async () => {
+      await userTheme.set(sample.name);
+      await workspaceTheme.set(undefined);
+      await tick();
+      await userColors.set(originalUserColors);
+      await workspaceColors.set(undefined);
+    });
+
+    suiteTeardown(async () => {
+      await userTheme.restore();
+      await workspaceTheme.restore();
+      await tick();
+      await userColors.restore();
+      await workspaceColors.restore();
+    });
+
+    const customizations: [string, Record<string, unknown> | undefined][] = [
+      ["only generated colors", undefined],
+      [
+        "unrelated customizations",
+        {
+          "editor.background": "#123456",
+          "[Default Dark Modern]": { "editor.foreground": "#654321" },
+        },
+      ],
+      [
+        "manual terminal edits",
+        {
+          "terminal.background": "#abcabc",
+          "terminal.selectionBackground": "#123456",
+        },
+      ],
+    ];
+
+    for (const [name, remaining] of customizations) {
+      test(`resetting a saved Workspace theme with ${name}`, async () => {
+        await workspaceTheme.set(themes[1].name);
+        await tick();
+        await workspaceColors.set({ ...themes[1].colors, ...remaining });
+        const onTerminalThemeChange = createTerminalThemeChangeHandler();
+
+        await workspaceTheme.set(undefined);
+        await onTerminalThemeChange(changed);
+
+        assert.strictEqual(workspaceTheme.value(), undefined);
+        assert.deepStrictEqual(workspaceColors.value(), remaining);
+        assert.deepStrictEqual(userColors.value(), originalUserColors);
+        const effective = workspace
+          .getConfiguration()
+          .get<Record<string, unknown>>(COLORS);
+        assert.strictEqual(
+          effective?.["terminal.ansiBlue"],
+          sample.colors["terminal.ansiBlue"],
+        );
+        assert.strictEqual(
+          effective?.["terminal.background"],
+          remaining?.["terminal.background"] ??
+            sample.colors["terminal.background"],
+        );
+      });
+    }
+
+    test("resetting an override removes the last theme applied in this session", async () => {
+      const onTerminalThemeChange = createTerminalThemeChangeHandler();
+      for (const theme of [sample, themes[1]]) {
+        await workspaceTheme.set(theme.name);
+        await onTerminalThemeChange(changed);
+        assert.deepStrictEqual(workspaceColors.value(), theme.colors);
+      }
+      await workspaceTheme.set(undefined);
+      await onTerminalThemeChange(changed);
+      assert.strictEqual(workspaceColors.value(), undefined);
+      assert.deepStrictEqual(userColors.value(), originalUserColors);
+    });
+
+    test("changing a User theme leaves independently configured Workspace colors alone", async () => {
+      await workspaceColors.set({ ...themes[1].colors });
+      const onTerminalThemeChange = createTerminalThemeChangeHandler();
+      await userTheme.set(themes[2].name);
+      await onTerminalThemeChange(changed);
+      assert.deepStrictEqual(workspaceColors.value(), themes[1].colors);
+      assert.deepStrictEqual(userColors.value(), {
+        "editor.foreground": "#abcdef",
+        ...themes[2].colors,
+      });
+    });
+  });
 }

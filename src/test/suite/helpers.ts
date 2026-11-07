@@ -15,7 +15,7 @@ export function globalSetting<T>(section: string, config?: string) {
   return scopedSetting<T>(section, ConfigurationTarget.Global, config);
 }
 
-// Capture, read, and restore the raw value at one settings scope.
+/** Capture, read, and restore the raw value at one settings scope. */
 export function scopedSetting<T>(
   section: string,
   target: ConfigurationTarget.Global | ConfigurationTarget.Workspace,

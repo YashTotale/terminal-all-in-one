@@ -10,6 +10,7 @@ The format of this Change Log is based on [Keep a Changelog](http://keepachangel
 #### Fixed
 
 - Terminal theme choices, previews, and colors now follow the scope of `terminalAllInOne.terminalTheme`, honoring Workspace overrides while defaulting to User settings.
+- Resetting a Workspace terminal theme removes its generated colors so the User theme can take effect, preserving unrelated customizations and manual edits.
 
 ---
 

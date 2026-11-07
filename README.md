@@ -60,6 +60,8 @@ Press `cmd+i` (macOS) or `ctrl+i` (Windows/Linux), then the key below. Every com
 
 Themes use User settings by default. For a project-specific theme, open Settings, select the **Workspace** tab, and set `terminalAllInOne.terminalTheme` there. **Choose Theme**, its previews, and the generated colors then use that workspace's settings (`.vscode/settings.json` for a folder, or the `.code-workspace` file for a multi-root workspace). Canceling the picker restores the previous colors.
 
+Reset the Workspace theme setting to inherit the User theme again. This removes colors still matching the previous Workspace theme and preserves unrelated customizations and manual color edits.
+
 ### Scripts
 
 `terminalAllInOne.scripts` — your saved scripts. Each entry has a `name` and a `script`, which is either a single command (string) or multiple commands run in order (array). Run them with **Run Script** (`cmd/ctrl+i enter`), or `cmd/ctrl+i 0`–`9` for your first 10.
