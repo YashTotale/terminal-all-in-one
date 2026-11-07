@@ -14,25 +14,6 @@ export const getConfig = function ({ config, section }: GetConfig): any {
   return configuration(config).get(section);
 };
 
-interface UpdateConfig {
-  config?: string;
-  section: string;
-  value: any;
-}
-
-// async/await so both synchronous throws and async update() rejections reach showError; resolves (never rejects) so fire-and-forget callers don't leak unhandled rejections.
-export const updateConfig = async function ({
-  config,
-  section,
-  value,
-}: UpdateConfig) {
-  try {
-    await configuration(config).update(section, value, true);
-  } catch (e) {
-    showError(e instanceof Error ? e.message : String(e));
-  }
-};
-
 export interface ScopedValue {
   target: ConfigurationTarget;
   value: any;

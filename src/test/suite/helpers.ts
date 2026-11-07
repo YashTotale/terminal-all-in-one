@@ -11,17 +11,30 @@ export function stub<T, K extends keyof T>(
   (obj as Record<K, unknown>)[key] = impl;
 }
 
-// A global-scoped setting: capture the original (suiteSetup), set/read it, restore (suiteTeardown).
 export function globalSetting<T>(section: string, config?: string) {
+  return scopedSetting<T>(section, ConfigurationTarget.Global, config);
+}
+
+// Capture, read, and restore the raw value at one settings scope.
+export function scopedSetting<T>(
+  section: string,
+  target: ConfigurationTarget.Global | ConfigurationTarget.Workspace,
+  config?: string,
+) {
   const cfg = () => workspace.getConfiguration(config);
+  const value = () => {
+    const info = cfg().inspect<T>(section);
+    return target === ConfigurationTarget.Workspace
+      ? info?.workspaceValue
+      : info?.globalValue;
+  };
   let original: T | undefined;
   return {
     capture: () => {
-      original = cfg().inspect(section)?.globalValue as T | undefined;
+      original = value();
     },
-    value: () => cfg().inspect(section)?.globalValue as T | undefined,
-    set: (value: T | undefined) =>
-      cfg().update(section, value, ConfigurationTarget.Global),
-    restore: () => cfg().update(section, original, ConfigurationTarget.Global),
+    value,
+    set: (value: T | undefined) => cfg().update(section, value, target),
+    restore: () => cfg().update(section, original, target),
   };
 }

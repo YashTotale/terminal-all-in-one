@@ -1,11 +1,6 @@
 import assert from "assert";
 import { window, workspace, ConfigurationTarget } from "vscode";
-import {
-  inspectScope,
-  writeScoped,
-  getConfig,
-  updateConfig,
-} from "../../helpers/config";
+import { inspectScope, writeScoped, getConfig } from "../../helpers/config";
 import { stub, globalSetting } from "./helpers";
 
 const SECTION = "terminal.integrated.fontSize";
@@ -31,7 +26,7 @@ suite("config scope helpers", () => {
   });
 });
 
-suite("config get/update wrappers", () => {
+suite("config read/write helpers", () => {
   const size = globalSetting<number>(SECTION);
   const disabled = globalSetting<boolean>(
     "disableAllMessages",
@@ -58,12 +53,7 @@ suite("config get/update wrappers", () => {
     );
   });
 
-  test("updateConfig writes at global scope", async () => {
-    await updateConfig({ section: SECTION, value: 18 });
-    assert.strictEqual(size.value(), 18);
-  });
-
-  test("updateConfig swallows a rejected write into showError", async () => {
+  test("writeScoped reports a rejected write through showError", async () => {
     const realGetConfiguration = workspace.getConfiguration;
     const realShowError = window.showErrorMessage;
     let shown: string | undefined;
@@ -77,7 +67,7 @@ suite("config get/update wrappers", () => {
       update: () => Promise.reject(new Error("update failed")),
     }));
     try {
-      await updateConfig({ section: SECTION, value: 1 });
+      await writeScoped(SECTION, 1, ConfigurationTarget.Global);
       assert.strictEqual(shown, "update failed");
     } finally {
       stub(workspace, "getConfiguration", realGetConfiguration);

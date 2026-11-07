@@ -7,6 +7,10 @@ The format of this Change Log is based on [Keep a Changelog](http://keepachangel
 
 ### [Unreleased]
 
+#### Fixed
+
+- Terminal theme choices, previews, and colors now follow the scope of `terminalAllInOne.terminalTheme`, honoring Workspace overrides while defaulting to User settings.
+
 ---
 
 ### [2.0.0] - (2026-06-04)
